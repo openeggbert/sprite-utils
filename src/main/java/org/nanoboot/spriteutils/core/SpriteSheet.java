@@ -29,7 +29,8 @@ public class SpriteSheet {
     public SpriteSheet(File file) {
         List<SpriteSheetRow> rows = new ArrayList<>();
         String text = Utils.readTextFromFile(file);
-        text.lines().skip(1).forEach(l -> {
+        text.lines().skip(1).takeWhile(l->!l.contains("skipskip"))
+                .forEach(l -> {
             final SpriteSheetRow spriteSheetRow = new SpriteSheetRow(l);
 
             if (lastSpriteSheetRow != null) {
@@ -52,7 +53,7 @@ public class SpriteSheet {
                 spriteSheetRow.numberPerSheet = lastSpriteSheetRow.numberPerSheet + 1;
 
                 if(spriteSheetRow.row > lastSpriteSheetRow.row) {
-                    if(spriteSheetRow.row != lastSpriteSheetRow.row) {
+                    if(spriteSheetRow.row != (lastSpriteSheetRow.row + 1)) {
                         throw new SpriteUtilsException("Unexpected row for " + spriteSheetRow.createId());
                     }
                 }
@@ -77,7 +78,7 @@ public class SpriteSheet {
                     if (lastX == -1) {
                         throw new SpriteUtilsException("Could not compute X for " + spriteSheetRow.createId());
                     } else {
-                        spriteSheetRow.x = lastX + lastWidth + 1;
+                        spriteSheetRow.x = lastX + lastWidth;
                     }
                 }
             }

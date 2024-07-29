@@ -1,19 +1,20 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////
 // sprite-utils: Tool used to work with sprites
-// Copyright (C) 2023-2023 the original author or authors.
+// Copyright (C) 2024 the original author or authors.
 //
-// This program is free software; you can redistribute it and/or
+// This program is free software: you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
-// as published by the Free Software Foundation; version 2
-// of the License only.
+// as published by the Free Software Foundation, either version 3
+// of the License, or (at your option) any later version.
 //
 // This program is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
+// along with this program. If not, see 
+// <https://www.gnu.org/licenses/> or write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 ///////////////////////////////////////////////////////////////////////////////////////////////
 package org.nanoboot.spriteutils.commands;
@@ -66,8 +67,8 @@ public class DrawCommand implements Command {
 
     @Override
     public String run(SpriteUtilsArgs bitBackupArgs) {
-        File workingDirectory = new File("/home/robertvokac/Desktop/speedy_eggbert/speedy_eggbert_I/IMAGE08");
-        File testFile = new File(workingDirectory, "blupi000.blp");
+        File workingDirectory = new File("/rv/data/desktop/code/code.nanoboot.org/nanoboot/open-eggbert-data/Speedy_Eggbert_1/Game/IMAGE08");
+        File testFile = new File(workingDirectory, "BLUPI000.BLP");
         File backupFile = new File(testFile.getAbsolutePath() + ".backup");
         if (backupFile.exists()) {
             testFile.delete();
@@ -97,11 +98,11 @@ public class DrawCommand implements Command {
         g.setStroke(dashedStroke);
         //g.drawRect(0,0, 28,19);
         SpriteSheet spriteSheet = new SpriteSheet(new File(workingDirectory, "spritesheet.csv"));
-        spriteSheet.getSpriteSheets(testFile.getName()).forEach(r -> {
+        spriteSheet.getSpriteSheets(testFile.getName().toLowerCase()).forEach(r -> {
             int startX = r.getX();
-            int endX = startX + r.getWidth();
+            int endX = startX + r.getWidth() -1;
             int startY = r.getY();
-            int endY = startY + r.getHeight();
+            int endY = startY + r.getHeight() - 1;
             drawNumber(r.getNumberPerSheet(), g, endX - 2, endY - 1);
             
 //            
@@ -128,7 +129,7 @@ public class DrawCommand implements Command {
 
             g.setStroke(dashedStroke);
 
-            g.drawRect(r.getX(), r.getY(), r.getWidth(), r.getHeight());
+            g.drawRect(r.getX(), r.getY(), r.getWidth() -1, r.getHeight() -1);
         });
 //        for (int i = 0; i <= 100; i++) {
 //            g.setStroke(new BasicStroke(random.apply(1,3)));
@@ -260,7 +261,7 @@ public class DrawCommand implements Command {
                 true, false, true,
                 true, true, true,
                 false, false, true,
-                false, false, true};
+                true, true, true};
         
     private static void drawANumber(int number, Graphics2D g, int endX, int endY) {
         System.out.println("drawNumber " +number + " " + endX + " " + endY);
@@ -324,7 +325,7 @@ Point p = start;
         
         BiConsumer<Integer, Integer> drawPixel = (x, y) -> 
         {
-            System.out.println("Drawing pixel: " + x + " " + y);
+            //System.out.println("Drawing pixel: " + x + " " + y);
             //g.setColor(Color.ORANGE);
             g.fillRect(start.x + x, start.y + y, 1, 1);
             //g.drawLine(start.x + x, start.y + y, start.x + x, start.y + y);
