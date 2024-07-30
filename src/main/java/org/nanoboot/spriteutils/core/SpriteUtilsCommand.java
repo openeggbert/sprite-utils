@@ -16,12 +16,11 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 ///////////////////////////////////////////////////////////////////////////////////////////////
-
 package org.nanoboot.spriteutils.core;
 
 /**
  *
-* @author <a href="mailto:mail@robertvokac.com">Robert Vokac</a>
+ * @author <a href="mailto:mail@robertvokac.com">Robert Vokac</a>
  */
 public enum SpriteUtilsCommand {
     DRAW, RESTORE, EXTRACT, GIFS, HELP, VERSION;

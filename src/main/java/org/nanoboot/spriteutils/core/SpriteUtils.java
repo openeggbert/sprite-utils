@@ -17,11 +17,10 @@
 // <https://www.gnu.org/licenses/> or write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 ///////////////////////////////////////////////////////////////////////////////////////////////
-
 package org.nanoboot.spriteutils.core;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.nanoboot.spriteutils.commands.DrawCommand;
@@ -35,36 +34,36 @@ import org.nanoboot.spriteutils.commands.VersionCommand;
 public class SpriteUtils {
 
     private static final Logger LOG = LogManager.getLogger(SpriteUtils.class);
-    
-    private final Set<Command> commandImplementations;
+
+    private final Map<String, Command> commandImplementations;
+
     public SpriteUtils() {
-        commandImplementations = new HashSet<>();
-        commandImplementations.add(new DrawCommand());
-        commandImplementations.add(new HelpCommand());
-        commandImplementations.add(new VersionCommand());
+        commandImplementations = new HashMap<>();
+        commandImplementations.put("draw", new DrawCommand());
+        commandImplementations.put("help", new HelpCommand());
+        commandImplementations.put("version", new VersionCommand());
     }
-       
+
     public void run(String[] args) {
         run(new SpriteUtilsArgs(args));
     }
-    
+
     public void run(SpriteUtilsArgs spriteUtilsArgs) {
-        String command = spriteUtilsArgs.getCommand();
-        Command foundCommand = null;
-        for(Command e:commandImplementations) {
-            if(e.getName().equals(command)) {
-                foundCommand = e;
-                break;
-            }
-        }
-        if(foundCommand == null) {
-            String msg = "Command \"" + command + "\" is not supported.";
+        if (spriteUtilsArgs == null) {
+            String msg = "No arguments provided.";
             LOG.error(msg);
-            
+            throw new IllegalArgumentException(msg);
+        }
+        String commandName = spriteUtilsArgs.getCommand();
+        Command command = commandImplementations.get(commandName);
+        if (command == null) {
+            String msg = "Command \"" + commandName + "\" is not supported.";
+            LOG.error(msg);
             new HelpCommand().run(spriteUtilsArgs);
             throw new SpriteUtilsException(msg);
         }
-        foundCommand.run(spriteUtilsArgs);
-        
+
+        command.run(spriteUtilsArgs);
+
     }
 }

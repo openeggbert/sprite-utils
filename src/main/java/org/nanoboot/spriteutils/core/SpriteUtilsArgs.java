@@ -84,8 +84,9 @@ public class SpriteUtilsArgs {
     public String getArgument(String arg) {
         return internalMap.get(arg);
     }
+
     public boolean isVerboseLoggingEnabled() {
-        return hasArgument("verbose")&&getArgument("verbose").equals("true");
+        return hasArgument("verbose") && getArgument("verbose").equals("true");
     }
 
 }

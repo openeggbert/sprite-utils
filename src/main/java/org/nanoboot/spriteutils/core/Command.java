@@ -17,17 +17,18 @@
 // <https://www.gnu.org/licenses/> or write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 ///////////////////////////////////////////////////////////////////////////////////////////////
-
 package org.nanoboot.spriteutils.core;
 
 /**
  *
-* @author <a href="mailto:mail@robertvokac.com">Robert Vokac</a>
+ * @author <a href="mailto:mail@robertvokac.com">Robert Vokac</a>
  */
 public interface Command {
+
     public String getName();
+
     default String run(SpriteUtilsArgs bitInspectorArgs) {
         throw new SpriteUtilsException("Not yet implemented.");
     }
-    
+
 }

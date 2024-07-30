@@ -27,11 +27,10 @@ public class Main {
 
     public static void main(String[] args) {
         System.out.println("Sprite Utils - tool used to work with sprites\n");
-     
+
         SpriteUtils spriteUtils = new SpriteUtils();
         args = new String[]{"draw"};
         spriteUtils.run(args);
     }
-
 
 }

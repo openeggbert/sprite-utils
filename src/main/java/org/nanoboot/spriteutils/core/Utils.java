@@ -134,7 +134,9 @@ public class Utils {
     }
 
     public static String calculateSHA256Hash(File file) {
-        if(file.isDirectory()) {return "";}
+        if (file.isDirectory()) {
+            return "";
+        }
         try {
             return Files.hash(file, Hashing.sha256()).toString();
         } catch (IOException ex) {
@@ -142,7 +144,6 @@ public class Utils {
             throw new SpriteUtilsException(ex);
         }
     }
-
 
     public static String encodeBase64(String s) {
         return Base64.getEncoder().encodeToString(s.getBytes());

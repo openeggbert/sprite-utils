@@ -26,6 +26,8 @@ import java.awt.Stroke;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 import java.util.function.Supplier;
@@ -37,6 +39,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.nanoboot.spriteutils.core.Command;
 import org.nanoboot.spriteutils.core.SpriteSheet;
+import org.nanoboot.spriteutils.core.SpriteSheetRow;
 import org.nanoboot.spriteutils.core.SpriteUtilsArgs;
 import org.nanoboot.spriteutils.core.SpriteUtilsException;
 import org.nanoboot.spriteutils.core.Utils;
@@ -61,106 +64,151 @@ public class DrawCommand implements Command {
 
     private static final BiFunction<Integer, Integer, Integer> random = (min, max) -> {
         int diff = max - min;
-        int i = (int) (Math.random() * diff);
-        return min + i;
+        return min + (int) (Math.random() * diff);
     };
 
+    private static final Map<Character, boolean[]> digitData = new HashMap<>();
+
+    static {
+        digitData.put('0', new boolean[]{
+            true, true, true,
+            true, false, true,
+            true, false, true,
+            true, false, true,
+            true, true, true});
+        digitData.put('1', new boolean[]{
+            false, false, true,
+            false, true, true,
+            true, false, true,
+            false, false, true,
+            false, false, true});
+        digitData.put('2', new boolean[]{
+            true, true, true,
+            false, false, true,
+            false, true, false,
+            true, false, false,
+            true, true, true});
+        digitData.put('3', new boolean[]{
+            true, true, true,
+            false, false, true,
+            true, true, true,
+            false, false, true,
+            true, true, true});
+        digitData.put('4', new boolean[]{
+            false, false, true,
+            false, true, false,
+            true, true, true,
+            false, false, true,
+            false, false, true});
+        digitData.put('5', new boolean[]{
+            true, true, true,
+            true, false, false,
+            true, true, true,
+            false, false, true,
+            true, true, true});
+        digitData.put('6', new boolean[]{
+            true, true, true,
+            true, false, false,
+            true, true, true,
+            true, false, true,
+            true, true, true});
+        digitData.put('7', new boolean[]{
+            true, true, true,
+            false, false, true,
+            false, false, true,
+            false, false, true,
+            false, false, true});
+        digitData.put('8', new boolean[]{
+            true, true, true,
+            true, false, true,
+            true, true, true,
+            true, false, true,
+            true, true, true});
+        digitData.put('9', new boolean[]{
+            true, true, true,
+            true, false, true,
+            true, true, true,
+            false, false, true,
+            true, true, true});
+    }
+
     @Override
-    public String run(SpriteUtilsArgs bitBackupArgs) {
+    public String run(SpriteUtilsArgs args) {
+        if (args == null) {
+            LOG.error("SpriteUtilsArgs cannot be null.");
+            throw new IllegalArgumentException("SpriteUtilsArgs cannot be null.");
+        }
+
         File workingDirectory = new File("/rv/data/desktop/code/code.nanoboot.org/nanoboot/open-eggbert-data/Speedy_Eggbert_1/Game/IMAGE08");
         File testFile = new File(workingDirectory, "BLUPI000.BLP");
         File backupFile = new File(testFile.getAbsolutePath() + ".backup");
-        if (backupFile.exists()) {
-            testFile.delete();
-            Utils.copyFile(backupFile, testFile);
-        } else {
-            Utils.copyFile(testFile, backupFile);
+        try {
+            if (backupFile.exists()) {
+                testFile.delete();
+                Utils.copyFile(backupFile, testFile);
+            } else {
+                Utils.copyFile(testFile, backupFile);
+            }
+        } catch (SpriteUtilsException e) {
+            LOG.error("Error managing backup files", e);
+            throw new SpriteUtilsException("Error managing backup files", e);
         }
 
         BMPImage image = null;
-        File file = testFile;
         try {
-            image = BMPDecoder.readExt(file);
-        } catch (IOException ex) {
-            throw new SpriteUtilsException("Reading image failed: " + file.getAbsolutePath() + " " + ex.getMessage());
+            image = BMPDecoder.readExt(testFile);
+        } catch (IOException e) {
+            LOG.error("Reading image failed: {}", testFile.getAbsolutePath(), e);
+            throw new SpriteUtilsException("Reading image failed", e);
         }
         BufferedImage bi = image.getImage();
         Graphics2D g = bi.createGraphics();
 
         Supplier<Integer> randomByte = () -> random.apply(0, 255);
 
-        final int height = image.getHeight();
-        final int width = image.getWidth();
-        g.setColor(Color.red);
+        Stroke dashedStroke = configureGraphics(g);
+        SpriteSheet spriteSheet = new SpriteSheet(new File(workingDirectory, "spritesheet.csv"));
+        spriteSheet.getSpriteSheets(testFile.getName().toLowerCase()).forEach(row -> {
+            drawSpriteSheetRow(row, g, dashedStroke);
+        });
+
+        g.dispose();
+        try {
+            BMPEncoder.write(bi, testFile);
+        } catch (IOException e) {
+            LOG.error("Writing image failed: {}", testFile.getAbsolutePath(), e);
+            throw new SpriteUtilsException("Writing image failed", e);
+        }
+        LOG.info("Image details - Colour Count: {}, Colour Depth: {}, Height: {}, Width: {}, Indexed: {}",
+                image.getColourCount(), image.getColourDepth(), image.getHeight(), image.getWidth(), image.isIndexed());
+        return "";
+
+    }
+
+    private void drawSpriteSheetRow(SpriteSheetRow row, Graphics2D g, Stroke dashedStroke) {
+        int startX = row.getX();
+        int endX = startX + row.getWidth() - 1;
+        int startY = row.getY();
+        int endY = startY + row.getHeight() - 1;
+        drawNumber(row.getNumberPerSheet(), g, endX - 2, endY - 1);
+
+        g.setStroke(dashedStroke);
+
+        Color currentColor = g.getColor();
+        g.setColor(Color.RED);
+        g.drawRect(row.getX(), row.getY(), row.getWidth() - 1, row.getHeight() - 1);
+        g.setColor(currentColor);
+    }
+
+    private Stroke configureGraphics(Graphics2D g) {
+        g.setColor(Color.black);
         Stroke originalStroke = g.getStroke();
         Stroke dashedStroke = new BasicStroke(1, BasicStroke.CAP_SQUARE, BasicStroke.CAP_SQUARE,
                 0, new float[]{1, 3}, 0);
         g.setStroke(dashedStroke);
         //g.drawRect(0,0, 28,19);
-        SpriteSheet spriteSheet = new SpriteSheet(new File(workingDirectory, "spritesheet.csv"));
-        spriteSheet.getSpriteSheets(testFile.getName().toLowerCase()).forEach(r -> {
-            int startX = r.getX();
-            int endX = startX + r.getWidth() -1;
-            int startY = r.getY();
-            int endY = startY + r.getHeight() - 1;
-            drawNumber(r.getNumberPerSheet(), g, endX - 2, endY - 1);
-            
-//            
-//            int x = 0;
-//            int y = 0;
-//            
-//            int aaa = 3;
-//            x = startX;y = startY;
-//            g.setStroke(originalStroke);
-//            g.drawLine(x, y, x + aaa, y);
-//            g.drawLine(x, y, x, y + aaa);
-//            
-//            x = endX;y = startY;
-//            g.drawLine(x, y, x - aaa, y);
-//            g.drawLine(x, y, x, y + aaa);
-//            
-//            x = startX;y = endY;
-//            g.drawLine(x, y, x + aaa, y);
-//            g.drawLine(x, y, x, y - aaa);
-//            
-//            x = endX;y = endY;
-//            g.drawLine(x, y, x - aaa, y);
-//            g.drawLine(x, y, x, y - aaa);
 
-            g.setStroke(dashedStroke);
-
-            g.drawRect(r.getX(), r.getY(), r.getWidth() -1, r.getHeight() -1);
-        });
-//        for (int i = 0; i <= 100; i++) {
-//            g.setStroke(new BasicStroke(random.apply(1,3)));
-//
-//            g.setColor(new Color(randomByte.get(), randomByte.get(), randomByte.get()));
-//
-//            int h = random.apply(10, 100);
-//            int w = random.apply(10, 100);
-//            int x = random.apply(1, width);
-//            int y = random.apply(1, height);
-//            if ((x + w) > width) {
-//                x = x - w - random.apply(5, 25);
-//            }
-//            if ((y + h) > height) {
-//                y = y - h - random.apply(5, 25);
-//            }
-//            g.drawRect(x, y, w, h);
-//        }
-        g.dispose();
-        try {
-            BMPEncoder.write(bi, testFile);
-        } catch (IOException ex) {
-            throw new SpriteUtilsException("Writing image failed: " + file.getAbsolutePath() + " " + ex.getMessage());
-        }
-        System.out.println("getColourCount=" + image.getColourCount());
-        System.out.println("getColourDepth=" + image.getColourDepth());
-        System.out.println("getHeight=" + height);
-        System.out.println("getWidth=" + width);
-        System.out.println("isIndexed=" + image.isIndexed());
-        return "";
-
+        return dashedStroke;
     }
 
     @AllArgsConstructor
@@ -182,225 +230,51 @@ public class DrawCommand implements Command {
         }
     }
 
-    private static void drawNumber(int number, Graphics2D g, int endX, int endY) {
-        //number = random.apply(100, 900);
-        System.out.println("number = " + number);
+    private void drawNumber(int number, Graphics2D g, int endX, int endY) {
+        LOG.debug("Drawing number {}", number);
         Point end = new Point(endX, endY);
-        String ns = String.valueOf(number);
-        
+        String numberString = String.valueOf(number);
+
         Color oldColor = g.getColor();
         g.setColor(Color.WHITE);
         g.fillRect(endX + 1, endY - 5, 1, 6);
         g.setColor(oldColor);
-        
-        
-        for (int i = 0; i < ns.length(); i++) {
-            char ch = ns.charAt(ns.length() - 1 - i);
-            String s = String.valueOf(ch);
-            drawANumber(Integer.valueOf(s), g, end.x - (i * 4), end.y);
 
+        for (int i = 0; i < numberString.length(); i++) {
+            char digit = numberString.charAt(numberString.length() - 1 - i);
+            drawANumber(Character.getNumericValue(digit), g, end.x - (i * 4), end.y);
         }
     }
 
-         private static final boolean[] data0 = new boolean[]{
-                true, true, true,
-                true, false, true,
-                true, false, true,
-                true, false, true,
-                true, true, true};
-           private static final boolean[] data1 = new boolean[]{
-                false, false, true,
-                false, true, true,
-                true, false, true,
-                false, false, true,
-                false, false, true};
-          private static final boolean[] data2 = new boolean[]{
-                true, true, true,
-                false, false, true,
-                false, true, false,
-                true, false, false,
-                true, true, true};
-         private static final boolean[] data3 = new boolean[]{
-                true, true, true,
-                false, false, true,
-                true, true, true,
-                false, false, true,
-                true, true, true};
-          private static final boolean[] data4 = new boolean[]{
-                false, false, true,
-                false, true, false,
-                true, true, true,
-                false, false, true,
-                false, false, true};
-        private static final boolean[] data5 = new boolean[]{
-                true, true, true,
-                true, false, false,
-                true, true, true,
-                false, false, true,
-                true, true, true};
-         private static final boolean[] data6 = new boolean[]{
-                true, true, true,
-                true, false, false,
-                true, true, true,
-                true, false, true,
-                true, true, true};
-        private static final boolean[] data7 = new boolean[]{
-                true, true, true,
-                false, false, true,
-                false, false, true,
-                false, false, true,
-                false, false, true};
-         private static final boolean[] data8 = new boolean[]{
-                true, true, true,
-                true, false, true,
-                true, true, true,
-                true, false, true,
-                true, true, true};
-        private static final boolean[] data9 = new boolean[]{
-                true, true, true,
-                true, false, true,
-                true, true, true,
-                false, false, true,
-                true, true, true};
-        
-    private static void drawANumber(int number, Graphics2D g, int endX, int endY) {
-        System.out.println("drawNumber " +number + " " + endX + " " + endY);
+    private void drawANumber(int number, Graphics2D g, int endX, int endY) {
         Point end = new Point(endX, endY);
-        String ns = String.valueOf(number);
-char c = ns.charAt(0);
+        boolean[] data = digitData.get((char) ('0' + number));
+        if (data == null) {
+            throw new SpriteUtilsException("Character is not supported: " + number);
+        }
+
         Point start = end.createClone();
-Point p = start;
         start.addToX(-2);
         start.addToY(-4);
-        Color oldColor = g.getColor();
+        Color currentColor = g.getColor();
         g.setColor(Color.WHITE);
-        g.fillRect(start.x-1, start.y-1, 4, 6);
-//        if (true) {
-//            g.setColor(oldColor);
-//            return;
-//        }
-        g.setColor(Color.BLACK);
-
-
-            switch (c) {
-                case '0':
-                    drawANumber(g, p, data0);
-                    break;
-                case '1':
-                    drawANumber(g, p, data1);
-                    break;
-                case '2':
-                    drawANumber(g, p, data2);
-                    break;
-                case '3':
-                    drawANumber(g, p, data3);
-                    break;
-                case '4':
-                    drawANumber(g, p, data4);
-                    break;
-                case '5':
-                    drawANumber(g, p, data5);
-                    break;
-                case '6':
-                    drawANumber(g, p, data6);
-                    break;
-                case '7':
-                    drawANumber(g, p, data7);
-                    break;
-                case '8':
-                    drawANumber(g, p, data8);
-                    break;
-                case '9':
-                    drawANumber(g, p, data9);
-                    break;
-                default:
-                    throw new SpriteUtilsException("Character is not supported: " + c);
-            }
-
-    
-        g.setColor(oldColor);
+        g.fillRect(start.x - 1, start.y - 1, 4, 6);
+        g.setColor(currentColor);
+        drawANumber(g, start, data);
     }
 
-    private static void drawANumber(Graphics2D g, Point start, boolean[] data) {
-        
-        BiConsumer<Integer, Integer> drawPixel = (x, y) -> 
-        {
-            //System.out.println("Drawing pixel: " + x + " " + y);
-            //g.setColor(Color.ORANGE);
-            g.fillRect(start.x + x, start.y + y, 1, 1);
-            //g.drawLine(start.x + x, start.y + y, start.x + x, start.y + y);
-        };
-        //drawPixel.accept(1,1);
-        //if(true) return;
+    private void drawANumber(Graphics2D g, Point start, boolean[] data) {
+
+        BiConsumer<Integer, Integer> drawPixel = (x, y) -> g.fillRect(start.x + x, start.y + y, 1, 1);
+
         int i = 0;
-        int X = 0;
-        int Y = 0;
-        
-        if (data[i++]) {
-            drawPixel.accept(X, Y);
+        for (int y = 0; y < 5; y++) {
+            for (int x = 0; x < 3; x++) {
+                if (data[i++]) {
+                    drawPixel.accept(x, y);
+                }
+            }
         }
-        X++;
-        if (data[i++]) {
-            drawPixel.accept(X, Y);
-        }
-        X++;
-        if (data[i++]) {
-            drawPixel.accept(X, Y);
-        }
-        X = 0;
-        Y++;
-        if (data[i++]) {
-            drawPixel.accept(X, Y);
-        }
-        X++;
-        if (data[i++]) {
-            drawPixel.accept(X, Y);
-        }
-        X++;
-        if (data[i++]) {
-            drawPixel.accept(X, Y);
-        }
-        X = 0;
-        Y++;
-        if (data[i++]) {
-            drawPixel.accept(X, Y);
-        }
-        X++;
-        if (data[i++]) {
-            drawPixel.accept(X, Y);
-        }
-        X++;
-        if (data[i++]) {
-            drawPixel.accept(X, Y);
-        }
-        X = 0;
-        Y++;
-        if (data[i++]) {
-            drawPixel.accept(X, Y);
-        }
-        X++;
-        if (data[i++]) {
-            drawPixel.accept(X, Y);
-        }
-        X++;
-        if (data[i++]) {
-            drawPixel.accept(X, Y);
-        }
-        X = 0;
-        Y++;
-        if (data[i++]) {
-            drawPixel.accept(X, Y);
-        }
-        X++;
-        if (data[i++]) {
-            drawPixel.accept(X, Y);
-        }
-        X++;
-        if (data[i++]) {
-            drawPixel.accept(X, Y);
-        }
-        X = 0;
-        Y++;
-
     }
+
 }

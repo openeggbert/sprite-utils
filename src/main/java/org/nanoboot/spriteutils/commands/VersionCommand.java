@@ -17,7 +17,6 @@
 // <https://www.gnu.org/licenses/> or write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 ///////////////////////////////////////////////////////////////////////////////////////////////
-
 package org.nanoboot.spriteutils.commands;
 
 import org.apache.logging.log4j.LogManager;
@@ -27,12 +26,13 @@ import org.nanoboot.spriteutils.core.SpriteUtilsArgs;
 
 /**
  *
-* @author <a href="mailto:mail@robertvokac.com">Robert Vokac</a>
+ * @author <a href="mailto:mail@robertvokac.com">Robert Vokac</a>
  */
 public class VersionCommand implements Command {
-    
-public static final String NAME = "version";
-private static final Logger LOG = LogManager.getLogger(VersionCommand.class);
+
+    public static final String NAME = "version";
+    private static final Logger LOG = LogManager.getLogger(VersionCommand.class);
+
     public VersionCommand() {
     }
 
@@ -47,5 +47,5 @@ private static final Logger LOG = LogManager.getLogger(VersionCommand.class);
         LOG.info(result);
         return result;
     }
-    
+
 }

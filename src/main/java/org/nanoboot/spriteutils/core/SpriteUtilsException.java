@@ -17,7 +17,6 @@
 // <https://www.gnu.org/licenses/> or write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 ///////////////////////////////////////////////////////////////////////////////////////////////
-
 package org.nanoboot.spriteutils.core;
 
 /**
@@ -33,9 +32,9 @@ public class SpriteUtilsException extends RuntimeException {
     public SpriteUtilsException(String msg, Exception e) {
         super(msg, e);
     }
-    
+
     public SpriteUtilsException(Exception e) {
         super(e);
     }
-    
+
 }
