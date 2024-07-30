@@ -29,7 +29,9 @@ import lombok.Data;
 import lombok.ToString;
 
 /**
- *
+ * Represents a sprite sheet and handles parsing from a CSV file.
+ * This class maintains a map of sprite sheet rows and processes each row according to specified rules.
+ * 
  * @author robertvokac
  */
 @Data
@@ -41,13 +43,17 @@ public class SpriteSheet {
     private static int lastWidth = -1;
     private static int lastHeight = -1;
     private SpriteSheetRow lastSpriteSheetRow = null;
-
+    /**
+     * Constructor to create a SpriteSheet from a CSV file.
+     * 
+     * @param file the CSV file containing sprite sheet data
+     */
     public SpriteSheet(File file) {
         List<SpriteSheetRow> rows = new ArrayList<>();
         String text = Utils.readTextFromFile(file);
-        text.lines().skip(1).takeWhile(l -> !l.contains("skipskip"))
-                .forEach(l -> {
-                    processLine(l, rows);
+        text.lines().skip(1).takeWhile(line -> !line.contains("skipskip"))
+                .forEach(line -> {
+                    processLine(line, rows);
                 });
         saveComputedFile(file, text, rows);
 
