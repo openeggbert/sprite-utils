@@ -21,6 +21,7 @@ package org.nanoboot.spriteutils.core;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import lombok.Getter;
 
 /**
@@ -56,15 +57,16 @@ public class SpriteUtilsArgs {
 
         if (args.length > 1) {
 
-            for (String arg : args) {
-                if (arg == null) {
-                    continue;
+            for (int i = 1;i< args.length;i++) {
+                
+                String key = args[i];
+                if(args.length < (i+2)) {
+                    throw new SpriteUtilsException("Missing value for option: " + key);
                 }
-                if (args[0].equals(arg)) {
-                    continue;
-                }
-                String[] keyValue = arg.split("=", 2);
-                internalMap.put(keyValue[0], keyValue.length > 1 ? keyValue[1] : null);
+                ++i;
+                String value = args[i];
+                
+                internalMap.put(key, value);
             }
             for (String key : internalMap.keySet()) {
                 System.out.println("Found argument: " + key + "(=)" + internalMap.get(key));
@@ -83,6 +85,14 @@ public class SpriteUtilsArgs {
 
     public String getArgument(String arg) {
         return internalMap.get(arg);
+    }
+
+    public Optional<String> getArgumentOptional(String arg) {
+        return Optional.ofNullable(hasArgument(arg) ? internalMap.get(arg) : null);
+    }
+
+    public Boolean getBooleanArgument(String arg) {
+        return hasArgument(arg) ? internalMap.get(arg).equals("true") : false;
     }
 
     public boolean isVerboseLoggingEnabled() {

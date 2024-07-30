@@ -42,6 +42,7 @@ import org.nanoboot.spriteutils.core.SpriteSheet;
 import org.nanoboot.spriteutils.core.SpriteSheetRow;
 import org.nanoboot.spriteutils.core.SpriteUtilsArgs;
 import org.nanoboot.spriteutils.core.SpriteUtilsException;
+import org.nanoboot.spriteutils.core.SpriteUtilsOptions;
 import org.nanoboot.spriteutils.core.Utils;
 
 /**
@@ -138,54 +139,69 @@ public class DrawCommand implements Command {
             LOG.error("SpriteUtilsArgs cannot be null.");
             throw new IllegalArgumentException("SpriteUtilsArgs cannot be null.");
         }
+        SpriteUtilsOptions spriteUtilsOptions = new SpriteUtilsOptions(args);
 
-        File workingDirectory = new File("/rv/data/desktop/code/code.nanoboot.org/nanoboot/open-eggbert-data/Speedy_Eggbert_1/Game/IMAGE08");
-        File testFile = new File(workingDirectory, "BLUPI000.BLP");
-        File backupFile = new File(testFile.getAbsolutePath() + ".backup");
-        try {
-            if (backupFile.exists()) {
-                testFile.delete();
-                Utils.copyFile(backupFile, testFile);
-            } else {
-                Utils.copyFile(testFile, backupFile);
+        File workingDirectory = new File(spriteUtilsOptions.getWorkingDirectory());
+        System.out.println("Going to process images in directory: " + workingDirectory);
+        for (File imageFile : workingDirectory.listFiles()) {
+            if (spriteUtilsOptions.getFileName().isPresent() && !spriteUtilsOptions.getFileName().get().equals(imageFile.getName())) {
+                continue;
             }
-        } catch (SpriteUtilsException e) {
-            LOG.error("Error managing backup files", e);
-            throw new SpriteUtilsException("Error managing backup files", e);
+
+            File backupFile = new File(imageFile.getAbsolutePath() + ".backup");
+            try {
+                if (backupFile.exists()) {
+                    imageFile.delete();
+                    Utils.copyFile(backupFile, imageFile);
+                } else {
+                    Utils.copyFile(imageFile, backupFile);
+                }
+            } catch (SpriteUtilsException e) {
+                LOG.error("Error managing backup files", e);
+                throw new SpriteUtilsException("Error managing backup files", e);
+            }
+
+            BMPImage image = null;
+            try {
+                image = BMPDecoder.readExt(imageFile);
+            } catch (IOException e) {
+                LOG.error("Reading image failed: {}", imageFile.getAbsolutePath(), e);
+                throw new SpriteUtilsException("Reading image failed", e);
+            }
+            BufferedImage bi = image.getImage();
+            Graphics2D g = bi.createGraphics();
+
+            Supplier<Integer> randomByte = () -> random.apply(0, 255);
+
+            Stroke dashedStroke = configureGraphics(g);
+            SpriteSheet spriteSheet = new SpriteSheet(new File(spriteUtilsOptions.getSpriteSheetPath()));
+            spriteSheet
+                    .getSpriteSheets(imageFile.getName().toLowerCase())
+                    .stream()
+                    .filter(s -> spriteUtilsOptions.getRow().isEmpty() ? true : (spriteUtilsOptions.getRow().get() == s.getRow()))
+                    .forEach(row -> {
+                drawSpriteSheetRow(row, g, dashedStroke, spriteUtilsOptions);
+            });
+
+            g.dispose();
+            try {
+                BMPEncoder.write(bi, imageFile);
+            } catch (IOException e) {
+                LOG.error("Writing image failed: {}", imageFile.getAbsolutePath(), e);
+                throw new SpriteUtilsException("Writing image failed", e);
+            }
+            LOG.info("Image details - Colour Count: {}, Colour Depth: {}, Height: {}, Width: {}, Indexed: {}",
+                    image.getColourCount(), image.getColourDepth(), image.getHeight(), image.getWidth(), image.isIndexed());
+            if (spriteUtilsOptions.getFileName().isPresent() && spriteUtilsOptions.getFileName().equals(imageFile.getName())) {
+                break;
+            }
         }
 
-        BMPImage image = null;
-        try {
-            image = BMPDecoder.readExt(testFile);
-        } catch (IOException e) {
-            LOG.error("Reading image failed: {}", testFile.getAbsolutePath(), e);
-            throw new SpriteUtilsException("Reading image failed", e);
-        }
-        BufferedImage bi = image.getImage();
-        Graphics2D g = bi.createGraphics();
-
-        Supplier<Integer> randomByte = () -> random.apply(0, 255);
-
-        Stroke dashedStroke = configureGraphics(g);
-        SpriteSheet spriteSheet = new SpriteSheet(new File(workingDirectory, "spritesheet.csv"));
-        spriteSheet.getSpriteSheets(testFile.getName().toLowerCase()).forEach(row -> {
-            drawSpriteSheetRow(row, g, dashedStroke);
-        });
-
-        g.dispose();
-        try {
-            BMPEncoder.write(bi, testFile);
-        } catch (IOException e) {
-            LOG.error("Writing image failed: {}", testFile.getAbsolutePath(), e);
-            throw new SpriteUtilsException("Writing image failed", e);
-        }
-        LOG.info("Image details - Colour Count: {}, Colour Depth: {}, Height: {}, Width: {}, Indexed: {}",
-                image.getColourCount(), image.getColourDepth(), image.getHeight(), image.getWidth(), image.isIndexed());
         return "";
 
     }
 
-    private void drawSpriteSheetRow(SpriteSheetRow row, Graphics2D g, Stroke dashedStroke) {
+    private void drawSpriteSheetRow(SpriteSheetRow row, Graphics2D g, Stroke dashedStroke, SpriteUtilsOptions spriteUtilsOptions) {
         int startX = row.getX();
         int endX = startX + row.getWidth() - 1;
         int startY = row.getY();

@@ -22,9 +22,6 @@ module spriteutils {
     requires org.apache.commons.io;
     requires lombok;
     requires org.apache.logging.log4j;
-    requires powerframework.time;
-    requires powerframework.collections;
-    requires dev.mccue.guava.io;
     requires java.desktop;
     requires image4j;
 }

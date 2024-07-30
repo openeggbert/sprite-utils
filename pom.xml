@@ -110,22 +110,7 @@
     </build>
 
     <dependencies>
-        <!-- Power dependencies -->
-        <dependency>
-            <groupId>org.nanoboot.powerframework</groupId>
-            <artifactId>power-time</artifactId>
-            <version>${power.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.nanoboot.powerframework</groupId>
-            <artifactId>power-random</artifactId>
-            <version>${power.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.nanoboot.powerframework</groupId>
-            <artifactId>power-collections</artifactId>
-            <version>${power.version}</version>
-        </dependency>
+
 
         <!-- Other dependencies -->
         <dependency>
@@ -175,11 +160,6 @@
             <groupId>org.apache.logging.log4j</groupId> 
             <artifactId>log4j-slf4j-impl</artifactId> 
             <version>${log4j.version}</version> 
-        </dependency>
-        <dependency>
-            <groupId>dev.mccue</groupId>
-            <artifactId>guava-io</artifactId>
-            <version>0.0.3</version>
         </dependency>
         <dependency>
             <groupId>org.jclarion</groupId>

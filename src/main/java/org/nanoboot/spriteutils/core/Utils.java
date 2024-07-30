@@ -19,8 +19,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////
 package org.nanoboot.spriteutils.core;
 
-import dev.mccue.guava.hash.Hashing;
-import dev.mccue.guava.io.Files;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileWriter;
@@ -122,27 +120,6 @@ public class Utils {
             }
         }
         return resultStringBuilder.toString();
-    }
-
-    public static String calculateSHA512Hash(File file) {
-        try {
-            return Files.hash(file, Hashing.sha512()).toString();
-        } catch (IOException ex) {
-            System.err.println(ex.getMessage());
-            throw new SpriteUtilsException(ex);
-        }
-    }
-
-    public static String calculateSHA256Hash(File file) {
-        if (file.isDirectory()) {
-            return "";
-        }
-        try {
-            return Files.hash(file, Hashing.sha256()).toString();
-        } catch (IOException ex) {
-            System.err.println(ex.getMessage());
-            throw new SpriteUtilsException(ex);
-        }
     }
 
     public static String encodeBase64(String s) {
