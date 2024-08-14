@@ -39,9 +39,11 @@ public class SpriteUtilsOptions {
     }
 
     public boolean isDrawNumberEnabled() {
-        return spriteUtilsArgs.getBooleanArgument("--draw-number");
+        return spriteUtilsArgs.getOptionalBooleanArgument("--draw-number", true);
     }
-
+    public boolean isNumberDoubleSized() {
+        return spriteUtilsArgs.getBooleanArgument("--double-sized-number");
+    }
     public Color getRectangleColor() {
         Optional<String> arg = spriteUtilsArgs.getArgumentOptional("--rectangle-color");
         if (arg.isEmpty()) {

@@ -58,7 +58,7 @@ public class SpriteSheetRow {
     public SpriteSheetRow(String csvLine) {
         String[] csvColumns = csvLine.split(DELIMITER);
         if (csvColumns.length < MINIMUM_COLUMNS) {
-            throw new IllegalArgumentException("CSV line does not contain enough columns.");
+            throw new IllegalArgumentException("CSV line does not contain enough columns: " + csvLine);
         }
         try {
             int i = 0;
@@ -70,17 +70,18 @@ public class SpriteSheetRow {
             x = parseOptionalInt(csvColumns[i++]).orElse(-1);
             y = Integer.parseInt(csvColumns[i++]);
             width = Integer.parseInt(csvColumns[i++]);
-            height = Integer.parseInt(csvColumns[i++]);
+            var column_ = csvColumns[i++];
+            height = (column_.length() == 0 || column_.equals("0")) ? 0 :Integer.parseInt(column_);
             notes = i < csvColumns.length ? csvColumns[i++] : "";
             tags = i < csvColumns.length ? csvColumns[i++] : "";
             numberPerSheet = i < csvColumns.length ? Integer.parseInt(csvColumns[i]) : 0;
 
             // Adjust height if the column is greater than 1
-            if (column > 1) {
+            if (column > 1 && height == 0) {
                 height = -height;
             }
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("CSV line contains invalid number format.", e);
+            throw new IllegalArgumentException("CSV line contains invalid number format: " + csvLine, e);
         }
     }
     /**

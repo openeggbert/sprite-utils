@@ -53,7 +53,7 @@ public class SpriteUtilsArgs {
     }
 
     public SpriteUtilsArgs(String[] args) {
-        command = args.length == 0 ? "check" : args[0];
+        command = args.length == 0 ? "draw" : args[0];
 
         if (args.length > 1) {
 
@@ -93,6 +93,9 @@ public class SpriteUtilsArgs {
 
     public Boolean getBooleanArgument(String arg) {
         return hasArgument(arg) ? internalMap.get(arg).equals("true") : false;
+    }
+    public Boolean getOptionalBooleanArgument(String arg, boolean default_) {
+        return hasArgument(arg) ? internalMap.get(arg).equals("true") : default_;
     }
 
     public boolean isVerboseLoggingEnabled() {

@@ -45,6 +45,7 @@ public class SpriteUtils {
     }
 
     public void run(String[] args) {
+        //args = "draw --dir /rv/data/desktop/code/code.nanoboot.org/nanoboot/open-eggbert-legacy-assets/speedy_eggbert_1/IMAGE08 --rectangle-color 0,255,0 --sprite-sheet-path /rv/data/desktop/code/code.nanoboot.org/nanoboot/open-eggbert/assets/default-spritesheets/speedy_blupi_I.spritesheet.csv --rows 8 --file-name EXPLO.BLP ".split(" ");
         run(new SpriteUtilsArgs(args));
     }
 

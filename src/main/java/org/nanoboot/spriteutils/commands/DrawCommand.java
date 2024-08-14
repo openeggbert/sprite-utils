@@ -69,70 +69,211 @@ public class DrawCommand implements Command {
     };
 
     private static final Map<Character, boolean[]> digitData = new HashMap<>();
+    
+    private static final Map<Character, boolean[]> digitDataDoubleSized = new HashMap<>();
 
     static {
         digitData.put('0', new boolean[]{
-            true, true, true,
-            true, false, true,
-            true, false, true,
-            true, false, true,
-            true, true, true});
+            true , true , true ,
+            true , false, true ,
+            true , false, true ,
+            true , false, true ,
+            true , true , true });
         digitData.put('1', new boolean[]{
-            false, false, true,
-            false, true, true,
-            true, false, true,
-            false, false, true,
-            false, false, true});
+            false, false, true ,
+            false, true , true ,
+            true , false, true ,
+            false, false, true ,
+            false, false, true });
         digitData.put('2', new boolean[]{
-            true, true, true,
-            false, false, true,
-            false, true, false,
-            true, false, false,
-            true, true, true});
+            true , true , true ,
+            false, false, true ,
+            false, true , false,
+            true , false, false,
+            true , true , true });
         digitData.put('3', new boolean[]{
-            true, true, true,
-            false, false, true,
-            true, true, true,
-            false, false, true,
-            true, true, true});
+            true , true , true ,
+            false, false, true ,
+            true , true , true ,
+            false, false, true ,
+            true , true , true });
         digitData.put('4', new boolean[]{
-            false, false, true,
-            false, true, false,
-            true, true, true,
-            false, false, true,
-            false, false, true});
+            false, false, true ,
+            false, true , false,
+            true , true , true ,
+            false, false, true ,
+            false, false, true });
         digitData.put('5', new boolean[]{
-            true, true, true,
-            true, false, false,
-            true, true, true,
-            false, false, true,
-            true, true, true});
+            true , true , true ,
+            true , false, false,
+            true , true , true ,
+            false, false, true ,
+            true , true , true });
         digitData.put('6', new boolean[]{
-            true, true, true,
-            true, false, false,
-            true, true, true,
-            true, false, true,
-            true, true, true});
+            true , true , true ,
+            true , false, false,
+            true , true , true ,
+            true , false, true ,
+            true , true , true });
         digitData.put('7', new boolean[]{
-            true, true, true,
-            false, false, true,
-            false, false, true,
-            false, false, true,
-            false, false, true});
+            true , true , true ,
+            false, false, true ,
+            false, false, true ,
+            false, false, true ,
+            false, false, true });
         digitData.put('8', new boolean[]{
-            true, true, true,
-            true, false, true,
-            true, true, true,
-            true, false, true,
-            true, true, true});
+            true , true , true ,
+            true , false, true ,
+            true , true , true ,
+            true , false, true ,
+            true , true , true });
         digitData.put('9', new boolean[]{
-            true, true, true,
-            true, false, true,
-            true, true, true,
-            false, false, true,
-            true, true, true});
+            true , true , true ,
+            true , false, true ,
+            true , true , true ,
+            false, false, true ,
+            true , true , true });
     }
 
+    static {
+        digitDataDoubleSized.put('0', new boolean[]{
+            false, true , true , true , true , false,
+            true , true , true , true , true , true ,
+            true , true , false, false, true , true ,
+            true , true , false, false, true , true ,
+            true , true , false, false, true , true ,
+            true , true , false, false, true , true ,
+            true , true , false, false, true , true ,
+            true , true , false, false, true , true ,
+            true , true , false, false, true , true ,
+            false, true , true , true , true , false,});
+        digitDataDoubleSized.put('1', new boolean[]{
+            false, false, false, false, true , true ,
+            false, false, false, true , true , true ,
+            false, false, true , true , true , true ,
+            false, true , true , true , true , true ,
+            true , true , true , false, true , true ,
+            true , true , false, false, true , true ,
+            false, false, false, false, true , true ,
+            false, false, false, false, true , true ,
+            false, false, false, false, true , true ,
+            false, false, false, false, true , true ,});
+        digitDataDoubleSized.put('2', new boolean[]{
+            false, true , true , true , true ,false,
+            true , true , true , true , true ,true ,
+            false, false, false, false, true, true ,
+            false, false, false, true , true, true ,
+            false, false, true , true , true, false,
+            false, false, true , true , false, false,
+            false, true , true , false, false, false,
+            false, true , true , false, false, false,
+            true , true , true , true , true , true ,
+            true , true , true , true , true , true ,});
+        digitDataDoubleSized.put('3', convertStringToBooleanArray(
+"""
+ ████ |
+██████|
+    ██|
+    ██|
+█████ |
+█████ |
+    ██|
+    ██|
+██████|
+ ████ |
+"""));
+        digitDataDoubleSized.put('4', convertStringToBooleanArray(
+"""
+    ██|
+   ███|
+  ███ |
+ ███  |
+███   |
+██████|
+██████|
+    ██|
+    ██|
+    ██|
+"""));
+        digitDataDoubleSized.put('5', convertStringToBooleanArray(
+"""
+██████|
+██████|
+██    |
+██    |
+█████ |
+██████|
+    ██|
+    ██|
+██████|
+█████ |
+"""));
+        digitDataDoubleSized.put('6', convertStringToBooleanArray(
+"""
+ █████|
+██████|
+██    |
+██    |
+█████ |
+██████|
+██  ██|
+██  ██|
+██████|
+ ████ |
+"""));
+        digitDataDoubleSized.put('7', convertStringToBooleanArray(
+"""
+██████|
+██████|
+    ██|
+    ██|
+    ██|
+    ██|
+    ██|
+    ██|
+    ██|
+    ██|
+"""));
+        digitDataDoubleSized.put('8', convertStringToBooleanArray(
+"""
+ ████ |
+██████|
+██  ██|
+██  ██|
+ ████ |
+ ████ |
+██  ██|
+██  ██|
+██████|
+ ████ |
+"""));
+        digitDataDoubleSized.put('9', convertStringToBooleanArray(
+"""
+ ████ |
+██████|
+██  ██|
+██  ██|
+██████|
+ █████|
+    ██|
+    ██|
+██████|
+█████ |
+"""));
+    }
+
+    private static boolean[] convertStringToBooleanArray(String string) {
+        boolean[] b = new boolean[string.length()];
+        int i = 0;
+        for (String line : string.split("\n")) {
+            for (char ch : line.toCharArray()) {
+                if(ch == '|') {break;}
+                b[i++] = ch == '█';
+            }
+
+        }
+        return b;
+    }
     @Override
     public String run(SpriteUtilsArgs args) {
         if (args == null) {
@@ -206,7 +347,15 @@ public class DrawCommand implements Command {
         int endX = startX + row.getWidth() - 1;
         int startY = row.getY();
         int endY = startY + row.getHeight() - 1;
-        drawNumber(row.getNumberPerSheet(), g, endX - 2, endY - 1);
+        
+        boolean numberDoubleSized = spriteUtilsOptions.isNumberDoubleSized();
+        var enoughSpace = row.getWidth() > (numberDoubleSized ? 6 : 3);
+        if(!enoughSpace && numberDoubleSized && row.getWidth() > 4) {
+            numberDoubleSized = false;
+        }
+        if(spriteUtilsOptions.isDrawNumberEnabled() && enoughSpace) {
+            drawNumber(row.getNumberPerSheet(), g, endX - 2, endY - 1, numberDoubleSized);
+        }
 
         g.setStroke(dashedStroke);
 
@@ -246,46 +395,48 @@ public class DrawCommand implements Command {
         }
     }
 
-    private void drawNumber(int number, Graphics2D g, int endX, int endY) {
+    private void drawNumber(int number, Graphics2D g, int endX, int endY, boolean doubleSize) {
         LOG.debug("Drawing number {}", number);
         Point end = new Point(endX, endY);
         String numberString = String.valueOf(number);
 
-        Color oldColor = g.getColor();
-        g.setColor(Color.WHITE);
-        g.fillRect(endX + 1, endY - 5, 1, 6);
-        g.setColor(oldColor);
+        if (!doubleSize) {
+            Color oldColor = g.getColor();
+            g.setColor(Color.WHITE);
+            g.fillRect(endX + 1, endY - 5 * (doubleSize ? 2 : 1), 1, 6 * (doubleSize ? 2 : 1));
+            g.setColor(oldColor);
+        }
 
         for (int i = 0; i < numberString.length(); i++) {
             char digit = numberString.charAt(numberString.length() - 1 - i);
-            drawANumber(Character.getNumericValue(digit), g, end.x - (i * 4), end.y);
+            drawANumber(Character.getNumericValue(digit), g, end.x - (i * 4 * (doubleSize ? 2 : 1)), end.y, doubleSize);
         }
     }
 
-    private void drawANumber(int number, Graphics2D g, int endX, int endY) {
+    private void drawANumber(int number, Graphics2D g, int endX, int endY, boolean doubleSize) {
         Point end = new Point(endX, endY);
-        boolean[] data = digitData.get((char) ('0' + number));
+        var data0 = doubleSize ? digitDataDoubleSized : digitData;
+        boolean[] data = data0.get((char) ('0' + number));
         if (data == null) {
             throw new SpriteUtilsException("Character is not supported: " + number);
         }
 
         Point start = end.createClone();
-        start.addToX(-2);
-        start.addToY(-4);
+        start.addToX((doubleSize ? -1 : 0) -2 * (doubleSize ? 2 : 1));
+        start.addToY((doubleSize ? -2 : 0) -4 * (doubleSize ? 2 : 1));
         Color currentColor = g.getColor();
         g.setColor(Color.WHITE);
-        g.fillRect(start.x - 1, start.y - 1, 4, 6);
+        g.fillRect(start.x - 1, start.y - 1, 4 * (doubleSize ? 2 : 1), 6 * (doubleSize ? 2 : 1));
         g.setColor(currentColor);
-        drawANumber(g, start, data);
+        drawANumber(g, start, data, doubleSize);
     }
 
-    private void drawANumber(Graphics2D g, Point start, boolean[] data) {
-
+    private void drawANumber(Graphics2D g, Point start, boolean[] data, boolean doubleSize) {
         BiConsumer<Integer, Integer> drawPixel = (x, y) -> g.fillRect(start.x + x, start.y + y, 1, 1);
 
         int i = 0;
-        for (int y = 0; y < 5; y++) {
-            for (int x = 0; x < 3; x++) {
+        for (int y = 0; y < (5 * (doubleSize ? 2 : 1)); y++) {
+            for (int x = 0; x < (3 * (doubleSize ? 2 : 1)); x++) {
                 if (data[i++]) {
                     drawPixel.accept(x, y);
                 }
