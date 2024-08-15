@@ -77,6 +77,12 @@ public class SpriteSheet {
 
         validateRow(spriteSheetRow);
 
+        SpriteSheetRow previousSheetRow = rows.isEmpty() ? null : rows.get(rows.size() - 1);
+
+        if (spriteSheetRow.getColumn() > 1 && previousSheetRow != null && Math.abs(spriteSheetRow.height) >= Math.abs(previousSheetRow.height) && (spriteSheetRow.getColumn() > 2 ? (previousSheetRow.height != 0 && spriteSheetRow.height != 0) : false)) {
+            spriteSheetRow.height = -spriteSheetRow.height;
+        }
+
         updateSpriteSheetRow(spriteSheetRow);
 
         rows.add(spriteSheetRow);

@@ -77,7 +77,7 @@ public class SpriteSheetRow {
             numberPerSheet = i < csvColumns.length ? Integer.parseInt(csvColumns[i]) : 0;
 
             // Adjust height if the column is greater than 1
-            if (column > 1 && height == 0) {
+            if (column > 1) {
                 height = -height;
             }
         } catch (NumberFormatException e) {

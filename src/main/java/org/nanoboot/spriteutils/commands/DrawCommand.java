@@ -360,7 +360,7 @@ public class DrawCommand implements Command {
         g.setStroke(dashedStroke);
 
         Color currentColor = g.getColor();
-        g.setColor(Color.RED);
+        g.setColor(spriteUtilsOptions.getRectangleColor());
         g.drawRect(row.getX(), row.getY(), row.getWidth() - 1, row.getHeight() - 1);
         g.setColor(currentColor);
     }
