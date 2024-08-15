@@ -27,6 +27,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
@@ -288,6 +289,9 @@ public class DrawCommand implements Command {
             if (spriteUtilsOptions.getFileName().isPresent() && !spriteUtilsOptions.getFileName().get().equals(imageFile.getName())) {
                 continue;
             }
+            if(imageFile.getName().endsWith(".backup")) {
+                continue;
+            }
 
             File backupFile = new File(imageFile.getAbsolutePath() + ".backup");
             try {
@@ -310,14 +314,20 @@ public class DrawCommand implements Command {
                 throw new SpriteUtilsException("Reading image failed", e);
             }
             BufferedImage bi = image.getImage();
-            Graphics2D g = bi.createGraphics();
+            
 
             Supplier<Integer> randomByte = () -> random.apply(0, 255);
 
-            Stroke dashedStroke = configureGraphics(g);
+            
             SpriteSheet spriteSheet = new SpriteSheet(new File(spriteUtilsOptions.getSpriteSheetPath()));
-            spriteSheet
-                    .getSpriteSheets(imageFile.getName().toLowerCase())
+            final List<SpriteSheetRow> spriteSheetRows = spriteSheet
+                    .getSpriteSheetRows(imageFile.getName().toLowerCase());
+            Graphics2D g = bi.createGraphics();
+            Stroke dashedStroke = configureGraphics(g);
+            if(spriteSheetRows == null) {
+                continue;
+            }
+            spriteSheetRows
                     .stream()
                     .filter(s -> spriteUtilsOptions.getRow().isEmpty() ? true : (spriteUtilsOptions.getRow().get() == s.getRow()))
                     .forEach(row -> {

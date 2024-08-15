@@ -25,6 +25,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import lombok.Data;
 import lombok.ToString;
 
@@ -146,8 +147,11 @@ public class SpriteSheet {
         spriteSheetRow.numberPerSheet = 1;
     }
 
-    public List<SpriteSheetRow> getSpriteSheets(String file) {
+    public List<SpriteSheetRow> getSpriteSheetRows(String file) {
+        System.out.println("getSpriteSheetRows() file=" + file);
         return map.get(file);
     }
-
+    public List<SpriteSheetRow> getSpriteSheetRows() {
+        return map.keySet().stream().map(k -> map.get(k)).flatMap(List::stream).collect(Collectors.toList());
+    }
 }
