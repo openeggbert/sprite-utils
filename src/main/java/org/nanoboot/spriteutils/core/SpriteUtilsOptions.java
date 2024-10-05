@@ -41,6 +41,9 @@ public class SpriteUtilsOptions {
     public boolean isDrawNumberEnabled() {
         return spriteUtilsArgs.getOptionalBooleanArgument("--draw-number", true);
     }
+    public boolean isDrawNumberBackgroundEnabled() {
+        return spriteUtilsArgs.getOptionalBooleanArgument("--draw-number-background", true);
+    }
     public boolean isNumberDoubleSized() {
         return spriteUtilsArgs.getBooleanArgument("--double-sized-number");
     }

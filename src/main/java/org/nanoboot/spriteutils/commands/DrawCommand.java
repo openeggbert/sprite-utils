@@ -359,12 +359,14 @@ public class DrawCommand implements Command {
         int endY = startY + row.getHeight() - 1;
         
         boolean numberDoubleSized = spriteUtilsOptions.isNumberDoubleSized();
-        var enoughSpace = row.getWidth() > (numberDoubleSized ? 6 : 3);
-        if(!enoughSpace && numberDoubleSized && row.getWidth() > 4) {
-            numberDoubleSized = false;
+        if(numberDoubleSized) {
+            if(row.getWidth() < 23) {
+                numberDoubleSized = false;
+            }
         }
-        if(spriteUtilsOptions.isDrawNumberEnabled() && enoughSpace) {
-            drawNumber(row.getNumberPerSheet(), g, endX - 2, endY - 1, numberDoubleSized);
+        
+        if(spriteUtilsOptions.isDrawNumberEnabled()) {
+            drawNumber(row.getNumberPerSheet(), g, endX - 2, endY - 1, numberDoubleSized, spriteUtilsOptions);
         }
 
         g.setStroke(dashedStroke);
@@ -378,6 +380,10 @@ public class DrawCommand implements Command {
     private Stroke configureGraphics(Graphics2D g) {
         g.setColor(Color.black);
         Stroke originalStroke = g.getStroke();
+        if(false)
+        {
+        return originalStroke;
+        }
         Stroke dashedStroke = new BasicStroke(1, BasicStroke.CAP_SQUARE, BasicStroke.CAP_SQUARE,
                 0, new float[]{1, 3}, 0);
         g.setStroke(dashedStroke);
@@ -405,12 +411,12 @@ public class DrawCommand implements Command {
         }
     }
 
-    private void drawNumber(int number, Graphics2D g, int endX, int endY, boolean doubleSize) {
+    private void drawNumber(int number, Graphics2D g, int endX, int endY, boolean doubleSize, SpriteUtilsOptions spriteUtilsOptions) {
         LOG.debug("Drawing number {}", number);
         Point end = new Point(endX, endY);
         String numberString = String.valueOf(number);
 
-        if (!doubleSize) {
+        if (!doubleSize && spriteUtilsOptions.isDrawNumberBackgroundEnabled()) {
             Color oldColor = g.getColor();
             g.setColor(Color.WHITE);
             g.fillRect(endX + 1, endY - 5 * (doubleSize ? 2 : 1), 1, 6 * (doubleSize ? 2 : 1));
@@ -419,11 +425,11 @@ public class DrawCommand implements Command {
 
         for (int i = 0; i < numberString.length(); i++) {
             char digit = numberString.charAt(numberString.length() - 1 - i);
-            drawANumber(Character.getNumericValue(digit), g, end.x - (i * 4 * (doubleSize ? 2 : 1)), end.y, doubleSize);
+            drawANumber(Character.getNumericValue(digit), g, end.x - (i * 4 * (doubleSize ? 2 : 1)), end.y, doubleSize, spriteUtilsOptions);
         }
     }
 
-    private void drawANumber(int number, Graphics2D g, int endX, int endY, boolean doubleSize) {
+    private void drawANumber(int number, Graphics2D g, int endX, int endY, boolean doubleSize, SpriteUtilsOptions spriteUtilsOptions) {
         Point end = new Point(endX, endY);
         var data0 = doubleSize ? digitDataDoubleSized : digitData;
         boolean[] data = data0.get((char) ('0' + number));
@@ -435,10 +441,14 @@ public class DrawCommand implements Command {
         start.addToX((doubleSize ? -1 : 0) -2 * (doubleSize ? 2 : 1));
         start.addToY((doubleSize ? -2 : 0) -4 * (doubleSize ? 2 : 1));
         Color currentColor = g.getColor();
+        if(spriteUtilsOptions.isDrawNumberBackgroundEnabled()) {
         g.setColor(Color.WHITE);
         g.fillRect(start.x - 1, start.y - 1, 4 * (doubleSize ? 2 : 1), 6 * (doubleSize ? 2 : 1));
         g.setColor(currentColor);
+        }
+        g.setColor(spriteUtilsOptions.isDrawNumberBackgroundEnabled() ? Color.BLACK : Color.YELLOW);
         drawANumber(g, start, data, doubleSize);
+        g.setColor(currentColor);
     }
 
     private void drawANumber(Graphics2D g, Point start, boolean[] data, boolean doubleSize) {

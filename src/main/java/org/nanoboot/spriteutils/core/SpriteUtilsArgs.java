@@ -60,11 +60,18 @@ public class SpriteUtilsArgs {
             for (int i = 1;i< args.length;i++) {
                 
                 String key = args[i];
+                if(!key.startsWith("--")) {
+                    throw new SpriteUtilsException("Invalid option (does not start with --): " + key);
+                }
                 if(args.length < (i+2)) {
                     throw new SpriteUtilsException("Missing value for option: " + key);
                 }
                 ++i;
                 String value = args[i];
+                
+                if(value.startsWith("--")) {
+                    throw new SpriteUtilsException("Invalid value (starts with --): " + key);
+                }
                 
                 internalMap.put(key, value);
             }
