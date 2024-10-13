@@ -17,15 +17,15 @@
 // <https://www.gnu.org/licenses/> or write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 ///////////////////////////////////////////////////////////////////////////////////////////////
-package org.nanoboot.spriteutils.core;
+package com.openeggbert.utils.spriteutils.core;
 
 import java.util.HashMap;
 import java.util.Map;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.nanoboot.spriteutils.commands.DrawCommand;
-import org.nanoboot.spriteutils.commands.HelpCommand;
-import org.nanoboot.spriteutils.commands.VersionCommand;
+import com.openeggbert.utils.spriteutils.commands.DrawCommand;
+import com.openeggbert.utils.spriteutils.commands.HelpCommand;
+import com.openeggbert.utils.spriteutils.commands.VersionCommand;
 
 /**
  *

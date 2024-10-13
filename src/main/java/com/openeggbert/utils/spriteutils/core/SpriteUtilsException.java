@@ -17,18 +17,24 @@
 // <https://www.gnu.org/licenses/> or write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 ///////////////////////////////////////////////////////////////////////////////////////////////
-package org.nanoboot.spriteutils.core;
+package com.openeggbert.utils.spriteutils.core;
 
 /**
- *
  * @author <a href="mailto:mail@robertvokac.com">Robert Vokac</a>
+ * @since 0.0.0
  */
-public interface Command {
+public class SpriteUtilsException extends RuntimeException {
 
-    public String getName();
+    public SpriteUtilsException(String msg) {
+        super(msg);
+    }
 
-    default String run(SpriteUtilsArgs bitInspectorArgs) {
-        throw new SpriteUtilsException("Not yet implemented.");
+    public SpriteUtilsException(String msg, Exception e) {
+        super(msg, e);
+    }
+
+    public SpriteUtilsException(Exception e) {
+        super(e);
     }
 
 }

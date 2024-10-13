@@ -17,10 +17,10 @@
 // <https://www.gnu.org/licenses/> or write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 ///////////////////////////////////////////////////////////////////////////////////////////////
-package org.nanoboot.spriteutils.commands;
+package com.openeggbert.utils.spriteutils.commands;
 
-import org.nanoboot.spriteutils.core.Command;
-import org.nanoboot.spriteutils.core.SpriteUtilsArgs;
+import com.openeggbert.utils.spriteutils.core.Command;
+import com.openeggbert.utils.spriteutils.core.SpriteUtilsArgs;
 
 /**
  *

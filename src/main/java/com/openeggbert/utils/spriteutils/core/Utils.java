@@ -17,7 +17,7 @@
 // <https://www.gnu.org/licenses/> or write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 ///////////////////////////////////////////////////////////////////////////////////////////////
-package org.nanoboot.spriteutils.core;
+package com.openeggbert.utils.spriteutils.core;
 
 import java.io.BufferedReader;
 import java.io.File;

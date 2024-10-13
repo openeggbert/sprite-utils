@@ -3,6 +3,7 @@
  sprite-utils: Tool used to work with sprites
  Copyright (C) 2024-2024 the original author or authors.
 
+ This program is free software; you can redistribute it and/or
  modify it under the terms of the GNU General Public License
  as published by the Free Software Foundation, either version 3
  of the License, or (at your option) any later version.
@@ -28,7 +29,7 @@
         <version>0.1.1-SNAPSHOT</version>
     </parent>
 
-    <groupId>org.nanoboot.utils</groupId>
+    <groupId>com.openeggbert.utils</groupId>
     <artifactId>sprite-utils</artifactId>
     <version>0.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
@@ -80,7 +81,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>org.nanoboot.spriteutils.core.Main</mainClass>
+                            <mainClass>com.openeggbert.utils.spriteutils.core.Main</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
@@ -173,26 +174,26 @@
     <repositories>
         <repository>
             <id>releases</id>
-            <name>nanoboot-releases-repository</name>
-            <url>https://maven.nanoboot.org/releases</url>
+            <name>openeggbert-releases-repository</name>
+            <url>https://repo.openeggbert.com/releases</url>
         </repository>
         <repository>
             <id>snapshots</id>
-            <name>nanoboot-snapshots-repository</name>
-            <url>https://maven.nanoboot.org/snapshots</url>
+            <name>openeggbert-snapshots-repository</name>
+            <url>https://repo.openeggbert.com/snapshots</url>
         </repository>
     </repositories>
 
     <pluginRepositories>
         <pluginRepository>
             <id>releases</id>
-            <name>nanoboot-releases-repository</name>
-            <url>https://maven.nanoboot.org/releases</url>
+            <name>openeggbert-releases-repository</name>
+            <url>https://repo.openeggbert.com/releases</url>
         </pluginRepository>
         <pluginRepository>
             <id>snapshots</id>
-            <name>nanoboot-snapshots-repository</name>
-            <url>https://maven.nanoboot.org/snapshots</url>
+            <name>openeggbert-snapshots-repository</name>
+            <url>https://repo.openeggbert.com/snapshots</url>
         </pluginRepository>
     </pluginRepositories>
 	

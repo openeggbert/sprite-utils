@@ -17,24 +17,35 @@
 // <https://www.gnu.org/licenses/> or write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 ///////////////////////////////////////////////////////////////////////////////////////////////
-package org.nanoboot.spriteutils.core;
+package com.openeggbert.utils.spriteutils.commands;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import com.openeggbert.utils.spriteutils.core.Command;
+import com.openeggbert.utils.spriteutils.core.SpriteUtilsArgs;
 
 /**
+ *
  * @author <a href="mailto:mail@robertvokac.com">Robert Vokac</a>
- * @since 0.0.0
  */
-public class SpriteUtilsException extends RuntimeException {
+public class VersionCommand implements Command {
 
-    public SpriteUtilsException(String msg) {
-        super(msg);
+    public static final String NAME = "version";
+    private static final Logger LOG = LogManager.getLogger(VersionCommand.class);
+
+    public VersionCommand() {
     }
 
-    public SpriteUtilsException(String msg, Exception e) {
-        super(msg, e);
+    @Override
+    public String getName() {
+        return NAME;
     }
 
-    public SpriteUtilsException(Exception e) {
-        super(e);
+    @Override
+    public String run(SpriteUtilsArgs bitInspectorArgs) {
+        String result = "Sprite Utils 0.0.0-SNAPSHOT";
+        LOG.info(result);
+        return result;
     }
 
 }

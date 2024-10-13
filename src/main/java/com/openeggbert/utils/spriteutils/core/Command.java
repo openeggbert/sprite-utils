@@ -17,35 +17,18 @@
 // <https://www.gnu.org/licenses/> or write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 ///////////////////////////////////////////////////////////////////////////////////////////////
-package org.nanoboot.spriteutils.commands;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.nanoboot.spriteutils.core.Command;
-import org.nanoboot.spriteutils.core.SpriteUtilsArgs;
+package com.openeggbert.utils.spriteutils.core;
 
 /**
  *
  * @author <a href="mailto:mail@robertvokac.com">Robert Vokac</a>
  */
-public class VersionCommand implements Command {
+public interface Command {
 
-    public static final String NAME = "version";
-    private static final Logger LOG = LogManager.getLogger(VersionCommand.class);
+    public String getName();
 
-    public VersionCommand() {
-    }
-
-    @Override
-    public String getName() {
-        return NAME;
-    }
-
-    @Override
-    public String run(SpriteUtilsArgs bitInspectorArgs) {
-        String result = "Sprite Utils 0.0.0-SNAPSHOT";
-        LOG.info(result);
-        return result;
+    default String run(SpriteUtilsArgs bitInspectorArgs) {
+        throw new SpriteUtilsException("Not yet implemented.");
     }
 
 }

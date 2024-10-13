@@ -17,7 +17,7 @@
 // <https://www.gnu.org/licenses/> or write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 ///////////////////////////////////////////////////////////////////////////////////////////////
-package org.nanoboot.spriteutils.commands;
+package com.openeggbert.utils.spriteutils.commands;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -38,13 +38,13 @@ import net.sf.image4j.codec.bmp.BMPEncoder;
 import net.sf.image4j.codec.bmp.BMPImage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.nanoboot.spriteutils.core.Command;
-import org.nanoboot.spriteutils.core.SpriteSheet;
-import org.nanoboot.spriteutils.core.SpriteSheetRow;
-import org.nanoboot.spriteutils.core.SpriteUtilsArgs;
-import org.nanoboot.spriteutils.core.SpriteUtilsException;
-import org.nanoboot.spriteutils.core.SpriteUtilsOptions;
-import org.nanoboot.spriteutils.core.Utils;
+import com.openeggbert.utils.spriteutils.core.Command;
+import com.openeggbert.utils.spriteutils.core.SpriteSheet;
+import com.openeggbert.utils.spriteutils.core.SpriteSheetRow;
+import com.openeggbert.utils.spriteutils.core.SpriteUtilsArgs;
+import com.openeggbert.utils.spriteutils.core.SpriteUtilsException;
+import com.openeggbert.utils.spriteutils.core.SpriteUtilsOptions;
+import com.openeggbert.utils.spriteutils.core.Utils;
 
 /**
  *
