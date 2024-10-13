@@ -24,8 +24,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.nanoboot.essential</groupId>
-        <artifactId>nanoboot-parent</artifactId>
+        <groupId>com.robertvokac.essential</groupId>
+        <artifactId>robertvokac-parent</artifactId>
         <version>0.1.1-SNAPSHOT</version>
     </parent>
 
@@ -173,27 +173,49 @@
 
     <repositories>
         <repository>
-            <id>releases</id>
+            <id>openeggbert-releases-repository</id>
             <name>openeggbert-releases-repository</name>
             <url>https://repo.openeggbert.com/releases</url>
         </repository>
         <repository>
-            <id>snapshots</id>
+            <id>openeggbert-snapshots-repository</id>
             <name>openeggbert-snapshots-repository</name>
             <url>https://repo.openeggbert.com/snapshots</url>
+        </repository>
+        
+        <repository>
+            <id>robertvokac-releases-repository</id>
+            <name>robertvokac-releases-repository</name>
+            <url>https://maven.robertvokac.com/releases</url>
+        </repository>
+        <repository>
+            <id>robertvokac-snapshots-repository</id>
+            <name>robertvokac-snapshots-repository</name>
+            <url>https://maven.robertvokac.com/snapshots</url>
         </repository>
     </repositories>
 
     <pluginRepositories>
         <pluginRepository>
-            <id>releases</id>
+            <id>openeggbert-releases-repository</id>
             <name>openeggbert-releases-repository</name>
             <url>https://repo.openeggbert.com/releases</url>
         </pluginRepository>
         <pluginRepository>
-            <id>snapshots</id>
+            <id>openeggbert-snapshots-repository</id>
             <name>openeggbert-snapshots-repository</name>
             <url>https://repo.openeggbert.com/snapshots</url>
+        </pluginRepository>
+        
+        <pluginRepository>
+            <id>robertvokac-releases-repository</id>
+            <name>robertvokac-releases-repository</name>
+            <url>https://maven.robertvokac.com/releases</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>robertvokac-snapshots-repository</id>
+            <name>robertvokac-snapshots-repository</name>
+            <url>https://maven.robertvokac.com/snapshots</url>
         </pluginRepository>
     </pluginRepositories>
 	
