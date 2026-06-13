@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Running — sprite-utils Tutorials</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/script.js"></script>
+</head>
+<body>
+<nav class="topnav">
+  <a class="topnav-brand" href="../index.html">sprite<span>-utils</span></a>
+  <ul class="topnav-links">
+    <li><a href="../overview.html">Overview</a></li>
+    <li><a href="../getting-started.html">Getting Started</a></li>
+    <li><a href="../command-line.html">CLI</a></li>
+    <li><a href="../api/index.html">API</a></li>
+  </ul>
+  <button class="theme-toggle" id="theme-toggle">☾ Dark</button>
+</nav>
+<div class="page-wrapper">
+<aside class="sidebar">
+  <div class="sidebar-section"><p class="sidebar-heading">Tutorials</p><nav><ul>
+    <li><a href="index.html">All Tutorials</a></li>
+    <li><a href="building.html">Building</a></li>
+    <li><a href="running.html" class="active">Running</a></li>
+    <li><a href="csv-format.html">CSV Format</a></li>
+    <li><a href="draw-command.html">Using draw</a></li>
+  </ul></nav></div>
+</aside>
+<main class="main-content">
+  <nav class="breadcrumbs">
+    <a href="../index.html">Home</a> <span>/</span>
+    <a href="index.html">Tutorials</a> <span>/</span> Running
+  </nav>
+
+  <h1>Tutorial: Running sprite-utils</h1>
+
+  <h2>Check the Binary Works</h2>
+  <pre><code>./build/sprite_utils version
+# Sprite Utils - tool used to work with sprites
+# Sprite Utils 0.0.0-SNAPSHOT
+
+./build/sprite_utils help</code></pre>
+  <p>Both commands should print without errors.</p>
+
+  <h2>Typical Invocation</h2>
+  <pre><code>./build/sprite_utils draw \
+  --dir /path/to/your/sprites \
+  --sprite-sheet-path /path/to/spritesheet.csv</code></pre>
+
+  <h2>Expected Stdout</h2>
+  <p>You will see output similar to:</p>
+  <pre><code>Sprite Utils - tool used to work with sprites
+Found arg: --dir=/path/to/sprites
+Found arg: --sprite-sheet-path=/path/to/spritesheet.csv
+Found argument: --dir = /path/to/sprites
+Found argument: --sprite-sheet-path = /path/to/spritesheet.csv
+Going to process images in directory: "/path/to/sprites"
+player.bmp;walk;1;1;1;0;0;32;32;;;1
+player.bmp;walk;2;1;2;32;0;32;32;;;2
+...</code></pre>
+
+  <h2>After Running</h2>
+  <p>In your sprite directory you will find:</p>
+  <ul>
+    <li><code>player.bmp</code> — annotated image with red dashed rectangles and numbers</li>
+    <li><code>player.bmp.backup</code> — copy of the original image</li>
+    <li><code>spritesheet.csv.computed.csv</code> — computed version of the CSV with resolved values</li>
+  </ul>
+
+  <h2>Verifying Results</h2>
+  <p>Open the annotated image in any image viewer. Each sprite region should have:</p>
+  <ul>
+    <li>A dashed red border around it</li>
+    <li>A small number in the bottom-right of the rectangle (unless <code>--draw-number false</code>)</li>
+  </ul>
+  <p>If a rectangle is misaligned, fix the corresponding row in <code>spritesheet.csv</code>
+  and re-run. The tool will restore from backup before re-drawing.</p>
+
+  <div class="page-nav">
+    <a class="page-nav-link" href="building.html">
+      <span class="page-nav-label">Previous</span>
+      Building
+    </a>
+    <a class="page-nav-link next" href="csv-format.html">
+      <span class="page-nav-label">Next</span>
+      CSV Format
+    </a>
+  </div>
+</main>
+</div>
+<footer>sprite-utils documentation &mdash; MIT Licence &mdash; Robert Vokac</footer>
+</body>
+</html>

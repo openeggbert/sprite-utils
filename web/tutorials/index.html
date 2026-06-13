@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tutorials — sprite-utils</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/script.js"></script>
+</head>
+<body>
+<nav class="topnav">
+  <a class="topnav-brand" href="../index.html">sprite<span>-utils</span></a>
+  <ul class="topnav-links">
+    <li><a href="../overview.html">Overview</a></li>
+    <li><a href="../getting-started.html">Getting Started</a></li>
+    <li><a href="../command-line.html">CLI</a></li>
+    <li><a href="../api/index.html">API</a></li>
+  </ul>
+  <button class="theme-toggle" id="theme-toggle">☾ Dark</button>
+</nav>
+<div class="page-wrapper">
+<aside class="sidebar">
+  <div class="sidebar-section"><p class="sidebar-heading">Tutorials</p><nav><ul>
+    <li><a href="index.html" class="active">All Tutorials</a></li>
+    <li><a href="building.html">Building</a></li>
+    <li><a href="running.html">Running</a></li>
+    <li><a href="csv-format.html">CSV Format</a></li>
+    <li><a href="draw-command.html">Using draw</a></li>
+  </ul></nav></div>
+  <div class="sidebar-section"><p class="sidebar-heading">Navigation</p><nav><ul>
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../getting-started.html">Getting Started</a></li>
+  </ul></nav></div>
+</aside>
+<main class="main-content">
+  <nav class="breadcrumbs">
+    <a href="../index.html">Home</a> <span>/</span> Tutorials
+  </nav>
+
+  <h1>Tutorials</h1>
+  <p>Step-by-step guides based on actual repository functionality.</p>
+
+  <div class="table-wrap"><table>
+    <thead><tr><th>Tutorial</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td><a href="building.html">Building sprite-utils</a></td><td>Full build walkthrough with CMake</td></tr>
+      <tr><td><a href="running.html">Running sprite-utils</a></td><td>First invocation and verifying the binary works</td></tr>
+      <tr><td><a href="csv-format.html">Creating a CSV Sprite Sheet</a></td><td>How to write a valid spritesheet.csv</td></tr>
+      <tr><td><a href="draw-command.html">Using the draw Command</a></td><td>Annotating images and inspecting the results</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2>Tutorials Not Available</h2>
+  <p>The following tutorials cannot be provided because the features are not yet implemented:</p>
+  <ul>
+    <li><strong>Extracting sprites</strong> — <code>extract</code> command not implemented</li>
+    <li><strong>Restoring images in bulk</strong> — <code>restore</code> command not implemented</li>
+    <li><strong>Generating animated GIFs</strong> — <code>gifs</code> command not implemented</li>
+    <li><strong>Converting image formats</strong> — no format conversion command exists</li>
+    <li><strong>Generating metadata</strong> — no metadata generation beyond the computed CSV</li>
+  </ul>
+</main>
+</div>
+<footer>sprite-utils documentation &mdash; MIT Licence &mdash; Robert Vokac</footer>
+</body>
+</html>

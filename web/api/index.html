@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>API Index — sprite-utils</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/script.js"></script>
+</head>
+<body>
+<nav class="topnav">
+  <a class="topnav-brand" href="../index.html">sprite<span>-utils</span></a>
+  <ul class="topnav-links">
+    <li><a href="../overview.html">Overview</a></li>
+    <li><a href="../getting-started.html">Getting Started</a></li>
+    <li><a href="../command-line.html">CLI</a></li>
+    <li><a href="index.html">API</a></li>
+  </ul>
+  <button class="theme-toggle" id="theme-toggle">☾ Dark</button>
+</nav>
+<div class="page-wrapper">
+<aside class="sidebar">
+  <div class="sidebar-section"><p class="sidebar-heading">Introduction</p><nav><ul>
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../overview.html">Overview</a></li>
+    <li><a href="../getting-started.html">Getting Started</a></li>
+  </ul></nav></div>
+  <div class="sidebar-section"><p class="sidebar-heading">API / Classes</p><nav><ul>
+    <li><a href="index.html" class="active">API Index</a></li>
+    <li><a href="../classes/index.html">All Classes</a></li>
+  </ul></nav></div>
+  <div class="sidebar-section"><p class="sidebar-heading">Modules</p><nav><ul>
+    <li><a href="../modules/index.html">All Modules</a></li>
+    <li><a href="../modules/draw-command.html">DrawCommand</a></li>
+    <li><a href="../modules/sprite-sheet.html">SpriteSheet</a></li>
+    <li><a href="../modules/args-options.html">Args &amp; Options</a></li>
+    <li><a href="../modules/utils.html">Utils</a></li>
+  </ul></nav></div>
+</aside>
+<main class="main-content">
+  <nav class="breadcrumbs">
+    <a href="../index.html">Home</a> <span>/</span> API Index
+  </nav>
+
+  <h1>API Index</h1>
+  <p>
+    sprite-utils is a command-line tool, not a library. There is no public API for external use.
+    This section documents the internal C++ classes for developers working on the codebase.
+  </p>
+  <p>
+    See <a href="../classes/index.html">All Classes</a> for the full class reference.
+  </p>
+
+  <h2>All Classes at a Glance</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Class</th><th>Header</th><th>Role</th></tr></thead>
+    <tbody>
+      <tr><td><a href="../classes/index.html#SpriteUtils">SpriteUtils</a></td><td><code>include/SpriteUtils.h</code></td><td>Main dispatcher; holds command registry</td></tr>
+      <tr><td><a href="../classes/index.html#Command">Command</a></td><td><code>include/Command.h</code></td><td>Abstract base for all commands</td></tr>
+      <tr><td><a href="../classes/index.html#DrawCommand">DrawCommand</a></td><td><code>include/DrawCommand.h</code></td><td>draw command implementation</td></tr>
+      <tr><td><a href="../classes/index.html#HelpCommand">HelpCommand</a></td><td><code>include/HelpCommand.h</code></td><td>help command</td></tr>
+      <tr><td><a href="../classes/index.html#VersionCommand">VersionCommand</a></td><td><code>include/VersionCommand.h</code></td><td>version command</td></tr>
+      <tr><td><a href="../classes/index.html#SpriteSheet">SpriteSheet</a></td><td><code>include/SpriteSheet.h</code></td><td>CSV sprite-sheet parser</td></tr>
+      <tr><td><a href="../classes/index.html#SpriteSheetRow">SpriteSheetRow</a></td><td><code>include/SpriteSheetRow.h</code></td><td>CSV row data model</td></tr>
+      <tr><td><a href="../classes/index.html#SpriteUtilsArgs">SpriteUtilsArgs</a></td><td><code>include/SpriteUtilsArgs.h</code></td><td>argv parser</td></tr>
+      <tr><td><a href="../classes/index.html#SpriteUtilsOptions">SpriteUtilsOptions</a></td><td><code>include/SpriteUtilsOptions.h</code></td><td>Typed option accessors</td></tr>
+      <tr><td><a href="../classes/index.html#SpriteUtilsException">SpriteUtilsException</a></td><td><code>include/SpriteUtilsException.h</code></td><td>Custom exception type</td></tr>
+      <tr><td><a href="../classes/index.html#Utils">Utils</a></td><td><code>include/Utils.h</code></td><td>Static file I/O and string utilities</td></tr>
+      <tr><td><a href="../classes/index.html#Color">Color</a></td><td><code>include/SpriteUtilsOptions.h</code></td><td>Simple RGB color struct</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2>Enum</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Enum</th><th>Header</th><th>Values</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><code>SpriteUtilsCommand</code></td>
+        <td><code>include/SpriteUtilsCommand.h</code></td>
+        <td><code>DRAW, RESTORE, EXTRACT, GIFS, HELP, VERSION</code></td>
+      </tr>
+    </tbody>
+  </table></div>
+  <div class="callout note">
+    <p class="callout-title">Enum vs Implementation</p>
+    <p><code>SpriteUtilsCommand</code> is declared but not currently used in the dispatcher.
+    The dispatcher uses string comparison, not this enum.</p>
+  </div>
+</main>
+</div>
+<footer>sprite-utils documentation &mdash; MIT Licence &mdash; Robert Vokac</footer>
+</body>
+</html>

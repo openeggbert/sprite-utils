@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coding Style — sprite-utils Development</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/script.js"></script>
+</head>
+<body>
+<nav class="topnav">
+  <a class="topnav-brand" href="../index.html">sprite<span>-utils</span></a>
+  <ul class="topnav-links">
+    <li><a href="../overview.html">Overview</a></li>
+    <li><a href="../getting-started.html">Getting Started</a></li>
+    <li><a href="../command-line.html">CLI</a></li>
+    <li><a href="../api/index.html">API</a></li>
+  </ul>
+  <button class="theme-toggle" id="theme-toggle">☾ Dark</button>
+</nav>
+<div class="page-wrapper">
+<aside class="sidebar">
+  <div class="sidebar-section"><p class="sidebar-heading">Development</p><nav><ul>
+    <li><a href="index.html">Developer Guide</a></li>
+    <li><a href="coding-style.html" class="active">Coding Style</a></li>
+    <li><a href="debugging.html">Debugging</a></li>
+    <li><a href="contributing.html">Contributing</a></li>
+    <li><a href="known-issues.html">Known Issues</a></li>
+  </ul></nav></div>
+</aside>
+<main class="main-content">
+  <nav class="breadcrumbs">
+    <a href="../index.html">Home</a> <span>/</span>
+    <a href="index.html">Developer Guide</a> <span>/</span> Coding Style
+  </nav>
+
+  <h1>Coding Style</h1>
+  <p>Conventions observed from the source code. No formal style guide document is present.</p>
+
+  <h2>Naming</h2>
+  <ul>
+    <li><strong>Classes</strong>: UpperCamelCase (<code>SpriteSheet</code>, <code>DrawCommand</code>)</li>
+    <li><strong>Methods</strong>: lowerCamelCase (<code>getSpriteSheetRows</code>, <code>processLine</code>)</li>
+    <li><strong>Member variables</strong>: lowerCamelCase (<code>numberInGroup</code>, <code>spriteUtilsArgs</code>)</li>
+    <li><strong>Constants</strong>: UPPER_SNAKE_CASE (<code>DIGIT_0</code>, <code>NAME</code>) or <code>constexpr const char*</code></li>
+    <li><strong>Local variables</strong>: lowerCamelCase</li>
+    <li><strong>Parameters</strong>: lowerCamelCase; sometimes suffixed with <code>In</code> to avoid name collision (<code>spriteUtilsArgsIn</code>)</li>
+  </ul>
+
+  <h2>File Organization</h2>
+  <ul>
+    <li>Headers in <code>include/</code>, implementations in <code>src/</code></li>
+    <li>One class per header/implementation pair</li>
+    <li>Include guards use <code>#ifndef FOO_H / #define FOO_H</code> style (some files use <code>#pragma once</code>)</li>
+    <li>MIT licence header at the top of every source file (enforced by <code>add_license_after_includes.sh</code>)</li>
+  </ul>
+
+  <h2>C++ Standard Usage</h2>
+  <ul>
+    <li><code>std::optional</code> for nullable values</li>
+    <li><code>std::filesystem::path</code> for file paths</li>
+    <li><code>std::unique_ptr</code> for owned objects in the command registry</li>
+    <li><code>std::unordered_map</code> for the command registry</li>
+    <li><code>std::string::starts_with</code> / <code>std::string::ends_with</code> (C++20)</li>
+    <li>Range-based for loops</li>
+    <li>Structured bindings in range-for (<code>for (const auto&amp; e : map)</code>)</li>
+  </ul>
+
+  <h2>Error Handling</h2>
+  <ul>
+    <li>All errors throw <code>SpriteUtilsException</code> (wraps <code>std::runtime_error</code>)</li>
+    <li>Some I/O errors also throw <code>std::invalid_argument</code> from SpriteSheetRow constructor</li>
+    <li>No error codes or return-value-based error propagation</li>
+    <li>No try/catch in <code>main()</code></li>
+  </ul>
+
+  <h2>Comments</h2>
+  <ul>
+    <li>Section divider comments used in <code>DrawCommand.cpp</code>: <code>// ---- Section name ----</code></li>
+    <li>Some Java-style comments from the original Java implementation are preserved: <code>// Equivalent to Java: String getName();</code></li>
+    <li><code>@author</code> Javadoc-style tags appear in some headers</li>
+  </ul>
+
+  <h2>IDE</h2>
+  <p>The project was developed with <strong>CLion</strong> (JetBrains). The <code>.idea/</code>
+  directory contains IDE project files. The <code>.clangd</code> file configures clangd for
+  <code>-std=c++23</code>.</p>
+</main>
+</div>
+<footer>sprite-utils documentation &mdash; MIT Licence &mdash; Robert Vokac</footer>
+</body>
+</html>

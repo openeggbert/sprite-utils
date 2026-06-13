@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Overview — sprite-utils</title>
+<link rel="stylesheet" href="assets/style.css">
+<script src="assets/script.js"></script>
+</head>
+<body>
+
+<nav class="topnav">
+  <a class="topnav-brand" href="index.html">sprite<span>-utils</span></a>
+  <ul class="topnav-links">
+    <li><a href="overview.html">Overview</a></li>
+    <li><a href="getting-started.html">Getting Started</a></li>
+    <li><a href="command-line.html">CLI</a></li>
+    <li><a href="api/index.html">API</a></li>
+  </ul>
+  <button class="theme-toggle" id="theme-toggle">☾ Dark</button>
+</nav>
+
+<div class="page-wrapper">
+<aside class="sidebar">
+  <div class="sidebar-section">
+    <p class="sidebar-heading">Introduction</p>
+    <nav><ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="overview.html" class="active">Overview</a></li>
+      <li><a href="getting-started.html">Getting Started</a></li>
+    </ul></nav>
+  </div>
+  <div class="sidebar-section">
+    <p class="sidebar-heading">Build &amp; Usage</p>
+    <nav><ul>
+      <li><a href="build.html">Build</a></li>
+      <li><a href="usage.html">Usage</a></li>
+      <li><a href="command-line.html">Command-Line Reference</a></li>
+      <li><a href="configuration.html">Configuration</a></li>
+      <li><a href="examples.html">Examples</a></li>
+    </ul></nav>
+  </div>
+  <div class="sidebar-section">
+    <p class="sidebar-heading">Concepts</p>
+    <nav><ul>
+      <li><a href="sprite-processing.html">Sprite Processing</a></li>
+      <li><a href="image-formats.html">Image Formats</a></li>
+      <li><a href="file-formats.html">File Formats</a></li>
+      <li><a href="project-structure.html">Project Structure</a></li>
+      <li><a href="architecture.html">Architecture</a></li>
+    </ul></nav>
+  </div>
+  <div class="sidebar-section">
+    <p class="sidebar-heading">Modules</p>
+    <nav><ul>
+      <li><a href="modules/index.html">All Modules</a></li>
+      <li><a href="modules/draw-command.html">DrawCommand</a></li>
+      <li><a href="modules/sprite-sheet.html">SpriteSheet</a></li>
+      <li><a href="modules/args-options.html">Args &amp; Options</a></li>
+      <li><a href="modules/utils.html">Utils</a></li>
+    </ul></nav>
+  </div>
+  <div class="sidebar-section">
+    <p class="sidebar-heading">API / Classes</p>
+    <nav><ul>
+      <li><a href="api/index.html">API Index</a></li>
+      <li><a href="classes/index.html">All Classes</a></li>
+    </ul></nav>
+  </div>
+  <div class="sidebar-section">
+    <p class="sidebar-heading">Internals</p>
+    <nav><ul>
+      <li><a href="internals/index.html">Internals Overview</a></li>
+      <li><a href="internals/startup-flow.html">Startup Flow</a></li>
+      <li><a href="internals/csv-parsing.html">CSV Parsing</a></li>
+      <li><a href="internals/image-pipeline.html">Image Pipeline</a></li>
+      <li><a href="internals/bmp-handling.html">BMP Handling</a></li>
+    </ul></nav>
+  </div>
+  <div class="sidebar-section">
+    <p class="sidebar-heading">Tutorials</p>
+    <nav><ul>
+      <li><a href="tutorials/index.html">All Tutorials</a></li>
+      <li><a href="tutorials/building.html">Building</a></li>
+      <li><a href="tutorials/running.html">Running</a></li>
+      <li><a href="tutorials/csv-format.html">CSV Format</a></li>
+      <li><a href="tutorials/draw-command.html">Using draw</a></li>
+    </ul></nav>
+  </div>
+  <div class="sidebar-section">
+    <p class="sidebar-heading">Development</p>
+    <nav><ul>
+      <li><a href="development/index.html">Developer Guide</a></li>
+      <li><a href="development/coding-style.html">Coding Style</a></li>
+      <li><a href="development/debugging.html">Debugging</a></li>
+      <li><a href="development/contributing.html">Contributing</a></li>
+      <li><a href="development/known-issues.html">Known Issues</a></li>
+    </ul></nav>
+  </div>
+  <div class="sidebar-section">
+    <p class="sidebar-heading">Reference</p>
+    <nav><ul>
+      <li><a href="known-limitations.html">Known Limitations</a></li>
+      <li><a href="roadmap.html">Roadmap</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+    </ul></nav>
+  </div>
+</aside>
+
+<main class="main-content">
+  <nav class="breadcrumbs">
+    <a href="index.html">Home</a> <span>/</span> Overview
+  </nav>
+
+  <h1>Overview</h1>
+  <p>
+    <strong>sprite-utils</strong> is a command-line tool written in C++23 that helps game developers
+    visually inspect and verify sprite coordinates stored in CSV sprite-sheet definition files.
+  </p>
+
+  <h2>What is sprite-utils?</h2>
+  <p>
+    In 2D game development, a <em>sprite sheet</em> is a large image containing many smaller sprites
+    (character frames, tiles, UI elements). Each sprite occupies a rectangular region defined by
+    x, y, width, and height coordinates. Maintaining these coordinates accurately in a text file
+    is error-prone. sprite-utils solves this by annotating the actual source images with visible
+    rectangles and numbers so developers can immediately see whether a sprite definition is correct.
+  </p>
+  <p>
+    The tool reads a semicolon-delimited CSV file that maps sprite groups to pixel rectangles on
+    named image files. It then overlays dashed red rectangles (or any configurable colour) and
+    optional sequence numbers on top of the images.
+  </p>
+
+  <h2>Project Type</h2>
+  <p>
+    sprite-utils is a <strong>pure command-line tool</strong>. It is not a library intended for linking
+    into other programs. The compiled binary is <code>sprite_utils</code>.
+  </p>
+
+  <h2>Relationship to Open Eggbert</h2>
+  <p>
+    sprite-utils is developed as part of the <strong>Open Eggbert</strong> / <strong>Free Eggbert</strong>
+    / <strong>Galaxy Eggbert</strong> project family. It handles sprite assets for those games, which
+    use BMP and BLP image files with specific bit-depth requirements (including 16-bit RGB565).
+    The tool's support for BLP files and for preserving original BMP bit-depths reflects those game
+    asset pipeline requirements.
+  </p>
+
+  <h2>Current Status</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Feature</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td><code>draw</code> command</td><td><span class="badge badge-green">Implemented</span></td></tr>
+        <tr><td><code>help</code> command</td><td><span class="badge badge-green">Implemented</span></td></tr>
+        <tr><td><code>version</code> command</td><td><span class="badge badge-green">Implemented</span></td></tr>
+        <tr><td>CSV sprite-sheet parsing</td><td><span class="badge badge-green">Implemented</span></td></tr>
+        <tr><td>Automatic image backup</td><td><span class="badge badge-green">Implemented</span></td></tr>
+        <tr><td>BMP 16-bit RGB565 write</td><td><span class="badge badge-green">Implemented</span></td></tr>
+        <tr><td>BLP file handling</td><td><span class="badge badge-green">Implemented</span></td></tr>
+        <tr><td><code>restore</code> command</td><td><span class="badge badge-yellow">Planned (enum defined, not wired)</span></td></tr>
+        <tr><td><code>extract</code> command</td><td><span class="badge badge-yellow">Planned (enum defined, not wired)</span></td></tr>
+        <tr><td><code>gifs</code> command</td><td><span class="badge badge-yellow">Planned (enum defined, not wired)</span></td></tr>
+        <tr><td>Tests</td><td><span class="badge badge-red">Not present in repository</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout warn">
+    <p class="callout-title">Snapshot Version</p>
+    <p>The binary self-reports as <code>Sprite Utils 0.0.0-SNAPSHOT</code>. This is pre-release software.</p>
+  </div>
+
+  <h2>Supported Image Formats</h2>
+  <p>
+    The tool reads and writes images using <strong>OpenCV</strong>. The formats it handles specially are:
+  </p>
+  <ul>
+    <li><strong>BMP (16-bit RGB565)</strong> — read and written with a custom bit-preserving writer.</li>
+    <li><strong>BMP (8-bit grayscale)</strong> — read via OpenCV, written back via OpenCV.</li>
+    <li><strong>BLP</strong> — treated as 16-bit RGB565 BMP; written with the custom RGB565 writer.</li>
+    <li><strong>Other OpenCV-supported formats</strong> (PNG, JPEG, etc.) — delegated to <code>cv::imwrite</code>.</li>
+  </ul>
+  <p>
+    See <a href="image-formats.html">Image Formats</a> for details.
+  </p>
+
+  <h2>Key Dependencies</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Dependency</th><th>Role</th><th>Required</th></tr></thead>
+      <tbody>
+        <tr><td>OpenCV</td><td>Image I/O and drawing primitives</td><td>Yes</td></tr>
+        <tr><td>C++ standard library</td><td>Filesystem, strings, streams</td><td>Yes (C++23)</td></tr>
+        <tr><td>CMake ≥ 3.25.1</td><td>Build system</td><td>Yes (to build)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout note">
+    <p class="callout-title">OpenSSL</p>
+    <p>OpenSSL is referenced in <code>CMakeLists.txt</code> but is <strong>commented out</strong> and
+    not actually used. It is not required.</p>
+  </div>
+
+  <h2>Supported Platforms</h2>
+  <p>
+    The build system uses standard CMake and the C++ standard library. The primary development
+    platform is Linux (based on repository context). Windows and macOS support is
+    <span class="badge badge-yellow">Needs verification</span> — the code uses
+    <code>std::filesystem</code> and <code>#if __BYTE_ORDER__</code> guards which suggest portability
+    intent, but only Linux has been verified from the repository evidence.
+  </p>
+
+  <div class="page-nav">
+    <a class="page-nav-link" href="index.html">
+      <span class="page-nav-label">Previous</span>
+      Home
+    </a>
+    <a class="page-nav-link next" href="getting-started.html">
+      <span class="page-nav-label">Next</span>
+      Getting Started
+    </a>
+  </div>
+</main>
+</div>
+
+<footer>
+  sprite-utils documentation &mdash; MIT Licence &mdash; Robert Vokac
+</footer>
+</body>
+</html>

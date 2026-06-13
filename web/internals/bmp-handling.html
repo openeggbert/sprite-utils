@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BMP Handling — sprite-utils Internals</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/script.js"></script>
+</head>
+<body>
+<nav class="topnav">
+  <a class="topnav-brand" href="../index.html">sprite<span>-utils</span></a>
+  <ul class="topnav-links">
+    <li><a href="../overview.html">Overview</a></li>
+    <li><a href="../getting-started.html">Getting Started</a></li>
+    <li><a href="../command-line.html">CLI</a></li>
+    <li><a href="../api/index.html">API</a></li>
+  </ul>
+  <button class="theme-toggle" id="theme-toggle">☾ Dark</button>
+</nav>
+<div class="page-wrapper">
+<aside class="sidebar">
+  <div class="sidebar-section"><p class="sidebar-heading">Internals</p><nav><ul>
+    <li><a href="index.html">Internals Overview</a></li>
+    <li><a href="startup-flow.html">Startup Flow</a></li>
+    <li><a href="csv-parsing.html">CSV Parsing</a></li>
+    <li><a href="image-pipeline.html">Image Pipeline</a></li>
+    <li><a href="bmp-handling.html" class="active">BMP Handling</a></li>
+  </ul></nav></div>
+  <div class="sidebar-section"><p class="sidebar-heading">Navigation</p><nav><ul>
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../image-formats.html">Image Formats</a></li>
+  </ul></nav></div>
+</aside>
+<main class="main-content">
+  <nav class="breadcrumbs">
+    <a href="../index.html">Home</a> <span>/</span>
+    <a href="index.html">Internals</a> <span>/</span> BMP Handling
+  </nav>
+
+  <h1>BMP Handling</h1>
+  <p><strong>Source:</strong> <code>src/DrawCommand.cpp</code></p>
+
+  <h2>readBmpBpp(file)</h2>
+  <p>Reads the bit-depth (biBitCount) from the BMP BITMAPINFOHEADER.</p>
+  <pre><code>uint16_t DrawCommand::readBmpBpp(const path&amp; file):
+  Open file in binary mode
+  Read first 54 bytes into header[54]
+  if read &lt; 54: throw "Invalid BMP header"
+  if header[0] != 'B' OR header[1] != 'M': throw "Not a BMP file"
+  bpp = *reinterpret_cast&lt;uint16_t*&gt;(&amp;header[28])
+  #if BIG_ENDIAN: swap bytes
+  return bpp</code></pre>
+
+  <p>Offset 28 in the BMP header corresponds to the <code>biBitCount</code> field of <code>BITMAPINFOHEADER</code>.
+  Possible values: 1, 4, 8, 16, 24, 32.</p>
+
+  <h2>writeBmp16BGR565(out, bgr8)</h2>
+  <p>Writes a valid 16-bit RGB565 BMP file from a BGR8 OpenCV Mat.</p>
+
+  <h3>Pixel Conversion</h3>
+  <pre><code>For each pixel (B, G, R) in BGR8:
+  b5  = (B &gt;&gt; 3) &amp; 0x1F   // 5 bits
+  g6  = (G &gt;&gt; 2) &amp; 0x3F   // 6 bits
+  r5  = (R &gt;&gt; 3) &amp; 0x1F   // 5 bits
+  rgb565 = (r5 &lt;&lt; 11) | (g6 &lt;&lt; 5) | b5</code></pre>
+
+  <h3>BMP File Structure Written</h3>
+  <pre><code>BITMAPFILEHEADER (14 bytes):
+  'B', 'M'
+  fileSize (4 bytes)
+  reserved (4 bytes) = 0
+  pixelDataOffset = 14 + 40 + 12 = 66
+
+BITMAPINFOHEADER (40 bytes):
+  size = 40
+  width (4 bytes)
+  height (4 bytes, positive = bottom-up)
+  planes = 1
+  biBitCount = 16
+  biCompression = 3 (BI_BITFIELDS)
+  biSizeImage = rowStride * height
+  ppmX = ppmY = 2835
+  clrUsed = 0, clrImportant = 0
+
+BITFIELDS (12 bytes):
+  rMask = 0xF800
+  gMask = 0x07E0
+  bMask = 0x001F
+
+Pixel data (bottom-up, 4-byte aligned rows):
+  For y from height-1 downto 0:
+    row of uint16_t values</code></pre>
+
+  <h3>Row Alignment</h3>
+  <pre><code>rowStrideOut = ((width * 2 + 3) / 4) * 4</code></pre>
+  <p>Each row is padded to a 4-byte boundary as required by BMP specification.</p>
+
+  <h2>Why Custom Writer?</h2>
+  <p>
+    OpenCV's <code>cv::imwrite()</code> does not preserve 16-bit RGB565 BMP format correctly.
+    When saving back a 16-bit BMP through OpenCV, the output is typically 24-bit BGR.
+    The custom writer ensures that images originally in 16-bit RGB565 format remain in that format
+    after annotation, which is critical for game engine compatibility (especially BLP files).
+  </p>
+
+  <div class="page-nav">
+    <a class="page-nav-link" href="image-pipeline.html">
+      <span class="page-nav-label">Previous</span>
+      Image Pipeline
+    </a>
+  </div>
+</main>
+</div>
+<footer>sprite-utils documentation &mdash; MIT Licence &mdash; Robert Vokac</footer>
+</body>
+</html>

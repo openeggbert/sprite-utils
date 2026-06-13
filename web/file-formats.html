@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>File Formats — sprite-utils</title>
+<link rel="stylesheet" href="assets/style.css">
+<script src="assets/script.js"></script>
+</head>
+<body>
+<nav class="topnav">
+  <a class="topnav-brand" href="index.html">sprite<span>-utils</span></a>
+  <ul class="topnav-links">
+    <li><a href="overview.html">Overview</a></li>
+    <li><a href="getting-started.html">Getting Started</a></li>
+    <li><a href="command-line.html">CLI</a></li>
+    <li><a href="api/index.html">API</a></li>
+  </ul>
+  <button class="theme-toggle" id="theme-toggle">☾ Dark</button>
+</nav>
+<div class="page-wrapper">
+<aside class="sidebar">
+  <div class="sidebar-section"><p class="sidebar-heading">Introduction</p><nav><ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="overview.html">Overview</a></li>
+    <li><a href="getting-started.html">Getting Started</a></li>
+  </ul></nav></div>
+  <div class="sidebar-section"><p class="sidebar-heading">Build &amp; Usage</p><nav><ul>
+    <li><a href="build.html">Build</a></li>
+    <li><a href="usage.html">Usage</a></li>
+    <li><a href="command-line.html">Command-Line Reference</a></li>
+    <li><a href="configuration.html">Configuration</a></li>
+    <li><a href="examples.html">Examples</a></li>
+  </ul></nav></div>
+  <div class="sidebar-section"><p class="sidebar-heading">Concepts</p><nav><ul>
+    <li><a href="sprite-processing.html">Sprite Processing</a></li>
+    <li><a href="image-formats.html">Image Formats</a></li>
+    <li><a href="file-formats.html" class="active">File Formats</a></li>
+    <li><a href="project-structure.html">Project Structure</a></li>
+    <li><a href="architecture.html">Architecture</a></li>
+  </ul></nav></div>
+  <div class="sidebar-section"><p class="sidebar-heading">Modules</p><nav><ul>
+    <li><a href="modules/index.html">All Modules</a></li>
+    <li><a href="modules/draw-command.html">DrawCommand</a></li>
+    <li><a href="modules/sprite-sheet.html">SpriteSheet</a></li>
+    <li><a href="modules/args-options.html">Args &amp; Options</a></li>
+    <li><a href="modules/utils.html">Utils</a></li>
+  </ul></nav></div>
+  <div class="sidebar-section"><p class="sidebar-heading">API / Classes</p><nav><ul>
+    <li><a href="api/index.html">API Index</a></li>
+    <li><a href="classes/index.html">All Classes</a></li>
+  </ul></nav></div>
+  <div class="sidebar-section"><p class="sidebar-heading">Internals</p><nav><ul>
+    <li><a href="internals/index.html">Internals Overview</a></li>
+    <li><a href="internals/startup-flow.html">Startup Flow</a></li>
+    <li><a href="internals/csv-parsing.html">CSV Parsing</a></li>
+    <li><a href="internals/image-pipeline.html">Image Pipeline</a></li>
+    <li><a href="internals/bmp-handling.html">BMP Handling</a></li>
+  </ul></nav></div>
+  <div class="sidebar-section"><p class="sidebar-heading">Tutorials</p><nav><ul>
+    <li><a href="tutorials/index.html">All Tutorials</a></li>
+    <li><a href="tutorials/building.html">Building</a></li>
+    <li><a href="tutorials/running.html">Running</a></li>
+    <li><a href="tutorials/csv-format.html">CSV Format</a></li>
+    <li><a href="tutorials/draw-command.html">Using draw</a></li>
+  </ul></nav></div>
+  <div class="sidebar-section"><p class="sidebar-heading">Development</p><nav><ul>
+    <li><a href="development/index.html">Developer Guide</a></li>
+    <li><a href="development/coding-style.html">Coding Style</a></li>
+    <li><a href="development/debugging.html">Debugging</a></li>
+    <li><a href="development/contributing.html">Contributing</a></li>
+    <li><a href="development/known-issues.html">Known Issues</a></li>
+  </ul></nav></div>
+  <div class="sidebar-section"><p class="sidebar-heading">Reference</p><nav><ul>
+    <li><a href="known-limitations.html">Known Limitations</a></li>
+    <li><a href="roadmap.html">Roadmap</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+  </ul></nav></div>
+</aside>
+<main class="main-content">
+  <nav class="breadcrumbs">
+    <a href="index.html">Home</a> <span>/</span> File Formats
+  </nav>
+
+  <h1>File Formats</h1>
+
+  <h2>Sprite Sheet CSV</h2>
+  <p>
+    The primary input format for sprite-utils is a <strong>semicolon-delimited CSV file</strong>
+    that describes the rectangular regions of sprites within image files.
+  </p>
+  <p>
+    Implemented in: <code>include/SpriteSheetRow.h</code>, <code>src/SpriteSheetRow.cpp</code>,
+    <code>src/SpriteSheet.cpp</code>
+  </p>
+
+  <h3>Delimiter</h3>
+  <p>Field separator: <code>;</code> (semicolon). This is different from comma-separated CSV — do not use commas.</p>
+
+  <h3>Header Line</h3>
+  <p>The first line of the file is a header and is <strong>skipped</strong> by the parser. Its content is preserved in the computed output file.</p>
+
+  <h3>Columns</h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>#</th><th>Column Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td>0</td><td><code>file</code></td><td>string</td><td>Yes</td><td>Image filename (not full path), e.g. <code>player.bmp</code></td></tr>
+      <tr><td>1</td><td><code>group</code></td><td>string</td><td>Yes</td><td>Logical group name for this sprite, e.g. <code>walk</code></td></tr>
+      <tr><td>2</td><td><code>numberInGroup</code></td><td>integer</td><td>Yes</td><td>1-based index of this sprite within its group</td></tr>
+      <tr><td>3</td><td><code>row</code></td><td>integer</td><td>Yes</td><td>Row of this sprite on the sheet (starts at 1)</td></tr>
+      <tr><td>4</td><td><code>column</code></td><td>integer</td><td>Yes</td><td>Column of this sprite on the sheet row (starts at 1)</td></tr>
+      <tr><td>5</td><td><code>x</code></td><td>integer or empty</td><td>No</td><td>X pixel offset. If empty, computed automatically (0 for column 1, previous x + previous width for column &gt;1)</td></tr>
+      <tr><td>6</td><td><code>y</code></td><td>integer</td><td>Yes</td><td>Y pixel offset of the sprite rectangle</td></tr>
+      <tr><td>7</td><td><code>width</code></td><td>integer</td><td>Yes</td><td>Width of the sprite in pixels</td></tr>
+      <tr><td>8</td><td><code>height</code></td><td>integer</td><td>Yes (may be 0)</td><td>Height of the sprite in pixels. If 0, computed from previous row. For column &gt;1, may be negated to indicate relative height delta.</td></tr>
+      <tr><td>9</td><td><code>notes</code></td><td>string</td><td>No</td><td>Free-text notes for this sprite</td></tr>
+      <tr><td>10</td><td><code>tags</code></td><td>string</td><td>No</td><td>Tags associated with this sprite</td></tr>
+      <tr><td>11</td><td><code>numberPerSheet</code></td><td>integer</td><td>Auto</td><td>Computed: sequential number of this sprite across the whole sheet. Do not set manually — it is always computed by the tool.</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="callout note">
+    <p class="callout-title">Minimum Columns</p>
+    <p>The parser requires at least 10 columns per data row (indices 0–9). Rows with fewer columns are rejected with an error.</p>
+  </div>
+
+  <h3>Automatic X Computation</h3>
+  <p>
+    If the <code>x</code> field is <strong>empty</strong>, the parser computes it:
+  </p>
+  <ul>
+    <li>For <code>column == 1</code>: <code>x = 0</code></li>
+    <li>For <code>column &gt; 1</code>: <code>x = previousRow.x + previousRow.width</code></li>
+  </ul>
+
+  <h3>Height Computation</h3>
+  <p>
+    When <code>height == 0</code>, it inherits from the previous row:<br>
+    <code>height = previousRow.height + (-spriteSheetRow.height)</code><br>
+    (The negative sign allows encoding a height delta relative to the previous sprite.)
+  </p>
+  <p>
+    For <code>column &gt; 1</code>, if <code>abs(height) &ge; abs(previousHeight)</code>
+    and the column is &gt; 2, the height value is negated. This is a special encoding
+    in the CSV for multi-column sprite rows; see <code>src/SpriteSheet.cpp:processLine</code>.
+  </p>
+
+  <h3>Stop Sentinel</h3>
+  <p>
+    Processing stops when a line containing the text <code>skipskip</code> is encountered.
+    Any lines after <code>skipskip</code> are ignored. This allows notes or disabled rows to be placed below the sentinel.
+  </p>
+
+  <h3>First-Row Validation</h3>
+  <p>
+    The first data row for each image file must have <code>row == 1</code> and <code>column == 1</code>.
+    Violation throws a <code>SpriteUtilsException</code>.
+  </p>
+
+  <h3>Sequential Row/Column Validation</h3>
+  <p>
+    Within a single image file's rows, the <code>row</code> value must be monotonically non-decreasing.
+    Within the same <code>row</code>, <code>column</code> must increment by exactly 1.
+    Violations throw a <code>SpriteUtilsException</code>.
+  </p>
+
+  <h3>Sprite ID</h3>
+  <p>
+    Each sprite has a computed ID formed as:
+    <code>file__group__numberInGroup</code>
+    (double-underscore delimiter). This is used in error messages.
+  </p>
+
+  <h3>Example CSV</h3>
+  <pre><code>file;group;numberInGroup;row;column;x;y;width;height;notes;tags;numberPerSheet
+player.bmp;walk;1;1;1;;0;32;32;;;
+player.bmp;walk;2;1;2;;;32;0;;;
+player.bmp;run;1;2;1;;32;40;40;;;
+enemy.bmp;idle;1;1;1;;0;24;24;;;
+enemy.bmp;idle;2;1;2;;;24;0;;;
+skipskip</code></pre>
+
+  <div class="callout note">
+    <p class="callout-title">Computed CSV Output</p>
+    <p>
+      After parsing, a file named <code>&lt;original-name&gt;.computed.csv</code> is written
+      next to the sprite sheet. This file contains all rows with fully resolved <code>x</code>,
+      <code>height</code>, and <code>numberPerSheet</code> values. It is useful for auditing
+      what the tool actually computed.
+    </p>
+  </div>
+
+  <h2>Backup Files (<code>.backup</code>)</h2>
+  <p>
+    Every processed image gets a sibling file with <code>.backup</code> appended, e.g.
+    <code>player.bmp.backup</code>. This is a byte-for-byte copy of the image before annotation.
+    The tool uses these files to restore clean images on subsequent runs.
+  </p>
+  <p>
+    Backup files are excluded from processing (the tool skips any filename ending in <code>.backup</code>).
+  </p>
+
+  <div class="page-nav">
+    <a class="page-nav-link" href="image-formats.html">
+      <span class="page-nav-label">Previous</span>
+      Image Formats
+    </a>
+    <a class="page-nav-link next" href="sprite-processing.html">
+      <span class="page-nav-label">Next</span>
+      Sprite Processing
+    </a>
+  </div>
+</main>
+</div>
+<footer>sprite-utils documentation &mdash; MIT Licence &mdash; Robert Vokac</footer>
+</body>
+</html>

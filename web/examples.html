@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Examples — sprite-utils</title>
+<link rel="stylesheet" href="assets/style.css">
+<script src="assets/script.js"></script>
+</head>
+<body>
+<nav class="topnav">
+  <a class="topnav-brand" href="index.html">sprite<span>-utils</span></a>
+  <ul class="topnav-links">
+    <li><a href="overview.html">Overview</a></li>
+    <li><a href="getting-started.html">Getting Started</a></li>
+    <li><a href="command-line.html">CLI</a></li>
+    <li><a href="api/index.html">API</a></li>
+  </ul>
+  <button class="theme-toggle" id="theme-toggle">☾ Dark</button>
+</nav>
+<div class="page-wrapper">
+<aside class="sidebar">
+  <div class="sidebar-section"><p class="sidebar-heading">Introduction</p><nav><ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="overview.html">Overview</a></li>
+    <li><a href="getting-started.html">Getting Started</a></li>
+  </ul></nav></div>
+  <div class="sidebar-section"><p class="sidebar-heading">Build &amp; Usage</p><nav><ul>
+    <li><a href="build.html">Build</a></li>
+    <li><a href="usage.html">Usage</a></li>
+    <li><a href="command-line.html">Command-Line Reference</a></li>
+    <li><a href="configuration.html">Configuration</a></li>
+    <li><a href="examples.html" class="active">Examples</a></li>
+  </ul></nav></div>
+  <div class="sidebar-section"><p class="sidebar-heading">Concepts</p><nav><ul>
+    <li><a href="sprite-processing.html">Sprite Processing</a></li>
+    <li><a href="image-formats.html">Image Formats</a></li>
+    <li><a href="file-formats.html">File Formats</a></li>
+    <li><a href="project-structure.html">Project Structure</a></li>
+    <li><a href="architecture.html">Architecture</a></li>
+  </ul></nav></div>
+  <div class="sidebar-section"><p class="sidebar-heading">Modules</p><nav><ul>
+    <li><a href="modules/index.html">All Modules</a></li>
+    <li><a href="modules/draw-command.html">DrawCommand</a></li>
+    <li><a href="modules/sprite-sheet.html">SpriteSheet</a></li>
+    <li><a href="modules/args-options.html">Args &amp; Options</a></li>
+    <li><a href="modules/utils.html">Utils</a></li>
+  </ul></nav></div>
+  <div class="sidebar-section"><p class="sidebar-heading">API / Classes</p><nav><ul>
+    <li><a href="api/index.html">API Index</a></li>
+    <li><a href="classes/index.html">All Classes</a></li>
+  </ul></nav></div>
+  <div class="sidebar-section"><p class="sidebar-heading">Internals</p><nav><ul>
+    <li><a href="internals/index.html">Internals Overview</a></li>
+    <li><a href="internals/startup-flow.html">Startup Flow</a></li>
+    <li><a href="internals/csv-parsing.html">CSV Parsing</a></li>
+    <li><a href="internals/image-pipeline.html">Image Pipeline</a></li>
+    <li><a href="internals/bmp-handling.html">BMP Handling</a></li>
+  </ul></nav></div>
+  <div class="sidebar-section"><p class="sidebar-heading">Tutorials</p><nav><ul>
+    <li><a href="tutorials/index.html">All Tutorials</a></li>
+    <li><a href="tutorials/building.html">Building</a></li>
+    <li><a href="tutorials/running.html">Running</a></li>
+    <li><a href="tutorials/csv-format.html">CSV Format</a></li>
+    <li><a href="tutorials/draw-command.html">Using draw</a></li>
+  </ul></nav></div>
+  <div class="sidebar-section"><p class="sidebar-heading">Development</p><nav><ul>
+    <li><a href="development/index.html">Developer Guide</a></li>
+    <li><a href="development/coding-style.html">Coding Style</a></li>
+    <li><a href="development/debugging.html">Debugging</a></li>
+    <li><a href="development/contributing.html">Contributing</a></li>
+    <li><a href="development/known-issues.html">Known Issues</a></li>
+  </ul></nav></div>
+  <div class="sidebar-section"><p class="sidebar-heading">Reference</p><nav><ul>
+    <li><a href="known-limitations.html">Known Limitations</a></li>
+    <li><a href="roadmap.html">Roadmap</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+  </ul></nav></div>
+</aside>
+<main class="main-content">
+  <nav class="breadcrumbs">
+    <a href="index.html">Home</a> <span>/</span> Examples
+  </nav>
+
+  <h1>Examples</h1>
+  <p>Practical command invocations derived from the source code. All examples assume the binary is at <code>./build/sprite_utils</code>.</p>
+
+  <h2>Example 1: Annotate All Files in Current Directory</h2>
+  <pre><code>cd /game/assets
+sprite_utils draw</code></pre>
+  <p>Uses <code>spritesheet.csv</code> in the current directory. Annotates all image files that have matching entries.</p>
+
+  <h2>Example 2: Explicit Directory and CSV Path</h2>
+  <pre><code>sprite_utils draw \
+  --dir /game/assets/sprites \
+  --sprite-sheet-path /game/config/sprites.csv</code></pre>
+
+  <h2>Example 3: Single File, Specific Row</h2>
+  <pre><code>sprite_utils draw \
+  --dir /game/assets \
+  --file-name player.bmp \
+  --row 2</code></pre>
+  <p>Only annotates sprites in row 2 of the <code>player.bmp</code> image.</p>
+
+  <h2>Example 4: Green Rectangles, No Numbers</h2>
+  <pre><code>sprite_utils draw \
+  --dir /game/assets \
+  --rectangle-color 0,255,0 \
+  --draw-number false</code></pre>
+
+  <h2>Example 5: Double-Sized Numbers with Background</h2>
+  <pre><code>sprite_utils draw \
+  --dir /game/assets \
+  --double-sized-number true \
+  --draw-number-background true</code></pre>
+  <div class="callout note">
+    <p class="callout-title">Automatic Fallback</p>
+    <p>If a sprite's width is less than 23 pixels, the large font automatically falls back to
+    the small 3×5 font even when <code>--double-sized-number true</code> is set.</p>
+  </div>
+
+  <h2>Example 6: Minimal CSV</h2>
+  <p>A sprite-sheet CSV for a 64×64 image with a 4-frame walk animation in a single row:</p>
+  <pre><code>file;group;numberInGroup;row;column;x;y;width;height;notes;tags;numberPerSheet
+character.bmp;walk;1;1;1;;0;16;16;;;
+character.bmp;walk;2;1;2;;;16;0;;;
+character.bmp;walk;3;1;3;;;16;0;;;
+character.bmp;walk;4;1;4;;;16;0;;;</code></pre>
+  <p>
+    Note that for columns 2–4, <code>x</code> and <code>height</code> are left empty.
+    The tool computes <code>x</code> as the previous x + previous width (16, 32, 48)
+    and <code>height</code> as inherited from the first row (16).
+  </p>
+
+  <h2>Example 7: Check Version</h2>
+  <pre><code>sprite_utils version
+# Output: Sprite Utils 0.0.0-SNAPSHOT</code></pre>
+
+  <h2>Example 8: Display Help</h2>
+  <pre><code>sprite_utils help</code></pre>
+  <p>Prints all available commands and their options to stdout.</p>
+
+  <h2>Example 9: Pipeline Script</h2>
+  <p>A simple shell script to annotate multiple asset directories:</p>
+  <pre><code>#!/bin/bash
+BINARY=./build/sprite_utils
+CSV=/game/config/spritesheet.csv
+
+for dir in /game/assets/chars /game/assets/items /game/assets/tiles; do
+    echo "Processing $dir..."
+    "$BINARY" draw \
+      --dir "$dir" \
+      --sprite-sheet-path "$CSV"
+done
+echo "Done."</code></pre>
+
+  <div class="page-nav">
+    <a class="page-nav-link" href="configuration.html">
+      <span class="page-nav-label">Previous</span>
+      Configuration
+    </a>
+    <a class="page-nav-link next" href="sprite-processing.html">
+      <span class="page-nav-label">Next</span>
+      Sprite Processing
+    </a>
+  </div>
+</main>
+</div>
+<footer>sprite-utils documentation &mdash; MIT Licence &mdash; Robert Vokac</footer>
+</body>
+</html>

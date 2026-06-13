@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSV Format Tutorial — sprite-utils</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/script.js"></script>
+</head>
+<body>
+<nav class="topnav">
+  <a class="topnav-brand" href="../index.html">sprite<span>-utils</span></a>
+  <ul class="topnav-links">
+    <li><a href="../overview.html">Overview</a></li>
+    <li><a href="../getting-started.html">Getting Started</a></li>
+    <li><a href="../command-line.html">CLI</a></li>
+    <li><a href="../api/index.html">API</a></li>
+  </ul>
+  <button class="theme-toggle" id="theme-toggle">☾ Dark</button>
+</nav>
+<div class="page-wrapper">
+<aside class="sidebar">
+  <div class="sidebar-section"><p class="sidebar-heading">Tutorials</p><nav><ul>
+    <li><a href="index.html">All Tutorials</a></li>
+    <li><a href="building.html">Building</a></li>
+    <li><a href="running.html">Running</a></li>
+    <li><a href="csv-format.html" class="active">CSV Format</a></li>
+    <li><a href="draw-command.html">Using draw</a></li>
+  </ul></nav></div>
+  <div class="sidebar-section"><p class="sidebar-heading">Reference</p><nav><ul>
+    <li><a href="../file-formats.html">File Formats</a></li>
+  </ul></nav></div>
+</aside>
+<main class="main-content">
+  <nav class="breadcrumbs">
+    <a href="../index.html">Home</a> <span>/</span>
+    <a href="index.html">Tutorials</a> <span>/</span> CSV Format
+  </nav>
+
+  <h1>Tutorial: Creating a CSV Sprite Sheet</h1>
+
+  <h2>Understanding the Format</h2>
+  <p>
+    The sprite-sheet CSV uses <strong>semicolons</strong> as separators (not commas).
+    The columns are: <code>file;group;numberInGroup;row;column;x;y;width;height;notes;tags;numberPerSheet</code>
+  </p>
+
+  <h2>Step 1: Create the Header</h2>
+  <pre><code>file;group;numberInGroup;row;column;x;y;width;height;notes;tags;numberPerSheet</code></pre>
+  <p>This is always the first line. It is skipped by the parser and preserved in computed output.</p>
+
+  <h2>Step 2: Add Sprite Rows</h2>
+  <p>Let's say we have a <code>player.bmp</code> sprite sheet with a 4-frame walk animation.
+  Each frame is 32×48 pixels arranged horizontally.</p>
+
+  <p>The full explicit form (all fields specified):</p>
+  <pre><code>file;group;numberInGroup;row;column;x;y;width;height;notes;tags;numberPerSheet
+player.bmp;walk;1;1;1;0;0;32;48;;;
+player.bmp;walk;2;1;2;32;0;32;48;;;
+player.bmp;walk;3;1;3;64;0;32;48;;;
+player.bmp;walk;4;1;4;96;0;32;48;;;</code></pre>
+
+  <h2>Step 3: Use Auto-Computed Fields</h2>
+  <p>Leave <code>x</code> and <code>height</code> empty and let the tool compute them.
+  For same-row sprites with uniform width, only the first row needs <code>x=0</code> and <code>height=48</code>:</p>
+  <pre><code>file;group;numberInGroup;row;column;x;y;width;height;notes;tags;numberPerSheet
+player.bmp;walk;1;1;1;;0;32;48;;;
+player.bmp;walk;2;1;2;;;32;0;;;
+player.bmp;walk;3;1;3;;;32;0;;;
+player.bmp;walk;4;1;4;;;32;0;;;</code></pre>
+  <p>
+    <strong>Column 1</strong>: <code>x</code> empty → computed as 0. <code>height=48</code> explicitly set.<br>
+    <strong>Columns 2-4</strong>: <code>x</code> empty → computed as previous x + previous width.
+    <code>height=0</code> → inherited from previous row (48).
+  </p>
+
+  <div class="callout note">
+    <p class="callout-title">First Row Rule</p>
+    <p>The first row for each image file must have <code>row=1</code> and <code>column=1</code>.
+    The <code>numberPerSheet</code> field is always computed — set it to empty or 0.</p>
+  </div>
+
+  <h2>Step 4: Multiple Images</h2>
+  <p>You can include multiple image files in the same CSV. Group them together — once the
+  parser sees a new filename, it resets the row/column counter:</p>
+  <pre><code>file;group;numberInGroup;row;column;x;y;width;height;notes;tags;numberPerSheet
+player.bmp;walk;1;1;1;;0;32;48;;;
+player.bmp;walk;2;1;2;;;32;0;;;
+enemy.bmp;idle;1;1;1;;0;24;24;;;
+enemy.bmp;idle;2;1;2;;;24;0;;;</code></pre>
+
+  <h2>Step 5: Multiple Rows on a Sheet</h2>
+  <p>If your sheet has rows of sprites stacked vertically, use <code>row=2</code> for the second row.
+  The <code>y</code> value must be set for the first sprite of each new row:</p>
+  <pre><code>file;group;numberInGroup;row;column;x;y;width;height;notes;tags;numberPerSheet
+player.bmp;walk;1;1;1;;0;32;48;;;
+player.bmp;walk;2;1;2;;;32;0;;;
+player.bmp;run;1;2;1;;48;40;40;;;
+player.bmp;run;2;2;2;;;40;0;;;</code></pre>
+
+  <h2>Step 6: Add a Skip Sentinel (Optional)</h2>
+  <p>Add <code>skipskip</code> anywhere in the file to stop parsing at that point.
+  Useful for commenting out rows or adding notes below:</p>
+  <pre><code>...
+skipskip
+# These rows are disabled for now
+player.bmp;jump;1;3;1;;88;32;64;;;</code></pre>
+
+  <h2>Step 7: Save as spritesheet.csv</h2>
+  <p>Save the file as <code>spritesheet.csv</code> in your image directory.
+  You can also use a different name and specify it with <code>--sprite-sheet-path</code>.</p>
+
+  <div class="page-nav">
+    <a class="page-nav-link" href="running.html">
+      <span class="page-nav-label">Previous</span>
+      Running
+    </a>
+    <a class="page-nav-link next" href="draw-command.html">
+      <span class="page-nav-label">Next</span>
+      Using draw
+    </a>
+  </div>
+</main>
+</div>
+<footer>sprite-utils documentation &mdash; MIT Licence &mdash; Robert Vokac</footer>
+</body>
+</html>

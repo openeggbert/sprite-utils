@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roadmap — sprite-utils</title>
+<link rel="stylesheet" href="assets/style.css">
+<script src="assets/script.js"></script>
+</head>
+<body>
+<nav class="topnav">
+  <a class="topnav-brand" href="index.html">sprite<span>-utils</span></a>
+  <ul class="topnav-links">
+    <li><a href="overview.html">Overview</a></li>
+    <li><a href="getting-started.html">Getting Started</a></li>
+    <li><a href="command-line.html">CLI</a></li>
+    <li><a href="api/index.html">API</a></li>
+  </ul>
+  <button class="theme-toggle" id="theme-toggle">☾ Dark</button>
+</nav>
+<div class="page-wrapper">
+<aside class="sidebar">
+  <div class="sidebar-section"><p class="sidebar-heading">Introduction</p><nav><ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="overview.html">Overview</a></li>
+    <li><a href="getting-started.html">Getting Started</a></li>
+  </ul></nav></div>
+  <div class="sidebar-section"><p class="sidebar-heading">Build &amp; Usage</p><nav><ul>
+    <li><a href="build.html">Build</a></li>
+    <li><a href="usage.html">Usage</a></li>
+    <li><a href="command-line.html">Command-Line Reference</a></li>
+    <li><a href="configuration.html">Configuration</a></li>
+    <li><a href="examples.html">Examples</a></li>
+  </ul></nav></div>
+  <div class="sidebar-section"><p class="sidebar-heading">Concepts</p><nav><ul>
+    <li><a href="sprite-processing.html">Sprite Processing</a></li>
+    <li><a href="image-formats.html">Image Formats</a></li>
+    <li><a href="file-formats.html">File Formats</a></li>
+    <li><a href="project-structure.html">Project Structure</a></li>
+    <li><a href="architecture.html">Architecture</a></li>
+  </ul></nav></div>
+  <div class="sidebar-section"><p class="sidebar-heading">Modules</p><nav><ul>
+    <li><a href="modules/index.html">All Modules</a></li>
+    <li><a href="modules/draw-command.html">DrawCommand</a></li>
+    <li><a href="modules/sprite-sheet.html">SpriteSheet</a></li>
+    <li><a href="modules/args-options.html">Args &amp; Options</a></li>
+    <li><a href="modules/utils.html">Utils</a></li>
+  </ul></nav></div>
+  <div class="sidebar-section"><p class="sidebar-heading">API / Classes</p><nav><ul>
+    <li><a href="api/index.html">API Index</a></li>
+    <li><a href="classes/index.html">All Classes</a></li>
+  </ul></nav></div>
+  <div class="sidebar-section"><p class="sidebar-heading">Internals</p><nav><ul>
+    <li><a href="internals/index.html">Internals Overview</a></li>
+    <li><a href="internals/startup-flow.html">Startup Flow</a></li>
+    <li><a href="internals/csv-parsing.html">CSV Parsing</a></li>
+    <li><a href="internals/image-pipeline.html">Image Pipeline</a></li>
+    <li><a href="internals/bmp-handling.html">BMP Handling</a></li>
+  </ul></nav></div>
+  <div class="sidebar-section"><p class="sidebar-heading">Tutorials</p><nav><ul>
+    <li><a href="tutorials/index.html">All Tutorials</a></li>
+    <li><a href="tutorials/building.html">Building</a></li>
+    <li><a href="tutorials/running.html">Running</a></li>
+    <li><a href="tutorials/csv-format.html">CSV Format</a></li>
+    <li><a href="tutorials/draw-command.html">Using draw</a></li>
+  </ul></nav></div>
+  <div class="sidebar-section"><p class="sidebar-heading">Development</p><nav><ul>
+    <li><a href="development/index.html">Developer Guide</a></li>
+    <li><a href="development/coding-style.html">Coding Style</a></li>
+    <li><a href="development/debugging.html">Debugging</a></li>
+    <li><a href="development/contributing.html">Contributing</a></li>
+    <li><a href="development/known-issues.html">Known Issues</a></li>
+  </ul></nav></div>
+  <div class="sidebar-section"><p class="sidebar-heading">Reference</p><nav><ul>
+    <li><a href="known-limitations.html">Known Limitations</a></li>
+    <li><a href="roadmap.html" class="active">Roadmap</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+  </ul></nav></div>
+</aside>
+<main class="main-content">
+  <nav class="breadcrumbs">
+    <a href="index.html">Home</a> <span>/</span> Roadmap
+  </nav>
+
+  <h1>Roadmap</h1>
+  <p>
+    This page documents planned features that are visible from the source code but not yet implemented.
+    All items here are inferred from repository evidence only.
+  </p>
+
+  <div class="callout note">
+    <p class="callout-title">Evidence Source</p>
+    <p>The <code>SpriteUtilsCommand</code> enum in <code>include/SpriteUtilsCommand.h</code>
+    lists: <code>DRAW, RESTORE, EXTRACT, GIFS, HELP, VERSION</code>.
+    Only DRAW, HELP, and VERSION are currently wired in <code>SpriteUtils.cpp</code>.</p>
+  </div>
+
+  <h2>Planned Commands</h2>
+
+  <h3>restore <span class="badge badge-yellow">Planned</span></h3>
+  <p>
+    Would restore all image files in the working directory from their <code>.backup</code> counterparts.
+    Currently this must be done manually by copying backup files.
+  </p>
+  <p><strong>Evidence:</strong> <code>RESTORE</code> in the <code>SpriteUtilsCommand</code> enum.</p>
+
+  <h3>extract <span class="badge badge-yellow">Planned</span></h3>
+  <p>
+    Would extract individual sprites from sprite sheets into separate image files, one per sprite rectangle.
+    This is the core "cutting" operation that sprite-utils currently cannot perform.
+  </p>
+  <p><strong>Evidence:</strong> <code>EXTRACT</code> in the <code>SpriteUtilsCommand</code> enum.</p>
+
+  <h3>gifs <span class="badge badge-yellow">Planned</span></h3>
+  <p>
+    Would generate animated GIFs from sprite groups (animation frames). Likely intended to
+    produce preview animations from the defined sprite groups.
+  </p>
+  <p><strong>Evidence:</strong> <code>GIFS</code> in the <code>SpriteUtilsCommand</code> enum.</p>
+
+  <h2>Other Improvements (Suggested)</h2>
+  <p>These are improvements visible as gaps from the current source code, not explicitly planned:</p>
+  <ul>
+    <li><strong>Tests</strong> — no test suite exists; unit tests for CSV parsing and image processing would prevent regressions.</li>
+    <li><strong>Fix help text</strong> — the <code>help</code> command output references options that don't match the actual implementation.</li>
+    <li><strong>Error recovery</strong> — currently any error terminates the process; a <code>--continue-on-error</code> mode would be useful for batch processing.</li>
+    <li><strong>Fix global state</strong> — <code>SpriteSheet</code> uses static class members which makes it non-reentrant.</li>
+    <li><strong>Config file support</strong> — avoid re-specifying all options on every invocation.</li>
+    <li><strong>Recursive directory processing</strong> — currently only processes files in the top-level of <code>--dir</code>.</li>
+  </ul>
+
+  <div class="page-nav">
+    <a class="page-nav-link" href="known-limitations.html">
+      <span class="page-nav-label">Previous</span>
+      Known Limitations
+    </a>
+    <a class="page-nav-link next" href="faq.html">
+      <span class="page-nav-label">Next</span>
+      FAQ
+    </a>
+  </div>
+</main>
+</div>
+<footer>sprite-utils documentation &mdash; MIT Licence &mdash; Robert Vokac</footer>
+</body>
+</html>

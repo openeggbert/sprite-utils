@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Debugging — sprite-utils Development</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/script.js"></script>
+</head>
+<body>
+<nav class="topnav">
+  <a class="topnav-brand" href="../index.html">sprite<span>-utils</span></a>
+  <ul class="topnav-links">
+    <li><a href="../overview.html">Overview</a></li>
+    <li><a href="../getting-started.html">Getting Started</a></li>
+    <li><a href="../command-line.html">CLI</a></li>
+    <li><a href="../api/index.html">API</a></li>
+  </ul>
+  <button class="theme-toggle" id="theme-toggle">☾ Dark</button>
+</nav>
+<div class="page-wrapper">
+<aside class="sidebar">
+  <div class="sidebar-section"><p class="sidebar-heading">Development</p><nav><ul>
+    <li><a href="index.html">Developer Guide</a></li>
+    <li><a href="coding-style.html">Coding Style</a></li>
+    <li><a href="debugging.html" class="active">Debugging</a></li>
+    <li><a href="contributing.html">Contributing</a></li>
+    <li><a href="known-issues.html">Known Issues</a></li>
+  </ul></nav></div>
+</aside>
+<main class="main-content">
+  <nav class="breadcrumbs">
+    <a href="../index.html">Home</a> <span>/</span>
+    <a href="index.html">Developer Guide</a> <span>/</span> Debugging
+  </nav>
+
+  <h1>Debugging</h1>
+
+  <h2>Building with Debug Symbols</h2>
+  <pre><code>cmake -B build-debug -DCMAKE_BUILD_TYPE=Debug
+cmake --build build-debug</code></pre>
+
+  <h2>Debugging CSV Parsing Issues</h2>
+  <p>Every successfully parsed row is printed to stdout after processing.
+  If a row is wrong, check the stdout output to see what the tool computed for that row.</p>
+  <p>The <code>.computed.csv</code> file is your best friend: it shows the final resolved values for every row, including computed <code>x</code>, <code>height</code>, and <code>numberPerSheet</code>.</p>
+
+  <h3>Common CSV Errors</h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Error Message</th><th>Cause</th><th>Fix</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><code>Invalid initial row or column for file X</code></td>
+        <td>First row for a file doesn't have row=1, column=1</td>
+        <td>Make the first entry for that file have row=1, col=1</td>
+      </tr>
+      <tr>
+        <td><code>Unexpected row for X</code></td>
+        <td>Row numbers are not sequential or go backwards</td>
+        <td>Ensure row values monotonically increase by 1</td>
+      </tr>
+      <tr>
+        <td><code>Unexpected column for X</code></td>
+        <td>Column numbers within a row are not sequential</td>
+        <td>Ensure column values increment by exactly 1 within a row</td>
+      </tr>
+      <tr>
+        <td><code>CSV line does not contain enough columns</code></td>
+        <td>Fewer than 10 semicolons in a data row</td>
+        <td>Add missing semicolons to reach at least 10 columns</td>
+      </tr>
+      <tr>
+        <td><code>Could not compute X for</code></td>
+        <td>Column &gt; 1 but no previous row available</td>
+        <td>Ensure the previous row exists and is valid</td>
+      </tr>
+    </tbody>
+  </table></div>
+
+  <h2>Debugging Image Issues</h2>
+  <p>If the annotated image looks wrong:</p>
+  <ol>
+    <li>Open <code>spritesheet.csv.computed.csv</code> and check the <code>x</code>, <code>y</code>, <code>width</code>, <code>height</code> values for the problem sprite.</li>
+    <li>Verify your image dimensions match what you expect.</li>
+    <li>Check that <code>y + height</code> does not exceed the image height.</li>
+    <li>For BMP files, verify the bit depth matches what the tool detected.</li>
+  </ol>
+
+  <h2>Debugging BMP Handling</h2>
+  <p>The tool reads the BMP bit-depth from the raw header before OpenCV loads the image.
+  If you get a "Not a BMP file" error for a file that should be processable, verify:</p>
+  <ul>
+    <li>The file is not corrupted (first two bytes should be <code>B</code> and <code>M</code>).</li>
+    <li>The file is truly a BMP or BLP file. For non-BMP image formats, the readBmpBpp call will fail.</li>
+  </ul>
+
+  <h2>Using GDB</h2>
+  <pre><code>gdb ./build-debug/sprite_utils
+(gdb) run draw --dir /path/to/sprites
+(gdb) bt   # backtrace on crash</code></pre>
+
+  <h2>Adding Debug Output</h2>
+  <p>The simplest way to add debug output is to add <code>std::cout</code> or <code>std::cerr</code>
+  statements. The codebase already uses cout extensively. No logging framework is present.</p>
+</main>
+</div>
+<footer>sprite-utils documentation &mdash; MIT Licence &mdash; Robert Vokac</footer>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All Classes — sprite-utils</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/script.js"></script>
+</head>
+<body>
+<nav class="topnav">
+  <a class="topnav-brand" href="../index.html">sprite<span>-utils</span></a>
+  <ul class="topnav-links">
+    <li><a href="../overview.html">Overview</a></li>
+    <li><a href="../getting-started.html">Getting Started</a></li>
+    <li><a href="../command-line.html">CLI</a></li>
+    <li><a href="../api/index.html">API</a></li>
+  </ul>
+  <button class="theme-toggle" id="theme-toggle">☾ Dark</button>
+</nav>
+<div class="page-wrapper">
+<aside class="sidebar">
+  <div class="sidebar-section"><p class="sidebar-heading">Introduction</p><nav><ul>
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../overview.html">Overview</a></li>
+    <li><a href="../getting-started.html">Getting Started</a></li>
+  </ul></nav></div>
+  <div class="sidebar-section"><p class="sidebar-heading">API / Classes</p><nav><ul>
+    <li><a href="../api/index.html">API Index</a></li>
+    <li><a href="index.html" class="active">All Classes</a></li>
+  </ul></nav></div>
+  <div class="sidebar-section"><p class="sidebar-heading">Modules</p><nav><ul>
+    <li><a href="../modules/index.html">All Modules</a></li>
+    <li><a href="../modules/draw-command.html">DrawCommand</a></li>
+    <li><a href="../modules/sprite-sheet.html">SpriteSheet</a></li>
+    <li><a href="../modules/args-options.html">Args &amp; Options</a></li>
+    <li><a href="../modules/utils.html">Utils</a></li>
+  </ul></nav></div>
+</aside>
+<main class="main-content">
+  <nav class="breadcrumbs">
+    <a href="../index.html">Home</a> <span>/</span> All Classes
+  </nav>
+
+  <h1>All Classes</h1>
+
+  <h2 id="Command">Command</h2>
+  <p><strong>Header:</strong> <code>include/Command.h</code></p>
+  <p>Abstract base class for all commands. Defines the interface every command must implement.</p>
+  <pre><code>class Command {
+public:
+    virtual ~Command() = default;
+    virtual std::string getName() const = 0;
+    virtual std::string run(const SpriteUtilsArgs&amp; args);
+};</code></pre>
+  <p>The default <code>run()</code> throws <code>SpriteUtilsException("Not yet implemented.")</code>.
+  Concrete subclasses override it.</p>
+
+  <hr>
+
+  <h2 id="Color">Color</h2>
+  <p><strong>Header:</strong> <code>include/SpriteUtilsOptions.h</code></p>
+  <p>Simple RGB(A) colour struct. The alpha field exists but is not used in drawing (OpenCV uses BGR without alpha for these operations).</p>
+  <pre><code>struct Color {
+    int r{}, g{}, b{}, a{};
+    static const Color RED;  // {255, 0, 0, 0}
+};</code></pre>
+
+  <hr>
+
+  <h2 id="DrawCommand">DrawCommand</h2>
+  <p><strong>Header:</strong> <code>include/DrawCommand.h</code> &mdash; <strong>Impl:</strong> <code>src/DrawCommand.cpp</code></p>
+  <p>Implements the <code>draw</code> command. Inherits from <code>Command</code>.
+  See <a href="../modules/draw-command.html">DrawCommand Module</a> for full documentation.</p>
+  <pre><code>class DrawCommand : public Command {
+public:
+    static constexpr const char* NAME = "draw";
+    std::string getName() const override;
+    std::string run(const SpriteUtilsArgs&amp; args) override;
+    // ... private helpers
+};</code></pre>
+
+  <hr>
+
+  <h2 id="HelpCommand">HelpCommand</h2>
+  <p><strong>Header:</strong> <code>include/HelpCommand.h</code> &mdash; <strong>Impl:</strong> <code>src/HelpCommand.cpp</code></p>
+  <p>Prints usage information to stdout. Returns the help string.</p>
+  <pre><code>class HelpCommand : public Command {
+public:
+    static constexpr const char* NAME = "help";
+    std::string getName() const override;
+    std::string run(const SpriteUtilsArgs&amp; args) override;
+};</code></pre>
+  <div class="callout warn">
+    <p class="callout-title">Out-of-Date Help Text</p>
+    <p>The help text printed by this command does not accurately reflect the actual implemented options. See <a href="../known-limitations.html">Known Limitations</a>.</p>
+  </div>
+
+  <hr>
+
+  <h2 id="SpriteSheet">SpriteSheet</h2>
+  <p><strong>Header:</strong> <code>include/SpriteSheet.h</code> &mdash; <strong>Impl:</strong> <code>src/SpriteSheet.cpp</code></p>
+  <p>Loads and parses the CSV sprite-sheet file. See <a href="../modules/sprite-sheet.html">SpriteSheet Module</a> for full documentation.</p>
+  <pre><code>class SpriteSheet {
+public:
+    explicit SpriteSheet(const std::filesystem::path&amp; file);
+    std::vector&lt;SpriteSheetRow&gt; getSpriteSheetRows(const std::string&amp; file);
+    std::vector&lt;SpriteSheetRow&gt; getSpriteSheetRows();
+};</code></pre>
+
+  <hr>
+
+  <h2 id="SpriteSheetRow">SpriteSheetRow</h2>
+  <p><strong>Header:</strong> <code>include/SpriteSheetRow.h</code> &mdash; <strong>Impl:</strong> <code>src/SpriteSheetRow.cpp</code></p>
+  <p>Represents one row of the sprite-sheet CSV. See <a href="../modules/sprite-sheet.html">SpriteSheet Module</a>.</p>
+  <pre><code>class SpriteSheetRow {
+public:
+    std::string file, group, notes, tags;
+    int numberInGroup, row, column, x, y, width, height, numberPerSheet;
+    explicit SpriteSheetRow(const std::string&amp; csvLine);
+    std::string createId() const;
+    std::string toCsvLine() const;
+};</code></pre>
+
+  <hr>
+
+  <h2 id="SpriteUtils">SpriteUtils</h2>
+  <p><strong>Header:</strong> <code>include/SpriteUtils.h</code> &mdash; <strong>Impl:</strong> <code>src/SpriteUtils.cpp</code></p>
+  <p>Main application class. Holds the command registry and dispatches to the appropriate command.</p>
+  <pre><code>class SpriteUtils {
+public:
+    SpriteUtils();
+    void run(const std::vector&lt;std::string&gt;&amp; args);
+    void run(const SpriteUtilsArgs&amp; args);
+private:
+    std::unordered_map&lt;std::string, std::unique_ptr&lt;Command&gt;&gt; commandImplementations;
+};</code></pre>
+
+  <hr>
+
+  <h2 id="SpriteUtilsArgs">SpriteUtilsArgs</h2>
+  <p><strong>Header:</strong> <code>include/SpriteUtilsArgs.h</code> &mdash; <strong>Impl:</strong> <code>src/SpriteUtilsArgs.cpp</code></p>
+  <p>Parses argv into a command name and a <code>--key value</code> map. See <a href="../modules/args-options.html">Args &amp; Options Module</a>.</p>
+
+  <hr>
+
+  <h2 id="SpriteUtilsException">SpriteUtilsException</h2>
+  <p><strong>Header:</strong> <code>include/SpriteUtilsException.h</code></p>
+  <p>Custom exception. Inherits <code>std::runtime_error</code>. Has three constructors: message only, message + cause, cause only.</p>
+  <pre><code>class SpriteUtilsException : public std::runtime_error {
+public:
+    explicit SpriteUtilsException(const std::string&amp; msg);
+    SpriteUtilsException(const std::string&amp; msg, const std::exception&amp; e);
+    explicit SpriteUtilsException(const std::exception&amp; e);
+};</code></pre>
+
+  <hr>
+
+  <h2 id="SpriteUtilsOptions">SpriteUtilsOptions</h2>
+  <p><strong>Header:</strong> <code>include/SpriteUtilsOptions.h</code> &mdash; <strong>Impl:</strong> <code>src/SpriteUtilsOptions.cpp</code></p>
+  <p>Typed option accessors wrapping <code>SpriteUtilsArgs</code>. See <a href="../modules/args-options.html">Args &amp; Options Module</a>.</p>
+
+  <hr>
+
+  <h2 id="Utils">Utils</h2>
+  <p><strong>Header:</strong> <code>include/Utils.h</code> &mdash; <strong>Impl:</strong> <code>src/Utils.cpp</code></p>
+  <p>Static utility class. Not instantiable. See <a href="../modules/utils.html">Utils Module</a>.</p>
+
+  <hr>
+
+  <h2 id="VersionCommand">VersionCommand</h2>
+  <p><strong>Header:</strong> <code>include/VersionCommand.h</code> &mdash; <strong>Impl:</strong> <code>src/VersionCommand.cpp</code></p>
+  <p>Prints <code>Sprite Utils 0.0.0-SNAPSHOT</code> to stdout.</p>
+
+</main>
+</div>
+<footer>sprite-utils documentation &mdash; MIT Licence &mdash; Robert Vokac</footer>
+</body>
+</html>

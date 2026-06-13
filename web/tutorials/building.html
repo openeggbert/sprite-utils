@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Building — sprite-utils Tutorials</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/script.js"></script>
+</head>
+<body>
+<nav class="topnav">
+  <a class="topnav-brand" href="../index.html">sprite<span>-utils</span></a>
+  <ul class="topnav-links">
+    <li><a href="../overview.html">Overview</a></li>
+    <li><a href="../getting-started.html">Getting Started</a></li>
+    <li><a href="../command-line.html">CLI</a></li>
+    <li><a href="../api/index.html">API</a></li>
+  </ul>
+  <button class="theme-toggle" id="theme-toggle">☾ Dark</button>
+</nav>
+<div class="page-wrapper">
+<aside class="sidebar">
+  <div class="sidebar-section"><p class="sidebar-heading">Tutorials</p><nav><ul>
+    <li><a href="index.html">All Tutorials</a></li>
+    <li><a href="building.html" class="active">Building</a></li>
+    <li><a href="running.html">Running</a></li>
+    <li><a href="csv-format.html">CSV Format</a></li>
+    <li><a href="draw-command.html">Using draw</a></li>
+  </ul></nav></div>
+</aside>
+<main class="main-content">
+  <nav class="breadcrumbs">
+    <a href="../index.html">Home</a> <span>/</span>
+    <a href="index.html">Tutorials</a> <span>/</span> Building
+  </nav>
+
+  <h1>Tutorial: Building sprite-utils</h1>
+
+  <h2>1. Install Prerequisites</h2>
+  <p><strong>On Debian/Ubuntu:</strong></p>
+  <pre><code>sudo apt-get update
+sudo apt-get install -y \
+  build-essential \
+  cmake \
+  libopencv-dev \
+  git</code></pre>
+
+  <p><strong>On Fedora:</strong></p>
+  <pre><code>sudo dnf install -y gcc-c++ cmake opencv-devel git</code></pre>
+
+  <p><strong>On macOS (Homebrew):</strong></p>
+  <pre><code>brew install cmake opencv git</code></pre>
+
+  <h2>2. Clone the Repository</h2>
+  <pre><code>git clone https://github.com/openeggbert/sprite-utils.git
+cd sprite-utils</code></pre>
+
+  <h2>3. Configure the Build</h2>
+  <pre><code>cmake -B build -DCMAKE_BUILD_TYPE=Release</code></pre>
+  <p>Expected output includes lines like:</p>
+  <pre><code>-- Found OpenCV: /usr (found version "4.x.x")
+-- Configuring done
+-- Build files have been written to: .../sprite-utils/build</code></pre>
+
+  <h2>4. Compile</h2>
+  <pre><code>cmake --build build --parallel</code></pre>
+  <p>On success, the binary is at <code>build/sprite_utils</code>.</p>
+
+  <h2>5. Verify</h2>
+  <pre><code>./build/sprite_utils version
+# Expected: Sprite Utils 0.0.0-SNAPSHOT</code></pre>
+
+  <h2>Troubleshooting</h2>
+  <h3>OpenCV Not Found</h3>
+  <pre><code>cmake -B build \
+  -DOpenCV_DIR=/path/to/opencv/lib/cmake/opencv4</code></pre>
+
+  <h3>C++23 Error</h3>
+  <p>Upgrade your compiler: GCC ≥ 13 or Clang ≥ 17 is required.</p>
+
+  <h3>Clean Build</h3>
+  <pre><code>rm -rf build
+cmake -B build -DCMAKE_BUILD_TYPE=Release
+cmake --build build</code></pre>
+
+  <div class="page-nav">
+    <a class="page-nav-link" href="index.html">
+      <span class="page-nav-label">Up</span>
+      All Tutorials
+    </a>
+    <a class="page-nav-link next" href="running.html">
+      <span class="page-nav-label">Next</span>
+      Running
+    </a>
+  </div>
+</main>
+</div>
+<footer>sprite-utils documentation &mdash; MIT Licence &mdash; Robert Vokac</footer>
+</body>
+</html>

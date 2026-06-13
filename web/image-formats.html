@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Formats — sprite-utils</title>
+<link rel="stylesheet" href="assets/style.css">
+<script src="assets/script.js"></script>
+</head>
+<body>
+<nav class="topnav">
+  <a class="topnav-brand" href="index.html">sprite<span>-utils</span></a>
+  <ul class="topnav-links">
+    <li><a href="overview.html">Overview</a></li>
+    <li><a href="getting-started.html">Getting Started</a></li>
+    <li><a href="command-line.html">CLI</a></li>
+    <li><a href="api/index.html">API</a></li>
+  </ul>
+  <button class="theme-toggle" id="theme-toggle">☾ Dark</button>
+</nav>
+<div class="page-wrapper">
+<aside class="sidebar">
+  <div class="sidebar-section"><p class="sidebar-heading">Introduction</p><nav><ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="overview.html">Overview</a></li>
+    <li><a href="getting-started.html">Getting Started</a></li>
+  </ul></nav></div>
+  <div class="sidebar-section"><p class="sidebar-heading">Build &amp; Usage</p><nav><ul>
+    <li><a href="build.html">Build</a></li>
+    <li><a href="usage.html">Usage</a></li>
+    <li><a href="command-line.html">Command-Line Reference</a></li>
+    <li><a href="configuration.html">Configuration</a></li>
+    <li><a href="examples.html">Examples</a></li>
+  </ul></nav></div>
+  <div class="sidebar-section"><p class="sidebar-heading">Concepts</p><nav><ul>
+    <li><a href="sprite-processing.html">Sprite Processing</a></li>
+    <li><a href="image-formats.html" class="active">Image Formats</a></li>
+    <li><a href="file-formats.html">File Formats</a></li>
+    <li><a href="project-structure.html">Project Structure</a></li>
+    <li><a href="architecture.html">Architecture</a></li>
+  </ul></nav></div>
+  <div class="sidebar-section"><p class="sidebar-heading">Modules</p><nav><ul>
+    <li><a href="modules/index.html">All Modules</a></li>
+    <li><a href="modules/draw-command.html">DrawCommand</a></li>
+    <li><a href="modules/sprite-sheet.html">SpriteSheet</a></li>
+    <li><a href="modules/args-options.html">Args &amp; Options</a></li>
+    <li><a href="modules/utils.html">Utils</a></li>
+  </ul></nav></div>
+  <div class="sidebar-section"><p class="sidebar-heading">API / Classes</p><nav><ul>
+    <li><a href="api/index.html">API Index</a></li>
+    <li><a href="classes/index.html">All Classes</a></li>
+  </ul></nav></div>
+  <div class="sidebar-section"><p class="sidebar-heading">Internals</p><nav><ul>
+    <li><a href="internals/index.html">Internals Overview</a></li>
+    <li><a href="internals/startup-flow.html">Startup Flow</a></li>
+    <li><a href="internals/csv-parsing.html">CSV Parsing</a></li>
+    <li><a href="internals/image-pipeline.html">Image Pipeline</a></li>
+    <li><a href="internals/bmp-handling.html">BMP Handling</a></li>
+  </ul></nav></div>
+  <div class="sidebar-section"><p class="sidebar-heading">Tutorials</p><nav><ul>
+    <li><a href="tutorials/index.html">All Tutorials</a></li>
+    <li><a href="tutorials/building.html">Building</a></li>
+    <li><a href="tutorials/running.html">Running</a></li>
+    <li><a href="tutorials/csv-format.html">CSV Format</a></li>
+    <li><a href="tutorials/draw-command.html">Using draw</a></li>
+  </ul></nav></div>
+  <div class="sidebar-section"><p class="sidebar-heading">Development</p><nav><ul>
+    <li><a href="development/index.html">Developer Guide</a></li>
+    <li><a href="development/coding-style.html">Coding Style</a></li>
+    <li><a href="development/debugging.html">Debugging</a></li>
+    <li><a href="development/contributing.html">Contributing</a></li>
+    <li><a href="development/known-issues.html">Known Issues</a></li>
+  </ul></nav></div>
+  <div class="sidebar-section"><p class="sidebar-heading">Reference</p><nav><ul>
+    <li><a href="known-limitations.html">Known Limitations</a></li>
+    <li><a href="roadmap.html">Roadmap</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+  </ul></nav></div>
+</aside>
+<main class="main-content">
+  <nav class="breadcrumbs">
+    <a href="index.html">Home</a> <span>/</span> Image Formats
+  </nav>
+
+  <h1>Image Formats</h1>
+  <p>
+    sprite-utils uses <strong>OpenCV</strong> for all image I/O but implements custom write paths
+    for specific bit-depths to preserve the original format. This page documents exactly what is
+    handled and how.
+  </p>
+
+  <h2>Read Path</h2>
+  <p>
+    All images are loaded with <code>cv::imread(path, cv::IMREAD_UNCHANGED)</code>.
+    If the image is single-channel (grayscale), it is immediately converted to BGR with
+    <code>cv::cvtColor(..., cv::COLOR_GRAY2BGR)</code> before processing.
+  </p>
+
+  <h2>Write Path — Decision Logic</h2>
+  <p>
+    After drawing, the save path depends on the file extension and the original bit-depth
+    (read from the BMP header before loading via OpenCV):
+  </p>
+  <pre><code>if extension == ".blp"    → writeBmp16BGR565()   [always RGB565]
+else if bpp == 16         → writeBmp16BGR565()   [preserve 16-bit]
+else if bpp == 8          → cv::imwrite()        [OpenCV handles]
+else                      → cv::imwrite()        [OpenCV handles]</code></pre>
+  <p>Source: <code>src/DrawCommand.cpp</code>, <code>DrawCommand::run()</code></p>
+
+  <h2>Supported Formats</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Extension</th><th>Read</th><th>Write</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><code>.bmp</code> (16-bit RGB565)</td>
+        <td>OpenCV</td>
+        <td>Custom writer</td>
+        <td>Original bit-depth detected from BMP header offset 28. Written as BI_BITFIELDS BMP with RGB565 masks.</td>
+      </tr>
+      <tr>
+        <td><code>.bmp</code> (8-bit grayscale)</td>
+        <td>OpenCV</td>
+        <td>OpenCV</td>
+        <td>After detection, delegated to <code>cv::imwrite</code>.</td>
+      </tr>
+      <tr>
+        <td><code>.bmp</code> (other depths)</td>
+        <td>OpenCV</td>
+        <td>OpenCV</td>
+        <td>Delegated to <code>cv::imwrite</code>.</td>
+      </tr>
+      <tr>
+        <td><code>.blp</code></td>
+        <td>OpenCV</td>
+        <td>Custom writer (RGB565)</td>
+        <td>BLP is treated as a renamed BMP. Always written back as 16-bit RGB565. This matches the Open Eggbert asset format.</td>
+      </tr>
+      <tr>
+        <td><code>.png</code>, <code>.jpg</code>, etc.</td>
+        <td>OpenCV</td>
+        <td>OpenCV</td>
+        <td>Any format OpenCV supports can be read and written. Bit-depth check only applies to BMP/BLP.</td>
+      </tr>
+    </tbody>
+  </table></div>
+
+  <h2>BMP 16-bit RGB565 — Custom Writer</h2>
+  <p>
+    Implemented in <code>DrawCommand::writeBmp16BGR565()</code> (<code>src/DrawCommand.cpp</code>).
+    This function:
+  </p>
+  <ol>
+    <li>Accepts a BGR8 <code>cv::Mat</code>.</li>
+    <li>Converts each pixel to RGB565: R=5 bits, G=6 bits, B=5 bits.</li>
+    <li>Writes a valid BMP file with <code>BI_BITFIELDS</code> compression (compression type 3) and the correct RGB565 masks.</li>
+    <li>Stores rows bottom-up as per the BMP specification.</li>
+    <li>Uses 4-byte row alignment.</li>
+  </ol>
+
+  <h3>RGB565 Encoding</h3>
+  <pre><code>uint16_t b5 = (B &gt;&gt; 3) &amp; 0x1F;
+uint16_t g6 = (G &gt;&gt; 2) &amp; 0x3F;
+uint16_t r5 = (R &gt;&gt; 3) &amp; 0x1F;
+uint16_t rgb565 = (r5 &lt;&lt; 11) | (g6 &lt;&lt; 5) | b5;</code></pre>
+  <p>Masks in the BMP header: R=<code>0xF800</code>, G=<code>0x07E0</code>, B=<code>0x001F</code>.</p>
+
+  <h2>BMP Bit-Depth Detection</h2>
+  <p>
+    Implemented in <code>DrawCommand::readBmpBpp()</code> (<code>src/DrawCommand.cpp</code>).
+  </p>
+  <p>
+    Reads offset 28 of the BMP file header (<code>biBitCount</code> field).
+    Handles big-endian byte swapping via <code>#if __BYTE_ORDER__ == __ORDER_BIG_ENDIAN__</code>.
+    Returns a <code>uint16_t</code> bit count (e.g. 16, 8, 24, 32).
+  </p>
+  <p>
+    If the BMP header is shorter than 54 bytes, or the signature is not <code>BM</code>,
+    a <code>SpriteUtilsException</code> is thrown.
+  </p>
+
+  <h2>Sample Images in Repository</h2>
+  <p>The repository root contains two PNG sample images:</p>
+  <ul>
+    <li><code>numbers.png</code> — small digit font reference (3×5 pixel digits)</li>
+    <li><code>numbers_double_sized.png</code> — large digit font reference (10×6 pixel digits)</li>
+  </ul>
+  <p>These are visual references for the built-in pixel fonts used by the draw command's number rendering. They are not used by the code at runtime.</p>
+
+  <div class="callout note">
+    <p class="callout-title">Needs Verification</p>
+    <p>The exact behaviour when OpenCV is given a BMP file with an unsupported or unusual bit-depth
+    (e.g. 1-bit or 4-bit) is not confirmed from the source. It would likely fall through to the
+    OpenCV default path, but the output quality is unverified.</p>
+  </div>
+
+  <div class="page-nav">
+    <a class="page-nav-link" href="sprite-processing.html">
+      <span class="page-nav-label">Previous</span>
+      Sprite Processing
+    </a>
+    <a class="page-nav-link next" href="file-formats.html">
+      <span class="page-nav-label">Next</span>
+      File Formats
+    </a>
+  </div>
+</main>
+</div>
+<footer>sprite-utils documentation &mdash; MIT Licence &mdash; Robert Vokac</footer>
+</body>
+</html>

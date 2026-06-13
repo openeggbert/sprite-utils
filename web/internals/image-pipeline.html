@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Pipeline — sprite-utils Internals</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/script.js"></script>
+</head>
+<body>
+<nav class="topnav">
+  <a class="topnav-brand" href="../index.html">sprite<span>-utils</span></a>
+  <ul class="topnav-links">
+    <li><a href="../overview.html">Overview</a></li>
+    <li><a href="../getting-started.html">Getting Started</a></li>
+    <li><a href="../command-line.html">CLI</a></li>
+    <li><a href="../api/index.html">API</a></li>
+  </ul>
+  <button class="theme-toggle" id="theme-toggle">☾ Dark</button>
+</nav>
+<div class="page-wrapper">
+<aside class="sidebar">
+  <div class="sidebar-section"><p class="sidebar-heading">Internals</p><nav><ul>
+    <li><a href="index.html">Internals Overview</a></li>
+    <li><a href="startup-flow.html">Startup Flow</a></li>
+    <li><a href="csv-parsing.html">CSV Parsing</a></li>
+    <li><a href="image-pipeline.html" class="active">Image Pipeline</a></li>
+    <li><a href="bmp-handling.html">BMP Handling</a></li>
+  </ul></nav></div>
+  <div class="sidebar-section"><p class="sidebar-heading">Navigation</p><nav><ul>
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../sprite-processing.html">Sprite Processing</a></li>
+  </ul></nav></div>
+</aside>
+<main class="main-content">
+  <nav class="breadcrumbs">
+    <a href="../index.html">Home</a> <span>/</span>
+    <a href="index.html">Internals</a> <span>/</span> Image Pipeline
+  </nav>
+
+  <h1>Image Pipeline</h1>
+  <p><strong>Source:</strong> <code>src/DrawCommand.cpp</code>, <code>DrawCommand::run()</code></p>
+
+  <h2>Overview</h2>
+  <p>The pipeline runs once per file in the working directory. Here is the annotated pseudocode:</p>
+
+  <pre><code>DrawCommand::run(SpriteUtilsArgs args):
+  opt = SpriteUtilsOptions(args)
+  workingDir = opt.getWorkingDirectory()
+  spriteSheet = SpriteSheet(opt.getSpriteSheetPath())
+
+  for each entry in directory_iterator(workingDir):
+    if not regular_file: continue
+    imageFile = entry.path()
+
+    // File name filter
+    if opt.getFileName() is set
+      AND imageFile.filename() != opt.getFileName(): continue
+
+    // Skip backup files
+    if filename.ends_with(".backup"): continue
+
+    // Backup management
+    backup = imageFile + ".backup"
+    if backup exists:
+      remove(imageFile)
+      copyFile(backup → imageFile)   // restore clean original
+    else:
+      copyFile(imageFile → backup)   // create first backup
+
+    // Bit-depth detection (BMP/BLP specific)
+    bpp = readBmpBpp(imageFile)
+
+    // Load image into OpenCV Mat
+    img = cv::imread(imageFile, IMREAD_UNCHANGED)
+    if img.empty(): throw error
+
+    // Grayscale → BGR conversion
+    if img.channels() == 1:
+      cvtColor(img, img, COLOR_GRAY2BGR)
+
+    // Get sprite rows for this file
+    rows = spriteSheet.getSpriteSheetRows(filename)
+    if rows.empty():
+      if file-name filter active AND matched: break
+      else: continue
+
+    // Row filter
+    if opt.getRow() is set:
+      filter rows to only those with matching row number
+
+    // Draw annotations
+    for each row in todo:
+      doubleSize = opt.isNumberDoubleSized()
+      if doubleSize AND row.width &lt; 23: doubleSize = false
+
+      if opt.isDrawNumberEnabled():
+        endX = row.x + row.width - 1
+        endY = row.y + row.height - 1
+        drawNumber(img, row.numberPerSheet, endX-2, endY-1, doubleSize, opt)
+
+      col = toScalar(opt.getRectangleColor())
+      rc = Rect(row.x, row.y, max(1, row.width), max(1, row.height))
+      drawDashedRect(img, rc, col)
+
+    // Save preserving original bit-depth
+    ext = lowercase(imageFile.extension())
+    if ext == ".blp":          writeBmp16BGR565(imageFile, img)
+    else if bpp == 16:         writeBmp16BGR565(imageFile, img)
+    else if bpp == 8:          cv::imwrite(imageFile, img)
+    else:                      cv::imwrite(imageFile, img)
+
+    // Stop early if single-file mode
+    if file-name filter active AND matched: break</code></pre>
+
+  <h2>Key Observations</h2>
+  <ul>
+    <li>Files with no matching CSV rows are silently skipped (not an error).</li>
+    <li>The <code>readBmpBpp()</code> call is made for every file regardless of extension; it will throw if the file is not a valid BMP. For non-BMP files (PNG, JPEG), this means the function will throw because the file won't have a <code>BM</code> signature. <span class="badge badge-yellow">Needs verification</span> — in practice, the code may crash or silently fall through depending on OpenCV error handling before this call.</li>
+    <li>The minimum rectangle size is 1×1 pixel (<code>max(1, width)</code> and <code>max(1, height)</code>).</li>
+    <li>Number positioning: right edge at <code>x + width - 3</code>, bottom edge at <code>y + height - 2</code>.</li>
+  </ul>
+
+  <div class="callout warn">
+    <p class="callout-title">Non-BMP File Handling</p>
+    <p>The <code>readBmpBpp()</code> function is called on every file before <code>cv::imread</code>.
+    For non-BMP files, it will throw because the BMP signature check fails.
+    This means non-BMP image files in the working directory that have CSV entries may cause the
+    tool to terminate with an exception rather than processing them through OpenCV.
+    This appears to be a bug. <span class="badge badge-yellow">Needs verification</span></p>
+  </div>
+
+  <div class="page-nav">
+    <a class="page-nav-link" href="csv-parsing.html">
+      <span class="page-nav-label">Previous</span>
+      CSV Parsing
+    </a>
+    <a class="page-nav-link next" href="bmp-handling.html">
+      <span class="page-nav-label">Next</span>
+      BMP Handling
+    </a>
+  </div>
+</main>
+</div>
+<footer>sprite-utils documentation &mdash; MIT Licence &mdash; Robert Vokac</footer>
+</body>
+</html>

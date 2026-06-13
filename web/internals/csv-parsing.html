@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSV Parsing — sprite-utils Internals</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/script.js"></script>
+</head>
+<body>
+<nav class="topnav">
+  <a class="topnav-brand" href="../index.html">sprite<span>-utils</span></a>
+  <ul class="topnav-links">
+    <li><a href="../overview.html">Overview</a></li>
+    <li><a href="../getting-started.html">Getting Started</a></li>
+    <li><a href="../command-line.html">CLI</a></li>
+    <li><a href="../api/index.html">API</a></li>
+  </ul>
+  <button class="theme-toggle" id="theme-toggle">☾ Dark</button>
+</nav>
+<div class="page-wrapper">
+<aside class="sidebar">
+  <div class="sidebar-section"><p class="sidebar-heading">Internals</p><nav><ul>
+    <li><a href="index.html">Internals Overview</a></li>
+    <li><a href="startup-flow.html">Startup Flow</a></li>
+    <li><a href="csv-parsing.html" class="active">CSV Parsing</a></li>
+    <li><a href="image-pipeline.html">Image Pipeline</a></li>
+    <li><a href="bmp-handling.html">BMP Handling</a></li>
+  </ul></nav></div>
+  <div class="sidebar-section"><p class="sidebar-heading">Navigation</p><nav><ul>
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../file-formats.html">File Formats</a></li>
+  </ul></nav></div>
+</aside>
+<main class="main-content">
+  <nav class="breadcrumbs">
+    <a href="../index.html">Home</a> <span>/</span>
+    <a href="index.html">Internals</a> <span>/</span> CSV Parsing
+  </nav>
+
+  <h1>CSV Parsing</h1>
+  <p><strong>Source:</strong> <code>src/SpriteSheet.cpp</code>, <code>src/SpriteSheetRow.cpp</code></p>
+
+  <h2>SpriteSheet Constructor Flow</h2>
+  <pre><code>SpriteSheet(path)
+  1. text = Utils::readTextFromFile(path)
+  2. Create istringstream from text
+  3. getline → skip header line
+  4. Loop: getline each line
+     if line contains "skipskip" → break
+     processLine(line, rows)
+  5. saveComputedFile(path, text, rows)</code></pre>
+
+  <h2>processLine(line, rows)</h2>
+  <pre><code>void SpriteSheet::processLine(const string&amp; line, vector&lt;SpriteSheetRow&gt;&amp; rows)
+  1. Parse SpriteSheetRow from line (CSV split by ";")
+  2. validateRow(row)         // validate file context
+  3. Height negation logic:   // multi-column rows
+     if column &gt; 1 AND previous exists
+        AND abs(height) &gt;= abs(prev.height)
+        AND (column &gt; 2 ? both non-zero heights : false)
+       → row.height = -row.height
+  4. updateSpriteSheetRow(row) // compute missing x and height
+  5. rows.push_back(row)
+  6. updateMap(row)
+  7. Print row to stdout</code></pre>
+
+  <h2>SpriteSheetRow Constructor (CSV parsing)</h2>
+  <pre><code>SpriteSheetRow(csvLine)
+  cols = Utils::split(csvLine, ";")
+  if cols.size() &lt; 10 → throw invalid_argument
+  file     = cols[0]
+  group    = cols[1]
+  numberInGroup = stoi(cols[2])
+  row      = stoi(cols[3])
+  column   = stoi(cols[4])
+  x        = parseOptionalInt(cols[5]).value_or(-1)  // -1 = compute later
+  y        = stoi(cols[6])
+  width    = stoi(cols[7])
+  height   = (empty or "0") ? 0 : stoi(cols[8])
+  notes    = cols[9] if exists else ""
+  tags     = cols[10] if exists else ""
+  numberPerSheet = stoi(cols[11]) if exists else 0
+  if column &gt; 1: height = -height  // encode as negative for multi-column</code></pre>
+
+  <h2>updateSpriteSheetRow(row)</h2>
+  <pre><code>if row.x == -1:
+    if column == 1: row.x = 0
+    else:           row.x = lastSpriteSheetRow.x + lastSpriteSheetRow.width
+
+if row.height &lt;= 0:
+    row.height = lastSpriteSheetRow.height + (-row.height)
+    // (-row.height) = delta from previous height
+
+lastSpriteSheetRow = row  // save as static for next iteration</code></pre>
+
+  <h2>validateRow(row)</h2>
+  <pre><code>if lastSpriteSheetRow exists AND row.file != lastSpriteSheetRow.file:
+    lastSpriteSheetRow.reset()  // new file context
+
+if !lastSpriteSheetRow:
+    validateFirstRow(row)       // must be row==1, col==1
+else:
+    validateSubsequentRow(row)  // must be sequential</code></pre>
+
+  <h2>validateFirstRow</h2>
+  <pre><code>if row.row != 1 OR row.column != 1:
+    throw SpriteUtilsException("Invalid initial row or column for file " + file)
+row.numberPerSheet = 1</code></pre>
+
+  <h2>validateSubsequentRow</h2>
+  <pre><code>row.numberPerSheet = lastSpriteSheetRow.numberPerSheet + 1
+if row.row &gt; lastSpriteSheetRow.row:
+    if row.row != lastSpriteSheetRow.row + 1: throw  // non-sequential row jump
+elif row.row &lt; lastSpriteSheetRow.row:
+    throw  // going backwards
+else (same row):
+    if row.column != lastSpriteSheetRow.column + 1: throw  // non-sequential column</code></pre>
+
+  <h2>Height Encoding Convention</h2>
+  <p>
+    In the CSV, for column &gt; 1, the <code>height</code> field is initially negated by the constructor
+    (<code>if column &gt; 1: height = -height</code>). Then in <code>processLine</code>, if the negated
+    height (absolute) is &ge; the previous height and column &gt; 2, it is negated again.
+    This double-negation mechanism allows encoding height as a delta relative to the previous row.
+    It is non-obvious and represents a compact encoding chosen for the CSV format.
+  </p>
+
+  <div class="page-nav">
+    <a class="page-nav-link" href="startup-flow.html">
+      <span class="page-nav-label">Previous</span>
+      Startup Flow
+    </a>
+    <a class="page-nav-link next" href="image-pipeline.html">
+      <span class="page-nav-label">Next</span>
+      Image Pipeline
+    </a>
+  </div>
+</main>
+</div>
+<footer>sprite-utils documentation &mdash; MIT Licence &mdash; Robert Vokac</footer>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Known Issues — sprite-utils Development</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/script.js"></script>
+</head>
+<body>
+<nav class="topnav">
+  <a class="topnav-brand" href="../index.html">sprite<span>-utils</span></a>
+  <ul class="topnav-links">
+    <li><a href="../overview.html">Overview</a></li>
+    <li><a href="../getting-started.html">Getting Started</a></li>
+    <li><a href="../command-line.html">CLI</a></li>
+    <li><a href="../api/index.html">API</a></li>
+  </ul>
+  <button class="theme-toggle" id="theme-toggle">☾ Dark</button>
+</nav>
+<div class="page-wrapper">
+<aside class="sidebar">
+  <div class="sidebar-section"><p class="sidebar-heading">Development</p><nav><ul>
+    <li><a href="index.html">Developer Guide</a></li>
+    <li><a href="coding-style.html">Coding Style</a></li>
+    <li><a href="debugging.html">Debugging</a></li>
+    <li><a href="contributing.html">Contributing</a></li>
+    <li><a href="known-issues.html" class="active">Known Issues</a></li>
+  </ul></nav></div>
+</aside>
+<main class="main-content">
+  <nav class="breadcrumbs">
+    <a href="../index.html">Home</a> <span>/</span>
+    <a href="index.html">Developer Guide</a> <span>/</span> Known Issues
+  </nav>
+
+  <h1>Known Issues</h1>
+  <p>Code quality issues and bugs identified from reading the source. None are confirmed by a test suite.</p>
+
+  <h2>Bugs</h2>
+
+  <div class="callout danger">
+    <p class="callout-title">readBmpBpp Called on Non-BMP Files</p>
+    <p>
+      In <code>DrawCommand::run()</code>, <code>readBmpBpp(imageFile)</code> is called for every
+      file in the working directory before checking the extension. If the directory contains
+      non-BMP files (e.g., PNG, JPEG), the function will throw because the BMP signature check fails.
+      This prevents processing any non-BMP file even if OpenCV supports it.
+      <br><strong>Source:</strong> <code>src/DrawCommand.cpp</code>, <code>DrawCommand::run()</code>
+    </p>
+  </div>
+
+  <div class="callout danger">
+    <p class="callout-title">Global Static State in SpriteSheet</p>
+    <p>
+      <code>SpriteSheet::lastX</code>, <code>::lastWidth</code>, <code>::lastHeight</code> are
+      static class members; and <code>lastSpriteSheetRow</code> is a static local at file scope.
+      Creating two <code>SpriteSheet</code> instances or reusing the class would produce corrupt results.
+      <br><strong>Source:</strong> <code>src/SpriteSheet.cpp</code> lines 33–36
+    </p>
+  </div>
+
+  <h2>Code Quality Issues</h2>
+
+  <div class="callout warn">
+    <p class="callout-title">const_cast in SpriteUtils::run()</p>
+    <p>
+      <code>SpriteUtilsArgs</code> constructor takes <code>vector&lt;string&gt;&amp;</code> (non-const),
+      but <code>SpriteUtils::run(const vector&lt;string&gt;&amp;)</code> must <code>const_cast</code>
+      to pass it. The constructor does not modify the vector and should accept <code>const&amp;</code>.
+      <br><strong>Source:</strong> <code>src/SpriteUtils.cpp</code> line 35
+    </p>
+  </div>
+
+  <div class="callout warn">
+    <p class="callout-title">Outdated Help Text</p>
+    <p>
+      The text printed by <code>sprite_utils help</code> references option names that don't exist
+      (<code>color</code>, <code>files</code>, <code>groups</code>, <code>positon</code> [sic],
+      <code>number-per-group</code>). The actual options use <code>--</code> prefixes and different names.
+      <br><strong>Source:</strong> <code>src/HelpCommand.cpp</code>
+    </p>
+  </div>
+
+  <div class="callout warn">
+    <p class="callout-title">SpriteUtilsCommand Enum Unused</p>
+    <p>
+      The enum in <code>include/SpriteUtilsCommand.h</code> defines <code>DRAW, RESTORE, EXTRACT, GIFS, HELP, VERSION</code>
+      but is not used anywhere in the dispatcher (<code>SpriteUtils.cpp</code>).
+      The dispatcher uses raw string comparison.
+    </p>
+  </div>
+
+  <div class="callout warn">
+    <p class="callout-title">drawDigitBlock Background Uses Same Color Regardless</p>
+    <p>
+      In <code>DrawCommand::drawDigitBlock()</code>, the background colour is computed as:
+      <code>cv::Scalar bg = backgroundWhite ? cv::Scalar(255,255,255) : cv::Scalar(255,255,255);</code>
+      Both branches are identical — the <code>backgroundWhite</code> parameter has no effect.
+      <br><strong>Source:</strong> <code>src/DrawCommand.cpp</code> line 323
+    </p>
+  </div>
+
+  <div class="callout warn">
+    <p class="callout-title">No Tests</p>
+    <p>There is no test suite. Any change to parsing, computation, or drawing logic cannot be
+    automatically verified. All testing is manual.</p>
+  </div>
+
+  <div class="callout warn">
+    <p class="callout-title">validateFirstRow Takes Non-Const Reference via const_cast</p>
+    <p>
+      <code>validateRow(const SpriteSheetRow&amp;)</code> calls
+      <code>validateFirstRow(const_cast&lt;SpriteSheetRow&amp;&gt;(spriteSheetRow))</code>
+      because <code>validateFirstRow</code> needs to modify the row (set numberPerSheet).
+      Better design would take a non-const parameter from the start.
+      <br><strong>Source:</strong> <code>src/SpriteSheet.cpp</code> line 128
+    </p>
+  </div>
+</main>
+</div>
+<footer>sprite-utils documentation &mdash; MIT Licence &mdash; Robert Vokac</footer>
+</body>
+</html>

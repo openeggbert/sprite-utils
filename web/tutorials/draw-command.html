@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Using draw — sprite-utils Tutorials</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/script.js"></script>
+</head>
+<body>
+<nav class="topnav">
+  <a class="topnav-brand" href="../index.html">sprite<span>-utils</span></a>
+  <ul class="topnav-links">
+    <li><a href="../overview.html">Overview</a></li>
+    <li><a href="../getting-started.html">Getting Started</a></li>
+    <li><a href="../command-line.html">CLI</a></li>
+    <li><a href="../api/index.html">API</a></li>
+  </ul>
+  <button class="theme-toggle" id="theme-toggle">☾ Dark</button>
+</nav>
+<div class="page-wrapper">
+<aside class="sidebar">
+  <div class="sidebar-section"><p class="sidebar-heading">Tutorials</p><nav><ul>
+    <li><a href="index.html">All Tutorials</a></li>
+    <li><a href="building.html">Building</a></li>
+    <li><a href="running.html">Running</a></li>
+    <li><a href="csv-format.html">CSV Format</a></li>
+    <li><a href="draw-command.html" class="active">Using draw</a></li>
+  </ul></nav></div>
+  <div class="sidebar-section"><p class="sidebar-heading">Reference</p><nav><ul>
+    <li><a href="../command-line.html">Command-Line Reference</a></li>
+    <li><a href="../sprite-processing.html">Sprite Processing</a></li>
+  </ul></nav></div>
+</aside>
+<main class="main-content">
+  <nav class="breadcrumbs">
+    <a href="../index.html">Home</a> <span>/</span>
+    <a href="index.html">Tutorials</a> <span>/</span> Using draw
+  </nav>
+
+  <h1>Tutorial: Using the draw Command</h1>
+
+  <h2>Goal</h2>
+  <p>Annotate all sprite images in a directory with dashed rectangles so you can visually verify
+  the sprite coordinates defined in your CSV file.</p>
+
+  <h2>Prerequisites</h2>
+  <ul>
+    <li>Built binary at <code>./build/sprite_utils</code> (see <a href="building.html">Building</a>)</li>
+    <li>A directory of BMP image files</li>
+    <li>A <code>spritesheet.csv</code> file (see <a href="csv-format.html">CSV Format Tutorial</a>)</li>
+  </ul>
+
+  <h2>Step 1: Run draw</h2>
+  <pre><code>./build/sprite_utils draw \
+  --dir /path/to/sprites \
+  --sprite-sheet-path /path/to/spritesheet.csv</code></pre>
+
+  <h2>Step 2: Inspect the Images</h2>
+  <p>Open the annotated images in any image viewer. You should see:</p>
+  <ul>
+    <li>Dashed red rectangles around each sprite position</li>
+    <li>Small numbers in the bottom-right of each rectangle (the sprite's sequence number)</li>
+  </ul>
+  <p>
+    The backup files (<code>*.backup</code>) preserve the clean originals.
+    The computed CSV (<code>spritesheet.csv.computed.csv</code>) shows all resolved coordinates.
+  </p>
+
+  <h2>Step 3: Fix and Re-run</h2>
+  <p>If a rectangle is wrong, edit <code>spritesheet.csv</code> and re-run the same command.
+  The tool automatically restores from backup before re-annotating.</p>
+
+  <h2>Customizing Output</h2>
+
+  <h3>Change Rectangle Color to Green</h3>
+  <pre><code>./build/sprite_utils draw \
+  --dir /path/to/sprites \
+  --rectangle-color 0,255,0</code></pre>
+
+  <h3>Process Only One File</h3>
+  <pre><code>./build/sprite_utils draw \
+  --dir /path/to/sprites \
+  --file-name player.bmp</code></pre>
+
+  <h3>Draw Only Row 2</h3>
+  <pre><code>./build/sprite_utils draw \
+  --dir /path/to/sprites \
+  --file-name player.bmp \
+  --row 2</code></pre>
+
+  <h3>Disable Number Drawing</h3>
+  <pre><code>./build/sprite_utils draw \
+  --dir /path/to/sprites \
+  --draw-number false</code></pre>
+
+  <h3>Large Font Numbers (for big sprites)</h3>
+  <pre><code>./build/sprite_utils draw \
+  --dir /path/to/sprites \
+  --double-sized-number true</code></pre>
+  <p>Sprites narrower than 23 pixels automatically use the small font.</p>
+
+  <h2>Understanding Backup Behavior</h2>
+  <p>First run:</p>
+  <pre><code>player.bmp        → annotated (dashed rects drawn)
+player.bmp.backup → copy of original (clean)</code></pre>
+  <p>Second run (after editing CSV):</p>
+  <pre><code>player.bmp.backup → exists → restore to player.bmp
+player.bmp        → re-annotated with new coordinates</code></pre>
+
+  <div class="callout warn">
+    <p class="callout-title">Don't Delete Backups</p>
+    <p>The backup files are your only copy of the original images after the first run.
+    Keep them until you are confident the CSV is correct.</p>
+  </div>
+
+  <div class="page-nav">
+    <a class="page-nav-link" href="csv-format.html">
+      <span class="page-nav-label">Previous</span>
+      CSV Format
+    </a>
+  </div>
+</main>
+</div>
+<footer>sprite-utils documentation &mdash; MIT Licence &mdash; Robert Vokac</footer>
+</body>
+</html>

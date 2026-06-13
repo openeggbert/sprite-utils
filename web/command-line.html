@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Command-Line Reference — sprite-utils</title>
+<link rel="stylesheet" href="assets/style.css">
+<script src="assets/script.js"></script>
+</head>
+<body>
+<nav class="topnav">
+  <a class="topnav-brand" href="index.html">sprite<span>-utils</span></a>
+  <ul class="topnav-links">
+    <li><a href="overview.html">Overview</a></li>
+    <li><a href="getting-started.html">Getting Started</a></li>
+    <li><a href="command-line.html">CLI</a></li>
+    <li><a href="api/index.html">API</a></li>
+  </ul>
+  <button class="theme-toggle" id="theme-toggle">☾ Dark</button>
+</nav>
+<div class="page-wrapper">
+<aside class="sidebar">
+  <div class="sidebar-section"><p class="sidebar-heading">Introduction</p><nav><ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="overview.html">Overview</a></li>
+    <li><a href="getting-started.html">Getting Started</a></li>
+  </ul></nav></div>
+  <div class="sidebar-section"><p class="sidebar-heading">Build &amp; Usage</p><nav><ul>
+    <li><a href="build.html">Build</a></li>
+    <li><a href="usage.html">Usage</a></li>
+    <li><a href="command-line.html" class="active">Command-Line Reference</a></li>
+    <li><a href="configuration.html">Configuration</a></li>
+    <li><a href="examples.html">Examples</a></li>
+  </ul></nav></div>
+  <div class="sidebar-section"><p class="sidebar-heading">Concepts</p><nav><ul>
+    <li><a href="sprite-processing.html">Sprite Processing</a></li>
+    <li><a href="image-formats.html">Image Formats</a></li>
+    <li><a href="file-formats.html">File Formats</a></li>
+    <li><a href="project-structure.html">Project Structure</a></li>
+    <li><a href="architecture.html">Architecture</a></li>
+  </ul></nav></div>
+  <div class="sidebar-section"><p class="sidebar-heading">Modules</p><nav><ul>
+    <li><a href="modules/index.html">All Modules</a></li>
+    <li><a href="modules/draw-command.html">DrawCommand</a></li>
+    <li><a href="modules/sprite-sheet.html">SpriteSheet</a></li>
+    <li><a href="modules/args-options.html">Args &amp; Options</a></li>
+    <li><a href="modules/utils.html">Utils</a></li>
+  </ul></nav></div>
+  <div class="sidebar-section"><p class="sidebar-heading">API / Classes</p><nav><ul>
+    <li><a href="api/index.html">API Index</a></li>
+    <li><a href="classes/index.html">All Classes</a></li>
+  </ul></nav></div>
+  <div class="sidebar-section"><p class="sidebar-heading">Internals</p><nav><ul>
+    <li><a href="internals/index.html">Internals Overview</a></li>
+    <li><a href="internals/startup-flow.html">Startup Flow</a></li>
+    <li><a href="internals/csv-parsing.html">CSV Parsing</a></li>
+    <li><a href="internals/image-pipeline.html">Image Pipeline</a></li>
+    <li><a href="internals/bmp-handling.html">BMP Handling</a></li>
+  </ul></nav></div>
+  <div class="sidebar-section"><p class="sidebar-heading">Tutorials</p><nav><ul>
+    <li><a href="tutorials/index.html">All Tutorials</a></li>
+    <li><a href="tutorials/building.html">Building</a></li>
+    <li><a href="tutorials/running.html">Running</a></li>
+    <li><a href="tutorials/csv-format.html">CSV Format</a></li>
+    <li><a href="tutorials/draw-command.html">Using draw</a></li>
+  </ul></nav></div>
+  <div class="sidebar-section"><p class="sidebar-heading">Development</p><nav><ul>
+    <li><a href="development/index.html">Developer Guide</a></li>
+    <li><a href="development/coding-style.html">Coding Style</a></li>
+    <li><a href="development/debugging.html">Debugging</a></li>
+    <li><a href="development/contributing.html">Contributing</a></li>
+    <li><a href="development/known-issues.html">Known Issues</a></li>
+  </ul></nav></div>
+  <div class="sidebar-section"><p class="sidebar-heading">Reference</p><nav><ul>
+    <li><a href="known-limitations.html">Known Limitations</a></li>
+    <li><a href="roadmap.html">Roadmap</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+  </ul></nav></div>
+</aside>
+<main class="main-content">
+  <nav class="breadcrumbs">
+    <a href="index.html">Home</a> <span>/</span> Command-Line Reference
+  </nav>
+
+  <h1>Command-Line Reference</h1>
+
+  <h2>Synopsis</h2>
+  <pre><code>sprite_utils [command] [--option value] ...</code></pre>
+
+  <p>
+    The first argument is the <strong>command name</strong>. If omitted, <code>draw</code> is assumed
+    (source: <code>src/SpriteUtilsArgs.cpp</code> line 28).
+    All subsequent arguments must be in <code>--key value</code> pairs.
+  </p>
+
+  <div class="callout note">
+    <p class="callout-title">Option Syntax</p>
+    <p>All options start with <code>--</code> and require a following value.
+    Options without a value are not supported. Boolean options accept <code>true</code> or <code>false</code>
+    as the value string.</p>
+  </div>
+
+  <h2>Available Commands</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Command</th><th>Status</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td><code>draw</code></td><td><span class="badge badge-green">Implemented</span></td><td>Draw dashed rectangles and numbers on sprite images</td></tr>
+      <tr><td><code>help</code></td><td><span class="badge badge-green">Implemented</span></td><td>Display help text</td></tr>
+      <tr><td><code>version</code></td><td><span class="badge badge-green">Implemented</span></td><td>Display version string</td></tr>
+      <tr><td><code>restore</code></td><td><span class="badge badge-yellow">Planned</span></td><td>Restore images from backups (enum defined, not wired)</td></tr>
+      <tr><td><code>extract</code></td><td><span class="badge badge-yellow">Planned</span></td><td>Extract sprites (enum defined, not wired)</td></tr>
+      <tr><td><code>gifs</code></td><td><span class="badge badge-yellow">Planned</span></td><td>GIF generation (enum defined, not wired)</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2>Command: draw</h2>
+  <p>
+    Reads the sprite-sheet CSV, iterates image files in the working directory, draws dashed rectangles
+    and optional numbers on each image, and saves the result back preserving the original bit-depth.
+  </p>
+
+  <h3>Options</h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Option</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><code>--dir</code></td>
+        <td>path string</td>
+        <td><code>.</code> (current dir)</td>
+        <td>Working directory containing image files to process. All files in this directory are iterated.</td>
+      </tr>
+      <tr>
+        <td><code>--sprite-sheet-path</code></td>
+        <td>file path</td>
+        <td><code>&lt;dir&gt;/spritesheet.csv</code></td>
+        <td>Path to the semicolon-delimited CSV sprite-sheet definition file.</td>
+      </tr>
+      <tr>
+        <td><code>--file-name</code></td>
+        <td>filename string</td>
+        <td>(process all files)</td>
+        <td>If specified, only this file (by name, not path) is processed. Processing stops immediately after.</td>
+      </tr>
+      <tr>
+        <td><code>--row</code></td>
+        <td>integer</td>
+        <td>(all rows)</td>
+        <td>If specified, only sprite rows with this row number are drawn.</td>
+      </tr>
+      <tr>
+        <td><code>--draw-number</code></td>
+        <td>boolean</td>
+        <td><code>true</code></td>
+        <td>Whether to draw the sprite sequence number inside each rectangle.</td>
+      </tr>
+      <tr>
+        <td><code>--draw-number-background</code></td>
+        <td>boolean</td>
+        <td><code>true</code></td>
+        <td>Whether to draw a white background rectangle behind the number.</td>
+      </tr>
+      <tr>
+        <td><code>--double-sized-number</code></td>
+        <td>boolean</td>
+        <td><code>false</code></td>
+        <td>If true, use the larger (10×6 pixel) digit font. Automatically falls back to small font if the sprite width is less than 23 pixels.</td>
+      </tr>
+      <tr>
+        <td><code>--rectangle-color</code></td>
+        <td>RGB string</td>
+        <td><code>255,0,0</code> (red)</td>
+        <td>Colour of the dashed rectangle border as comma-separated RGB values, e.g. <code>0,255,0</code> for green.</td>
+      </tr>
+    </tbody>
+  </table></div>
+
+  <h3>Examples</h3>
+  <pre><code># Minimal: process all files in current dir using ./spritesheet.csv
+sprite_utils draw
+
+# Specify directory and CSV
+sprite_utils draw --dir /game/assets --sprite-sheet-path /game/sprites.csv
+
+# Process only one file
+sprite_utils draw --dir /game/assets --file-name player.bmp
+
+# Only draw row 2 of sprites on player.bmp
+sprite_utils draw --dir /game/assets --file-name player.bmp --row 2
+
+# Green rectangles, no numbers
+sprite_utils draw \
+  --dir /game/assets \
+  --rectangle-color 0,255,0 \
+  --draw-number false
+
+# Double-sized numbers with no background
+sprite_utils draw \
+  --dir /game/assets \
+  --double-sized-number true \
+  --draw-number-background false</code></pre>
+
+  <h3>Output</h3>
+  <ul>
+    <li>Modified image files (in-place in <code>--dir</code>)</li>
+    <li><code>&lt;imagefile&gt;.backup</code> — backup of the original, created on first run and used for restore on subsequent runs</li>
+    <li><code>&lt;sprite-sheet-path&gt;.computed.csv</code> — computed CSV with all coordinates resolved</li>
+  </ul>
+
+  <h2>Command: help</h2>
+  <p>Prints usage information to stdout. No options required.</p>
+  <pre><code>sprite_utils help</code></pre>
+
+  <h2>Command: version</h2>
+  <p>Prints the version string to stdout.</p>
+  <pre><code>sprite_utils version
+# Output: Sprite Utils 0.0.0-SNAPSHOT</code></pre>
+
+  <h2>Error Handling</h2>
+  <p>If an unknown command is provided, sprite-utils prints:</p>
+  <pre><code>Command "xyz" is not supported.</code></pre>
+  <p>followed by the help text, then throws a <code>SpriteUtilsException</code> which propagates to main
+  and terminates the process. Exit code is non-zero in this case (standard C++ unhandled exception behaviour).</p>
+  <p>Invalid option syntax (missing value, value starting with <code>--</code>) also throws a <code>SpriteUtilsException</code>.</p>
+
+  <div class="page-nav">
+    <a class="page-nav-link" href="usage.html">
+      <span class="page-nav-label">Previous</span>
+      Usage
+    </a>
+    <a class="page-nav-link next" href="configuration.html">
+      <span class="page-nav-label">Next</span>
+      Configuration
+    </a>
+  </div>
+</main>
+</div>
+<footer>sprite-utils documentation &mdash; MIT Licence &mdash; Robert Vokac</footer>
+</body>
+</html>

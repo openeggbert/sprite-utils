@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contributing — sprite-utils Development</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/script.js"></script>
+</head>
+<body>
+<nav class="topnav">
+  <a class="topnav-brand" href="../index.html">sprite<span>-utils</span></a>
+  <ul class="topnav-links">
+    <li><a href="../overview.html">Overview</a></li>
+    <li><a href="../getting-started.html">Getting Started</a></li>
+    <li><a href="../command-line.html">CLI</a></li>
+    <li><a href="../api/index.html">API</a></li>
+  </ul>
+  <button class="theme-toggle" id="theme-toggle">☾ Dark</button>
+</nav>
+<div class="page-wrapper">
+<aside class="sidebar">
+  <div class="sidebar-section"><p class="sidebar-heading">Development</p><nav><ul>
+    <li><a href="index.html">Developer Guide</a></li>
+    <li><a href="coding-style.html">Coding Style</a></li>
+    <li><a href="debugging.html">Debugging</a></li>
+    <li><a href="contributing.html" class="active">Contributing</a></li>
+    <li><a href="known-issues.html">Known Issues</a></li>
+  </ul></nav></div>
+</aside>
+<main class="main-content">
+  <nav class="breadcrumbs">
+    <a href="../index.html">Home</a> <span>/</span>
+    <a href="index.html">Developer Guide</a> <span>/</span> Contributing
+  </nav>
+
+  <h1>Contributing</h1>
+  <p>sprite-utils is an open-source project under the MIT licence. Robert Vokac is the founder and primary author (see <code>CREDITS</code>).</p>
+
+  <h2>How to Add a New Command</h2>
+  <ol>
+    <li>
+      <p>Create the header in <code>include/</code>:</p>
+      <pre><code>// include/MyCommand.h
+#pragma once
+#include "Command.h"
+
+class MyCommand : public Command {
+public:
+    static constexpr const char* NAME = "mycommand";
+    std::string getName() const override { return NAME; }
+    std::string run(const SpriteUtilsArgs&amp; args) override;
+};</code></pre>
+    </li>
+    <li>
+      <p>Create the implementation in <code>src/</code>:</p>
+      <pre><code>// src/MyCommand.cpp
+#include "MyCommand.h"
+#include &lt;iostream&gt;
+
+std::string MyCommand::run(const SpriteUtilsArgs&amp; args) {
+    std::cout &lt;&lt; "MyCommand running\n";
+    return "";
+}</code></pre>
+    </li>
+    <li>
+      <p>Register in <code>src/SpriteUtils.cpp</code>:</p>
+      <pre><code>commandImplementations.emplace("mycommand", std::make_unique&lt;MyCommand&gt;());</code></pre>
+    </li>
+    <li>
+      <p>Add to <code>CMakeLists.txt</code>:</p>
+      <pre><code>add_executable(sprite_utils
+    ...
+    src/MyCommand.cpp
+)</code></pre>
+    </li>
+    <li>Update the help text in <code>src/HelpCommand.cpp</code>.</li>
+    <li>Add the licence header using <code>add_license_after_includes.sh</code>.</li>
+  </ol>
+
+  <h2>How to Add a New Option</h2>
+  <ol>
+    <li>The raw option is automatically available via <code>SpriteUtilsArgs::getArgumentOptional("--myoption")</code> without any code changes.</li>
+    <li>Add a typed accessor to <code>SpriteUtilsOptions</code>:</li>
+  </ol>
+  <pre><code>// in SpriteUtilsOptions.h
+bool isMyOptionEnabled() const;
+
+// in SpriteUtilsOptions.cpp
+bool SpriteUtilsOptions::isMyOptionEnabled() const {
+    return spriteUtilsArgs.getBooleanArgument("--my-option", false);
+}</code></pre>
+
+  <h2>Licence Header</h2>
+  <p>All source files must start with the MIT licence header from <code>header.txt</code>.
+  The script <code>add_license_after_includes.sh</code> can prepend this header after include statements.</p>
+
+  <h2>Code Quality Notes</h2>
+  <ul>
+    <li>No automated tests exist; manual testing is currently required.</li>
+    <li>clangd static analysis is configured via <code>.clangd</code>.</li>
+    <li>Avoid introducing global or static state unless truly necessary (see known issue with <code>SpriteSheet</code> static fields).</li>
+  </ul>
+</main>
+</div>
+<footer>sprite-utils documentation &mdash; MIT Licence &mdash; Robert Vokac</footer>
+</body>
+</html>

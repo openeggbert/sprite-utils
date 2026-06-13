@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>sprite-utils — Documentation</title>
+<link rel="stylesheet" href="assets/style.css">
+<script src="assets/script.js"></script>
+</head>
+<body>
+
+<nav class="topnav">
+  <a class="topnav-brand" href="index.html">sprite<span>-utils</span></a>
+  <ul class="topnav-links">
+    <li><a href="overview.html">Overview</a></li>
+    <li><a href="getting-started.html">Getting Started</a></li>
+    <li><a href="command-line.html">CLI</a></li>
+    <li><a href="api/index.html">API</a></li>
+  </ul>
+  <button class="theme-toggle" id="theme-toggle">☾ Dark</button>
+</nav>
+
+<div class="page-wrapper">
+<aside class="sidebar">
+  <div class="sidebar-section">
+    <p class="sidebar-heading">Introduction</p>
+    <nav><ul>
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="overview.html">Overview</a></li>
+      <li><a href="getting-started.html">Getting Started</a></li>
+    </ul></nav>
+  </div>
+  <div class="sidebar-section">
+    <p class="sidebar-heading">Build &amp; Usage</p>
+    <nav><ul>
+      <li><a href="build.html">Build</a></li>
+      <li><a href="usage.html">Usage</a></li>
+      <li><a href="command-line.html">Command-Line Reference</a></li>
+      <li><a href="configuration.html">Configuration</a></li>
+      <li><a href="examples.html">Examples</a></li>
+    </ul></nav>
+  </div>
+  <div class="sidebar-section">
+    <p class="sidebar-heading">Concepts</p>
+    <nav><ul>
+      <li><a href="sprite-processing.html">Sprite Processing</a></li>
+      <li><a href="image-formats.html">Image Formats</a></li>
+      <li><a href="file-formats.html">File Formats</a></li>
+      <li><a href="project-structure.html">Project Structure</a></li>
+      <li><a href="architecture.html">Architecture</a></li>
+    </ul></nav>
+  </div>
+  <div class="sidebar-section">
+    <p class="sidebar-heading">Modules</p>
+    <nav><ul>
+      <li><a href="modules/index.html">All Modules</a></li>
+      <li><a href="modules/draw-command.html">DrawCommand</a></li>
+      <li><a href="modules/sprite-sheet.html">SpriteSheet</a></li>
+      <li><a href="modules/args-options.html">Args &amp; Options</a></li>
+      <li><a href="modules/utils.html">Utils</a></li>
+    </ul></nav>
+  </div>
+  <div class="sidebar-section">
+    <p class="sidebar-heading">API / Classes</p>
+    <nav><ul>
+      <li><a href="api/index.html">API Index</a></li>
+      <li><a href="classes/index.html">All Classes</a></li>
+    </ul></nav>
+  </div>
+  <div class="sidebar-section">
+    <p class="sidebar-heading">Internals</p>
+    <nav><ul>
+      <li><a href="internals/index.html">Internals Overview</a></li>
+      <li><a href="internals/startup-flow.html">Startup Flow</a></li>
+      <li><a href="internals/csv-parsing.html">CSV Parsing</a></li>
+      <li><a href="internals/image-pipeline.html">Image Pipeline</a></li>
+      <li><a href="internals/bmp-handling.html">BMP Handling</a></li>
+    </ul></nav>
+  </div>
+  <div class="sidebar-section">
+    <p class="sidebar-heading">Tutorials</p>
+    <nav><ul>
+      <li><a href="tutorials/index.html">All Tutorials</a></li>
+      <li><a href="tutorials/building.html">Building</a></li>
+      <li><a href="tutorials/running.html">Running</a></li>
+      <li><a href="tutorials/csv-format.html">CSV Format</a></li>
+      <li><a href="tutorials/draw-command.html">Using draw</a></li>
+    </ul></nav>
+  </div>
+  <div class="sidebar-section">
+    <p class="sidebar-heading">Development</p>
+    <nav><ul>
+      <li><a href="development/index.html">Developer Guide</a></li>
+      <li><a href="development/coding-style.html">Coding Style</a></li>
+      <li><a href="development/debugging.html">Debugging</a></li>
+      <li><a href="development/contributing.html">Contributing</a></li>
+      <li><a href="development/known-issues.html">Known Issues</a></li>
+    </ul></nav>
+  </div>
+  <div class="sidebar-section">
+    <p class="sidebar-heading">Reference</p>
+    <nav><ul>
+      <li><a href="known-limitations.html">Known Limitations</a></li>
+      <li><a href="roadmap.html">Roadmap</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+    </ul></nav>
+  </div>
+</aside>
+
+<main class="main-content">
+  <h1>sprite-utils Documentation</h1>
+  <p>
+    <strong>sprite-utils</strong> is a C++23 command-line tool for working with sprites in game asset pipelines.
+    It reads a CSV sprite-sheet definition file, then draws labelled dashed rectangles onto source image files —
+    making it easy to visually audit sprite coordinates before cutting or exporting them.
+  </p>
+  <p>
+    It is part of the <strong>Open Eggbert</strong> / <strong>Free Eggbert</strong> game project ecosystem and is
+    authored by Robert Vokac (MIT licence, 2023–2025).
+  </p>
+
+  <div class="callout note">
+    <p class="callout-title">Note</p>
+    <p>The current version is <code>0.0.0-SNAPSHOT</code>. The project is in active development.
+    Some commands listed in source code (<code>restore</code>, <code>extract</code>, <code>gifs</code>)
+    are not yet implemented.</p>
+  </div>
+
+  <h2>Quick Start</h2>
+  <pre><code># 1. Clone the repo
+git clone https://github.com/openeggbert/sprite-utils.git
+cd sprite-utils
+
+# 2. Build with CMake (requires OpenCV)
+cmake -B build
+cmake --build build
+
+# 3. Run on your sprite directory
+./build/sprite_utils draw \
+  --dir /path/to/sprites \
+  --sprite-sheet-path /path/to/spritesheet.csv</code></pre>
+
+  <h2>Key Features</h2>
+  <ul>
+    <li>Reads sprite coordinates from a <strong>semicolon-delimited CSV</strong> sprite-sheet file.</li>
+    <li>Draws <strong>dashed coloured rectangles</strong> around each defined sprite on the source image.</li>
+    <li>Optionally draws <strong>sprite sequence numbers</strong> in a small bitmap font (single or double-sized).</li>
+    <li>Preserves the <strong>original bit-depth</strong> of BMP files (8-bit, 16-bit RGB565).</li>
+    <li>Handles <strong>BLP files</strong> as 16-bit RGB565 BMP (game-engine format).</li>
+    <li>Creates and restores <strong>automatic backups</strong> (`.backup` extension) before modifying images.</li>
+    <li>Generates a <strong><code>.computed.csv</code></strong> file with resolved coordinates.</li>
+    <li>Supports filtering by filename (<code>--file-name</code>) or row (<code>--row</code>).</li>
+  </ul>
+
+  <h2>Documentation Sections</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Section</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td><a href="overview.html">Overview</a></td><td>Project purpose, status, and context</td></tr>
+        <tr><td><a href="getting-started.html">Getting Started</a></td><td>First steps for new users</td></tr>
+        <tr><td><a href="build.html">Build</a></td><td>CMake build instructions and dependencies</td></tr>
+        <tr><td><a href="command-line.html">Command-Line Reference</a></td><td>All commands and options</td></tr>
+        <tr><td><a href="file-formats.html">File Formats</a></td><td>CSV sprite-sheet format specification</td></tr>
+        <tr><td><a href="sprite-processing.html">Sprite Processing</a></td><td>How the draw pipeline works</td></tr>
+        <tr><td><a href="image-formats.html">Image Formats</a></td><td>Supported image types and BMP bit-depths</td></tr>
+        <tr><td><a href="architecture.html">Architecture</a></td><td>Code structure and data flow</td></tr>
+        <tr><td><a href="classes/index.html">Class Reference</a></td><td>All C++ classes documented</td></tr>
+        <tr><td><a href="tutorials/index.html">Tutorials</a></td><td>Step-by-step walkthroughs</td></tr>
+        <tr><td><a href="development/index.html">Developer Guide</a></td><td>Contributing, coding style, debugging</td></tr>
+        <tr><td><a href="roadmap.html">Roadmap</a></td><td>Planned commands and improvements</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Project at a Glance</h2>
+  <div class="table-wrap">
+    <table>
+      <tbody>
+        <tr><td><strong>Language</strong></td><td>C++23</td></tr>
+        <tr><td><strong>Build system</strong></td><td>CMake ≥ 3.25.1</td></tr>
+        <tr><td><strong>Key dependency</strong></td><td>OpenCV (any recent version)</td></tr>
+        <tr><td><strong>Binary name</strong></td><td><code>sprite_utils</code></td></tr>
+        <tr><td><strong>Version</strong></td><td>0.0.0-SNAPSHOT</td></tr>
+        <tr><td><strong>Licence</strong></td><td>MIT</td></tr>
+        <tr><td><strong>Author</strong></td><td>Robert Vokac</td></tr>
+        <tr><td><strong>Platform</strong></td><td>Linux (primary), others need verification</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="page-nav">
+    <span></span>
+    <a class="page-nav-link next" href="overview.html">
+      <span class="page-nav-label">Next</span>
+      Overview
+    </a>
+  </div>
+</main>
+</div>
+
+<footer>
+  sprite-utils documentation &mdash; generated from source &mdash; MIT Licence &mdash; Robert Vokac
+</footer>
+</body>
+</html>

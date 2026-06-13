@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SpriteSheet Module — sprite-utils</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/script.js"></script>
+</head>
+<body>
+<nav class="topnav">
+  <a class="topnav-brand" href="../index.html">sprite<span>-utils</span></a>
+  <ul class="topnav-links">
+    <li><a href="../overview.html">Overview</a></li>
+    <li><a href="../getting-started.html">Getting Started</a></li>
+    <li><a href="../command-line.html">CLI</a></li>
+    <li><a href="../api/index.html">API</a></li>
+  </ul>
+  <button class="theme-toggle" id="theme-toggle">☾ Dark</button>
+</nav>
+<div class="page-wrapper">
+<aside class="sidebar">
+  <div class="sidebar-section"><p class="sidebar-heading">Introduction</p><nav><ul>
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../overview.html">Overview</a></li>
+    <li><a href="../getting-started.html">Getting Started</a></li>
+  </ul></nav></div>
+  <div class="sidebar-section"><p class="sidebar-heading">Modules</p><nav><ul>
+    <li><a href="index.html">All Modules</a></li>
+    <li><a href="draw-command.html">DrawCommand</a></li>
+    <li><a href="sprite-sheet.html" class="active">SpriteSheet</a></li>
+    <li><a href="args-options.html">Args &amp; Options</a></li>
+    <li><a href="utils.html">Utils</a></li>
+  </ul></nav></div>
+  <div class="sidebar-section"><p class="sidebar-heading">API / Classes</p><nav><ul>
+    <li><a href="../api/index.html">API Index</a></li>
+    <li><a href="../classes/index.html">All Classes</a></li>
+  </ul></nav></div>
+  <div class="sidebar-section"><p class="sidebar-heading">Reference</p><nav><ul>
+    <li><a href="../known-limitations.html">Known Limitations</a></li>
+    <li><a href="../roadmap.html">Roadmap</a></li>
+    <li><a href="../faq.html">FAQ</a></li>
+  </ul></nav></div>
+</aside>
+<main class="main-content">
+  <nav class="breadcrumbs">
+    <a href="../index.html">Home</a> <span>/</span>
+    <a href="index.html">Modules</a> <span>/</span> SpriteSheet
+  </nav>
+
+  <h1>Module: SpriteSheet</h1>
+  <p><strong>Source:</strong> <code>include/SpriteSheet.h</code>, <code>src/SpriteSheet.cpp</code>,
+  <code>include/SpriteSheetRow.h</code>, <code>src/SpriteSheetRow.cpp</code></p>
+  <p>
+    This module is responsible for reading, validating, computing, and storing the sprite-sheet
+    definition from a CSV file.
+  </p>
+
+  <h2>Classes</h2>
+
+  <h3>SpriteSheet</h3>
+  <p>Loads the CSV on construction. Validates and computes all rows. Stores them in a
+  <code>map&lt;string, vector&lt;SpriteSheetRow&gt;&gt;</code> keyed by image filename.</p>
+
+  <h4>Constructor</h4>
+  <pre><code>explicit SpriteSheet(const std::filesystem::path&amp; file);</code></pre>
+  <p>On construction:</p>
+  <ol>
+    <li>Reads the CSV text via <code>Utils::readTextFromFile()</code></li>
+    <li>Skips the header line</li>
+    <li>Processes each subsequent line until <code>skipskip</code></li>
+    <li>For each line: parses, validates, updates coordinates, stores in map</li>
+    <li>Writes <code>&lt;csvpath&gt;.computed.csv</code></li>
+  </ol>
+
+  <h4>Public Methods</h4>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Method</th><th>Returns</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td><code>getSpriteSheetRows(string file)</code></td><td><code>vector&lt;SpriteSheetRow&gt;</code></td><td>All rows for a given filename</td></tr>
+      <tr><td><code>getSpriteSheetRows()</code></td><td><code>vector&lt;SpriteSheetRow&gt;</code></td><td>All rows from all files</td></tr>
+    </tbody>
+  </table></div>
+
+  <h4>Private Methods</h4>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Method</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>processLine(line, rows)</code></td><td>Parse one CSV line, apply height negation logic, validate, update, store</td></tr>
+      <tr><td><code>updateSpriteSheetRow(row)</code></td><td>Compute missing x (from previous) and height (0 = inherit)</td></tr>
+      <tr><td><code>updateMap(row)</code></td><td>Append row to the map entry for its file</td></tr>
+      <tr><td><code>validateRow(row)</code></td><td>Dispatch to first-row or subsequent-row validation</td></tr>
+      <tr><td><code>validateFirstRow(row)</code></td><td>Enforce row==1, column==1; set numberPerSheet=1</td></tr>
+      <tr><td><code>validateSubsequentRow(row)</code></td><td>Enforce sequential row/column, increment numberPerSheet</td></tr>
+      <tr><td><code>saveComputedFile(file, text, rows)</code></td><td>Write .computed.csv next to the original</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="callout warn">
+    <p class="callout-title">Global State Warning</p>
+    <p>
+      <code>lastX</code>, <code>lastWidth</code>, <code>lastHeight</code> are declared as
+      <code>static</code> class members and a <code>static std::optional&lt;SpriteSheetRow&gt;</code>
+      at file scope. This makes <code>SpriteSheet</code> non-reentrant: creating two instances
+      in the same process would share this state and produce incorrect results.
+    </p>
+  </div>
+
+  <h3>SpriteSheetRow</h3>
+  <p>
+    A plain struct-like class representing one row of the CSV. It parses from a CSV string
+    and can serialize back to a CSV string.
+  </p>
+
+  <h4>Fields</h4>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td><code>file</code></td><td>string</td><td>Image filename</td></tr>
+      <tr><td><code>group</code></td><td>string</td><td>Sprite group name</td></tr>
+      <tr><td><code>numberInGroup</code></td><td>int</td><td>Index within group</td></tr>
+      <tr><td><code>row</code></td><td>int</td><td>Sheet row (1-based)</td></tr>
+      <tr><td><code>column</code></td><td>int</td><td>Sheet column (1-based)</td></tr>
+      <tr><td><code>x</code></td><td>int</td><td>X pixel offset (computed if -1)</td></tr>
+      <tr><td><code>y</code></td><td>int</td><td>Y pixel offset</td></tr>
+      <tr><td><code>width</code></td><td>int</td><td>Sprite width in pixels</td></tr>
+      <tr><td><code>height</code></td><td>int</td><td>Sprite height (may be negative during parsing)</td></tr>
+      <tr><td><code>notes</code></td><td>string</td><td>Free-text notes</td></tr>
+      <tr><td><code>tags</code></td><td>string</td><td>Tags</td></tr>
+      <tr><td><code>numberPerSheet</code></td><td>int</td><td>Auto-computed sequential number</td></tr>
+    </tbody>
+  </table></div>
+
+  <h4>Methods</h4>
+  <ul>
+    <li><code>SpriteSheetRow(const string&amp; csvLine)</code> — parse from a CSV line</li>
+    <li><code>createId() const</code> — returns <code>file__group__numberInGroup</code></li>
+    <li><code>toCsvLine() const</code> — serialize back to semicolon-delimited CSV</li>
+  </ul>
+</main>
+</div>
+<footer>sprite-utils documentation &mdash; MIT Licence &mdash; Robert Vokac</footer>
+</body>
+</html>

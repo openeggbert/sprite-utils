@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Args &amp; Options Module — sprite-utils</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/script.js"></script>
+</head>
+<body>
+<nav class="topnav">
+  <a class="topnav-brand" href="../index.html">sprite<span>-utils</span></a>
+  <ul class="topnav-links">
+    <li><a href="../overview.html">Overview</a></li>
+    <li><a href="../getting-started.html">Getting Started</a></li>
+    <li><a href="../command-line.html">CLI</a></li>
+    <li><a href="../api/index.html">API</a></li>
+  </ul>
+  <button class="theme-toggle" id="theme-toggle">☾ Dark</button>
+</nav>
+<div class="page-wrapper">
+<aside class="sidebar">
+  <div class="sidebar-section"><p class="sidebar-heading">Modules</p><nav><ul>
+    <li><a href="index.html">All Modules</a></li>
+    <li><a href="draw-command.html">DrawCommand</a></li>
+    <li><a href="sprite-sheet.html">SpriteSheet</a></li>
+    <li><a href="args-options.html" class="active">Args &amp; Options</a></li>
+    <li><a href="utils.html">Utils</a></li>
+  </ul></nav></div>
+  <div class="sidebar-section"><p class="sidebar-heading">API / Classes</p><nav><ul>
+    <li><a href="../api/index.html">API Index</a></li>
+    <li><a href="../classes/index.html">All Classes</a></li>
+  </ul></nav></div>
+</aside>
+<main class="main-content">
+  <nav class="breadcrumbs">
+    <a href="../index.html">Home</a> <span>/</span>
+    <a href="index.html">Modules</a> <span>/</span> Args &amp; Options
+  </nav>
+
+  <h1>Module: Args &amp; Options</h1>
+  <p><strong>Source:</strong> <code>include/SpriteUtilsArgs.h</code>, <code>src/SpriteUtilsArgs.cpp</code>,
+  <code>include/SpriteUtilsOptions.h</code>, <code>src/SpriteUtilsOptions.cpp</code></p>
+  <p>Two-class argument parsing layer that separates raw parsing (<code>SpriteUtilsArgs</code>)
+  from typed option access (<code>SpriteUtilsOptions</code>).</p>
+
+  <h2>SpriteUtilsArgs — Raw Argument Store</h2>
+  <p>Parses <code>argv</code> (minus program name) into a key-value map.</p>
+
+  <h3>Constructor</h3>
+  <pre><code>SpriteUtilsArgs(std::vector&lt;std::string&gt;&amp; args);</code></pre>
+  <p>Parsing rules:</p>
+  <ul>
+    <li>First element → command name (default: <code>"draw"</code> if args is empty)</li>
+    <li>Remaining elements → pairs of <code>--key</code> / <code>value</code></li>
+    <li>Keys must start with <code>--</code></li>
+    <li>Values must not start with <code>--</code></li>
+    <li>Missing value throws <code>SpriteUtilsException</code></li>
+  </ul>
+
+  <h3>Methods</h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Method</th><th>Returns</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td><code>hasArgument(arg)</code></td><td>bool</td><td>True if the key exists in the map</td></tr>
+      <tr><td><code>addArgument(arg, value)</code></td><td>void</td><td>Insert or overwrite a key-value pair</td></tr>
+      <tr><td><code>getArgument(arg)</code></td><td>string&amp;</td><td>Get value by key (inserts empty if missing)</td></tr>
+      <tr><td><code>getArgumentOptional(arg)</code></td><td>optional&lt;string&gt;</td><td>Get value or nullopt if not present</td></tr>
+      <tr><td><code>getBooleanArgument(arg, default)</code></td><td>bool</td><td>True if value == "true"; default if key absent</td></tr>
+      <tr><td><code>isVerboseLoggingEnabled()</code></td><td>bool</td><td>True if --verbose true</td></tr>
+      <tr><td><code>get_command()</code></td><td>const string&amp;</td><td>Return the parsed command name</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2>SpriteUtilsOptions — Typed Option Access</h2>
+  <p>Wraps <code>SpriteUtilsArgs</code> and provides methods for each known draw option.</p>
+  <p>Also declares the <code>Color</code> struct.</p>
+
+  <h3>Color Struct</h3>
+  <pre><code>struct Color {
+    int r{}, g{}, b{}, a{};
+    static const Color RED;  // {255, 0, 0, 0}
+};</code></pre>
+
+  <h3>Methods</h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Method</th><th>Key</th><th>Default</th></tr></thead>
+    <tbody>
+      <tr><td><code>getWorkingDirectory()</code></td><td><code>--dir</code></td><td><code>"."</code></td></tr>
+      <tr><td><code>isDrawNumberEnabled()</code></td><td><code>--draw-number</code></td><td><code>true</code></td></tr>
+      <tr><td><code>isDrawNumberBackgroundEnabled()</code></td><td><code>--draw-number-background</code></td><td><code>true</code></td></tr>
+      <tr><td><code>isNumberDoubleSized()</code></td><td><code>--double-sized-number</code></td><td><code>false</code></td></tr>
+      <tr><td><code>getRectangleColor()</code></td><td><code>--rectangle-color</code></td><td><code>Color::RED</code></td></tr>
+      <tr><td><code>getSpriteSheetPath()</code></td><td><code>--sprite-sheet-path</code></td><td><code>&lt;dir&gt;/spritesheet.csv</code></td></tr>
+      <tr><td><code>getFileName()</code></td><td><code>--file-name</code></td><td><code>nullopt</code></td></tr>
+      <tr><td><code>getRow()</code></td><td><code>--row</code></td><td><code>nullopt</code></td></tr>
+    </tbody>
+  </table></div>
+</main>
+</div>
+<footer>sprite-utils documentation &mdash; MIT Licence &mdash; Robert Vokac</footer>
+</body>
+</html>
