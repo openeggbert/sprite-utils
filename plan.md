@@ -4,11 +4,15 @@
 verified (build + unit test suite + a real-data smoke test all pass).
 `gifs` (normally Phase 3) was pulled forward and implemented early, by
 request, to have a visible/fun result before Phase 2's data work — see the
-"gifs, pulled forward" note under Phase 1 below. **Phase 2 started:**
-`blupi000.blp` in `speedy_blupi_II.spritesheet.csv` is done (231/336 icons
-now have a real `Group`, up from 0) — see "Milestone: `blupi000.blp` done"
-under Phase 2. Everything else in Phase 2 (`object`/`element`/`explo.blp`,
-all of Speedy Blupi I, decor tiles) is still open.
+"gifs, pulled forward" note under Phase 1 below. **Phase 2 well underway
+for Speedy Blupi II (v2.2):** all of `blupi000.blp`, `object.blp`,
+`element.blp` and `explo.blp` now have `Group`s auto-generated from
+`free-eggbert`'s own tables — **711/1321 rows (54%) in
+`speedy_blupi_II.spritesheet.csv` are labeled, up from ~22% at the start of
+this session.** See the two "Milestone" writeups under Phase 2. Still open:
+all of Speedy Blupi I (v1.0), decor tiles (both games), and
+`button00.blp`/`jauge.blp` (small UI sheets, not yet attempted — no known
+source table for them).
 
 This is the living execution plan for finishing `sprite-utils` and using it to
 produce complete, correctly-annotated sprite-sheet data for both **Speedy
@@ -271,24 +275,20 @@ without hand-measuring pixels.
 **Speedy Blupi II (v2.2) — pixel rectangles:**
 - [x] `blupi000.blp`: `table_icon_blupi` dumped and used — see the
       "Milestone: blupi000.blp done" writeup below.
-- [ ] Dump `table_icon_object`/`table_icon_element`/`table_icon_explo` from
-      `free-eggbert/include/pixtables.hpp` to a portable format (same
-      approach as `table_icon_blupi`, see
-      `tools/generate_blupi000_v2_rows.py`'s `parse_table_icon_blupi()`).
-- [ ] Generate CSV rows (`File`, `X`, `Y`, `Width`, `Height`,
-      `Number per file`) for `object.blp`, `element.blp`, `explo.blp` from
-      those tables (see `analysis.md` §4.2 for the channel → file mapping).
-      `blupi001-003.blp` share `table_icon_blupi` with `blupi000.blp` (same
+- [x] `object.blp`/`element.blp`/`explo.blp`: `table_icon_object` (441)/
+      `table_icon_element` (289)/`table_icon_explo` (100) dumped and used —
+      see "Milestone: object/element/explo.blp done" below.
+- [ ] `blupi001-003.blp` share `table_icon_blupi` with `blupi000.blp` (same
       geometry, recolored) but aren't referenced by any CSV row yet — low
       priority until something actually needs them.
 
 **Speedy Blupi II (v2.2) — group names:**
 - [x] `blupi000.blp`: `table_blupi` dumped and used to label 231/336 icons
       via their `ACTION_*` name — see "Milestone: blupi000.blp done" below.
-- [ ] Dump the ~150 named tables (`table_bulldozer_left`, `table_shield`,
-      `table_explo1`, etc.) from `free-eggbert/src/dectables.cpp` and
-      overlay `Group`/`Number in Group` on `object.blp`/`element.blp`/
-      `explo.blp` the same way `table_blupi` was used for `blupi000.blp`.
+- [x] `object.blp`/`element.blp`/`explo.blp`: 101 of the ~150 named tables
+      (`table_bulldozer_left`, `table_shield`, `table_explo1`, etc.) traced
+      to a confirmed channel and used to label 480 icons — see "Milestone:
+      object/element/explo.blp done" below.
 
 #### Milestone: `blupi000.blp` (Speedy Blupi II) done
 
@@ -336,6 +336,70 @@ Result: **231/336 icons (69%) now have a real `Group`**, up from 0. Running
 (`ACTION_MARCH` — walking, `ACTION_STOPSKATE` — skateboard balancing,
 `ACTION_TURNTANK`, ...) instead of one 336-frame `?` dump. Spot-checked
 several visually; they're real, coherent animations, not noise.
+
+#### Milestone: `object.blp`/`element.blp`/`explo.blp` (Speedy Blupi II) done
+
+Same pixel-rectangle approach as `blupi000.blp`
+(`tools/generate_object_element_explo_v2_rows.py`, also committed and
+verified byte-for-byte reproducible), but grouping was a materially harder
+problem: unlike `table_blupi` (one table, one consumer, explicit
+`ACTION_*` ids baked in), `object.blp`/`element.blp`/`explo.blp` share
+~150 further named tables in `free-eggbert/src/dectables.cpp`
+(`table_bulldozer_left`, `table_poisson_right`, `table_explo1`, ...) with
+**no built-in channel information** — nothing in the table declarations
+says whether a given table's icon indices belong to `table_icon_object`,
+`table_icon_element` or `table_icon_explo`.
+
+Resolved with a dedicated read-only investigation (41 tool calls) tracing
+every table to its actual call site — either the `channel` argument of a
+`QuickIcon`/`DrawIcon` call, or an explicit `.channel = CHxxx` assignment
+in `CDecor::MoveObjectStepIcon` (`decmove.cpp`) — across `decor.cpp`,
+`decblock.cpp`, `decmove.cpp`, `decdesign.cpp`, `decblupi.cpp`. Confirmed
+101 of ~130 real tables this way: 25 → `CHOBJECT`, 43 → `CHELEMENT`, 12 →
+`CHEXPLO`, plus 8 more (`table_blupih_*`/`table_blupit_*`) pattern-matched
+to `CHELEMENT` from an identical-but-incomplete code shape (included, with
+an explicit "not directly confirmed" note on affected rows, rather than
+silently asserted). The remaining ~29 were positively excluded, not
+skipped by omission:
+- **7 turned out not to be icon tables at all** despite `table_`-prefixed,
+  sprite-adjacent names — `table_decor_action` is camera-scroll deltas,
+  `table_tutorial` is help-text trigger regions, `table_blitz` is FX
+  timing, `table_vitesse_march/nage/surf` are movement speed tables,
+  `table_drinkoffset` is a time-offset list. A useful reminder that
+  `table_decor_*` naming is not a reliable signal by itself — most
+  `table_decor_*` tables *did* turn out to be `CHOBJECT` icon tables (used
+  for world-hazard sprites like lava, saws, fans — confirmed via the same
+  `QuickIcon(1, ...)` call-site pattern), just not because of the "decor"
+  in their name.
+- **1 confirmed unused** (`table_invertpanel` — defined, declared, no call
+  site anywhere in the codebase).
+- **1 mixed-channel** (`table_electro`: `CHBLUPI2` below phase 30,
+  `CHELEMENT` at/above it) and **2 genuinely unresolved**
+  (`table_chenille`/`table_chenillei` — icon assignment confirmed, channel
+  not found in any traced file) were left out of the `Group` labeling
+  entirely rather than guessed.
+
+Merge decision: same as `blupi000.blp` — replaced outright.
+`speedy_blupi_II.spritesheet.csv`'s existing `object.blp`/`element.blp`/
+`explo.blp` rows had **zero real `Group` labels** (either literal `?`, or
+— for `element.blp` specifically — 289 individual numeric strings used as
+disposable per-row placeholders, not real grouping) and — for `object.blp`
+— even the wrong *row count* (421 vs. the authoritative table's 441), so
+there was no hand-curated signal to preserve. Verified with `sprite_utils
+draw` against all three real images before replacing: every rectangle on
+all three sheets (1024×1327, 896×644, 496×1885) lands correctly.
+
+Result: **480 more icons labeled** (192/441 object, 230/289 element,
+58/100 explo). Combined with `blupi000.blp`, **711/1321 rows (54%) of
+`speedy_blupi_II.spritesheet.csv` are now labeled, up from ~22% at the
+start of this session.** `gifs` with no filter now produces 133 GIFs for
+this file set (down from 352 with the pre-consolidation numeric
+placeholder groups, but the right kind of "down" — `element.blp` alone
+used to yield ~289 disposable 1-frame "groups"; it now yields a smaller
+number of real multi-frame animations like `table_bulldozer_left`,
+`table_poisson_right`, `table_creature_turn2`). Spot-checked several
+visually (`table_bridge`, `table_bulldozer_left`, `table_explo3`) — real,
+coherent animations.
 
 **Speedy Blupi I (v1.0) — pixel rectangles (offsets already found & visually
 confirmed, see `analysis.md` §4.6):**
