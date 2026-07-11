@@ -4,8 +4,11 @@
 verified (build + unit test suite + a real-data smoke test all pass).
 `gifs` (normally Phase 3) was pulled forward and implemented early, by
 request, to have a visible/fun result before Phase 2's data work — see the
-"gifs, pulled forward" note under Phase 1 below. Phase 2 (auto-generating
-the complete CSVs) not started yet.
+"gifs, pulled forward" note under Phase 1 below. **Phase 2 started:**
+`blupi000.blp` in `speedy_blupi_II.spritesheet.csv` is done (231/336 icons
+now have a real `Group`, up from 0) — see "Milestone: `blupi000.blp` done"
+under Phase 2. Everything else in Phase 2 (`object`/`element`/`explo.blp`,
+all of Speedy Blupi I, decor tiles) is still open.
 
 This is the living execution plan for finishing `sprite-utils` and using it to
 produce complete, correctly-annotated sprite-sheet data for both **Speedy
@@ -266,21 +269,73 @@ session (for Speedy Blupi I, see `analysis.md` §4.6) into complete CSV rows,
 without hand-measuring pixels.
 
 **Speedy Blupi II (v2.2) — pixel rectangles:**
-- [ ] Dump `table_icon_blupi`/`table_icon_object`/`table_icon_element`/
-      `table_icon_explo` from `free-eggbert/include/pixtables.hpp` to a
-      portable format (JSON).
+- [x] `blupi000.blp`: `table_icon_blupi` dumped and used — see the
+      "Milestone: blupi000.blp done" writeup below.
+- [ ] Dump `table_icon_object`/`table_icon_element`/`table_icon_explo` from
+      `free-eggbert/include/pixtables.hpp` to a portable format (same
+      approach as `table_icon_blupi`, see
+      `tools/generate_blupi000_v2_rows.py`'s `parse_table_icon_blupi()`).
 - [ ] Generate CSV rows (`File`, `X`, `Y`, `Width`, `Height`,
-      `Number per file`) for `blupi000-003.blp`, `object.blp`,
-      `element.blp`, `explo.blp` from those tables (see `analysis.md` §4.2
-      for the channel → file mapping).
+      `Number per file`) for `object.blp`, `element.blp`, `explo.blp` from
+      those tables (see `analysis.md` §4.2 for the channel → file mapping).
+      `blupi001-003.blp` share `table_icon_blupi` with `blupi000.blp` (same
+      geometry, recolored) but aren't referenced by any CSV row yet — low
+      priority until something actually needs them.
 
 **Speedy Blupi II (v2.2) — group names:**
-- [ ] Dump `table_blupi` and the ~150 named tables (`table_bulldozer_left`,
-      `table_shield`, `table_explo1`, etc.) from
-      `free-eggbert/src/dectables.cpp`.
-- [ ] Overlay `Group`/`Number in Group` on the rows above: `table_blupi`
-      (keyed by `ACTION_*` in `include/def.hpp`) for `blupi0NN.blp`; the
-      named tables for `object.blp`/`element.blp`/`explo.blp`.
+- [x] `blupi000.blp`: `table_blupi` dumped and used to label 231/336 icons
+      via their `ACTION_*` name — see "Milestone: blupi000.blp done" below.
+- [ ] Dump the ~150 named tables (`table_bulldozer_left`, `table_shield`,
+      `table_explo1`, etc.) from `free-eggbert/src/dectables.cpp` and
+      overlay `Group`/`Number in Group` on `object.blp`/`element.blp`/
+      `explo.blp` the same way `table_blupi` was used for `blupi000.blp`.
+
+#### Milestone: `blupi000.blp` (Speedy Blupi II) done
+
+`tools/generate_blupi000_v2_rows.py` (committed, reproducible — re-running
+it against the current `free-eggbert` checkout reproduces the exact CSV
+rows byte-for-byte) parses `table_icon_blupi` (336 `IconPack` records) and
+`table_blupi` (a flat `[action_id, frame_count, phase, icon...]` record
+stream — see below) directly out of `free-eggbert`'s committed C source,
+and cross-references `ACTION_*` names from `include/def.hpp`.
+
+Parsing `table_blupi` needed one correction beyond `analysis.md` §4.3's
+original description: the record-advance algorithm
+(`i += table_blupi[i+1] + 3`) is right, but the array also contains one
+~30-int block of `-1` padding between two records that isn't itself a
+record — naively parsing straight through desyncs the rest of the array.
+Fix: skip a lone int at a time whenever the current position isn't a valid
+`ACTION_*` id, which resyncs automatically. Validated by parsing all the
+way to the array's *true* final `0` terminator with nothing left over
+(2842 ints fully accounted for) — the parser now asserts this instead of
+silently trusting a partial parse.
+
+A second finding changed how the data gets used, not just parsed: many
+`table_blupi` records are far too large to be literal frame-by-frame
+animations (`ACTION_STOP` alone has 330 entries, heavily repeating a
+handful of idle-pose icons — clearly a combinatorial state lookup, not a
+330-frame animation). Records with `frame_count >= 40` are still labeled
+with their `ACTION_*` group (that claim is solid — the icon genuinely
+belongs to that action), but get an explicit "likely a state lookup, not a
+plain animation sequence" note rather than being presented as a clean
+animation. An icon referenced by more than one action keeps its *first*
+table-order action as the primary `Group` and lists the others in `Notes`
+(the CSV format has no way to give one physical rectangle two groups at
+once).
+
+Merge decision: **replaced, not merged.** All 336 existing `blupi000.blp`
+rows in `speedy_blupi_II.spritesheet.csv` had `Group="?"` (zero hand-labels
+to lose) *and* used a completely different, uncorrelated grid-scan geometry
+— not just unlabeled but measuring the wrong thing. Verified with
+`sprite_utils draw` before replacing: every one of the 336 generated
+rectangles lands exactly on its sprite, confirmed visually across the
+entire 800×906 sheet.
+
+Result: **231/336 icons (69%) now have a real `Group`**, up from 0. Running
+`gifs` on `blupi000.blp` now produces dozens of genuine named animations
+(`ACTION_MARCH` — walking, `ACTION_STOPSKATE` — skateboard balancing,
+`ACTION_TURNTANK`, ...) instead of one 336-frame `?` dump. Spot-checked
+several visually; they're real, coherent animations, not noise.
 
 **Speedy Blupi I (v1.0) — pixel rectangles (offsets already found & visually
 confirmed, see `analysis.md` §4.6):**
