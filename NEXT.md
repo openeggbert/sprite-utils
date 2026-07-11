@@ -1,6 +1,6 @@
 # NEXT.md — sprite-utils handoff
 
-*Last updated: 2026-07-11 (branch: `develop`, HEAD `59908af`) — Phases 0-3 all done. 34 tests / 99 checks passing (`cmake --build build && ctest` / `./build/sprite_utils_tests`).*
+*Last updated: 2026-07-11 (branch: `develop`, HEAD `f592c07`) — Phases 0-3 all done, plus a new `pack` command (§3.5) added afterward. 34 tests / 99 checks passing (`cmake --build build && ctest` / `./build/sprite_utils_tests`).*
 
 ## 1. Project summary
 
@@ -30,7 +30,7 @@ do next.
 
 - **Phase 0 (analysis):** done — see `analysis.md`.
 - **Phase 1 (finish the tool):** done. Commands: `draw`, `extract`,
-  `restore`, `gifs`, `help`, `version`. Build: CMake + OpenCV
+  `restore`, `gifs`, `pack`, `help`, `version`. Build: CMake + OpenCV
   (`core`/`imgproc`/`imgcodecs` only). 34 tests / 99 checks, all passing.
 - **Phase 2 (populate the CSVs with real `Group` data):** done — see §3
   below and §4 for why it's 62%, not 100%.
@@ -150,6 +150,26 @@ analysis:
 final CSVs. Output: `tmp/speedy_blupi_{I,II}/{draw,extract,gifs}/`
 (gitignored). 479 GIFs (218 + 261), 3003 extracted sprite images, fully
 annotated sheets for both games.
+
+### 3.5 `pack` command (added after Phase 3, same session)
+New command, the inverse of `extract`: reads a directory of individual
+sprite images (named exactly the way `extract` writes them -
+`<numberPerSheet>__<group>__<numberInGroup>.png` under
+`<dir>/<file-stem>/`) and pastes each one back at its CSV rectangle to
+rebuild one full sheet image, canvas sized from the CSV alone. Built for
+the workflow already noted in `plan.md`'s `--scale` section: re-rendering
+sprites individually from the original 3D models (rather than the whole
+sheet at once) and reassembling them before `draw`/`gifs` are useful
+again. Alpha-aware (transparent-background canvas if any input sprite has
+real alpha); tolerant of missing/mis-sized individual images (warns,
+doesn't fail the whole sheet). Verified with an `extract`→`pack` round
+trip that reproduces the original pixel-for-pixel, plus synthetic
+`--scale` and alpha-channel tests. See `plan.md`'s "`pack`" section for
+full detail. This also confirmed PNG reading/writing already works in
+`extract`/`gifs`/`pack` (OpenCV sniffs file content, not extension) - only
+`draw` still can't handle a PNG source (`readBmpBpp` unconditionally
+requires BMP magic bytes), documented as a real, specific gap in
+`plan.md`'s PNG support section rather than left vague.
 
 ## 4. Why 62% (1870/3003), not 100%
 
