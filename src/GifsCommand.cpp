@@ -21,28 +21,37 @@
  * THE SOFTWARE.
  */
 
-#include "ExtractCommand.h"
+#include "GifsCommand.h"
 
+#include <algorithm>
 #include <filesystem>
 #include <iostream>
-#include <sstream>
-#include <opencv2/core.hpp>
+#include <map>
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/imgproc.hpp>
+#include <vector>
 
+#include "GifWriter.h"
 #include "SpriteSheet.h"
 #include "SpriteSheetRow.h"
 #include "SpriteUtilsException.h"
-#include "SpriteUtilsOptions.h"
 #include "Utils.h"
 
-std::string ExtractCommand::run(const SpriteUtilsArgs& args) {
+cv::Vec3b GifsCommand::toVec3b(const Color& c) {
+    // OpenCV uses BGR order, not RGB (see DrawCommand::toScalar).
+    return cv::Vec3b(static_cast<uint8_t>(c.b), static_cast<uint8_t>(c.g), static_cast<uint8_t>(c.r));
+}
+
+std::string GifsCommand::run(const SpriteUtilsArgs& args) {
     SpriteUtilsOptions opt(args);
 
     const std::filesystem::path workingDir(opt.getWorkingDirectory());
-    const std::filesystem::path outDir(opt.getExtractOutputDirectory());
+    const std::filesystem::path outDir(opt.getGifsOutputDirectory());
+    const int delayMs = opt.getGifFrameDelayMs();
+    const std::optional<std::string> groupFilter = opt.getGroup();
+    const cv::Vec3b background = toVec3b(opt.getGifBackgroundColor());
 
-    std::cout << "Going to extract sprites from images in directory: " << workingDir
+    std::cout << "Going to build animated GIFs from images in directory: " << workingDir
                << " into: " << outDir << "\n";
 
     std::filesystem::create_directories(outDir);
@@ -50,7 +59,7 @@ std::string ExtractCommand::run(const SpriteUtilsArgs& args) {
     // Load the spritesheet CSV
     SpriteSheet spriteSheet(std::filesystem::path(opt.getSpriteSheetPath()));
 
-    int extractedCount = 0;
+    int gifCount = 0;
 
     for (const auto& entry : std::filesystem::directory_iterator(workingDir)) {
         if (!entry.is_regular_file())
@@ -78,6 +87,23 @@ std::string ExtractCommand::run(const SpriteUtilsArgs& args) {
             continue;
         }
 
+        // group rows by Group, keeping each group's Number in Group order
+        std::map<std::string, std::vector<SpriteSheetRow>> byGroup;
+        for (const auto& row : rows) {
+            if (groupFilter.has_value() && groupFilter.value() != row.group)
+                continue;
+            byGroup[row.group].push_back(row);
+        }
+
+        if (byGroup.empty()) {
+            if (opt.getFileName().has_value() &&
+                opt.getFileName().value() == imageFileName)
+            {
+                break;
+            }
+            continue;
+        }
+
         cv::Mat img = cv::imread(imageFile.string(), cv::IMREAD_UNCHANGED);
         if (img.empty())
             throw SpriteUtilsException("Reading image failed: " + imageFile.string());
@@ -85,32 +111,39 @@ std::string ExtractCommand::run(const SpriteUtilsArgs& args) {
         if (img.channels() == 1)
             cv::cvtColor(img, img, cv::COLOR_GRAY2BGR);
 
-        const std::filesystem::path fileOutDir = outDir / imageFile.stem();
-        std::filesystem::create_directories(fileOutDir);
-
         const cv::Rect bounds(0, 0, img.cols, img.rows);
+        const std::filesystem::path fileOutDir = outDir / imageFile.stem();
 
-        for (const auto& row : rows) {
-            const cv::Rect rc(row.x, row.y, std::max(1, row.width), std::max(1, row.height));
-            const cv::Rect clipped = rc & bounds;
+        for (auto& groupEntry : byGroup) {
+            const std::string& groupName = groupEntry.first;
+            std::vector<SpriteSheetRow>& groupRows = groupEntry.second;
 
-            if (clipped.width <= 0 || clipped.height <= 0) {
-                std::cerr << "Warning: skipping sprite with an out-of-bounds rectangle: "
-                           << row.createId() << "\n";
-                continue;
+            std::sort(groupRows.begin(), groupRows.end(),
+                [](const SpriteSheetRow& a, const SpriteSheetRow& b) {
+                    return a.numberInGroup < b.numberInGroup;
+                });
+
+            std::vector<cv::Mat> frames;
+            frames.reserve(groupRows.size());
+            for (const auto& row : groupRows) {
+                const cv::Rect rc(row.x, row.y, std::max(1, row.width), std::max(1, row.height));
+                const cv::Rect clipped = rc & bounds;
+                if (clipped.width <= 0 || clipped.height <= 0) {
+                    std::cerr << "Warning: skipping sprite with an out-of-bounds rectangle: "
+                               << row.createId() << "\n";
+                    continue;
+                }
+                frames.push_back(img(clipped).clone());
             }
 
-            cv::Mat sprite = img(clipped).clone();
+            if (frames.empty())
+                continue;
 
-            std::ostringstream name;
-            name << row.numberPerSheet << "__" << Utils::sanitizeForFilename(row.group)
-                 << "__" << row.numberInGroup << ".png";
-
-            const std::filesystem::path outFile = fileOutDir / name.str();
-            if (!cv::imwrite(outFile.string(), sprite))
-                throw SpriteUtilsException("Writing extracted sprite failed: " + outFile.string());
-
-            ++extractedCount;
+            std::filesystem::create_directories(fileOutDir);
+            const std::filesystem::path outFile = fileOutDir / (Utils::sanitizeForFilename(groupName) + ".gif");
+            GifWriter::writeAnimatedGif(outFile, frames, delayMs, background);
+            std::cout << "Wrote " << outFile << " (" << frames.size() << " frame(s))\n";
+            ++gifCount;
         }
 
         if (opt.getFileName().has_value() &&
@@ -120,6 +153,6 @@ std::string ExtractCommand::run(const SpriteUtilsArgs& args) {
         }
     }
 
-    std::cout << "Extracted " << extractedCount << " sprite(s).\n";
+    std::cout << "Wrote " << gifCount << " GIF(s).\n";
     return "";
 }

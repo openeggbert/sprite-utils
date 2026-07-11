@@ -50,6 +50,8 @@ class SpriteUtilsOptions
 private:
     SpriteUtilsArgs spriteUtilsArgs;
 
+    Color getColorArgument(const std::string& arg, const Color& default_) const;
+
 public:
     SpriteUtilsOptions(const SpriteUtilsArgs& spriteUtilsArgsIn);
 
@@ -66,6 +68,14 @@ public:
     string getSpriteSheetPath() const;
 
     string getExtractOutputDirectory() const;
+
+    string getGifsOutputDirectory() const;
+
+    int getGifFrameDelayMs() const;
+
+    Color getGifBackgroundColor() const;
+
+    std::optional<string> getGroup() const;
 
     std::optional<string> getFileName() const;
 

@@ -49,5 +49,9 @@ public:
     static std::string readFromInputStream(std::istream& input);
 
     static std::vector<std::string> split(const std::string& input, const std::string& delim = ",");
+
+    // Replaces every character that isn't alphanumeric, '-' or '_' with '_',
+    // so arbitrary CSV text (group names, etc.) is safe to use as a filename.
+    static std::string sanitizeForFilename(const std::string& s);
 };
 #endif // UTILS_H

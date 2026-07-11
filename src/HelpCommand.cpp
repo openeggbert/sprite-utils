@@ -82,6 +82,27 @@ COMMAND
                         --file-name={single file name to restore}
                             Optional. Default=(all backed-up files in --dir).
 
+    gifs        Build one animated GIF per (file, Group) found in the
+                sprite-sheet CSV: every sprite sharing a Group, in
+                "Number in Group" order, becomes one frame, written to
+                --out-dir/<source-file-stem>/<group>.gif.
+                    OPTIONS
+                        --dir={working directory}
+                            Optional. Default=. (current directory)
+                        --sprite-sheet-path={path to the sprite-sheet CSV}
+                            Optional. Default={--dir}/spritesheet.csv
+                        --file-name={single image file name to process}
+                            Optional. Default=(all image files in --dir).
+                        --group={single group name to build}
+                            Optional. Default=(every group found).
+                        --out-dir={directory to write GIFs to}
+                            Optional. Default={--dir}/gifs
+                        --frame-delay-ms={milliseconds per frame}
+                            Optional. Default=100
+                        --gif-background-color={R,G,B}
+                            Optional. Default=255,255,255 (used to pad
+                            frames up to the animation's largest frame size)
+
     help        Display help information
     version     Display version information
 )";

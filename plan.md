@@ -1,8 +1,11 @@
 # sprite-utils Plan
 
 **Status as of 2026-07-11:** Phase 0 done (analysis). Phase 1 done and
-verified (build + 71-check unit test suite + a real-data smoke test all
-pass). Phase 2 (auto-generating the complete CSVs) not started yet.
+verified (build + unit test suite + a real-data smoke test all pass).
+`gifs` (normally Phase 3) was pulled forward and implemented early, by
+request, to have a visible/fun result before Phase 2's data work — see the
+"gifs, pulled forward" note under Phase 1 below. Phase 2 (auto-generating
+the complete CSVs) not started yet.
 
 This is the living execution plan for finishing `sprite-utils` and using it to
 produce complete, correctly-annotated sprite-sheet data for both **Speedy
@@ -25,8 +28,8 @@ Then use a finished `sprite-utils` to turn that data into:
 - annotated sheets (dashed rectangle + sprite number over every sprite, via
   `draw` — implemented),
 - individual per-sprite image files (via `extract` — implemented),
-- animated GIFs per animation group (via `gifs` — not yet implemented,
-  deliberately deferred to Phase 3, see below).
+- animated GIFs per animation group (via `gifs` — implemented; see the
+  "gifs, pulled forward" note below for why it landed before Phase 2/3).
 
 ## Phases
 
@@ -93,10 +96,54 @@ first/in parallel, using the two CSVs already in this repo
       the catch-all `opencv2/opencv.hpp`, which used to pull in every
       OpenCV module (calib3d, dnn, viz, ...) whether used or not.
 
-`gifs` is deliberately **not** in this phase — it only produces something
-useful once `Group`/`Number in Group` data actually exists for most rows,
-which is what Phase 2 delivers. Implementing it now would mean testing it
-against today's mostly-`Group=?` data.
+### `gifs`, pulled forward
+
+`gifs` was originally scoped for Phase 3 (it only produces something
+*broadly* useful once `Group` data exists for most rows, which is Phase 2's
+job) — but implemented now, by request, to get a real, visible result before
+the data work. It works fine today against whatever groups already exist
+(e.g. `Yellow_Eggbert_Swimming_Right` in `speedy_blupi_I.spritesheet.csv`);
+running it with no `--group` filter on the full CSV will also lump every
+still-`Group=?` row per file into one (large, not very meaningful) GIF,
+which is expected and will stop happening naturally once Phase 2 fills in
+real groups.
+
+- [x] `GifWriter` (`include/GifWriter.h` / `src/GifWriter.cpp`): a
+      self-contained animated GIF89a encoder (palette quantization — exact
+      for <=256 colors, median-cut fallback above that — plus the
+      GIF-flavoured variable-width LZW compressor), written by hand because
+      this project's OpenCV 4.10 packaging has no animated GIF/WebP write
+      API (`cv::Animation`/`imwriteanimation` isn't present in every OpenCV
+      4.x build).
+  - Two real encoding bugs were found and fixed by actually decoding
+    generated files with Python/Pillow (not just checking GIF structural
+    markers, which both bugs passed): (1) the palette was written to the
+    GIF in BGR order instead of RGB (red/blue swapped); (2) the LZW code
+    width grew one code too early, which never showed up on trivial
+    test data but corrupted real, longer sprite frames ("broken data
+    stream" on decode). Both are covered by `tests/GifWriterTests.cpp`
+    structurally; the pixel-level fix was verified out-of-band (Pillow
+    decode + a visual contact sheet of a real 9-frame swimming animation,
+    plus numeric spot-checks against a synthetic gradient for the
+    median-cut path) rather than re-implementing a GIF decoder just for
+    the test suite.
+- [x] `GifsCommand` (`include/GifsCommand.h` / `src/GifsCommand.cpp`,
+      registered as `gifs`): groups sprite-sheet rows by `(File, Group)`,
+      sorts each group by `Number in Group`, crops each row's rectangle,
+      and writes one GIF per group to
+      `--out-dir/<source-file-stem>/<group>.gif` (default
+      `--out-dir={--dir}/gifs`). New options: `--group` (build just one
+      named group), `--frame-delay-ms` (default 100), `--gif-background-color`
+      (default `255,255,255`, used to pad frames up to the animation's
+      largest frame size).
+- [x] Documented in `HelpCommand.cpp`; `Utils::sanitizeForFilename` was
+      factored out of `ExtractCommand` so `gifs` doesn't duplicate it.
+- [x] Verified end-to-end against real game data: ran `gifs --group
+      Yellow_Eggbert_Swimming_Right` against Speedy Blupi I's real
+      `blupi000.blp` (extracted locally from `Speedy_Blupi_I.7z` for this
+      check, not committed — see `analysis.md` §8 on not redistributing
+      original assets) and the CSV already in this repo; the resulting
+      9-frame GIF decodes correctly and shows a genuine swimming animation.
 
 ---
 
@@ -174,8 +221,11 @@ Depends on Phase 1 (tool) + Phase 2 (complete data).
       annotated sheets with every sprite rectangle + number visible.
 - [ ] Run `sprite-utils extract` over both games → one image file per
       sprite, organized by file/group.
-- [ ] Implement and run `sprite-utils gifs` → one animated GIF per
-      `Group`/animation sequence, now that groups are populated.
+- [ ] Run `sprite-utils gifs` (already implemented, see Phase 1's "gifs,
+      pulled forward" note) over both games now that Phase 2 has populated
+      real groups for (almost) every row → one meaningful animated GIF per
+      `Group`, instead of today's handful of hand-labelled groups plus one
+      big `?` catch-all per file.
 - [ ] Decide where outputs live (this repo vs. a dedicated assets
       repo/output directory — not yet decided, revisit once Phase 2 shows
       the real output volume).

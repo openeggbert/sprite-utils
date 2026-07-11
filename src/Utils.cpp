@@ -26,6 +26,7 @@
 #include "Utils.h"
 
 #include "SpriteUtilsException.h"
+#include <cctype>
 #include <fstream>
 #include <sstream>
 
@@ -124,4 +125,17 @@ std::vector<std::string> Utils::split(const std::string& input, const std::strin
 
     result.emplace_back(input.substr(start));
     return result;
+}
+
+std::string Utils::sanitizeForFilename(const std::string& s) {
+    std::string out;
+    out.reserve(s.size());
+    for (char c : s) {
+        if (std::isalnum(static_cast<unsigned char>(c)) || c == '-' || c == '_') {
+            out += c;
+        } else {
+            out += '_';
+        }
+    }
+    return out.empty() ? "_" : out;
 }

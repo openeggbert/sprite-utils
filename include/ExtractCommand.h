@@ -45,8 +45,5 @@ public:
 
     std::string getName() const override { return NAME; }
     std::string run(const SpriteUtilsArgs& args) override;
-
-private:
-    static std::string sanitizeForFilename(const std::string& s);
 };
 #endif // EXTRACTCOMMAND_H

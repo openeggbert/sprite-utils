@@ -16,6 +16,8 @@ set(SPRITE_UTILS_LIB_SOURCES
         src/HelpCommand.cpp
         src/DrawCommand.cpp
         src/ExtractCommand.cpp
+        src/GifsCommand.cpp
+        src/GifWriter.cpp
         src/RestoreCommand.cpp
         src/SpriteSheet.cpp
         src/SpriteSheetRow.cpp
@@ -51,6 +53,7 @@ add_executable(sprite_utils_tests
         tests/SpriteSheetRowTests.cpp
         tests/SpriteSheetTests.cpp
         tests/SpriteUtilsArgsTests.cpp
+        tests/GifWriterTests.cpp
         ${SPRITE_UTILS_LIB_SOURCES}
 )
 

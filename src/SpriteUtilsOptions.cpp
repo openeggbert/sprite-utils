@@ -60,24 +60,29 @@ bool SpriteUtilsOptions::isNumberDoubleSized() const
     return spriteUtilsArgs.getBooleanArgument("--double-sized-number");
 }
 
-Color SpriteUtilsOptions::getRectangleColor() const
+Color SpriteUtilsOptions::getColorArgument(const std::string& arg, const Color& default_) const
 {
-    std::optional<string> arg = spriteUtilsArgs.getArgumentOptional("--rectangle-color");
-    if (!arg.has_value() || arg->empty())
+    std::optional<string> value = spriteUtilsArgs.getArgumentOptional(arg);
+    if (!value.has_value() || value->empty())
     {
-        return Color::RED;
+        return default_;
     }
-    auto array = Utils::split(arg.value());
+    auto array = Utils::split(value.value());
 
     if (array.size() != 3)
     {
-        throw SpriteUtilsException("Invalid format of rectangle-color option: " + arg.value());
+        throw SpriteUtilsException("Invalid format of " + arg + " option: " + value.value());
     }
     return {
         stoi(array[0]),
         stoi(array[1]),
         stoi(array[2])
     };
+}
+
+Color SpriteUtilsOptions::getRectangleColor() const
+{
+    return getColorArgument("--rectangle-color", Color::RED);
 }
 
 string SpriteUtilsOptions::getSpriteSheetPath() const
@@ -92,6 +97,38 @@ string SpriteUtilsOptions::getExtractOutputDirectory() const
         getWorkingDirectory() + "/extracted");
 }
 
+string SpriteUtilsOptions::getGifsOutputDirectory() const
+{
+    return spriteUtilsArgs.getArgumentOptional("--out-dir").value_or(
+        getWorkingDirectory() + "/gifs");
+}
+
+int SpriteUtilsOptions::getGifFrameDelayMs() const
+{
+    auto arg = spriteUtilsArgs.getArgumentOptional("--frame-delay-ms");
+    if (!arg.has_value())
+    {
+        return 100;
+    }
+    try
+    {
+        return std::stoi(*arg);
+    }
+    catch (...)
+    {
+        throw SpriteUtilsException("Invalid frame-delay-ms option: " + *arg);
+    }
+}
+
+Color SpriteUtilsOptions::getGifBackgroundColor() const
+{
+    return getColorArgument("--gif-background-color", Color(255, 255, 255));
+}
+
+std::optional<string> SpriteUtilsOptions::getGroup() const
+{
+    return spriteUtilsArgs.getArgumentOptional("--group");
+}
 
 std::optional<string> SpriteUtilsOptions::getFileName() const
 {

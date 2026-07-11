@@ -21,32 +21,33 @@
  * THE SOFTWARE.
  */
 
-#ifndef SPRITEUTILS_H
-#define SPRITEUTILS_H
+#ifndef GIFSCOMMAND_H
+#define GIFSCOMMAND_H
 
-#include <unordered_map>
-#include <memory>
 #include <string>
+#include <opencv2/core.hpp>
 
-#include "SpriteUtilsArgs.h"
 #include "Command.h"
-#include "DrawCommand.h"
-#include "ExtractCommand.h"
-#include "GifsCommand.h"
-#include "HelpCommand.h"
-#include "RestoreCommand.h"
-#include "VersionCommand.h"
-#include "SpriteUtilsException.h"
+#include "SpriteUtilsArgs.h"
+#include "SpriteUtilsOptions.h"
 
-class SpriteUtils {
-private:
-    // command name -> command instance
-    std::unordered_map<std::string, std::unique_ptr<Command>> commandImplementations;
-
+/**
+ * Builds one animated GIF per (file, group) found in the sprite-sheet CSV:
+ * every sprite sharing a Group, in Number in Group order, becomes one frame.
+ *
+ * @author robertvokac
+ */
+class GifsCommand : public Command {
 public:
-    SpriteUtils();
+    static constexpr const char* NAME = "gifs";
 
-    void run(const std::vector<std::string>& args);
-    void run(const SpriteUtilsArgs& spriteUtilsArgs);
+    GifsCommand() = default;
+    ~GifsCommand() override = default;
+
+    std::string getName() const override { return NAME; }
+    std::string run(const SpriteUtilsArgs& args) override;
+
+private:
+    static cv::Vec3b toVec3b(const Color& c);
 };
-#endif // SPRITEUTILS_H
+#endif // GIFSCOMMAND_H
