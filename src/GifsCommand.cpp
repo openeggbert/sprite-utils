@@ -37,6 +37,48 @@
 #include "SpriteUtilsException.h"
 #include "Utils.h"
 
+namespace {
+
+// The color-key background isn't a single uniform color across an entire
+// sheet, and isn't even reliably the majority color *within* one frame's
+// own crop - some icons (trees, spheres, ...) nearly fill their whole
+// bounding box, leaving only slivers of true background peeking through.
+// A statistical guess (corner pixel, sheet-wide or per-crop histogram) gets
+// those wrong in both directions: it can miss real background, or - worse -
+// mistake a large solid patch of icon interior for background and erase
+// part of the sprite.
+//
+// Flood-filling in from the frame's own border is safer: it only ever
+// removes background pixels *connected to the edge*, so an icon that fills
+// its whole cell (no reachable border strip of background) is correctly
+// left untouched instead of being cut into. Sampling multiple points
+// around the border (not just the corners) means a single corner sitting
+// on top of icon content doesn't stop the whole fill from finding the
+// background elsewhere along the edge.
+void keyOutBackground(cv::Mat& frame, const cv::Vec3b& background) {
+    const int w = frame.cols;
+    const int h = frame.rows;
+    if (w <= 0 || h <= 0)
+        return;
+
+    const cv::Scalar fill(background[0], background[1], background[2]);
+    // Small per-step tolerance: floodFill's default (non-fixed-range) mode
+    // compares each candidate pixel to its already-filled neighbor, so a
+    // gently varying background still gets fully connected while a sharp
+    // jump into icon content still stops the fill.
+    const cv::Scalar tolerance(20, 20, 20);
+
+    const std::vector<cv::Point> seeds = {
+        {0, 0}, {w - 1, 0}, {0, h - 1}, {w - 1, h - 1},
+        {w / 2, 0}, {w / 2, h - 1}, {0, h / 2}, {w - 1, h / 2},
+    };
+    for (const auto& seed : seeds) {
+        cv::floodFill(frame, seed, fill, nullptr, tolerance, tolerance, 4);
+    }
+}
+
+} // namespace
+
 cv::Vec3b GifsCommand::toVec3b(const Color& c) {
     // OpenCV uses BGR order, not RGB (see DrawCommand::toScalar).
     return cv::Vec3b(static_cast<uint8_t>(c.b), static_cast<uint8_t>(c.g), static_cast<uint8_t>(c.r));
@@ -111,13 +153,6 @@ std::string GifsCommand::run(const SpriteUtilsArgs& args) {
         if (img.channels() == 1)
             cv::cvtColor(img, img, cv::COLOR_GRAY2BGR);
 
-        // These sprite sheets are drawn on one solid color-key background
-        // (sampled from the sheet's own top-left corner, which is never
-        // part of a sprite) - swap it for the requested GIF background
-        // color so it doesn't show up as an odd blue box around every
-        // frame.
-        const cv::Vec3b backgroundKey = img.at<cv::Vec3b>(0, 0);
-
         const cv::Rect bounds(0, 0, img.cols, img.rows);
         const std::filesystem::path fileOutDir = outDir / imageFile.stem();
 
@@ -125,7 +160,10 @@ std::string GifsCommand::run(const SpriteUtilsArgs& args) {
             const std::string& groupName = groupEntry.first;
             std::vector<SpriteSheetRow>& groupRows = groupEntry.second;
 
-            std::sort(groupRows.begin(), groupRows.end(),
+            // stable: rows with an unlabeled ("?") group all share the same
+            // placeholder Number in Group, so a plain sort would leave their
+            // relative (sheet reading) order unspecified instead of stable
+            std::stable_sort(groupRows.begin(), groupRows.end(),
                 [](const SpriteSheetRow& a, const SpriteSheetRow& b) {
                     return a.numberInGroup < b.numberInGroup;
                 });
@@ -141,9 +179,7 @@ std::string GifsCommand::run(const SpriteUtilsArgs& args) {
                     continue;
                 }
                 cv::Mat frame = img(clipped).clone();
-                cv::Mat keyMask;
-                cv::inRange(frame, backgroundKey, backgroundKey, keyMask);
-                frame.setTo(cv::Scalar(background[0], background[1], background[2]), keyMask);
+                keyOutBackground(frame, background);
                 frames.push_back(frame);
             }
 

@@ -144,11 +144,56 @@ real groups.
       check, not committed — see `analysis.md` §8 on not redistributing
       original assets) and the CSV already in this repo; the resulting
       9-frame GIF decodes correctly and shows a genuine swimming animation.
-- [x] `gifs`: the sprite sheets are drawn on one solid color-key background
-      (sampled from each sheet's own top-left corner pixel) — swap it for
-      `--gif-background-color` (default white) before quantizing each
-      frame, instead of leaving the game's blue transparency key visible as
-      a box around every sprite.
+- [x] `gifs`: the sprite sheets are drawn on a color-key background — swap
+      it for `--gif-background-color` (default white) before quantizing
+      each frame, instead of leaving the game's blue transparency key
+      visible as a box around every sprite. Went through two revisions
+      after generating GIFs for *every* file in both games (see "Full
+      corpus generation" below) surfaced cases the first pass missed:
+      1. First pass sampled one color-key from each *sheet's* top-left
+         corner. Broke on tightly-packed sheets (`object.blp`) where the
+         corner pixel is real sprite content, not background.
+      2. Second pass switched to the *most frequent color within each
+         cropped frame*. Fixed the corner problem, but still wrong for
+         icons that nearly fill their own bounding box (trees, spheres) —
+         the icon's own color can outweigh the sliver of true background,
+         so the "background" guess was sometimes actually part of the
+         icon.
+      3. Final approach: flood-fill in from 8 points around each frame's
+         own border (corners + edge midpoints, small per-step color
+         tolerance so a soft gradient still connects), replacing only
+         background pixels *reachable from the edge*. An icon that fills
+         its whole cell has no reachable border strip of background, so
+         it's correctly left alone instead of risking erosion into real
+         sprite content — confirmed by re-inspecting the same previously-
+         broken `object.blp` icons: most are now clean, and the handful
+         that still show their original color turn out to have no
+         separate background margin at all within their bounding box
+         (verified by inspecting the source pixels directly), so leaving
+         them untouched is the correct, safe behavior rather than a bug.
+- [x] Fixed `gifs` sorting each group by `Number in Group` with `std::sort`
+      instead of `std::stable_sort`. Every still-unlabeled (`Group=?`) row
+      shares the same placeholder `Number in Group` value, so for that
+      bucket the sort key is constant and `std::sort` does not guarantee
+      which order equal-key rows come out in — found because the "?"
+      catch-all GIFs were visibly not in the sheet's actual reading order.
+      `std::stable_sort` preserves the CSV's original row order as the
+      fallback for ties, which is what the "?" bucket needs.
+
+#### Full corpus generation (both games, every file, no filters)
+
+Ran `gifs` with no `--group`/`--file-name` filter against every sheet
+referenced by both CSVs (`blupi000.blp`, `button00.blp`, `element.blp`,
+`explo.blp`, `jauge.blp`, `object.blp`, and — Speedy Blupi I only —
+`text.blp`; source images pulled locally from `Speedy_Blupi_I.7z` and
+`free-eggbert/gamefiles/IMAGE08`, neither committed). Result: **17 GIFs for
+Speedy Blupi I, 294 for Speedy Blupi II** (311 total, ~3.4 MB), written to
+`gifs_output/` in this repo (gitignored — see `.gitignore`). Most of these
+are single-frame or lumped into one large `?`-group GIF per file, since
+today's CSVs are still mostly unlabeled — expected, and exactly the gap
+Phase 2 closes. Ran end-to-end without errors or crashes across the whole
+corpus, including a 421-frame GIF, which is a reasonable stress test of
+`GifWriter` beyond the smaller examples used during development.
 
 ### Higher-resolution source images (`--scale`)
 
