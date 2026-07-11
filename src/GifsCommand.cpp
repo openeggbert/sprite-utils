@@ -24,6 +24,7 @@
 #include "GifsCommand.h"
 
 #include <algorithm>
+#include <cmath>
 #include <filesystem>
 #include <iostream>
 #include <map>
@@ -74,6 +75,37 @@ void keyOutBackground(cv::Mat& frame, const cv::Vec3b& background) {
     };
     for (const auto& seed : seeds) {
         cv::floodFill(frame, seed, fill, nullptr, tolerance, tolerance, 4);
+    }
+}
+
+// The game engine declares one fixed chroma-key color for transparency -
+// RGB(0,0,255), i.e. BGR (255,0,0) in OpenCV order - across every channel
+// this command touches (see every SetTransparent(CHxxx, RGB(0,0,255)) call
+// in free-eggbert/src/pixmap.cpp: CHOBJECT, CHBLUPI*, CHELEMENT, CHEXPLO,
+// CHBUTTON, CHJAUGE, CHTEXT). keyOutBackground's border flood-fill only
+// reaches background connected to a crop's edge, so a patch of this exact
+// color fully enclosed by icon content survives untouched - measured as
+// common (>15% of a crop's area survives on the large majority of frames,
+// worst in text.blp's mostly-empty 16x16 glyph cells). Since this color is
+// the engine's own declared "never actually drawn" marker, matching it
+// directly (regardless of position, small tolerance for rounding) can't
+// mistake real sprite content for background the way a plain color guess
+// could - it's simply cleaning up what the original game already treats as
+// invisible.
+void replaceTransparencyKeyColor(cv::Mat& frame, const cv::Vec3b& background) {
+    static const cv::Vec3b transparencyKey(255, 0, 0); // BGR for RGB(0,0,255)
+    constexpr int tolerance = 10;
+    for (int y = 0; y < frame.rows; ++y) {
+        auto* rowPtr = frame.ptr<cv::Vec3b>(y);
+        for (int x = 0; x < frame.cols; ++x) {
+            cv::Vec3b& px = rowPtr[x];
+            const int db = static_cast<int>(px[0]) - transparencyKey[0];
+            const int dg = static_cast<int>(px[1]) - transparencyKey[1];
+            const int dr = static_cast<int>(px[2]) - transparencyKey[2];
+            if (std::abs(db) <= tolerance && std::abs(dg) <= tolerance && std::abs(dr) <= tolerance) {
+                px = background;
+            }
+        }
     }
 }
 
@@ -180,6 +212,7 @@ std::string GifsCommand::run(const SpriteUtilsArgs& args) {
                 }
                 cv::Mat frame = img(clipped).clone();
                 keyOutBackground(frame, background);
+                replaceTransparencyKeyColor(frame, background);
                 frames.push_back(frame);
             }
 

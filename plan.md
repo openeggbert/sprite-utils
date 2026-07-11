@@ -202,6 +202,31 @@ real groups.
       catch-all GIFs were visibly not in the sheet's actual reading order.
       `std::stable_sort` preserves the CSV's original row order as the
       fallback for ties, which is what the "?" bucket needs.
+- [x] 4th background-key revision: even after the border flood-fill above,
+      a lot of blue chroma-key still leaked through into the GIFs
+      whenever it wasn't connected to a crop's edge (an icon touching the
+      border on every side leaves an enclosed "moat" of background the
+      flood-fill can never reach). Measured directly: **~75% of all crops
+      across both games (1877/2487) still had >15% of their area left as
+      near-exact background blue after the flood-fill pass**, worst in
+      `text.blp`'s mostly-empty 16x16 glyph cells (364/384 cells in both
+      games) and in small icons on oversized bounding boxes (explosion
+      frames, vent fans). Fix, scoped to `GifsCommand.cpp` only (source
+      `.blp` files/CSVs untouched): every `SetTransparent(CHxxx, ...)`
+      call in `free-eggbert/src/pixmap.cpp` for every channel `gifs`
+      touches (`CHOBJECT`, `CHBLUPI*`, `CHELEMENT`, `CHEXPLO`, `CHBUTTON`,
+      `CHJAUGE`, `CHTEXT`) declares the *same* fixed engine transparency
+      color, `RGB(0,0,255)` — so after the flood-fill, `gifs` now also
+      does a position-independent exact-color sweep (small tolerance) that
+      replaces any remaining pixel of that exact color with
+      `--gif-background-color`, regardless of border connectivity. Since
+      that color is the engine's own declared "never actually drawn"
+      marker, matching it directly can't mistake real sprite content for
+      background — confirmed no false positives (checked every flagged
+      crop's `Group` name for anything suggesting legitimate blue content,
+      e.g. `jauge.blp`'s progress-bar fill: 0/8 rows flagged). Verified by
+      re-measuring the same worst-offender crops post-fix (0% residual
+      blue) and visually, composited against a non-white canvas.
 
 #### Full corpus generation (both games, every file, no filters)
 
