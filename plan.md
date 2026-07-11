@@ -14,13 +14,15 @@ both games:**
 - Speedy Blupi I (v1.0, no decompiled source to read - extracted directly
   from `BLUPI.EXE`): `blupi000.blp`, `text.blp` and `jauge.blp` done the
   same way, all 37 pre-existing hand-verified `blupi000.blp` labels
-  preserved exactly; `button00.blp` geometry done (`Group="?"`).
-  `object.blp`/`element.blp`/`explo.blp` checked and found already
-  well-measured (85-99% match the authoritative geometry) — left alone
-  rather than reordered for no gain; they're just missing `Group`s, which
-  needs the (not yet found, likely hard) v1.0 equivalent of the ~150 named
-  tables — **619/1293 rows (48%)** labeled.
-- **1708/3003 rows (57%) across both CSVs combined are now labeled**, up
+  preserved exactly; `button00.blp` geometry done (`Group="?"`); `explo.blp`
+  partially done (12/54 icons, 3 of its 12 named tables found by
+  byte-signature scan — the other 9 couldn't be located with usable
+  confidence, see the milestone below). `object.blp`/`element.blp` checked
+  and found already well-measured (91-99% match the authoritative
+  geometry) — left alone rather than reordered for no gain; they're just
+  missing `Group`s, which needs their own (not yet found, much larger —
+  ~68-table) v1.0 named-table equivalent — **631/1293 rows (49%)** labeled.
+- **1720/3003 rows (57%) across both CSVs combined are now labeled**, up
   from 330/2478 (13%) at the start of this session.
 - Decor tiles (`decor0NN.blp`, both games) investigated and closed as
   **not applicable** — confirmed to be full-screen scrolling background
@@ -32,8 +34,9 @@ both games:**
   leftover chroma-key blue that wasn't connected to the crop's edge.
 
 See the "Milestone" writeups under Phase 2 for both games. Only
-`object`/`element`/`explo.blp` group names for Speedy Blupi I are still
-open — every other file in both CSVs has now been investigated.
+`object`/`element.blp` group names for Speedy Blupi I are still open —
+every other file in both CSVs has now been investigated, some (like v1.0
+`explo.blp`) only partially resolvable with real confidence.
 
 This is the living execution plan for finishing `sprite-utils` and using it to
 produce complete, correctly-annotated sprite-sheet data for both **Speedy
@@ -531,9 +534,44 @@ junk. Resolved every existing row and matched against
 hand-verified (most rows carry a `Notes=ok`) and correct — reordering it
 to match the table's internal index order would only lose the existing
 row/column organization for no benefit, since `Group` labels can't be
-added yet anyway (see above). Left untouched. Worth re-checking once the
-named-table equivalents are found, in case the small remainder (2-8 rows
-per file) turns out to matter.
+added yet anyway (see above). Left untouched pending named-table
+equivalents.
+
+#### Milestone: `explo.blp` (Speedy Blupi I / v1.0) done — 12/54 icons
+
+Revisited once named tables became findable (see the caveat above).
+Byte-signature scanning `BLUPI.EXE` v1.0 for each of v2.2's 12 `CHEXPLO`
+tables (`table_explo1-8`, `table_sploutch1-3`, `table_tentacule`, from
+`free-eggbert/src/dectables.cpp`) found exactly 3 with any real
+confidence: `table_explo2`, `table_explo3` and `table_explo4` are
+byte-for-byte identical to v2.2's values, laid out contiguously and in
+the same declaration order at `0x32590`/`0x325e0`/`0x32630` — an exact +
+contiguous + correctly-ordered triple match is not chance. The other 9
+were **not** found with usable confidence: an exact-byte search turned up
+nothing, and the general "run of values in the valid icon range" scan
+that found v1.0's `table_blupi` was far too noisy here (explo's icon
+range is only 54 values wide, so short/generic sequences and zero-padding
+runs collide constantly) — rather than guess, they were left alone.
+
+Geometry itself was *not* touched — only `Group`/`Number in Group` added
+to the existing (already-verified) rows. Getting there took a second
+matching pass: 46/54 rows already matched `table_icon_explo` exactly (as
+found above); the remaining 8 were resolved with a min-cost assignment
+(Hungarian algorithm, summed pixel error across X/Y/Width/Height) between
+those 8 rows and the 8 otherwise-unclaimed icons — worst residual 7px
+total across all 4 dimensions, and since exactly 54 rows must map to
+exactly 54 icons, an assignment is the right tool, not a threshold guess.
+That recovered icons 7/14/15, all 3 of which turned out to be referenced
+by the confirmed tables. Verified with `sprite_utils draw` (rectangles
+still land correctly, unchanged) and by rendering `table_explo4`'s GIF — a
+clean 5-frame burst-to-embers fade, exactly what an explosion animation
+should look like.
+
+Result: **12/54 icons (22%) now have a real `Group`** — a genuinely
+partial result, clearly documented as such (`tools/generate_explo_v1_rows.py`)
+rather than padded out with guesses. This was the last unlabeled file in
+either CSV; `object.blp`/`element.blp` (v1.0) remain geometry-only, still
+blocked on their own (much larger, ~68-table) named-table equivalents.
 
 #### Milestone: `text.blp` (both games) done
 
@@ -644,20 +682,24 @@ their bar.
       dropped.
 - [x] Sanity-check via `sprite_utils draw` before every replacement so
       far (`blupi000.blp`, `object`/`element`/`explo.blp` for v2.2,
-      `text.blp`, `button00.blp`, `jauge.blp` for both games) — every
-      rectangle generated to date has landed correctly.
+      `text.blp`, `button00.blp`, `jauge.blp`, `explo.blp` for v1.0) —
+      every rectangle generated to date has landed correctly.
 - [x] `text.blp` (both games): done, 375/384 cells (98%) labeled.
 - [x] `button00.blp` (both games): geometry done (126/156 cells per
       game), `Group` deliberately left `?` — no source table exists.
 - [x] `jauge.blp` (both games): done, 3/4 rows labeled (`JAUGE_AIR` ×2,
       `JAUGE_POWER` ×1) from an exhaustive call-site trace; row 0 left
       `?` since no caller sets it.
+- [x] `explo.blp` (Speedy Blupi I / v1.0): partially done, 12/54 icons
+      (22%) — only 3 of its 12 named tables were locatable in `BLUPI.EXE`
+      with real confidence; the other 9 left `?` rather than guessed.
 - [x] Decor tiles: investigated and closed — not a sprite grid, nothing
       to generate (see finding above).
-- [ ] `object`/`element`/`explo.blp` group names for Speedy Blupi I:
-      the only thing still open, and the hardest — needs the not-yet-found
-      v1.0 equivalent of the ~150 named tables (the same kind of
-      byte-signature EXE scan that found v1.0's `table_blupi`).
+- [ ] `object`/`element.blp` group names for Speedy Blupi I: the only
+      thing still open, and the hardest — needs their own (much larger,
+      ~68-table) v1.0 named-table equivalent, and `explo.blp`'s own
+      experience suggests a full byte-signature recovery may not be
+      achievable with real confidence even if attempted.
 
 ---
 
