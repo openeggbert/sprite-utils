@@ -9,26 +9,31 @@ both games:**
 - Speedy Blupi II (v2.2): `blupi000.blp`, `object.blp`, `element.blp`,
   `explo.blp` and `text.blp` now have `Group`s auto-generated from
   `free-eggbert`'s own tables; `button00.blp` geometry done (`Group="?"`,
-  no source table) — **1086/1710 rows (64%)** labeled, up from ~22%.
+  no source table); `jauge.blp` done (3/4 rows labeled) — **1089/1710 rows
+  (64%)** labeled, up from ~22%.
 - Speedy Blupi I (v1.0, no decompiled source to read - extracted directly
-  from `BLUPI.EXE`): `blupi000.blp` and `text.blp` done the same way, all
-  37 pre-existing hand-verified `blupi000.blp` labels preserved exactly;
-  `button00.blp` geometry done (`Group="?"`). `object.blp`/`element.blp`/
-  `explo.blp` checked and found already well-measured (85-99% match the
-  authoritative geometry) — left alone rather than reordered for no gain;
-  they're just missing `Group`s, which needs the (not yet found, likely
-  hard) v1.0 equivalent of the ~150 named tables — **616/1293 rows (48%)**
-  labeled.
-- **1702/3003 rows (57%) across both CSVs combined are now labeled**, up
+  from `BLUPI.EXE`): `blupi000.blp`, `text.blp` and `jauge.blp` done the
+  same way, all 37 pre-existing hand-verified `blupi000.blp` labels
+  preserved exactly; `button00.blp` geometry done (`Group="?"`).
+  `object.blp`/`element.blp`/`explo.blp` checked and found already
+  well-measured (85-99% match the authoritative geometry) — left alone
+  rather than reordered for no gain; they're just missing `Group`s, which
+  needs the (not yet found, likely hard) v1.0 equivalent of the ~150 named
+  tables — **619/1293 rows (48%)** labeled.
+- **1708/3003 rows (57%) across both CSVs combined are now labeled**, up
   from 330/2478 (13%) at the start of this session.
 - Decor tiles (`decor0NN.blp`, both games) investigated and closed as
   **not applicable** — confirmed to be full-screen scrolling background
   images with no per-tile rectangle structure, not a sprite grid at all;
   see the finding under Phase 2 below.
+- `gifs` also had its background-key removal hardened: a position-
+  independent sweep for the engine's exact declared transparency color now
+  runs after the border flood-fill, since ~75% of crops still had visible
+  leftover chroma-key blue that wasn't connected to the crop's edge.
 
-See the "Milestone" writeups under Phase 2 for both games. Still open:
-`object`/`element`/`explo.blp` group names for Speedy Blupi I, and
-`jauge.blp` (both games, small — 4 rows).
+See the "Milestone" writeups under Phase 2 for both games. Only
+`object`/`element`/`explo.blp` group names for Speedy Blupi I are still
+open — every other file in both CSVs has now been investigated.
 
 This is the living execution plan for finishing `sprite-utils` and using it to
 produce complete, correctly-annotated sprite-sheet data for both **Speedy
@@ -604,6 +609,30 @@ world-tile icons, not into `decor0NN.blp` — so `object.blp`'s existing
 coverage already accounts for the real per-tile sprite data; `decor0NN.blp`
 itself has no sprite-sheet structure to annotate. Closed, not deferred.
 
+#### Milestone: `jauge.blp` (both games) done — 3/4 rows labeled
+
+Same 124×88 canvas in both games (byte-identical file). Geometry confirmed
+the same reliable way as `text.blp`/`button00.blp`: `CHJAUGE`'s
+`totalDim`/`iconDim` in `CPixmap::CacheAll`
+(`free-eggbert/src/pixmap.cpp:1090-1094`, `DIMJAUGEX`/`DIMJAUGEY` in
+`include/def.hpp:64-65`) gives a plain 1-column × 4-row grid, 124×22 per
+cell. Unlike `button00.blp`, though, this one *could* be partially named:
+`CJauge::Draw` itself (`src/jauge.cpp`) is not usable evidence — its
+decompilation is visibly broken (writes one byte into a 12-byte buffer,
+then reads it back as a 32-bit `LOWORD`/`HIWORD` pair) — but the 4 rows
+turned out to just be 4 flat-colored full-width bars (black/red/cyan/
+yellow), and every call site touching `CJauge::m_type` (the row index)
+across the *entire* decompiled codebase was grep'd: `decor.cpp:81`
+(`m_jauges[JAUGE_AIR].Create(..., type=1, ...)`), `decblupi.cpp:2051`
+(`SetType(1)`), `decblupi.cpp:2780` (`SetType(2)`), `decor.cpp:83`
+(`m_jauges[JAUGE_POWER].Create(..., type=3, ...)`) — no call anywhere sets
+`type=0`. That's exhaustive, not a sample, so row 0 (black) is left
+`Group="?"` rather than guessed, while rows 1/2 (red/cyan) are grouped as
+`JAUGE_AIR` (the oxygen gauge, 2 states) and row 3 (yellow) as
+`JAUGE_POWER` (the shield/power gauge, 1 state). Verified with
+`sprite_utils draw` on both games — all 4 rectangles land exactly on
+their bar.
+
 **Merge and finalize:**
 - [x] Merge policy established and applied for every file done so far:
       human labels win where they exist and geometry checks out (exact
@@ -615,17 +644,20 @@ itself has no sprite-sheet structure to annotate. Closed, not deferred.
       dropped.
 - [x] Sanity-check via `sprite_utils draw` before every replacement so
       far (`blupi000.blp`, `object`/`element`/`explo.blp` for v2.2,
-      `text.blp`, `button00.blp` for both games) — every rectangle
-      generated to date has landed correctly.
+      `text.blp`, `button00.blp`, `jauge.blp` for both games) — every
+      rectangle generated to date has landed correctly.
 - [x] `text.blp` (both games): done, 375/384 cells (98%) labeled.
 - [x] `button00.blp` (both games): geometry done (126/156 cells per
       game), `Group` deliberately left `?` — no source table exists.
+- [x] `jauge.blp` (both games): done, 3/4 rows labeled (`JAUGE_AIR` ×2,
+      `JAUGE_POWER` ×1) from an exhaustive call-site trace; row 0 left
+      `?` since no caller sets it.
 - [x] Decor tiles: investigated and closed — not a sprite grid, nothing
       to generate (see finding above).
-- [ ] `jauge.blp` (both games, small — 4 rows, a health/progress-bar
-      strip) and `object`/`element`/`explo.blp` group names for Speedy
-      Blupi I: still open, lowest priority remaining (small file / needs
-      the not-yet-found v1.0 named-table equivalent, respectively).
+- [ ] `object`/`element`/`explo.blp` group names for Speedy Blupi I:
+      the only thing still open, and the hardest — needs the not-yet-found
+      v1.0 equivalent of the ~150 named tables (the same kind of
+      byte-signature EXE scan that found v1.0's `table_blupi`).
 
 ---
 
