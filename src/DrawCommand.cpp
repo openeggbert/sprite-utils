@@ -506,7 +506,7 @@ std::string DrawCommand::run(const SpriteUtilsArgs& args) {
     std::cout << "Going to process images in directory: " << workingDir << "\n";
 
     // Load the spritesheet CSV
-    SpriteSheet spriteSheet(std::filesystem::path(opt.getSpriteSheetPath()));
+    SpriteSheet spriteSheet(std::filesystem::path(opt.getSpriteSheetPath()), opt.getScale());
 
     // Iterate all files in the working directory
     for (const auto& entry : std::filesystem::directory_iterator(workingDir)) {

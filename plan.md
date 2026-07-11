@@ -144,6 +144,71 @@ real groups.
       check, not committed — see `analysis.md` §8 on not redistributing
       original assets) and the CSV already in this repo; the resulting
       9-frame GIF decodes correctly and shows a genuine swimming animation.
+- [x] `gifs`: the sprite sheets are drawn on one solid color-key background
+      (sampled from each sheet's own top-left corner pixel) — swap it for
+      `--gif-background-color` (default white) before quantizing each
+      frame, instead of leaving the game's blue transparency key visible as
+      a box around every sprite.
+
+### Higher-resolution source images (`--scale`)
+
+Robert is going to re-render these sprites directly from the original 3D
+models in Ray Dream Studio at 2x/4x/8x resolution. The existing CSVs stay
+authored at 1x — `sprite-utils` needs to be able to read a higher-resolution
+source image with the *same* 1x CSV and land on the right rectangles.
+
+- [x] `SpriteSheet` takes an optional integer `scale` (`--scale`, default 1,
+      any positive integer — not restricted to 2/4/8). All of the *existing*
+      auto-X / height-inheritance / row-column-validation arithmetic keeps
+      running entirely in the CSV's original 1x space, untouched — `scale`
+      is applied as a pure read-side transform, multiplying `X`/`Y`/`Width`/
+      `Height` by it only in `getSpriteSheetRows(...)`, on a copy. This
+      matters: multiplying each row in place *during* parsing, immediately
+      after it's resolved, looks equivalent but isn't — the next row's
+      auto-X/height computation reads the previous row back out of internal
+      state, and scaling that row before it's read compounds (e.g. row 3
+      would come out scaled twice). Covered by
+      `spriteSheet_scaleMultipliesResolvedCoordinatesOnly` in
+      `tests/SpriteSheetTests.cpp`, which specifically checks a 3-row
+      auto-computed chain (the same fixture as the Phase 1 auto-X test)
+      stays internally consistent under `scale=2` rather than drifting.
+- [x] Wired `--scale` through `SpriteUtilsOptions::getScale()` into `draw`,
+      `extract`, and `gifs` (all three just read
+      `SpriteSheet(path, opt.getScale())`).
+- [x] Documented in `HelpCommand.cpp`.
+- [x] Verified end-to-end: took the real Speedy Blupi I `blupi000.blp`,
+      upscaled it 2x with nearest-neighbor as a stand-in for a real Ray
+      Dream Studio re-render, and ran `gifs --scale 2` against it with the
+      *unmodified* 1x CSV — output canvas came out exactly 114x64 (2x the
+      1x version's 57x32) and the animation is pixel-correct, just bigger.
+- [ ] Deliberately unscaled for now: `draw`'s dashed-rectangle line weight
+      and digit font size stay fixed-pixel regardless of `--scale` — at 8x
+      they'll look like a hairline next to a giant sprite. Not asked for;
+      flagged here so it isn't mistaken for an oversight if it comes up
+      later (leaving this one unchecked on purpose — it's a known
+      limitation, not a completed task).
+
+### PNG support (analysis only — not implemented yet)
+
+The game engine that currently reads these sprites out of `.blp` (which is
+just BMP under a different extension) is being updated separately to also
+support PNG. `sprite-utils` should eventually be able to read/write PNG
+sprite sheets too, not just BMP/`.blp`.
+
+- [ ] **Analysis task**: work out what actually has to change — where
+      `DrawCommand`/`ExtractCommand`/`GifsCommand` currently assume BMP
+      specifically (the bit-depth sniffing in `DrawCommand::readBmpBpp`,
+      the custom `writeBmp16BGR565` RGB565 writer used for `.blp`/16-bit
+      BMP output, the always-BLP-is-RGB565 branch in `DrawCommand::run`),
+      versus what's already format-agnostic through OpenCV
+      (`cv::imread`/`cv::imwrite` already handle PNG transparently, so
+      *reading* a PNG sheet may already work today for `draw`'s non-BLP
+      path — needs verifying, not assuming). Cover what "write PNG output
+      instead of overwriting the source in place" should mean for `draw`'s
+      backup/overwrite model, and whether PNG's real alpha channel should
+      replace the color-key-background approach `gifs` just grew. Write
+      the findings up (in `analysis.md` or a new `docs/png-support.md`)
+      before writing any PNG-handling code.
 
 ---
 

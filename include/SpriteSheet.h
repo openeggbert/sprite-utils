@@ -40,6 +40,17 @@ private:
 
     std::optional<SpriteSheetRow> lastSpriteSheetRow = std::nullopt;
 
+    // Multiplies X/Y/Width/Height of every row returned by
+    // getSpriteSheetRows(), so the *same* CSV (always authored at 1x) can
+    // address a higher-resolution re-render of the same sprite sheet.
+    // Deliberately applied only at that read boundary, never during
+    // parsing: the auto-X/height-inheritance arithmetic in processLine()/
+    // updateSpriteSheetRow() must keep running in the CSV's original 1x
+    // space, because it chains off the previous row's already-resolved
+    // values - scaling a row before it's read back in as "previous" would
+    // compound the scale on every subsequent row.
+    int scale;
+
     void processLine(const std::string& line, std::vector<SpriteSheetRow>& rows);
     void updateSpriteSheetRow(SpriteSheetRow& spriteSheetRow);
     void updateMap(const SpriteSheetRow& spriteSheetRow);
@@ -49,9 +60,10 @@ private:
     void saveComputedFile(const std::filesystem::path& file,
                           const std::string& originalText,
                           const std::vector<SpriteSheetRow>& rows);
+    static SpriteSheetRow applyScale(const SpriteSheetRow& row, int scale);
 
 public:
-    explicit SpriteSheet(const std::filesystem::path& file);
+    explicit SpriteSheet(const std::filesystem::path& file, int scale = 1);
 
     std::vector<SpriteSheetRow> getSpriteSheetRows(const std::string& file);
     std::vector<SpriteSheetRow> getSpriteSheetRows();

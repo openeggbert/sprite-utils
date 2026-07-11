@@ -130,6 +130,29 @@ std::optional<string> SpriteUtilsOptions::getGroup() const
     return spriteUtilsArgs.getArgumentOptional("--group");
 }
 
+int SpriteUtilsOptions::getScale() const
+{
+    auto arg = spriteUtilsArgs.getArgumentOptional("--scale");
+    if (!arg.has_value())
+    {
+        return 1;
+    }
+    int value;
+    try
+    {
+        value = std::stoi(*arg);
+    }
+    catch (...)
+    {
+        throw SpriteUtilsException("Invalid scale option (must be a positive integer): " + *arg);
+    }
+    if (value < 1)
+    {
+        throw SpriteUtilsException("Invalid scale option (must be a positive integer): " + *arg);
+    }
+    return value;
+}
+
 std::optional<string> SpriteUtilsOptions::getFileName() const
 {
     return spriteUtilsArgs.getArgumentOptional("--file-name");

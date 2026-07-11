@@ -67,6 +67,43 @@ SP_TEST_CASE(spriteSheet_autoXAndHeightComputation) {
     SP_CHECK_EQ(rows[2].numberPerSheet, 3);
 }
 
+SP_TEST_CASE(spriteSheet_scaleMultipliesResolvedCoordinatesOnly) {
+    // Same fixture as spriteSheet_autoXAndHeightComputation, at --scale=2.
+    // A naive "multiply each row as soon as it's resolved" implementation
+    // would compound: row 1's auto-X reads row 0's (already-scaled) x/width
+    // back out of internal state, so it would come out scaled twice. The
+    // expected values here are exactly 2x the *unscaled* result (0/32/32,
+    // 32/32/28, 60/47/30), not double-scaled (which would show up as an
+    // x of 128 instead of 120 on the third row).
+    auto path = writeTempCsv("scale",
+        "img.bmp;walk;1;1;1;;0;32;32;;;0\n"
+        "img.bmp;walk;2;1;2;;0;28;0;;;0\n"
+        "img.bmp;walk;3;1;3;;0;30;15;;;0\n"
+        "skipskip\n");
+
+    SpriteSheet sheet(path, 2);
+    auto rows = sheet.getSpriteSheetRows("img.bmp");
+    SP_CHECK_EQ(rows.size(), size_t{3});
+
+    SP_CHECK_EQ(rows[0].x, 0);
+    SP_CHECK_EQ(rows[0].width, 64);
+    SP_CHECK_EQ(rows[0].height, 64);
+
+    SP_CHECK_EQ(rows[1].x, 64);
+    SP_CHECK_EQ(rows[1].width, 56);
+    SP_CHECK_EQ(rows[1].height, 64);
+
+    SP_CHECK_EQ(rows[2].x, 120);
+    SP_CHECK_EQ(rows[2].width, 60);
+    SP_CHECK_EQ(rows[2].height, 94);
+}
+
+SP_TEST_CASE(spriteSheet_invalidScaleThrows) {
+    auto path = writeTempCsv("invalidScale", "img.bmp;g;1;1;1;0;0;10;10;;;1\n");
+    SP_CHECK_THROWS(SpriteSheet(path, 0));
+    SP_CHECK_THROWS(SpriteSheet(path, -1));
+}
+
 SP_TEST_CASE(spriteSheet_skipskipSentinelStopsProcessing) {
     auto path = writeTempCsv("skipskip",
         "img.bmp;g;1;1;1;0;0;10;10;;;1\n"

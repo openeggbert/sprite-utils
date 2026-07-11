@@ -52,6 +52,11 @@ COMMAND
                             Optional. Default=(all image files in --dir).
                         --row={row number to draw, starting at 1}
                             Optional. Default=(all rows).
+                        --scale={positive integer}
+                            Optional. Default=1. Multiplies every X/Y/Width/
+                            Height from the CSV by this factor before use -
+                            for running the same 1x-authored CSV against a
+                            2x/4x/8x re-rendered source image.
                         --rectangle-color={R,G,B}
                             Optional. Default=255,0,0
                         --draw-number={true|false}
@@ -71,6 +76,8 @@ COMMAND
                             Optional. Default={--dir}/spritesheet.csv
                         --file-name={single image file name to process}
                             Optional. Default=(all image files in --dir).
+                        --scale={positive integer}
+                            Optional. Default=1. See "draw" above.
                         --out-dir={directory to write extracted sprites to}
                             Optional. Default={--dir}/extracted
 
@@ -95,6 +102,8 @@ COMMAND
                             Optional. Default=(all image files in --dir).
                         --group={single group name to build}
                             Optional. Default=(every group found).
+                        --scale={positive integer}
+                            Optional. Default=1. See "draw" above.
                         --out-dir={directory to write GIFs to}
                             Optional. Default={--dir}/gifs
                         --frame-delay-ms={milliseconds per frame}

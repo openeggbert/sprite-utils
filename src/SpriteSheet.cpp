@@ -29,8 +29,11 @@
 #include <sstream>
 #include <fstream>
 
-SpriteSheet::SpriteSheet(const std::filesystem::path& file)
+SpriteSheet::SpriteSheet(const std::filesystem::path& file, int scaleIn) : scale(scaleIn)
 {
+    if (scale < 1)
+        throw SpriteUtilsException("Invalid scale (must be a positive integer): " + std::to_string(scale));
+
     std::vector<SpriteSheetRow> rows;
 
     const std::string text = Utils::readTextFromFile(file);
@@ -177,9 +180,26 @@ void SpriteSheet::saveComputedFile(const std::filesystem::path& file,
 }
 
 
+SpriteSheetRow SpriteSheet::applyScale(const SpriteSheetRow& row, int scale)
+{
+    if (scale == 1)
+        return row;
+
+    SpriteSheetRow scaled = row;
+    scaled.x *= scale;
+    scaled.y *= scale;
+    scaled.width *= scale;
+    scaled.height *= scale;
+    return scaled;
+}
+
+
 std::vector<SpriteSheetRow> SpriteSheet::getSpriteSheetRows(const std::string& file)
 {
-    return map[file];
+    std::vector<SpriteSheetRow> result;
+    for (const auto& row : map[file])
+        result.push_back(applyScale(row, scale));
+    return result;
 }
 
 
@@ -188,7 +208,8 @@ std::vector<SpriteSheetRow> SpriteSheet::getSpriteSheetRows()
     std::vector<SpriteSheetRow> res;
 
     for (auto& p : map)
-        res.insert(res.end(), p.second.begin(), p.second.end());
+        for (const auto& row : p.second)
+            res.push_back(applyScale(row, scale));
 
     return res;
 }

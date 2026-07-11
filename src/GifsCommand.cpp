@@ -57,7 +57,7 @@ std::string GifsCommand::run(const SpriteUtilsArgs& args) {
     std::filesystem::create_directories(outDir);
 
     // Load the spritesheet CSV
-    SpriteSheet spriteSheet(std::filesystem::path(opt.getSpriteSheetPath()));
+    SpriteSheet spriteSheet(std::filesystem::path(opt.getSpriteSheetPath()), opt.getScale());
 
     int gifCount = 0;
 
@@ -111,6 +111,13 @@ std::string GifsCommand::run(const SpriteUtilsArgs& args) {
         if (img.channels() == 1)
             cv::cvtColor(img, img, cv::COLOR_GRAY2BGR);
 
+        // These sprite sheets are drawn on one solid color-key background
+        // (sampled from the sheet's own top-left corner, which is never
+        // part of a sprite) - swap it for the requested GIF background
+        // color so it doesn't show up as an odd blue box around every
+        // frame.
+        const cv::Vec3b backgroundKey = img.at<cv::Vec3b>(0, 0);
+
         const cv::Rect bounds(0, 0, img.cols, img.rows);
         const std::filesystem::path fileOutDir = outDir / imageFile.stem();
 
@@ -133,7 +140,11 @@ std::string GifsCommand::run(const SpriteUtilsArgs& args) {
                                << row.createId() << "\n";
                     continue;
                 }
-                frames.push_back(img(clipped).clone());
+                cv::Mat frame = img(clipped).clone();
+                cv::Mat keyMask;
+                cv::inRange(frame, backgroundKey, backgroundKey, keyMask);
+                frame.setTo(cv::Scalar(background[0], background[1], background[2]), keyMask);
+                frames.push_back(frame);
             }
 
             if (frames.empty())

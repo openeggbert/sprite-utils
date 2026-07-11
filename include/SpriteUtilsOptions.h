@@ -77,6 +77,8 @@ public:
 
     std::optional<string> getGroup() const;
 
+    int getScale() const;
+
     std::optional<string> getFileName() const;
 
     std::optional<int> getRow() const;

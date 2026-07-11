@@ -48,7 +48,7 @@ std::string ExtractCommand::run(const SpriteUtilsArgs& args) {
     std::filesystem::create_directories(outDir);
 
     // Load the spritesheet CSV
-    SpriteSheet spriteSheet(std::filesystem::path(opt.getSpriteSheetPath()));
+    SpriteSheet spriteSheet(std::filesystem::path(opt.getSpriteSheetPath()), opt.getScale());
 
     int extractedCount = 0;
 
