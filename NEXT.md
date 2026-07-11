@@ -1,6 +1,6 @@
 # NEXT.md — sprite-utils handoff
 
-*Last updated: 2026-07-11 (branch: `develop`, HEAD `f592c07`) — Phases 0-3 all done, plus a new `pack` command (§3.5) added afterward. 34 tests / 99 checks passing (`cmake --build build && ctest` / `./build/sprite_utils_tests`).*
+*Last updated: 2026-07-11 (branch: `develop`, HEAD `a85ce19`) — Phases 0-3 all done, plus a new `pack` command (§3.5) added afterward. 34 tests / 99 checks passing (`cmake --build build && ctest` / `./build/sprite_utils_tests`).*
 
 ## 1. Project summary
 
