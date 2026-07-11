@@ -1,295 +1,295 @@
 File;Group;Number in Group;Row;Column;X;Y;Width;Height;Notes;Tags;Number per file
-blupi000.blp;YELLOW_EGGBERT_BORN;1;1;1;;0;28;20;;ok;1
-blupi000.blp;Yellow_Eggbert_Born;2;1;2;;0;28;0;;ok;2
-blupi000.blp;Yellow_Eggbert_Born;3;1;3;;0;28;3;;ok;3
-blupi000.blp;Yellow_Eggbert_Born;4;1;4;;0;28;0;;ok;4
-blupi000.blp;Yellow Bomb;1;1;5;;0;34;1;;ok;5
-blupi000.blp;Yellow Bomb;2;1;6;;0;38;0;;ok;6
-blupi000.blp;Yellow Bomb;3;1;7;;0;40;0;;ok;7
-blupi000.blp;Yellow Bomb;4;1;8;;0;42;0;;ok;8
-blupi000.blp;Yellow Bomb;5;1;9;;0;44;0;;ok;9
-blupi000.blp;Yellow Bomb;6;1;10;;0;45;0;;ok;10
-blupi000.blp;Yellow_Eggbert_Life;1;1;11;;0;17;1;;ok;11
-blupi000.blp;Yellow_Eggbert_Born;5;1;12;;0;28;2;;ok;12
-blupi000.blp;Yellow_Eggbert_Born;6;1;13;;0;28;2;;ok;13
-blupi000.blp;Yellow_Eggbert_Born;7;1;14;;0;28;1;;ok;14
-blupi000.blp;Yellow_Eggbert_Born;8;1;15;;0;28;1;;ok;15
-blupi000.blp;Yellow_Eggbert_Swimming_Right;1;1;16;;0;53;0;;ok;16
-blupi000.blp;Yellow_Eggbert_Swimming_Left;1;1;17;;0;60;0;;ok;17
-blupi000.blp;Yellow_Eggbert_Born;9;1;18;;0;28;1;;ok;18
-blupi000.blp;Yellow_Eggbert_Swimming_Left;2;1;19;;0;46;0;;ok;19
-blupi000.blp;Yellow_Eggbert_Swimming_Left;3;1;20;;0;46;0;;ok;20
-blupi000.blp;Yellow_Eggbert_Swimming_Right;2;1;21;;0;47;0;;ok;21
-blupi000.blp;Yellow_Eggbert_Swimming_Right;3;2;1;;32;47;32;;ok;22
-blupi000.blp;Yellow_Eggbert_Swimming_Left;4;2;2;;32;47;0;;ok;23
-blupi000.blp;Yellow_Eggbert_Swimming_Right;4;2;3;;32;48;0;;ok;24
-blupi000.blp;Yellow_Eggbert_Swimming_Right;5;2;4;;32;48;0;;ok;25
-blupi000.blp;Yellow_Eggbert_Swimming_Left;5;2;5;;32;48;0;;ok;26
-blupi000.blp;Yellow_Eggbert_Swimming_Left;6;2;6;;32;48;0;;ok;27
-blupi000.blp;Yellow_Eggbert_Swimming_Right;6;2;7;;32;49;0;;ok;28
-blupi000.blp;Yellow_Eggbert_Swimming_Right;7;2;8;;32;49;0;;ok;29
-blupi000.blp;Yellow_Eggbert_Swimming_Left;7;2;9;;32;49;0;;ok;30
-blupi000.blp;Yellow_Eggbert_Swimming_Right;8;2;10;;32;49;0;;ok;31
-blupi000.blp;Yellow_Eggbert_Swimming_Butt;1;2;11;;32;52;0;;ok;32
-blupi000.blp;Yellow_Eggbert_Swimming_Left;8;2;12;;32;54;0;;ok;33
-blupi000.blp;Yellow_Eggbert_Swimming_Right;9;2;13;;32;57;0;;ok;34
-blupi000.blp;Yellow_Eggbert_Swimming_Left;9;2;14;;32;58;0;;ok;35
-blupi000.blp;Yellow_Eggbert_Crouching_Left;1;2;15;;32;37;7;;ok;36
-blupi000.blp;Yellow_Eggbert_Crouching_Right;1;2;16;;32;37;0;;ok;37
-blupi000.blp;?;1;3;1;;71;37;43;;ok;38
-blupi000.blp;?;1;3;2;;71;37;0;;ok;39
-blupi000.blp;?;1;3;3;;71;35;1;;ok;40
-blupi000.blp;?;1;3;4;;71;35;0;;ok;41
-blupi000.blp;?;1;3;5;;71;36;0;;ok;42
-blupi000.blp;?;1;3;6;;71;36;0;;ok;43
-blupi000.blp;?;1;3;7;;71;33;1;;ok;44
-blupi000.blp;?;1;3;8;;71;34;0;;ok;45
-blupi000.blp;?;1;3;9;;71;34;0;;ok;46
-blupi000.blp;?;1;3;10;;71;35;0;;ok;47
-blupi000.blp;?;1;3;11;;71;36;0;;ok;48
-blupi000.blp;?;1;3;12;;71;37;0;;ok;49
-blupi000.blp;?;1;3;13;;71;37;0;;ok;50
-blupi000.blp;?;1;3;14;;71;39;0;;ok;51
-blupi000.blp;?;1;3;15;;71;32;1;;ok;52
-blupi000.blp;?;1;3;16;;71;32;0;;ok;53
-blupi000.blp;?;1;3;17;;71;32;0;;ok;54
-blupi000.blp;?;1;3;18;;71;32;0;;ok;55
-blupi000.blp;?;1;3;19;;71;34;0;;ok;56
-blupi000.blp;?;1;3;20;;71;36;0;whoops;ok;57
-blupi000.blp;?;1;3;21;;71;37;0;;ok;58
-blupi000.blp;?;1;3;22;;71;36;1;;ok;59
-blupi000.blp;?;1;4;1;;118;41;47;bouchnul se do hlavy;ok;60
-blupi000.blp;?;1;4;2;;118;30;1;;ok;61
-blupi000.blp;?;1;4;3;;118;31;0;;ok;62
-blupi000.blp;?;1;4;4;;118;31;0;;ok;63
-blupi000.blp;?;1;4;5;;118;32;0;;ok;64
-blupi000.blp;?;1;4;6;;118;32;0;;ok;65
-blupi000.blp;?;1;4;7;;118;32;0;;ok;66
-blupi000.blp;?;1;4;8;;118;32;0;;ok;67
-blupi000.blp;?;1;4;9;;118;32;0;;ok;68
-blupi000.blp;?;1;4;10;;118;33;0;;ok;69
-blupi000.blp;?;1;4;11;;118;33;0;;ok;70
-blupi000.blp;?;1;4;12;;118;33;0;;ok;71
-blupi000.blp;?;1;4;13;;118;33;0;;ok;72
-blupi000.blp;?;1;4;14;;118;33;0;;ok;73
-blupi000.blp;?;1;4;15;;118;36;0;;ok;74
-blupi000.blp;?;1;4;16;;118;36;0;;ok;75
-blupi000.blp;?;1;4;17;;118;36;0;;ok;76
-blupi000.blp;?;1;4;18;;118;37;0;;ok;77
-blupi000.blp;?;1;4;19;;118;37;0;;ok;78
-blupi000.blp;?;1;4;20;;118;39;0;;ok;79
-blupi000.blp;?;1;4;21;;118;39;0;;ok;80
-blupi000.blp;?;1;4;22;;118;31;0;;ok;81
-blupi000.blp;?;1;4;23;;118;31;1;;ok;82
-blupi000.blp;?;1;5;1;;167;31;49;;ok;83
-blupi000.blp;?;1;5;2;;167;31;0;;ok;84
-blupi000.blp;?;1;5;3;;167;32;0;;ok;85
-blupi000.blp;?;1;5;4;;167;32;0;;ok;86
-blupi000.blp;?;1;5;5;;167;32;0;;ok;87
-blupi000.blp;?;1;5;6;;167;32;0;;ok;88
-blupi000.blp;?;1;5;7;;167;32;0;;ok;89
-blupi000.blp;?;1;5;8;;167;33;0;;ok;90
-blupi000.blp;?;1;5;9;;167;33;0;;ok;91
-blupi000.blp;?;1;5;10;;167;33;0;;ok;92
-blupi000.blp;?;1;5;11;;167;33;0;;ok;93
-blupi000.blp;?;1;5;12;;167;33;0;;ok;94
-blupi000.blp;?;1;5;13;;167;37;0;;ok;95
-blupi000.blp;?;1;5;14;;167;37;0;;ok;96
-blupi000.blp;?;1;5;15;;167;37;0;;ok;97
-blupi000.blp;?;1;5;16;;167;37;0;;ok;98
-blupi000.blp;?;1;5;17;;167;38;0;;ok;99
-blupi000.blp;?;1;5;18;;167;38;0;;ok;100
-blupi000.blp;?;1;5;19;;167;38;0;;ok;101
-blupi000.blp;?;1;5;20;;167;38;0;;ok;102
-blupi000.blp;?;1;5;21;;167;39;0;;ok;103
-blupi000.blp;?;1;5;22;;167;39;0;;ok;104
-blupi000.blp;?;1;6;1;;216;39;49;;ok;105
-blupi000.blp;?;1;6;2;;216;39;0;;ok;106
-blupi000.blp;?;1;6;3;;216;28;1;;ok;107
-blupi000.blp;?;1;6;4;;216;28;0;;ok;108
-blupi000.blp;?;1;6;5;;216;28;0;;ok;109
-blupi000.blp;?;1;6;6;;216;28;0;;ok;110
-blupi000.blp;?;1;6;7;;216;31;0;;ok;111
-blupi000.blp;?;1;6;8;;216;31;0;;ok;112
-blupi000.blp;?;1;6;9;;216;31;0;;ok;113
-blupi000.blp;?;1;6;10;;216;31;0;;ok;114
-blupi000.blp;?;1;6;11;;216;32;0;;ok;115
-blupi000.blp;?;1;6;12;;216;32;0;;ok;116
-blupi000.blp;?;1;6;13;;216;32;0;;ok;117
-blupi000.blp;?;1;6;14;;216;32;0;;ok;118
-blupi000.blp;?;1;6;15;;216;32;0;;ok;119
-blupi000.blp;?;1;6;16;;216;32;0;;ok;120
-blupi000.blp;?;1;6;17;;216;32;0;;ok;121
-blupi000.blp;?;1;6;18;;216;32;0;;ok;122
-blupi000.blp;?;1;6;19;;216;32;0;;ok;123
-blupi000.blp;?;1;6;20;;216;33;0;;ok;124
-blupi000.blp;?;1;6;21;;216;33;0;;ok;125
-blupi000.blp;?;1;6;22;;216;33;0;;ok;126
-blupi000.blp;?;1;6;23;;216;35;0;;ok;127
-blupi000.blp;?;1;6;24;;216;35;0;;ok;128
-blupi000.blp;?;1;7;1;;266;35;50;;ok;129
-blupi000.blp;?;1;7;2;;266;36;0;;ok;130
-blupi000.blp;?;1;7;3;;266;37;0;;ok;131
-blupi000.blp;?;1;7;4;;266;38;0;;ok;132
-blupi000.blp;?;1;7;5;;266;38;0;;ok;133
-blupi000.blp;?;1;7;6;;266;39;0;;ok;134
-blupi000.blp;?;1;7;7;;266;39;0;;ok;135
-blupi000.blp;?;1;7;8;;266;45;0;;ok;136
-blupi000.blp;?;1;7;9;;266;46;0;;ok;137
-blupi000.blp;?;1;7;10;;266;46;0;;ok;138
-blupi000.blp;?;1;7;11;;266;47;0;;ok;139
-blupi000.blp;?;1;7;12;;266;47;0;;ok;140
-blupi000.blp;?;1;7;13;;266;48;0;;ok;141
-blupi000.blp;?;1;7;14;;266;31;1;;ok;142
-blupi000.blp;?;1;7;15;;266;31;0;;ok;143
-blupi000.blp;?;1;7;16;;266;32;0;;ok;144
-blupi000.blp;?;1;7;17;;266;32;0;;ok;145
-blupi000.blp;?;1;7;18;;266;32;0;;ok;146
-blupi000.blp;?;1;7;19;;266;32;0;;ok;147
-blupi000.blp;?;1;7;20;;266;32;0;;ok;148
-blupi000.blp;?;1;8;1;;317;33;51;;ok;149
-blupi000.blp;?;1;8;2;;317;37;0;;ok;150
-blupi000.blp;?;1;8;3;;317;37;0;;ok;151
-blupi000.blp;?;1;8;4;;317;39;0;;ok;152
-blupi000.blp;?;1;8;5;;317;39;0;;ok;153
-blupi000.blp;?;1;8;6;;317;42;0;;;154
-blupi000.blp;?;1;8;7;;317;42;0;;;155
-blupi000.blp;?;1;8;8;;317;42;0;;;156
-blupi000.blp;?;1;8;9;;317;43;0;;;157
-blupi000.blp;?;1;8;10;;317;48;0;;;158
-blupi000.blp;?;1;8;11;;317;53;0;;;159
-blupi000.blp;?;1;8;12;;317;31;1;;;160
-blupi000.blp;?;1;8;13;;317;32;0;;;161
-blupi000.blp;?;1;8;14;;317;33;0;;;162
-blupi000.blp;?;1;8;15;;317;33;0;;;163
-blupi000.blp;?;1;8;16;;317;33;0;;;164
-blupi000.blp;?;1;8;17;;317;33;0;;;165
-blupi000.blp;?;1;8;18;;317;35;0;;;166
-blupi000.blp;?;1;8;19;;317;36;0;;;167
-blupi000.blp;?;1;8;20;;317;37;0;;;168
-blupi000.blp;?;1;9;1;;369;37;52;---;;169
-blupi000.blp;?;1;9;2;;369;37;0;;;170
-blupi000.blp;?;1;9;3;;369;37;0;;;171
-blupi000.blp;?;1;9;4;;369;38;0;;;172
-blupi000.blp;?;1;9;5;;369;36;0;;;173
-blupi000.blp;?;1;9;6;;369;42;0;;;174
-blupi000.blp;?;1;9;7;;369;43;0;;;175
-blupi000.blp;?;1;9;8;;369;43;0;;;176
-blupi000.blp;?;1;9;9;;369;49;0;;;177
-blupi000.blp;?;1;9;10;;369;51;0;;;178
-blupi000.blp;?;1;9;11;;369;57;0;;;179
-blupi000.blp;?;1;9;12;;369;32;1;;;180
-blupi000.blp;?;1;9;13;;369;31;0;;;181
-blupi000.blp;?;1;9;14;;369;39;0;;;182
-blupi000.blp;?;1;9;15;;369;39;0;;;183
-blupi000.blp;?;1;9;16;;369;39;0;;;184
-blupi000.blp;?;1;9;17;;369;39;0;;;185
-blupi000.blp;?;1;9;18;;369;39;0;;;186
-blupi000.blp;?;1;9;19;;369;39;0;;;187
-blupi000.blp;?;1;10;1;;422;39;53;;;188
-blupi000.blp;?;1;10;2;;422;52;0;;;189
-blupi000.blp;?;1;10;3;;422;40;1;;;190
-blupi000.blp;?;1;10;4;;422;40;0;;;191
-blupi000.blp;?;1;10;5;;422;40;0;;;192
-blupi000.blp;?;1;10;6;;422;40;0;;;193
-blupi000.blp;?;1;10;7;;422;55;0;;;194
-blupi000.blp;?;1;10;8;;422;54;0;;;195
-blupi000.blp;?;1;10;9;;422;55;0;;;196
-blupi000.blp;?;1;10;10;;422;55;0;;;197
-blupi000.blp;?;1;10;11;;422;55;0;;;198
-blupi000.blp;?;1;10;12;;422;56;0;;;199
-blupi000.blp;?;1;10;13;;422;56;0;;;200
-blupi000.blp;?;1;10;14;;422;58;0;;;201
-blupi000.blp;?;1;10;15;;422;58;0;;;202
-blupi000.blp;?;1;11;1;;476;32;55;;;203
-blupi000.blp;?;1;11;2;;476;39;0;;;204
-blupi000.blp;?;1;11;3;;476;39;0;;;205
-blupi000.blp;?;1;11;4;;476;42;0;;;206
-blupi000.blp;?;1;11;5;;476;48;0;;;207
-blupi000.blp;?;1;11;6;;476;32;1;;;208
-blupi000.blp;?;1;11;7;;476;40;0;;;209
-blupi000.blp;?;1;11;8;;476;40;0;;;210
-blupi000.blp;?;1;11;9;;476;51;0;;;211
-blupi000.blp;?;1;11;10;;476;33;1;;;212
-blupi000.blp;?;1;11;11;;476;36;0;;;213
-blupi000.blp;?;1;11;12;;476;38;0;;;214
-blupi000.blp;?;1;11;13;;476;41;0;;;215
-blupi000.blp;?;1;11;14;;476;41;0;;;216
-blupi000.blp;?;1;11;15;;476;41;0;;;217
-blupi000.blp;?;1;11;16;;476;42;0;;;218
-blupi000.blp;?;1;11;17;;476;46;0;;;219
-blupi000.blp;?;1;11;18;;476;46;0;;;220
-blupi000.blp;?;1;11;19;;476;55;0;;;221
-blupi000.blp;?;1;12;1;;533;31;58;;;222
-blupi000.blp;?;1;12;2;;533;34;0;;;223
-blupi000.blp;?;1;12;3;;533;38;0;;;224
-blupi000.blp;?;1;12;4;;533;38;0;;;225
-blupi000.blp;?;1;12;5;;533;38;0;;;226
-blupi000.blp;?;1;12;6;;533;38;0;;;227
-blupi000.blp;?;1;12;7;;533;38;0;;;228
-blupi000.blp;?;1;12;8;;533;41;0;;;229
-blupi000.blp;?;1;12;9;;533;41;0;;;230
-blupi000.blp;?;1;12;10;;533;45;0;;;231
-blupi000.blp;?;1;12;11;;533;45;0;;;232
-blupi000.blp;?;1;12;12;;533;49;0;;;233
-blupi000.blp;?;1;12;13;;533;49;0;;;234
-blupi000.blp;?;1;12;14;;533;55;0;;;235
-blupi000.blp;?;1;12;15;;533;56;0;;;236
-blupi000.blp;?;1;12;16;;533;56;0;;;237
-blupi000.blp;?;1;12;17;;533;60;0;;;238
-blupi000.blp;?;1;13;1;;591;60;58;;;239
-blupi000.blp;?;1;13;2;;591;36;1;;;240
-blupi000.blp;?;1;13;3;;591;36;0;;;241
-blupi000.blp;?;1;13;4;;591;38;0;;;242
-blupi000.blp;?;1;13;5;;591;38;0;;;243
-blupi000.blp;?;1;13;6;;591;38;0;;;244
-blupi000.blp;?;1;13;7;;591;38;0;;;245
-blupi000.blp;?;1;13;8;;591;41;0;;;246
-blupi000.blp;?;1;13;9;;591;42;0;;;247
-blupi000.blp;?;1;13;10;;591;43;0;;;248
-blupi000.blp;?;1;13;11;;591;43;0;;;249
-blupi000.blp;?;1;13;12;;591;46;0;;;250
-blupi000.blp;?;1;13;13;;591;45;0;;;251
-blupi000.blp;?;1;13;14;;591;47;0;;;252
-blupi000.blp;?;1;13;15;;591;47;0;;;253
-blupi000.blp;?;1;13;16;;591;47;0;;;254
-blupi000.blp;?;1;13;17;;591;48;0;;;255
-blupi000.blp;?;1;13;18;;591;48;0;;;256
-blupi000.blp;?;1;14;1;;650;48;59;;;257
-blupi000.blp;?;1;14;2;;650;48;0;;;258
-blupi000.blp;?;1;14;3;;650;57;0;;;259
-blupi000.blp;?;1;14;4;;650;57;0;;;260
-blupi000.blp;?;1;14;5;;650;58;0;;;261
-blupi000.blp;?;1;14;6;;650;58;0;;;262
-blupi000.blp;?;1;14;7;;650;58;0;;;263
-blupi000.blp;?;1;14;8;;650;58;0;;;264
-blupi000.blp;?;1;14;9;;650;58;0;;;265
-blupi000.blp;?;1;14;10;;650;58;0;;;266
-blupi000.blp;?;1;14;11;;650;31;1;;;267
-blupi000.blp;?;1;14;12;;650;31;0;;;268
-blupi000.blp;?;1;14;13;;650;32;0;;;269
-blupi000.blp;?;1;14;14;;650;32;0;;;270
-blupi000.blp;?;1;14;15;;650;33;0;;;271
-blupi000.blp;?;1;14;16;;650;32;0;;;272
-blupi000.blp;?;1;14;17;;650;33;0;;;273
-blupi000.blp;?;1;15;1;;710;33;60;;;274
-blupi000.blp;?;1;15;2;;710;33;0;;;275
-blupi000.blp;?;1;15;3;;710;33;0;;;276
-blupi000.blp;?;1;15;4;;710;33;0;;;277
-blupi000.blp;?;1;15;5;;710;34;0;;;278
-blupi000.blp;?;1;15;6;;710;40;0;;;279
-blupi000.blp;?;1;15;7;;710;42;0;;;280
-blupi000.blp;?;1;15;8;;710;40;0;;;281
-blupi000.blp;?;1;15;9;;710;42;0;;;282
-blupi000.blp;?;1;15;10;;710;44;0;;;283
-blupi000.blp;?;1;15;11;;710;46;0;;;284
-blupi000.blp;?;1;15;12;;710;45;0;;;285
-blupi000.blp;?;1;15;13;;710;46;0;;;286
-blupi000.blp;?;1;15;14;;710;46;0;;;287
-blupi000.blp;?;1;15;15;;710;46;0;;;288
-blupi000.blp;?;1;15;16;;710;47;0;;;289
-blupi000.blp;?;1;15;17;;710;47;0;;;290
-blupi000.blp;?;1;15;18;;710;49;0;;;291
+blupi000.blp;ACTION_MOCKERY;3;1;1;62;167;32;49;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence | reused 49 more time(s) within ACTION_MOCKERY itself | also used by: ACTION_OUF1a(3x), ACTION_TURN(1x), ACTION_STOP(140x), ACTION_VERTIGO(1x), ACTION_OUF4(4x), ACTION_CHARGE(4x), ACTION_MOCKERYi(45x);auto:table_blupi_v1;1
+blupi000.blp;ACTION_MOCKERY;28;2;1;78;216;28;50;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence | reused 1 more time(s) within ACTION_MOCKERY itself | also used by: ACTION_TURN(2x), ACTION_TURNAIR(2x), ACTION_TAKESKATE(2x), ACTION_DEPOSESKATE(2x), ACTION_OUF1a(4x), ACTION_OUF1b(4x), ACTION_OUF2(4x), ACTION_OUF5(4x), ACTION_SUCETTE(4x), ACTION_CHARGE(12x), ACTION_MOCKERYi(4x);auto:table_blupi_v1;2
+blupi000.blp;ACTION_MOCKERY;52;3;1;701;216;35;50;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence | also used by: ACTION_TURN(3x), ACTION_TURNAIR(2x), ACTION_CHARGE(4x), ACTION_MOCKERYi(4x);auto:table_blupi_v1;3
+blupi000.blp;ACTION_TURN;5;4;1;106;216;28;50;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | reused 1 more time(s) within ACTION_TURN itself | also used by: ACTION_TURNAIR(2x), ACTION_CHARGE(12x), ACTION_MOCKERYi(4x);auto:table_blupi_v1;4
+blupi000.blp;ACTION_MOCKERY;56;5;1;501;71;32;46;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence | reused 1 more time(s) within ACTION_MOCKERY itself | also used by: ACTION_OUF1a(1x), ACTION_TURN(1x), ACTION_CHARGE(4x);auto:table_blupi_v1;5
+blupi000.blp;ACTION_MOCKERY;30;6;1;518;317;33;52;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence | reused 1 more time(s) within ACTION_MOCKERY itself | also used by: ACTION_OUF1a(1x), ACTION_MARCH(1x), ACTION_RECEDE(1x), ACTION_ADVANCE(1x);auto:table_blupi_v1;6
+blupi000.blp;ACTION_MARCH;2;7;1;314;216;32;50;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | walk | also used by: ACTION_RECEDE(1x), ACTION_ADVANCE(1x);auto:table_blupi_v1;7
+blupi000.blp;ACTION_MOCKERY;36;8;1;346;216;32;50;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence | also used by: ACTION_MARCH(1x), ACTION_RECEDE(1x), ACTION_ADVANCE(1x);auto:table_blupi_v1;8
+blupi000.blp;ACTION_MOCKERY;18;9;1;551;317;33;52;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence | also used by: ACTION_OUF1a(1x), ACTION_MARCH(1x), ACTION_RECEDE(1x), ACTION_ADVANCE(1x);auto:table_blupi_v1;9
+blupi000.blp;ACTION_TURN;2;10;1;378;216;32;50;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | also used by: ACTION_MARCH(1x), ACTION_RECEDE(1x), ACTION_ADVANCE(1x);auto:table_blupi_v1;10
+blupi000.blp;ACTION_MARCH;6;11;1;603;266;32;51;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | walk | also used by: ACTION_RECEDE(1x), ACTION_ADVANCE(1x);auto:table_blupi_v1;11
+blupi000.blp;?;1;12;1;584;317;33;52;;auto:table_icon_blupi_v1;12
+blupi000.blp;ACTION_MOCKERY;4;13;1;410;216;32;50;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence;auto:table_blupi_v1;13
+blupi000.blp;?;1;14;1;442;216;32;50;;auto:table_icon_blupi_v1;14
+blupi000.blp;?;1;15;1;617;317;33;52;;auto:table_icon_blupi_v1;15
+blupi000.blp;?;1;16;1;602;216;33;50;;auto:table_icon_blupi_v1;16
+blupi000.blp;?;1;17;1;0;317;33;51;;auto:table_icon_blupi_v1;17
+blupi000.blp;ACTION_JUMP;1;18;1;0;71;37;43;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | beginning to jump | also used by: ACTION_TAKESKATE(2x), ACTION_DEPOSESKATE(2x);auto:table_blupi_v1;18
+blupi000.blp;ACTION_TURN;13;19;1;387;167;37;49;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | also used by: ACTION_STOPMARCH(1x), ACTION_JUMP(1x), ACTION_TAKESKATE(2x), ACTION_DEPOSESKATE(2x);auto:table_blupi_v1;19
+blupi000.blp;ACTION_STOPMARCH;1;20;1;424;167;37;49;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | reused 1 more time(s) within ACTION_STOPMARCH itself | also used by: ACTION_JUMP(1x), ACTION_TAKESKATE(2x), ACTION_DEPOSESKATE(2x);auto:table_blupi_v1;20
+blupi000.blp;ACTION_OUF1a;2;21;1;37;71;37;43;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 45-entry table - likely a state lookup, not a plain animation sequence;auto:table_blupi_v1;21
+blupi000.blp;?;1;22;1;461;167;37;49;;auto:table_icon_blupi_v1;22
+blupi000.blp;?;1;23;1;685;317;36;52;;auto:table_icon_blupi_v1;23
+blupi000.blp;ACTION_STOP;6;24;1;474;216;32;50;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | stand still | part of a 330-entry table - likely a state lookup, not a plain animation sequence | reused 55 more time(s) within ACTION_STOP itself | also used by: ACTION_MOCKERY(9x), ACTION_MOCKERYi(9x);auto:table_blupi_v1;24
+blupi000.blp;?;1;25;1;506;216;32;50;;auto:table_icon_blupi_v1;25
+blupi000.blp;ACTION_BYE;1;26;1;363;476;33;57;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | "au au" | reused 1 more time(s) within ACTION_BYE itself;auto:table_blupi_v1;26
+blupi000.blp;ACTION_AIR;2;27;1;293;118;33;48;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | also used by: ACTION_VERTIGO(1x);auto:table_blupi_v1;27
+blupi000.blp;ACTION_AIR;5;28;1;222;167;33;49;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | also used by: ACTION_VERTIGO(1x);auto:table_blupi_v1;28
+blupi000.blp;ACTION_VERTIGO;7;29;1;736;71;36;47;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | "whoops";auto:table_blupi_v1;29
+blupi000.blp;ACTION_BYE;3;30;1;31;533;34;58;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | "au au" | reused 3 more time(s) within ACTION_BYE itself;auto:table_blupi_v1;30
+blupi000.blp;?;1;31;1;133;118;32;48;;auto:table_icon_blupi_v1;31
+blupi000.blp;?;1;32;1;255;167;33;49;;auto:table_icon_blupi_v1;32
+blupi000.blp;?;1;33;1;663;71;36;46;;auto:table_icon_blupi_v1;33
+blupi000.blp;ACTION_STOPJUMP;5;34;1;35;266;36;50;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | also used by: ACTION_DOWN(1x);auto:table_blupi_v1;34
+blupi000.blp;ACTION_TURN;1;35;1;144;71;36;44;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | also used by: ACTION_STOPJUMP(3x), ACTION_STOPJUMPh(1x), ACTION_DOWN(1x);auto:table_blupi_v1;35
+blupi000.blp;Yellow_Eggbert_Crouching_Left;1;36;1;703;32;37;39;originally auto-labeled ACTION_TURN | names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | also used by: ACTION_STOPJUMP(1x), ACTION_STOPJUMPh(1x), ACTION_DOWN(1x) | hand-measured and verified in the original speedy_blupi_I.spritesheet.csv;ok;36
+blupi000.blp;?;1;37;1;458;118;36;48;;auto:table_icon_blupi_v1;37
+blupi000.blp;?;1;38;1;180;71;36;44;;auto:table_icon_blupi_v1;38
+blupi000.blp;Yellow_Eggbert_Crouching_Right;1;39;1;740;32;37;39;hand-measured and verified in the original speedy_blupi_I.spritesheet.csv;ok;39
+blupi000.blp;Yellow_Eggbert_Swimming_Right;2;40;1;717;0;47;32;originally auto-labeled ACTION_MARCHNAGE | names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | swimming in deep water | reused 1 more time(s) within ACTION_MARCHNAGE itself | hand-measured and verified in the original speedy_blupi_I.spritesheet.csv;ok;40
+blupi000.blp;Yellow_Eggbert_Swimming_Left;2;41;1;625;0;46;32;originally auto-labeled ACTION_CLEAR1 | names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 70-entry table - likely a state lookup, not a plain animation sequence | reused 19 more time(s) within ACTION_CLEAR1 itself | also used by: ACTION_ELECTRO(20x) | hand-measured and verified in the original speedy_blupi_I.spritesheet.csv;ok;41
+blupi000.blp;ACTION_WIN;1;42;1;165;118;32;48;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | reused 1 more time(s) within ACTION_WIN itself | also used by: ACTION_CLEAR1(10x), ACTION_ELECTRO(10x);auto:table_blupi_v1;42
+blupi000.blp;ACTION_WIN;3;43;1;736;216;35;50;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | reused 1 more time(s) within ACTION_WIN itself | also used by: ACTION_CLEAR1(3x), ACTION_ELECTRO(3x);auto:table_blupi_v1;43
+blupi000.blp;ACTION_WIN;5;44;1;91;422;40;54;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | reused 1 more time(s) within ACTION_WIN itself | also used by: ACTION_CLEAR1(3x), ACTION_ELECTRO(3x);auto:table_blupi_v1;44
+blupi000.blp;ACTION_UP;1;45;1;635;266;32;51;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | look up | also used by: ACTION_CLEAR1(3x), ACTION_ELECTRO(3x);auto:table_blupi_v1;45
+blupi000.blp;ACTION_CLEAR1;40;46;1;541;266;31;51;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 70-entry table - likely a state lookup, not a plain animation sequence | reused 2 more time(s) within ACTION_CLEAR1 itself | also used by: ACTION_ELECTRO(3x);auto:table_blupi_v1;46
+blupi000.blp;ACTION_CLEAR1;43;47;1;110;476;42;55;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 70-entry table - likely a state lookup, not a plain animation sequence | reused 13 more time(s) within ACTION_CLEAR1 itself | also used by: ACTION_BYE(4x), ACTION_ELECTRO(10x);auto:table_blupi_v1;47
+blupi000.blp;ACTION_OUF1a;1;48;1;362;369;51;52;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 45-entry table - likely a state lookup, not a plain animation sequence | also used by: ACTION_CLEAR1(14x), ACTION_BYE(2x), ACTION_ELECTRO(8x);auto:table_blupi_v1;48
+blupi000.blp;Yellow_Eggbert_Life;1;49;1;355;0;17;25;originally auto-labeled ACTION_OUF1a | names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 45-entry table - likely a state lookup, not a plain animation sequence | also used by: ACTION_TURN(1x) | hand-measured and verified in the original speedy_blupi_I.spritesheet.csv;ok;49
+blupi000.blp;ACTION_OUF1a;4;50;1;462;71;39;45;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 45-entry table - likely a state lookup, not a plain animation sequence | also used by: ACTION_PUSH(1x);auto:table_blupi_v1;50
+blupi000.blp;ACTION_OUF1a;5;51;1;629;71;34;46;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 45-entry table - likely a state lookup, not a plain animation sequence | also used by: ACTION_TURN(1x), ACTION_PUSH(1x);auto:table_blupi_v1;51
+blupi000.blp;ACTION_OUF1a;6;52;1;74;71;35;44;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 45-entry table - likely a state lookup, not a plain animation sequence | also used by: ACTION_PUSH(1x);auto:table_blupi_v1;52
+blupi000.blp;ACTION_OUF1a;7;53;1;699;71;37;46;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 45-entry table - likely a state lookup, not a plain animation sequence | also used by: ACTION_PUSH(1x);auto:table_blupi_v1;53
+blupi000.blp;ACTION_OUF1a;8;54;1;249;71;34;45;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 45-entry table - likely a state lookup, not a plain animation sequence | also used by: ACTION_PUSH(1x);auto:table_blupi_v1;54
+blupi000.blp;ACTION_OUF1a;9;55;1;352;71;36;45;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 45-entry table - likely a state lookup, not a plain animation sequence | also used by: ACTION_PUSH(1x);auto:table_blupi_v1;55
+blupi000.blp;ACTION_OUF1a;10;56;1;388;71;37;45;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 45-entry table - likely a state lookup, not a plain animation sequence;auto:table_blupi_v1;56
+blupi000.blp;ACTION_OUF1a;11;57;1;283;71;34;45;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 45-entry table - likely a state lookup, not a plain animation sequence;auto:table_blupi_v1;57
+blupi000.blp;ACTION_OUF1a;12;58;1;109;71;35;44;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 45-entry table - likely a state lookup, not a plain animation sequence;auto:table_blupi_v1;58
+blupi000.blp;ACTION_OUF1a;13;59;1;425;71;37;45;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 45-entry table - likely a state lookup, not a plain animation sequence;auto:table_blupi_v1;59
+blupi000.blp;ACTION_OUF1a;14;60;1;216;71;33;45;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 45-entry table - likely a state lookup, not a plain animation sequence;auto:table_blupi_v1;60
+blupi000.blp;ACTION_OUF1a;15;61;1;317;71;35;45;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 45-entry table - likely a state lookup, not a plain animation sequence;auto:table_blupi_v1;61
+blupi000.blp;ACTION_OUF1a;16;62;1;650;710;48;60;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 45-entry table - likely a state lookup, not a plain animation sequence | also used by: ACTION_STOPHELICO(1x), ACTION_MARCHHELICO(2x);auto:table_blupi_v1;62
+blupi000.blp;ACTION_OUF1a;17;63;1;330;710;45;60;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 45-entry table - likely a state lookup, not a plain animation sequence | also used by: ACTION_MARCHHELICO(2x);auto:table_blupi_v1;63
+blupi000.blp;ACTION_OUF1a;18;64;1;544;591;47;59;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 45-entry table - likely a state lookup, not a plain animation sequence | also used by: ACTION_MARCHHELICO(1x);auto:table_blupi_v1;64
+blupi000.blp;ACTION_OUF1a;19;65;1;453;591;45;59;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 45-entry table - likely a state lookup, not a plain animation sequence | also used by: ACTION_MARCHHELICO(2x);auto:table_blupi_v1;65
+blupi000.blp;ACTION_OUF1a;20;66;1;465;710;46;60;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 45-entry table - likely a state lookup, not a plain animation sequence | also used by: ACTION_MARCHHELICO(1x);auto:table_blupi_v1;66
+blupi000.blp;ACTION_MOCKERY;1;67;1;698;710;48;60;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence | also used by: ACTION_OUF1a(1x);auto:table_blupi_v1;67
+blupi000.blp;ACTION_MOCKERY;2;68;1;375;710;45;60;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence | also used by: ACTION_OUF1a(1x);auto:table_blupi_v1;68
+blupi000.blp;ACTION_MOCKERY;51;69;1;498;591;46;59;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence;auto:table_blupi_v1;69
+blupi000.blp;?;1;70;1;603;710;47;60;;auto:table_icon_blupi_v1;70
+blupi000.blp;?;1;71;1;511;710;46;60;;auto:table_icon_blupi_v1;71
+blupi000.blp;ACTION_TURNHELICO;1;72;1;557;710;46;60;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | reused 1 more time(s) within ACTION_TURNHELICO itself;auto:table_blupi_v1;72
+blupi000.blp;ACTION_TURNHELICO;3;73;1;284;591;41;59;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | reused 1 more time(s) within ACTION_TURNHELICO itself;auto:table_blupi_v1;73
+blupi000.blp;ACTION_TURNHELICO;5;74;1;288;710;42;60;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | reused 1 more time(s) within ACTION_TURNHELICO itself;auto:table_blupi_v1;74
+blupi000.blp;ACTION_TURNHELICO;7;75;1;367;591;43;59;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | reused 1 more time(s) within ACTION_TURNHELICO itself;auto:table_blupi_v1;75
+blupi000.blp;ACTION_TURNHELICO;9;76;1;420;710;45;60;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | reused 1 more time(s) within ACTION_TURNHELICO itself;auto:table_blupi_v1;76
+blupi000.blp;Yellow_Eggbert_Swimming_Right;3;77;1;0;32;47;32;originally auto-labeled ACTION_STOPNAGE | names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | stopped in deep water | reused 5 more time(s) within ACTION_STOPNAGE itself | also used by: ACTION_MARCHNAGE(2x), ACTION_DROWN(46x) | hand-measured and verified in the original speedy_blupi_I.spritesheet.csv;ok;77
+blupi000.blp;Yellow_Eggbert_Swimming_Right;4;78;1;94;32;48;32;originally auto-labeled ACTION_STOPNAGE | names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | stopped in deep water | reused 3 more time(s) within ACTION_STOPNAGE itself | also used by: ACTION_MARCHNAGE(2x) | hand-measured and verified in the original speedy_blupi_I.spritesheet.csv;ok;78
+blupi000.blp;Yellow_Eggbert_Swimming_Right;9;79;1;588;32;57;32;originally auto-labeled ACTION_MARCHNAGE | names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | swimming in deep water | reused 1 more time(s) within ACTION_MARCHNAGE itself | hand-measured and verified in the original speedy_blupi_I.spritesheet.csv;ok;79
+blupi000.blp;Yellow_Eggbert_Swimming_Right;6;80;1;286;32;49;32;originally auto-labeled ACTION_TURN | names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | also used by: ACTION_MARCHNAGE(2x), ACTION_DROWN(4x) | hand-measured and verified in the original speedy_blupi_I.spritesheet.csv;ok;80
+blupi000.blp;Yellow_Eggbert_Swimming_Right;7;81;1;335;32;49;32;originally auto-labeled ACTION_MARCHNAGE | names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | swimming in deep water | reused 1 more time(s) within ACTION_MARCHNAGE itself | hand-measured and verified in the original speedy_blupi_I.spritesheet.csv;ok;81
+blupi000.blp;Yellow_Eggbert_Swimming_Right;5;82;1;142;32;48;32;originally auto-labeled ACTION_MARCHNAGE | names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | swimming in deep water | reused 1 more time(s) within ACTION_MARCHNAGE itself | hand-measured and verified in the original speedy_blupi_I.spritesheet.csv;ok;82
+blupi000.blp;Yellow_Eggbert_Swimming_Left;3;83;1;671;0;46;32;hand-measured and verified in the original speedy_blupi_I.spritesheet.csv;ok;83
+blupi000.blp;Yellow_Eggbert_Swimming_Left;5;84;1;190;32;48;32;hand-measured and verified in the original speedy_blupi_I.spritesheet.csv;ok;84
+blupi000.blp;Yellow_Eggbert_Swimming_Left;9;85;1;645;32;58;32;originally auto-labeled ACTION_TURN | names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | hand-measured and verified in the original speedy_blupi_I.spritesheet.csv;ok;85
+blupi000.blp;Yellow_Eggbert_Swimming_Left;7;86;1;384;32;49;32;hand-measured and verified in the original speedy_blupi_I.spritesheet.csv;ok;86
+blupi000.blp;Yellow_Eggbert_Swimming_Left;6;87;1;238;32;48;32;hand-measured and verified in the original speedy_blupi_I.spritesheet.csv;ok;87
+blupi000.blp;Yellow_Eggbert_Swimming_Left;4;88;1;47;32;47;32;hand-measured and verified in the original speedy_blupi_I.spritesheet.csv;ok;88
+blupi000.blp;Yellow_Eggbert_Swimming_Right;8;89;1;433;32;49;32;originally auto-labeled ACTION_TURNNAGE | names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | turning in deep water | reused 1 more time(s) within ACTION_TURNNAGE itself | hand-measured and verified in the original speedy_blupi_I.spritesheet.csv;ok;89
+blupi000.blp;Yellow_Eggbert_Swimming_Right;1;90;1;484;0;53;31;originally auto-labeled ACTION_TURNNAGE | names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | turning in deep water | reused 1 more time(s) within ACTION_TURNNAGE itself | hand-measured and verified in the original speedy_blupi_I.spritesheet.csv;ok;90
+blupi000.blp;Yellow_Eggbert_Swimming_Butt;1;91;1;482;32;52;32;originally auto-labeled ACTION_TURNNAGE | names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | turning in deep water | reused 1 more time(s) within ACTION_TURNNAGE itself | hand-measured and verified in the original speedy_blupi_I.spritesheet.csv;ok;91
+blupi000.blp;Yellow_Eggbert_Swimming_Left;8;92;1;534;32;54;32;originally auto-labeled ACTION_MOCKERY | names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence | also used by: ACTION_TURNNAGE(2x) | hand-measured and verified in the original speedy_blupi_I.spritesheet.csv;ok;92
+blupi000.blp;Yellow_Eggbert_Swimming_Left;1;93;1;537;0;60;31;originally auto-labeled ACTION_MOCKERY | names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence | also used by: ACTION_TURNNAGE(2x) | hand-measured and verified in the original speedy_blupi_I.spritesheet.csv;ok;93
+blupi000.blp;ACTION_STOPSURF;1;94;1;71;118;31;48;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | stopped on water surface | reused 1 more time(s) within ACTION_STOPSURF itself | also used by: ACTION_MARCHSURF(2x), ACTION_DROWN(9x);auto:table_blupi_v1;94
+blupi000.blp;ACTION_STOPSURF;3;95;1;94;167;32;49;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | stopped on water surface | reused 1 more time(s) within ACTION_STOPSURF itself | also used by: ACTION_MARCHSURF(2x), ACTION_DROWN(12x);auto:table_blupi_v1;95
+blupi000.blp;ACTION_STOPSURF;5;96;1;538;216;32;50;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | stopped on water surface | reused 1 more time(s) within ACTION_STOPSURF itself | also used by: ACTION_MARCHSURF(2x), ACTION_DROWN(2x);auto:table_blupi_v1;96
+blupi000.blp;ACTION_STOPSURF;7;97;1;667;266;32;51;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | stopped on water surface | reused 1 more time(s) within ACTION_STOPSURF itself | also used by: ACTION_MARCHSURF(2x), ACTION_DROWN(6x);auto:table_blupi_v1;97
+blupi000.blp;ACTION_STOPSURF;9;98;1;486;317;32;52;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | stopped on water surface | reused 1 more time(s) within ACTION_STOPSURF itself | also used by: ACTION_MARCHSURF(2x), ACTION_DROWN(7x);auto:table_blupi_v1;98
+blupi000.blp;ACTION_STOPSURF;11;99;1;470;369;31;53;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | stopped on water surface | reused 1 more time(s) within ACTION_STOPSURF itself | also used by: ACTION_MARCHSURF(2x), ACTION_DROWN(4x);auto:table_blupi_v1;99
+blupi000.blp;?;1;100;1;197;118;32;48;;auto:table_icon_blupi_v1;100
+blupi000.blp;?;1;101;1;126;167;32;49;;auto:table_icon_blupi_v1;101
+blupi000.blp;?;1;102;1;570;216;32;50;;auto:table_icon_blupi_v1;102
+blupi000.blp;?;1;103;1;699;266;32;51;;auto:table_icon_blupi_v1;103
+blupi000.blp;?;1;104;1;455;317;31;52;;auto:table_icon_blupi_v1;104
+blupi000.blp;?;1;105;1;501;369;32;53;;auto:table_icon_blupi_v1;105
+blupi000.blp;ACTION_TURNSURF;1;106;1;498;167;37;49;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | turning at water surface | reused 1 more time(s) within ACTION_TURNSURF itself;auto:table_blupi_v1;106
+blupi000.blp;ACTION_TURNSURF;3;107;1;493;266;48;50;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | turning at water surface | reused 1 more time(s) within ACTION_TURNSURF itself;auto:table_blupi_v1;107
+blupi000.blp;ACTION_OUF1a;44;108;1;413;369;57;52;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 45-entry table - likely a state lookup, not a plain animation sequence | also used by: ACTION_TURNSURF(2x);auto:table_blupi_v1;108
+blupi000.blp;ACTION_OUF1a;43;109;1;39;422;52;53;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 45-entry table - likely a state lookup, not a plain animation sequence | also used by: ACTION_TURNSURF(2x);auto:table_blupi_v1;109
+blupi000.blp;ACTION_OUF1a;42;110;1;533;369;39;53;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 45-entry table - likely a state lookup, not a plain animation sequence | also used by: ACTION_TURNSURF(2x);auto:table_blupi_v1;110
+blupi000.blp;ACTION_MOCKERY;63;111;1;525;422;56;54;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence | also used by: ACTION_STOPJEEP(2x), ACTION_MARCHJEEP(2x);auto:table_blupi_v1;111
+blupi000.blp;ACTION_STOPJEEP;1;112;1;402;317;53;51;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | reused 3 more time(s) within ACTION_STOPJEEP itself | also used by: ACTION_MARCHJEEP(4x);auto:table_blupi_v1;112
+blupi000.blp;ACTION_STOPJEEP;7;113;1;581;422;56;54;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | reused 1 more time(s) within ACTION_STOPJEEP itself | also used by: ACTION_MARCHJEEP(2x), ACTION_TURNJEEP(1x);auto:table_blupi_v1;113
+blupi000.blp;ACTION_TURNJEEP;2;114;1;637;422;58;54;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py;auto:table_blupi_v1;114
+blupi000.blp;ACTION_MOCKERY;64;115;1;252;422;54;54;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence | also used by: ACTION_TURNJEEP(1x);auto:table_blupi_v1;115
+blupi000.blp;ACTION_TURNJEEP;4;116;1;211;422;41;54;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py;auto:table_blupi_v1;116
+blupi000.blp;ACTION_TURNJEEP;5;117;1;360;422;55;54;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py;auto:table_blupi_v1;117
+blupi000.blp;ACTION_TURNJEEP;6;118;1;695;422;58;54;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py;auto:table_blupi_v1;118
+blupi000.blp;ACTION_TURNJEEP;7;119;1;415;422;55;54;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py;auto:table_blupi_v1;119
+blupi000.blp;?;1;120;1;306;422;54;54;;auto:table_icon_blupi_v1;120
+blupi000.blp;?;1;121;1;470;422;55;54;;auto:table_icon_blupi_v1;121
+blupi000.blp;ACTION_POP;6;122;1;721;317;37;52;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | pulling a case;auto:table_blupi_v1;122
+blupi000.blp;ACTION_POP;5;123;1;535;167;38;49;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | pulling a case | also used by: ACTION_STOPPOP(3x);auto:table_blupi_v1;123
+blupi000.blp;ACTION_POP;4;124;1;573;167;38;49;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | pulling a case;auto:table_blupi_v1;124
+blupi000.blp;ACTION_POP;3;125;1;184;266;39;50;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | pulling a case;auto:table_blupi_v1;125
+blupi000.blp;ACTION_POP;2;126;1;566;118;37;48;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | pulling a case | also used by: ACTION_STOPPOP(3x);auto:table_blupi_v1;126
+blupi000.blp;ACTION_MOCKERY;57;127;1;108;266;38;50;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence | also used by: ACTION_POP(1x);auto:table_blupi_v1;127
+blupi000.blp;?;1;128;1;111;369;38;52;;auto:table_icon_blupi_v1;128
+blupi000.blp;?;1;129;1;611;167;38;49;;auto:table_icon_blupi_v1;129
+blupi000.blp;ACTION_MOCKERY;58;130;1;649;167;38;49;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence;auto:table_blupi_v1;130
+blupi000.blp;?;1;131;1;223;266;39;50;;auto:table_icon_blupi_v1;131
+blupi000.blp;?;1;132;1;603;118;37;48;;auto:table_icon_blupi_v1;132
+blupi000.blp;ACTION_MOCKERY;59;133;1;146;266;38;50;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence;auto:table_blupi_v1;133
+blupi000.blp;ACTION_STOP;63;134;1;158;167;32;49;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | stand still | part of a 330-entry table - likely a state lookup, not a plain animation sequence | reused 13 more time(s) within ACTION_STOP itself | also used by: ACTION_MOCKERY(6x), ACTION_MOCKERYi(6x);auto:table_blupi_v1;134
+blupi000.blp;?;1;135;1;533;71;32;46;;auto:table_icon_blupi_v1;135
+blupi000.blp;ACTION_MOCKERY;60;136;1;565;71;32;46;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence | also used by: ACTION_STOP(10x), ACTION_JUMPAIE(2x), ACTION_OUF3(4x), ACTION_OUF4(4x);auto:table_blupi_v1;136
+blupi000.blp;ACTION_STOP;113;137;1;718;118;31;49;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | stand still | part of a 330-entry table - likely a state lookup, not a plain animation sequence | reused 7 more time(s) within ACTION_STOP itself | also used by: ACTION_OUF3(4x), ACTION_OUF4(4x);auto:table_blupi_v1;137
+blupi000.blp;ACTION_STOP;115;138;1;288;167;33;49;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | stand still | part of a 330-entry table - likely a state lookup, not a plain animation sequence | reused 69 more time(s) within ACTION_STOP itself | also used by: ACTION_OUF3(4x), ACTION_OUF4(4x);auto:table_blupi_v1;138
+blupi000.blp;ACTION_STOP;123;139;1;321;167;33;49;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | stand still | part of a 330-entry table - likely a state lookup, not a plain animation sequence | reused 31 more time(s) within ACTION_STOP itself;auto:table_blupi_v1;139
+blupi000.blp;ACTION_MOCKERY;31;140;1;597;71;32;46;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence;auto:table_blupi_v1;140
+blupi000.blp;ACTION_MOCKERY;32;141;1;749;118;31;49;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence;auto:table_blupi_v1;141
+blupi000.blp;ACTION_MOCKERY;33;142;1;354;167;33;49;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence;auto:table_blupi_v1;142
+blupi000.blp;ACTION_MOCKERY;34;143;1;190;167;32;49;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence;auto:table_blupi_v1;143
+blupi000.blp;ACTION_MOCKERY;35;144;1;681;476;46;57;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence | also used by: ACTION_TURN(1x), ACTION_STOPSUSPEND(10x), ACTION_MARCHSUSPEND(2x);auto:table_blupi_v1;144
+blupi000.blp;ACTION_STOPSUSPEND;113;145;1;749;650;33;60;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | stopped on bars | part of a 328-entry table - likely a state lookup, not a plain animation sequence | reused 7 more time(s) within ACTION_STOPSUSPEND itself | also used by: ACTION_MARCHSUSPEND(4x);auto:table_blupi_v1;145
+blupi000.blp;ACTION_MARCHSUSPEND;3;146;1;559;650;31;60;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | moving on bars | reused 3 more time(s) within ACTION_MARCHSUSPEND itself;auto:table_blupi_v1;146
+blupi000.blp;ACTION_MARCHSUSPEND;5;147;1;552;476;42;57;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | moving on bars | reused 1 more time(s) within ACTION_MARCHSUSPEND itself;auto:table_blupi_v1;147
+blupi000.blp;?;1;148;1;636;476;45;57;;auto:table_icon_blupi_v1;148
+blupi000.blp;?;1;149;1;0;710;33;60;;auto:table_icon_blupi_v1;149
+blupi000.blp;?;1;150;1;590;650;31;60;;auto:table_icon_blupi_v1;150
+blupi000.blp;?;1;151;1;594;476;42;57;;auto:table_icon_blupi_v1;151
+blupi000.blp;ACTION_STOPSUSPEND;117;152;1;396;476;36;57;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | stopped on bars | part of a 328-entry table - likely a state lookup, not a plain animation sequence | reused 11 more time(s) within ACTION_STOPSUSPEND itself | also used by: ACTION_TURNSUSPEND(2x);auto:table_blupi_v1;152
+blupi000.blp;ACTION_TURNSUSPEND;3;153;1;0;533;31;58;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | turning on bars | reused 1 more time(s) within ACTION_TURNSUSPEND itself;auto:table_blupi_v1;153
+blupi000.blp;ACTION_TURNSUSPEND;5;154;1;432;476;38;57;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | turning on bars | reused 1 more time(s) within ACTION_TURNSUSPEND itself;auto:table_blupi_v1;154
+blupi000.blp;ACTION_TURNSUSPEND;7;155;1;621;650;32;60;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | turning on bars | reused 1 more time(s) within ACTION_TURNSUSPEND itself;auto:table_blupi_v1;155
+blupi000.blp;ACTION_TURNSUSPEND;9;156;1;653;650;32;60;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | turning on bars | reused 1 more time(s) within ACTION_TURNSUSPEND itself;auto:table_blupi_v1;156
+blupi000.blp;ACTION_STOPSUSPEND;1;157;1;132;710;34;60;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | stopped on bars | part of a 328-entry table - likely a state lookup, not a plain animation sequence | reused 43 more time(s) within ACTION_STOPSUSPEND itself;auto:table_blupi_v1;157
+blupi000.blp;ACTION_MOCKERY;29;158;1;33;710;33;60;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence | also used by: ACTION_OUF1a(1x), ACTION_STOPSUSPEND(92x), ACTION_JUMPSUSPEND(2x);auto:table_blupi_v1;158
+blupi000.blp;ACTION_STOPSUSPEND;9;159;1;685;650;32;60;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | stopped on bars | part of a 328-entry table - likely a state lookup, not a plain animation sequence | reused 43 more time(s) within ACTION_STOPSUSPEND itself;auto:table_blupi_v1;159
+blupi000.blp;?;1;160;1;66;710;33;60;;auto:table_icon_blupi_v1;160
+blupi000.blp;?;1;161;1;99;710;33;60;;auto:table_icon_blupi_v1;161
+blupi000.blp;?;1;162;1;717;650;32;60;;auto:table_icon_blupi_v1;162
+blupi000.blp;ACTION_STOPSUSPEND;119;163;1;206;710;41;60;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | stopped on bars | part of a 328-entry table - likely a state lookup, not a plain animation sequence | reused 33 more time(s) within ACTION_STOPSUSPEND itself;auto:table_blupi_v1;163
+blupi000.blp;ACTION_STOPSUSPEND;121;164;1;247;710;41;60;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | stopped on bars | part of a 328-entry table - likely a state lookup, not a plain animation sequence | reused 55 more time(s) within ACTION_STOPSUSPEND itself;auto:table_blupi_v1;164
+blupi000.blp;ACTION_STOPSUSPEND;123;165;1;166;710;40;60;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | stopped on bars | part of a 328-entry table - likely a state lookup, not a plain animation sequence | reused 27 more time(s) within ACTION_STOPSUSPEND itself;auto:table_blupi_v1;165
+blupi000.blp;ACTION_JUMPSUSPEND;3;166;1;0;476;32;55;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | pulling up from bars | reused 3 more time(s) within ACTION_JUMPSUSPEND itself;auto:table_blupi_v1;166
+blupi000.blp;ACTION_JUMPSUSPEND;7;167;1;731;266;32;51;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | pulling up from bars | reused 3 more time(s) within ACTION_JUMPSUSPEND itself;auto:table_blupi_v1;167
+blupi000.blp;?;1;168;1;200;476;32;56;;auto:table_icon_blupi_v1;168
+blupi000.blp;ACTION_GLU;1;169;1;572;266;31;51;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | glued | reused 6 more time(s) within ACTION_GLU itself;auto:table_blupi_v1;169
+blupi000.blp;ACTION_AIR;1;170;1;326;118;33;48;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | also used by: ACTION_VERTIGO(1x), ACTION_GLU(10x);auto:table_blupi_v1;170
+blupi000.blp;ACTION_AIR;3;171;1;229;118;32;48;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | reused 1 more time(s) within ACTION_AIR itself | also used by: ACTION_VERTIGO(1x), ACTION_GLU(6x);auto:table_blupi_v1;171
+blupi000.blp;ACTION_VERTIGO;6;172;1;635;216;33;50;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | "whoops" | also used by: ACTION_GLU(2x);auto:table_blupi_v1;172
+blupi000.blp;ACTION_VERTIGO;8;173;1;359;118;33;48;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | "whoops";auto:table_blupi_v1;173
+blupi000.blp;?;1;174;1;392;118;33;48;;auto:table_icon_blupi_v1;174
+blupi000.blp;?;1;175;1;261;118;32;48;;auto:table_icon_blupi_v1;175
+blupi000.blp;?;1;176;1;668;216;33;50;;auto:table_icon_blupi_v1;176
+blupi000.blp;?;1;177;1;425;118;33;48;;auto:table_icon_blupi_v1;177
+blupi000.blp;ACTION_JUMPAIE;2;178;1;102;118;31;48;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | headache | reused 3 more time(s) within ACTION_JUMPAIE itself;auto:table_blupi_v1;178
+blupi000.blp;ACTION_JUMPAIE;4;179;1;494;118;36;48;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | headache | reused 7 more time(s) within ACTION_JUMPAIE itself;auto:table_blupi_v1;179
+blupi000.blp;ACTION_JUMPAIE;6;180;1;0;118;41;47;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | headache | reused 11 more time(s) within ACTION_JUMPAIE itself;auto:table_blupi_v1;180
+blupi000.blp;ACTION_JUMPAIE;8;181;1;530;118;36;48;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | headache | reused 5 more time(s) within ACTION_JUMPAIE itself;auto:table_blupi_v1;181
+blupi000.blp;?;1;182;1;41;118;30;48;;auto:table_icon_blupi_v1;182
+blupi000.blp;ACTION_STOPSKATE;1;183;1;572;369;39;53;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 140-entry table - likely a state lookup, not a plain animation sequence | reused 44 more time(s) within ACTION_STOPSKATE itself | also used by: ACTION_MARCHSKATE(66x);auto:table_blupi_v1;183
+blupi000.blp;ACTION_MARCHSKATE;2;184;1;149;369;39;52;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 96-entry table - likely a state lookup, not a plain animation sequence | reused 5 more time(s) within ACTION_MARCHSKATE itself;auto:table_blupi_v1;184
+blupi000.blp;ACTION_MARCHSKATE;3;185;1;687;167;39;49;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 96-entry table - likely a state lookup, not a plain animation sequence | reused 5 more time(s) within ACTION_MARCHSKATE itself;auto:table_blupi_v1;185
+blupi000.blp;ACTION_MARCHSKATE;4;186;1;640;118;39;48;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 96-entry table - likely a state lookup, not a plain animation sequence | reused 5 more time(s) within ACTION_MARCHSKATE itself;auto:table_blupi_v1;186
+blupi000.blp;ACTION_MOCKERY;37;187;1;726;167;39;49;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence | also used by: ACTION_MARCHSKATE(6x);auto:table_blupi_v1;187
+blupi000.blp;ACTION_MOCKERY;38;188;1;107;317;39;51;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence | also used by: ACTION_MARCHSKATE(6x);auto:table_blupi_v1;188
+blupi000.blp;ACTION_MOCKERY;39;189;1;611;369;39;53;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence;auto:table_blupi_v1;189
+blupi000.blp;ACTION_MOCKERY;40;190;1;188;369;39;52;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence;auto:table_blupi_v1;190
+blupi000.blp;ACTION_MOCKERY;41;191;1;0;216;39;49;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence;auto:table_blupi_v1;191
+blupi000.blp;ACTION_MOCKERY;42;192;1;679;118;39;48;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence;auto:table_blupi_v1;192
+blupi000.blp;ACTION_MOCKERY;43;193;1;39;216;39;49;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence;auto:table_blupi_v1;193
+blupi000.blp;ACTION_MOCKERY;45;194;1;146;317;39;51;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence;auto:table_blupi_v1;194
+blupi000.blp;ACTION_MOCKERY;46;195;1;65;533;38;58;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence | also used by: ACTION_STOPSKATE(7x), ACTION_TURNSKATE(1x);auto:table_blupi_v1;195
+blupi000.blp;ACTION_MOCKERY;47;196;1;255;533;41;58;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence | also used by: ACTION_STOPSKATE(4x), ACTION_TURNSKATE(1x);auto:table_blupi_v1;196
+blupi000.blp;ACTION_MOCKERY;48;197;1;591;591;47;59;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence | also used by: ACTION_STOPSKATE(10x), ACTION_TURNSKATE(1x);auto:table_blupi_v1;197
+blupi000.blp;ACTION_MOCKERY;49;198;1;427;533;49;58;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence | also used by: ACTION_STOPSKATE(18x), ACTION_TURNSKATE(1x);auto:table_blupi_v1;198
+blupi000.blp;ACTION_STOPSKATE;55;199;1;132;591;38;59;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 140-entry table - likely a state lookup, not a plain animation sequence | reused 9 more time(s) within ACTION_STOPSKATE itself | also used by: ACTION_TURNSKATE(1x);auto:table_blupi_v1;199
+blupi000.blp;ACTION_TURNSKATE;6;200;1;170;591;38;59;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py;auto:table_blupi_v1;200
+blupi000.blp;ACTION_TURNSKATE;7;201;1;103;533;38;58;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py;auto:table_blupi_v1;201
+blupi000.blp;?;1;202;1;141;533;38;58;;auto:table_icon_blupi_v1;202
+blupi000.blp;?;1;203;1;296;533;41;58;;auto:table_icon_blupi_v1;203
+blupi000.blp;?;1;204;1;638;591;47;59;;auto:table_icon_blupi_v1;204
+blupi000.blp;?;1;205;1;476;533;49;58;;auto:table_icon_blupi_v1;205
+blupi000.blp;?;1;206;1;208;591;38;59;;auto:table_icon_blupi_v1;206
+blupi000.blp;?;1;207;1;246;591;38;59;;auto:table_icon_blupi_v1;207
+blupi000.blp;?;1;208;1;179;533;38;58;;auto:table_icon_blupi_v1;208
+blupi000.blp;ACTION_STOPSKATE;5;209;1;650;369;39;53;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 140-entry table - likely a state lookup, not a plain animation sequence | reused 35 more time(s) within ACTION_STOPSKATE itself;auto:table_blupi_v1;209
+blupi000.blp;?;1;210;1;689;369;39;53;;auto:table_icon_blupi_v1;210
+blupi000.blp;ACTION_STOPSKATE;131;211;1;32;476;39;55;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 140-entry table - likely a state lookup, not a plain animation sequence | reused 3 more time(s) within ACTION_STOPSKATE itself | also used by: ACTION_JUMPSKATE(1x), ACTION_TAKESKATE(2x), ACTION_DEPOSESKATE(2x);auto:table_blupi_v1;211
+blupi000.blp;ACTION_STOPSKATE;133;212;1;131;422;40;54;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 140-entry table - likely a state lookup, not a plain animation sequence | reused 5 more time(s) within ACTION_STOPSKATE itself | also used by: ACTION_JUMPSKATE(1x), ACTION_TAKESKATE(2x), ACTION_DEPOSESKATE(2x);auto:table_blupi_v1;212
+blupi000.blp;ACTION_JUMPSKATE;3;213;1;232;476;40;56;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | also used by: ACTION_TAKESKATE(2x), ACTION_DEPOSESKATE(2x);auto:table_blupi_v1;213
+blupi000.blp;ACTION_AIRSKATE;1;214;1;470;476;41;57;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | reused 1 more time(s) within ACTION_AIRSKATE itself | also used by: ACTION_TAKESKATE(2x), ACTION_DEPOSESKATE(2x);auto:table_blupi_v1;214
+blupi000.blp;ACTION_AIRSKATE;3;215;1;337;533;45;58;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | reused 3 more time(s) within ACTION_AIRSKATE itself | also used by: ACTION_TAKESKATE(2x), ACTION_DEPOSESKATE(2x);auto:table_blupi_v1;215
+blupi000.blp;ACTION_MOCKERY;5;216;1;685;591;48;59;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence | also used by: ACTION_OUF1a(1x), ACTION_AIRSKATE(2x), ACTION_TAKESKATE(2x), ACTION_DEPOSESKATE(2x);auto:table_blupi_v1;216
+blupi000.blp;ACTION_MOCKERY;6;217;1;71;476;39;55;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence | also used by: ACTION_OUF1a(1x);auto:table_blupi_v1;217
+blupi000.blp;ACTION_MOCKERY;7;218;1;171;422;40;54;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence | also used by: ACTION_OUF1a(1x);auto:table_blupi_v1;218
+blupi000.blp;ACTION_MOCKERY;8;219;1;272;476;40;56;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence | also used by: ACTION_OUF1a(1x);auto:table_blupi_v1;219
+blupi000.blp;ACTION_MOCKERY;9;220;1;511;476;41;57;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence | also used by: ACTION_OUF1a(1x), ACTION_TURN(1x);auto:table_blupi_v1;220
+blupi000.blp;ACTION_MOCKERY;10;221;1;382;533;45;58;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence | also used by: ACTION_OUF1a(1x);auto:table_blupi_v1;221
+blupi000.blp;ACTION_MOCKERY;11;222;1;733;591;48;59;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence;auto:table_blupi_v1;222
+blupi000.blp;ACTION_MOCKERY;12;223;1;650;317;35;52;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence | also used by: ACTION_OUF1a(7x), ACTION_OUF1b(7x);auto:table_blupi_v1;223
+blupi000.blp;ACTION_MOCKERY;19;224;1;0;369;37;52;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence | also used by: ACTION_OUF1a(5x), ACTION_OUF1b(5x);auto:table_blupi_v1;224
+blupi000.blp;ACTION_MOCKERY;20;225;1;728;369;39;53;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence | also used by: ACTION_OUF1a(5x), ACTION_OUF1b(5x);auto:table_blupi_v1;225
+blupi000.blp;ACTION_MOCKERY;21;226;1;0;422;39;53;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence | also used by: ACTION_OUF1a(8x), ACTION_OUF1b(8x);auto:table_blupi_v1;226
+blupi000.blp;ACTION_MOCKERY;22;227;1;227;369;43;52;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence | also used by: ACTION_OUF1a(1x), ACTION_OUF2(4x);auto:table_blupi_v1;227
+blupi000.blp;ACTION_MOCKERY;23;228;1;185;317;42;51;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence | also used by: ACTION_OUF1a(1x), ACTION_OUF2(10x);auto:table_blupi_v1;228
+blupi000.blp;ACTION_MOCKERY;24;229;1;227;317;42;51;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence | also used by: ACTION_OUF1a(1x), ACTION_OUF2(10x);auto:table_blupi_v1;229
+blupi000.blp;ACTION_MOCKERY;25;230;1;269;317;42;51;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence | also used by: ACTION_OUF1a(1x), ACTION_OUF2(4x);auto:table_blupi_v1;230
+blupi000.blp;ACTION_MOCKERY;13;231;1;270;369;43;52;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence | also used by: ACTION_OUF1a(1x), ACTION_TURN(1x), ACTION_OUF3(6x);auto:table_blupi_v1;231
+blupi000.blp;ACTION_MOCKERY;14;232;1;311;317;43;51;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence | also used by: ACTION_OUF1a(1x), ACTION_OUF3(16x);auto:table_blupi_v1;232
+blupi000.blp;ACTION_MOCKERY;26;233;1;33;317;37;51;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence | also used by: ACTION_OUF1a(1x), ACTION_OUF4(12x);auto:table_blupi_v1;233
+blupi000.blp;ACTION_MOCKERY;15;234;1;71;266;37;50;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence | also used by: ACTION_OUF4(12x);auto:table_blupi_v1;234
+blupi000.blp;ACTION_MOCKERY;16;235;1;399;266;47;50;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence | also used by: ACTION_SUCETTE(8x);auto:table_blupi_v1;235
+blupi000.blp;ACTION_SUCETTE;5;236;1;354;317;48;51;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | eating lollipop | reused 15 more time(s) within ACTION_SUCETTE itself;auto:table_blupi_v1;236
+blupi000.blp;ACTION_SUCETTE;7;237;1;313;369;49;52;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | eating lollipop | reused 7 more time(s) within ACTION_SUCETTE itself;auto:table_blupi_v1;237
+blupi000.blp;ACTION_STOPTANK;59;238;1;96;650;57;59;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence | reused 3 more time(s) within ACTION_STOPTANK itself | also used by: ACTION_MARCHTANK(2x);auto:table_blupi_v1;238
+blupi000.blp;ACTION_STOPTANK;1;239;1;580;533;56;58;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence | reused 9 more time(s) within ACTION_STOPTANK itself | also used by: ACTION_MARCHTANK(4x), ACTION_TURNTANK(1x), ACTION_FIRETANK(4x);auto:table_blupi_v1;239
+blupi000.blp;ACTION_STOPTANK;3;240;1;153;650;57;59;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence | reused 3 more time(s) within ACTION_STOPTANK itself | also used by: ACTION_MARCHTANK(2x), ACTION_TURNTANK(1x);auto:table_blupi_v1;240
+blupi000.blp;ACTION_STOPTANK;5;241;1;210;650;58;59;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence | reused 11 more time(s) within ACTION_STOPTANK itself | also used by: ACTION_TURNTANK(1x);auto:table_blupi_v1;241
+blupi000.blp;ACTION_STOPTANK;7;242;1;692;533;60;58;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence | reused 33 more time(s) within ACTION_STOPTANK itself | also used by: ACTION_TURNTANK(1x);auto:table_blupi_v1;242
+blupi000.blp;ACTION_TURNTANK;5;243;1;268;650;58;59;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py;auto:table_blupi_v1;243
+blupi000.blp;ACTION_TURNTANK;6;244;1;0;650;48;59;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py;auto:table_blupi_v1;244
+blupi000.blp;ACTION_TURNTANK;7;245;1;48;650;48;59;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py;auto:table_blupi_v1;245
+blupi000.blp;ACTION_TURNTANK;8;246;1;326;650;58;59;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py;auto:table_blupi_v1;246
+blupi000.blp;ACTION_TURNTANK;9;247;1;0;591;60;58;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py;auto:table_blupi_v1;247
+blupi000.blp;ACTION_TURNTANK;10;248;1;500;650;59;59;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py;auto:table_blupi_v1;248
+blupi000.blp;ACTION_TURNTANK;11;249;1;384;650;58;59;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py;auto:table_blupi_v1;249
+blupi000.blp;ACTION_TURNTANK;12;250;1;636;533;56;58;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py;auto:table_blupi_v1;250
+blupi000.blp;?;1;251;1;442;650;58;59;;auto:table_icon_blupi_v1;251
+blupi000.blp;ACTION_FIRETANK;1;252;1;525;533;55;58;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | reused 1 more time(s) within ACTION_FIRETANK itself;auto:table_blupi_v1;252
+blupi000.blp;?;1;253;1;727;476;55;57;;auto:table_icon_blupi_v1;253
+blupi000.blp;ACTION_DRINK;1;254;1;307;266;46;50;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | reused 1 more time(s) within ACTION_DRINK itself;auto:table_blupi_v1;254
+blupi000.blp;ACTION_DRINK;3;255;1;262;266;45;50;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | reused 1 more time(s) within ACTION_DRINK itself;auto:table_blupi_v1;255
+blupi000.blp;?;1;256;1;446;266;47;50;;auto:table_icon_blupi_v1;256
+blupi000.blp;?;1;257;1;353;266;46;50;;auto:table_icon_blupi_v1;257
+blupi000.blp;Yellow Bomb;5;258;1;266;0;44;24;hand-measured and verified in the original speedy_blupi_I.spritesheet.csv;ok;258
+blupi000.blp;Yellow Bomb;4;259;1;224;0;42;24;hand-measured and verified in the original speedy_blupi_I.spritesheet.csv;ok;259
+blupi000.blp;Yellow Bomb;2;260;1;146;0;38;24;hand-measured and verified in the original speedy_blupi_I.spritesheet.csv;ok;260
+blupi000.blp;Yellow Bomb;1;261;1;112;0;34;24;hand-measured and verified in the original speedy_blupi_I.spritesheet.csv;ok;261
+blupi000.blp;Yellow Bomb;3;262;1;184;0;40;24;hand-measured and verified in the original speedy_blupi_I.spritesheet.csv;ok;262
+blupi000.blp;Yellow Bomb;6;263;1;310;0;45;24;hand-measured and verified in the original speedy_blupi_I.spritesheet.csv;ok;263
+blupi000.blp;ACTION_MOCKERY;1;264;1;0;167;31;49;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 92-entry table - likely a state lookup, not a plain animation sequence | reused 7 more time(s) within ACTION_MOCKERY itself;auto:table_blupi_v1;264
+blupi000.blp;ACTION_MOCKERY;2;265;1;190;216;31;50;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 92-entry table - likely a state lookup, not a plain animation sequence | reused 15 more time(s) within ACTION_MOCKERY itself;auto:table_blupi_v1;265
+blupi000.blp;ACTION_MOCKERY;3;266;1;221;216;31;50;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 92-entry table - likely a state lookup, not a plain animation sequence | reused 7 more time(s) within ACTION_MOCKERY itself;auto:table_blupi_v1;266
+blupi000.blp;ACTION_ELECTRO;1;267;1;152;476;48;55;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 90-entry table - likely a state lookup, not a plain animation sequence | reused 14 more time(s) within ACTION_ELECTRO itself;auto:table_blupi_v1;267
+blupi000.blp;ACTION_ELECTRO;2;268;1;312;476;51;56;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 90-entry table - likely a state lookup, not a plain animation sequence | reused 14 more time(s) within ACTION_ELECTRO itself;auto:table_blupi_v1;268
+blupi000.blp;ACTION_CHARGE;4;269;1;134;216;28;50;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence | reused 11 more time(s) within ACTION_CHARGE itself;auto:table_blupi_v1;269
+blupi000.blp;ACTION_CHARGE;38;270;1;0;266;35;50;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence | reused 3 more time(s) within ACTION_CHARGE itself;auto:table_blupi_v1;270
+blupi000.blp;ACTION_CHARGE;3;271;1;162;216;28;50;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 64-entry table - likely a state lookup, not a plain animation sequence | reused 11 more time(s) within ACTION_CHARGE itself;auto:table_blupi_v1;271
+blupi000.blp;ACTION_HELICOGLU;3;272;1;60;591;36;59;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | reused 3 more time(s) within ACTION_HELICOGLU itself;auto:table_blupi_v1;272
+blupi000.blp;ACTION_HELICOGLU;7;273;1;96;591;36;59;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | reused 1 more time(s) within ACTION_HELICOGLU itself;auto:table_blupi_v1;273
+blupi000.blp;ACTION_HELICOGLU;9;274;1;217;533;38;58;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | reused 3 more time(s) within ACTION_HELICOGLU itself;auto:table_blupi_v1;274
+blupi000.blp;ACTION_HELICOGLU;1;275;1;410;591;43;59;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | reused 3 more time(s) within ACTION_HELICOGLU itself;auto:table_blupi_v1;275
+blupi000.blp;?;1;276;1;325;591;42;59;;auto:table_icon_blupi_v1;276
+blupi000.blp;Yellow_Eggbert_Born;8;277;1;456;0;28;31;originally auto-labeled ACTION_TURN | names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | reused 1 more time(s) within ACTION_TURN itself | hand-measured and verified in the original speedy_blupi_I.spritesheet.csv;ok;277
+blupi000.blp;Yellow_Eggbert_Born;6;278;1;400;0;28;29;originally auto-labeled ACTION_TURN | names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | reused 1 more time(s) within ACTION_TURN itself | hand-measured and verified in the original speedy_blupi_I.spritesheet.csv;ok;278
+blupi000.blp;YELLOW_EGGBERT_BORN;1;279;1;0;0;28;20;originally auto-labeled ACTION_TURN | names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | reused 1 more time(s) within ACTION_TURN itself | hand-measured and verified in the original speedy_blupi_I.spritesheet.csv;ok;279
+blupi000.blp;Yellow_Eggbert_Born;3;280;1;56;0;28;23;originally auto-labeled ACTION_TURN | names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | reused 1 more time(s) within ACTION_TURN itself | hand-measured and verified in the original speedy_blupi_I.spritesheet.csv;ok;280
+blupi000.blp;Yellow_Eggbert_Born;7;281;1;428;0;28;30;originally auto-labeled ACTION_TURN | names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | reused 1 more time(s) within ACTION_TURN itself | hand-measured and verified in the original speedy_blupi_I.spritesheet.csv;ok;281
+blupi000.blp;Yellow_Eggbert_Born;9;282;1;597;0;28;32;originally auto-labeled ACTION_TURN | names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | reused 1 more time(s) within ACTION_TURN itself | hand-measured and verified in the original speedy_blupi_I.spritesheet.csv;ok;282
+blupi000.blp;Yellow_Eggbert_Born;4;283;1;84;0;28;23;originally auto-labeled ACTION_TURN | names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | reused 1 more time(s) within ACTION_TURN itself | hand-measured and verified in the original speedy_blupi_I.spritesheet.csv;ok;283
+blupi000.blp;Yellow_Eggbert_Born;2;284;1;28;0;28;20;originally auto-labeled ACTION_TURN | names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | reused 1 more time(s) within ACTION_TURN itself | hand-measured and verified in the original speedy_blupi_I.spritesheet.csv;ok;284
+blupi000.blp;Yellow_Eggbert_Born;5;285;1;372;0;28;27;originally auto-labeled ACTION_TURN | names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | reused 1 more time(s) within ACTION_TURN itself | hand-measured and verified in the original speedy_blupi_I.spritesheet.csv;ok;285
+blupi000.blp;ACTION_MOCKERYi;7;286;1;31;167;31;49;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 104-entry table - likely a state lookup, not a plain animation sequence | reused 7 more time(s) within ACTION_MOCKERYi itself;auto:table_blupi_v1;286
+blupi000.blp;ACTION_MOCKERYi;8;287;1;252;216;31;50;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 104-entry table - likely a state lookup, not a plain animation sequence | reused 15 more time(s) within ACTION_MOCKERYi itself;auto:table_blupi_v1;287
+blupi000.blp;ACTION_MOCKERYi;9;288;1;283;216;31;50;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 104-entry table - likely a state lookup, not a plain animation sequence | reused 7 more time(s) within ACTION_MOCKERYi itself;auto:table_blupi_v1;288
+blupi000.blp;ACTION_OUF5;3;289;1;37;369;37;52;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 44-entry table - likely a state lookup, not a plain animation sequence | reused 9 more time(s) within ACTION_OUF5 itself;auto:table_blupi_v1;289
+blupi000.blp;ACTION_OUF5;5;290;1;74;369;37;52;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 44-entry table - likely a state lookup, not a plain animation sequence | reused 14 more time(s) within ACTION_OUF5 itself;auto:table_blupi_v1;290
+blupi000.blp;ACTION_OUF5;7;291;1;70;317;37;51;names borrowed from Speedy Blupi II's def.hpp - see tools/generate_blupi000_v1_rows.py | part of a 44-entry table - likely a state lookup, not a plain animation sequence | reused 14 more time(s) within ACTION_OUF5 itself;auto:table_blupi_v1;291
 explo.blp;?;1;1;1;;0;32;28;ok;;1
 explo.blp;?;1;1;2;;0;123;4;ok;;2
 explo.blp;?;1;1;3;;0;122;5;ok;;3

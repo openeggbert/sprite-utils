@@ -4,15 +4,27 @@
 verified (build + unit test suite + a real-data smoke test all pass).
 `gifs` (normally Phase 3) was pulled forward and implemented early, by
 request, to have a visible/fun result before Phase 2's data work — see the
-"gifs, pulled forward" note under Phase 1 below. **Phase 2 well underway
-for Speedy Blupi II (v2.2):** all of `blupi000.blp`, `object.blp`,
-`element.blp` and `explo.blp` now have `Group`s auto-generated from
-`free-eggbert`'s own tables — **711/1321 rows (54%) in
-`speedy_blupi_II.spritesheet.csv` are labeled, up from ~22% at the start of
-this session.** See the two "Milestone" writeups under Phase 2. Still open:
-all of Speedy Blupi I (v1.0), decor tiles (both games), and
-`button00.blp`/`jauge.blp` (small UI sheets, not yet attempted — no known
-source table for them).
+"gifs, pulled forward" note under Phase 1 below. **Phase 2 well underway for
+both games:**
+- Speedy Blupi II (v2.2): all of `blupi000.blp`, `object.blp`,
+  `element.blp` and `explo.blp` now have `Group`s auto-generated from
+  `free-eggbert`'s own tables — **711/1321 rows (54%)** labeled, up from
+  ~22%.
+- Speedy Blupi I (v1.0, no decompiled source to read - extracted directly
+  from `BLUPI.EXE`): `blupi000.blp` done the same way, **237/291 icons
+  (81%)** labeled, all 37 pre-existing hand-verified labels preserved
+  exactly. `object.blp`/`element.blp`/`explo.blp` checked and found
+  already well-measured (85-99% match the authoritative geometry) — left
+  alone rather than reordered for no gain; they're just missing `Group`s,
+  which needs the (not yet found, likely hard) v1.0 equivalent of the ~150
+  named tables.
+- **952/2478 rows (38%) across both CSVs combined are now labeled**, up
+  from 330/2478 (13%) at the start of this session.
+
+See the "Milestone" writeups under Phase 2 for both games. Still open:
+`object`/`element`/`explo.blp` group names for Speedy Blupi I, decor tiles
+(both games), and `button00.blp`/`jauge.blp`/`text.blp` (small UI sheets,
+no known source table for either game).
 
 This is the living execution plan for finishing `sprite-utils` and using it to
 produce complete, correctly-annotated sprite-sheet data for both **Speedy
@@ -401,21 +413,93 @@ number of real multi-frame animations like `table_bulldozer_left`,
 visually (`table_bridge`, `table_bulldozer_left`, `table_explo3`) — real,
 coherent animations.
 
-**Speedy Blupi I (v1.0) — pixel rectangles (offsets already found & visually
-confirmed, see `analysis.md` §4.6):**
-- [ ] Reproduce the byte-signature-scan script from `analysis.md` §4.6
-      against `Speedy_Blupi_I/BLUPI.EXE` and generate CSV rows for
-      `blupi000-003.blp`, `object.blp`, `element.blp`, `explo.blp` using the
-      four offsets already recorded there.
+**Speedy Blupi I (v1.0) — pixel rectangles:**
+- [x] `blupi000.blp`/`object.blp`/`element.blp`/`explo.blp`: the four
+      offsets from `analysis.md` §4.6 formalized into a committed,
+      reproducible script (`tools/extract_v1_icon_tables.py`) — output
+      committed as `tools/data/v1_icon_tables.json` (small integer data,
+      not the copyrighted `.blp`/`.exe` assets themselves).
 
-**Speedy Blupi I (v1.0) — group names (open problem):**
-- [ ] Locate the v1.0 equivalent of `table_blupi` (variable-length
-      `[action_id, frame_count, phase, icon...]` records — different shape
-      than the fixed 12-byte `IconPack` records, needs its own scan
-      approach) and/or the v1.0 equivalents of the named per-entity tables.
-      Ghidra Version Tracking (`SB v1.0 to ...` sessions) is a fallback if
-      the byte-scan approach doesn't generalize cleanly to this record
-      shape.
+**Speedy Blupi I (v1.0) — group names:**
+- [x] `blupi000.blp`: found the v1.0 equivalent of `table_blupi` by
+      byte-signature scan (same technique as the IconPack tables, extended
+      to a variable-length record shape) — see "Milestone: `blupi000.blp`
+      (Speedy Blupi I) done" below.
+- [ ] `object.blp`/`element.blp`/`explo.blp`: still needs the v1.0
+      equivalent of the ~150 named per-entity tables. Checked and **not
+      needed for geometry** — see the milestone writeup — but grouping is
+      still blocked on finding them. Unlike `table_blupi`'s distinctive
+      `[action_id, frame_count, phase, icon...]` shape, these are bare
+      integer arrays with no structural signature to scan for; Ghidra
+      Version Tracking (`SB v1.0 to ...` sessions, already in the Ghidra
+      project) is the more promising path here, not another byte scan.
+
+#### Milestone: `blupi000.blp` (Speedy Blupi I / v1.0) done
+
+There is no free-eggbert-equivalent decompilation for v1.0 — everything
+here was extracted directly from `BLUPI.EXE` (535,552 bytes, from
+`Speedy_Blupi_I.7z` on the library drive, not committed).
+
+`tools/extract_v1_table_blupi.py` found the `table_blupi` equivalent by
+byte-signature scan: score every 4-byte-aligned offset by how many
+consecutive `[action_id (1-200), frame_count (1-400), phase, icon...]`
+records it can parse before failing or reaching a clean `0` terminator,
+then take the longest chain. One candidate stood out overwhelmingly — 552
+positions scored `>=3` records, but the top cluster all converged on the
+*same* end offset (`0x2fdd4`) with the winning start (`0x2d5a0`) producing
+67 records ending at a literal `0`, versus every other candidate managing
+only a handful before failing.
+
+Confirmation beyond the chain length itself: v1.0's action-id *visiting
+order* matches free-eggbert's v2.2 `table_blupi` almost exactly for every
+action id the two games share (both walk `..., 2, 60, 3, 4, 5, 59, 61, 62,
+6, 7, 8, 9, 10, 13, 11, ...` in that *exact* sequence — v2.2 just has a few
+more actions interleaved, matching it being the sequel with more
+vehicles/features), and record 0 in both (`action=1`, i.e. `ACTION_STOP`)
+is byte-for-byte the same shape: `frame_count=330, phase=0`, starting
+`icons=[0,0,0,0,0,23,23,23,0,0,...]`. That kind of order match is not
+something a false-positive byte pattern produces by chance — the
+character animation data was evidently carried over from v1.0 into v2.2
+largely unchanged.
+
+`Group` names reuse free-eggbert's v2.2 `ACTION_*` constants (no v1.0
+header exists) — justified by the same order-match evidence. One record
+has `action_id=118`, well outside `def.hpp`'s known 1-87 range; left
+unlabeled rather than guessed at.
+
+**Merge with existing hand labels — this file actually had real,
+verified prior work**, unlike `blupi000.blp` in `speedy_blupi_II.spritesheet.csv`:
+37 rows were already hand-measured and marked `Tags=ok`
+(`Yellow_Eggbert_Swimming_Right/Left/Butt`, `Yellow_Eggbert_Born`,
+`Yellow_Eggbert_Crouching_Left/Right`, `Yellow_Eggbert_Life`,
+`Yellow Bomb`). Resolved each one's `(X,Y,Width,Height)` and matched
+against the 291 `table_icon_blupi` rectangles: **all 37 matched
+*exactly*, 0px off** — the two-years-ago manual measurement was fully
+correct, just walked in visual (left-to-right) order instead of the
+table's internal order. All 37 preserved verbatim (`Group`, `Number in
+Group`, `Tags=ok`), with the auto-detected `ACTION_*` name kept in `Notes`
+as a cross-reference rather than discarded. See `HUMAN_OVERRIDES` in
+`tools/generate_blupi000_v1_rows.py`.
+
+Verified with `sprite_utils draw` before replacing (both before and after
+applying the human-label overrides) — every one of the 291 rectangles
+lands on its sprite across the full 784×770 sheet.
+
+Result: **237/291 icons (81%) now have a real `Group`**, up from 37 (13%,
+the pre-existing hand-labeled rows only). `ACTION_MARCH` (2 frames —
+v1.0's walk cycle is simpler than v2.2's 6) renders as a clean walk.
+
+**Checked, not replaced: `object.blp`/`element.blp`/`explo.blp` (v1.0)**
+— unlike v1.0's `blupi000.blp` or v2.2's whole CSV, these were *not*
+junk. Resolved every existing row and matched against
+`table_icon_object`/`element`/`explo`: **244/246 (99%), 171/188 (91%) and
+46/54 (85%) already match exactly.** This geometry was already
+hand-verified (most rows carry a `Notes=ok`) and correct — reordering it
+to match the table's internal index order would only lose the existing
+row/column organization for no benefit, since `Group` labels can't be
+added yet anyway (see above). Left untouched. Worth re-checking once the
+named-table equivalents are found, in case the small remainder (2-8 rows
+per file) turns out to matter.
 
 **Decor tiles (both games, `decor0NN.blp` — currently 0% covered):**
 - [ ] Locate the grid constants `CPixmap`/`CHDECOR` uses
@@ -427,18 +511,21 @@ confirmed, see `analysis.md` §4.6):**
       grid, or whether its world-tile format differs (not yet checked).
 
 **Merge and finalize:**
-- [ ] Merge auto-generated rows with the existing hand-assigned `Group`
-      values already in `spritesheets/*.csv` (e.g.
-      `Yellow_Eggbert_Swimming_Right`) rather than discarding them — treat
-      human labels as higher-priority where both exist, fill `Group="?"`
-      rows from the auto-generated data, and cross-reference the raw
-      `ACTION_*`/table name in `Notes`/`Tags` either way.
-- [ ] Sanity-check: run `sprite-utils draw` (Phase 1) over a sample and
-      visually confirm rectangles land correctly, the same way `analysis.md`
-      §4.6 did for the v1.0 discovery.
-- [ ] Replace `spritesheets/speedy_blupi_I.spritesheet.csv` and
-      `spritesheets/speedy_blupi_II.spritesheet.csv` in this repo with the
-      completed versions. Commit.
+- [x] Merge policy established and applied for every file done so far:
+      human labels win where they exist and geometry checks out (exact
+      pixel match required, not assumed — see the `blupi000.blp` v1.0
+      milestone for the 37/37 case, and the `object`/`element`/`explo.blp`
+      v1.0 "checked, not replaced" case for when *not* to touch existing
+      work); auto-generated data fills the rest; the source table/action
+      name is cross-referenced in `Notes` either way, never silently
+      dropped.
+- [x] Sanity-check via `sprite_utils draw` before every replacement so
+      far (`blupi000.blp` for both games; `object`/`element`/`explo.blp`
+      for v2.2) — every rectangle generated to date has landed correctly.
+      Keep doing this for each remaining file/table before replacing it.
+- [ ] `button00.blp`/`jauge.blp`/`text.blp` (both games) and decor tiles:
+      still fully open — no known source table for the UI sheets in
+      either game yet.
 
 ---
 
