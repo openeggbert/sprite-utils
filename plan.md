@@ -4,8 +4,8 @@
 verified (build + unit test suite + a real-data smoke test all pass).
 `gifs` (normally Phase 3) was pulled forward and implemented early, by
 request, to have a visible/fun result before Phase 2's data work — see the
-"gifs, pulled forward" note under Phase 1 below. **Phase 2 well underway for
-both games:**
+"gifs, pulled forward" note under Phase 1 below. **Phase 2 and Phase 3 are
+both done.** Phase 2 summary, for both games:
 - Speedy Blupi II (v2.2): `blupi000.blp`, `object.blp`, `element.blp`,
   `explo.blp` and `text.blp` now have `Group`s auto-generated from
   `free-eggbert`'s own tables; `button00.blp` geometry done (`Group="?"`,
@@ -40,6 +40,15 @@ See the "Milestone" writeups under Phase 2 for both games — including two
 real false-positive byte matches caught and excluded during the
 `object.blp`/`element.blp` v1.0 scan (worth reading as methodology, not
 just result).
+
+**Phase 3** (the actual deliverables) then ran against the complete Phase 2
+data: `draw`/`extract`/`gifs` over every file in both games, output to
+`tmp/speedy_blupi_{I,II}/{draw,extract,gifs}/` in this repo (gitignored,
+not committed — derived from copyrighted assets). 479 animated GIFs total
+(218 + 261), one per real `Group`, plus 3003 individually extracted sprite
+images and fully annotated sheets for both games. See Phase 3 below.
+
+Only Phase 4 (future/optional, not scheduled) remains open.
 
 This is the living execution plan for finishing `sprite-utils` and using it to
 produce complete, correctly-annotated sprite-sheet data for both **Speedy
@@ -779,20 +788,25 @@ their bar.
 
 ### Phase 3 — Generate the actual deliverables
 
-Depends on Phase 1 (tool) + Phase 2 (complete data).
+Depends on Phase 1 (tool) + Phase 2 (complete data). Done.
 
-- [ ] Run `sprite-utils draw` over the full asset set for both games →
-      annotated sheets with every sprite rectangle + number visible.
-- [ ] Run `sprite-utils extract` over both games → one image file per
-      sprite, organized by file/group.
-- [ ] Run `sprite-utils gifs` (already implemented, see Phase 1's "gifs,
-      pulled forward" note) over both games now that Phase 2 has populated
-      real groups for (almost) every row → one meaningful animated GIF per
-      `Group`, instead of today's handful of hand-labelled groups plus one
-      big `?` catch-all per file.
-- [ ] Decide where outputs live (this repo vs. a dedicated assets
-      repo/output directory — not yet decided, revisit once Phase 2 shows
-      the real output volume).
+- [x] Ran `sprite-utils draw` over every file in both games → annotated
+      sheets with every sprite rectangle + number visible, in
+      `tmp/speedy_blupi_{I,II}/draw/`.
+- [x] Ran `sprite-utils extract` over both games → one image file per
+      sprite (1293 for Speedy Blupi I, 1710 for Speedy Blupi II),
+      organized by file/group, in `tmp/speedy_blupi_{I,II}/extract/`.
+- [x] Ran `sprite-utils gifs` over both games now that Phase 2 has
+      populated real groups for most rows → 218 + 261 = 479 meaningful
+      animated GIFs (up from the handful of hand-labelled groups plus one
+      big `?` catch-all per file this produced before Phase 2), in
+      `tmp/speedy_blupi_{I,II}/gifs/`.
+- [x] Outputs live in this repo, under `/tmp/` (gitignored, not
+      committed — derived from copyrighted game assets, same reasoning as
+      `/gifs_output/` and `/gen/`; see `analysis.md` §8) rather than a
+      separate assets repo. Regenerate anytime with `draw`/`extract`/
+      `gifs` against the two spritesheet CSVs and each game's own `.blp`
+      files (not distributed with this repo either).
 
 ---
 
