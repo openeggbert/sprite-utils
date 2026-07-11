@@ -30,6 +30,7 @@ SpriteUtils::SpriteUtils() {
     commandImplementations.emplace("extract", std::make_unique<ExtractCommand>());
     commandImplementations.emplace("restore", std::make_unique<RestoreCommand>());
     commandImplementations.emplace("gifs", std::make_unique<GifsCommand>());
+    commandImplementations.emplace("pack", std::make_unique<PackCommand>());
     commandImplementations.emplace("help", std::make_unique<HelpCommand>());
     commandImplementations.emplace("version", std::make_unique<VersionCommand>());
 }

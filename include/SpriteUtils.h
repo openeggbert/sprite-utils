@@ -34,6 +34,7 @@
 #include "ExtractCommand.h"
 #include "GifsCommand.h"
 #include "HelpCommand.h"
+#include "PackCommand.h"
 #include "RestoreCommand.h"
 #include "VersionCommand.h"
 #include "SpriteUtilsException.h"

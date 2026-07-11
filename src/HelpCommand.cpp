@@ -112,6 +112,40 @@ COMMAND
                             Optional. Default=255,255,255 (used to pad
                             frames up to the animation's largest frame size)
 
+    pack        The inverse of "extract": pastes individual sprite images
+                back together into one full sheet image per source file,
+                using the sprite-sheet CSV's rectangles for placement. Reads
+                images from --dir/<source-file-stem>/<file name>, where
+                <file name> is "extract"'s own naming
+                ("<numberPerSheet>__<group>__<numberInGroup>.png") - meant
+                for round-tripping through an external re-render step (e.g.
+                re-rendering each extracted sprite from a 3D model at a
+                higher resolution, then packing the results back into one
+                sheet with --scale set to match). The output canvas is
+                sized from the CSV alone, not any existing image. Written
+                to --out-dir/<source-file-stem>.png. Missing sprite images
+                are skipped with a warning (leaving that area as
+                background); a loaded image that doesn't already match its
+                CSV rectangle's size is resized to fit, with a warning.
+                    OPTIONS
+                        --dir={working directory}
+                            Optional. Default=. (current directory)
+                        --sprite-sheet-path={path to the sprite-sheet CSV}
+                            Optional. Default={--dir}/spritesheet.csv
+                        --file-name={single sheet file name to pack}
+                            Optional. Default=(every file found in the CSV).
+                        --scale={positive integer}
+                            Optional. Default=1. See "draw" above.
+                        --out-dir={directory to write packed sheets to}
+                            Optional. Default={--dir}/packed
+                        --background-color={R,G,B}
+                            Optional. Default=255,255,255, opaque - unless
+                            any input sprite has an alpha channel, in which
+                            case the canvas defaults to fully transparent
+                            instead (a proper modern sprite atlas), and
+                            this option's R,G,B is only used, opaquely, if
+                            explicitly given.
+
     help        Display help information
     version     Display version information
 )";

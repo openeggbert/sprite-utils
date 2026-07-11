@@ -18,6 +18,7 @@ set(SPRITE_UTILS_LIB_SOURCES
         src/ExtractCommand.cpp
         src/GifsCommand.cpp
         src/GifWriter.cpp
+        src/PackCommand.cpp
         src/RestoreCommand.cpp
         src/SpriteSheet.cpp
         src/SpriteSheetRow.cpp

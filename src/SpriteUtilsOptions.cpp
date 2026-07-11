@@ -125,6 +125,22 @@ Color SpriteUtilsOptions::getGifBackgroundColor() const
     return getColorArgument("--gif-background-color", Color(255, 255, 255));
 }
 
+string SpriteUtilsOptions::getPackOutputDirectory() const
+{
+    return spriteUtilsArgs.getArgumentOptional("--out-dir").value_or(
+        getWorkingDirectory() + "/packed");
+}
+
+Color SpriteUtilsOptions::getPackBackgroundColor() const
+{
+    return getColorArgument("--background-color", Color(255, 255, 255));
+}
+
+bool SpriteUtilsOptions::hasExplicitPackBackgroundColor() const
+{
+    return spriteUtilsArgs.getArgumentOptional("--background-color").has_value();
+}
+
 std::optional<string> SpriteUtilsOptions::getGroup() const
 {
     return spriteUtilsArgs.getArgumentOptional("--group");

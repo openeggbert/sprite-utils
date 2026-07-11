@@ -301,27 +301,83 @@ source image with the *same* 1x CSV and land on the right rectangles.
       later (leaving this one unchecked on purpose — it's a known
       limitation, not a completed task).
 
-### PNG support (analysis only — not implemented yet)
+### `pack` — the inverse of `extract` (added 2026-07-11)
+
+The `--scale` story above covers re-rendering the *whole sheet* at once at
+2x/4x/8x. If instead each sprite gets re-rendered from the 3D models
+individually (one image per sprite, e.g. straight out of `extract`'s own
+output), something has to paste those back into one sheet image again
+before `draw`/`gifs` are useful on them. That's `pack`.
+
+- [x] `PackCommand` (`include/PackCommand.h` / `src/PackCommand.cpp`,
+      registered as `pack`): for each `File` in the sprite-sheet CSV, reads
+      `--dir/<file-stem>/<numberPerSheet>__<group>__<numberInGroup>.png`
+      (exactly `extract`'s own output naming, so `extract` → re-render
+      externally, same filenames → `pack` round-trips) and pastes each one
+      at its (`--scale`d) CSV rectangle onto a canvas sized purely from the
+      CSV geometry (there may be no pre-existing sheet image at the new
+      resolution) — written to `--out-dir/<file-stem>.png`.
+- [x] Alpha-aware: if any input sprite has a real alpha channel (as a 3D
+      re-render plausibly would), the output canvas is BGRA and defaults to
+      a *transparent* background — a proper modern sprite atlas — rather
+      than the opaque white every other command in this tool defaults to;
+      `--background-color` overrides this back to opaque if given
+      explicitly (`SpriteUtilsOptions::hasExplicitPackBackgroundColor()`
+      distinguishes "not given" from "given, but happens to be default").
+      Plain 3-channel sprites (no alpha) still produce a plain opaque BGR
+      canvas, unchanged from before.
+- [x] Tolerant like the rest of the tool: a missing individual sprite image
+      logs a warning and leaves that area as background rather than
+      failing the whole sheet; a loaded image whose size doesn't already
+      match its CSV rectangle (a re-render came out a slightly different
+      size than expected) is resized to fit, also with a warning — never
+      silently misaligned.
+- [x] Verified against real data: an `extract` → `pack` round trip on
+      `jauge.blp` (no re-render in between) reproduces the original image
+      **pixel-for-pixel**; a synthetic 3x-upscaled round trip with
+      `--scale 3` lands on the exact expected 372×264 canvas; a synthetic
+      alpha version (blue chroma-key manually punched transparent per
+      sprite) correctly produces an RGBA canvas with a transparent
+      background and intact per-pixel alpha in each sprite.
+
+### PNG support
 
 The game engine that currently reads these sprites out of `.blp` (which is
 just BMP under a different extension) is being updated separately to also
 support PNG. `sprite-utils` should eventually be able to read/write PNG
 sprite sheets too, not just BMP/`.blp`.
 
-- [ ] **Analysis task**: work out what actually has to change — where
-      `DrawCommand`/`ExtractCommand`/`GifsCommand` currently assume BMP
-      specifically (the bit-depth sniffing in `DrawCommand::readBmpBpp`,
-      the custom `writeBmp16BGR565` RGB565 writer used for `.blp`/16-bit
-      BMP output, the always-BLP-is-RGB565 branch in `DrawCommand::run`),
-      versus what's already format-agnostic through OpenCV
-      (`cv::imread`/`cv::imwrite` already handle PNG transparently, so
-      *reading* a PNG sheet may already work today for `draw`'s non-BLP
-      path — needs verifying, not assuming). Cover what "write PNG output
-      instead of overwriting the source in place" should mean for `draw`'s
-      backup/overwrite model, and whether PNG's real alpha channel should
-      replace the color-key-background approach `gifs` just grew. Write
-      the findings up (in `analysis.md` or a new `docs/png-support.md`)
-      before writing any PNG-handling code.
+**Confirmed state as of `pack` (2026-07-11) — partially answers the
+analysis task below, not a substitute for it:**
+- [x] **Reading PNG already works, everywhere `cv::imread(IMREAD_UNCHANGED)`
+      is used** (`extract`, `gifs`, and now `pack`) — OpenCV sniffs actual
+      file content, not the extension, so this was never blocked; confirmed
+      directly, not assumed, by `pack`'s alpha-channel test (a real 4-channel
+      PNG loaded, detected, and correctly propagated).
+- [x] **Writing PNG already works** in `extract` (always has, writes
+      `.png` unconditionally) and now `pack` (also always `.png`, including
+      real alpha — `cv::imwrite` picks the codec from the output extension,
+      no special-casing needed for either 3- or 4-channel input).
+- [ ] **`draw` still cannot read a PNG source at all** — confirmed by
+      reading the code, not just inferring: `DrawCommand::run` calls
+      `readBmpBpp()` *unconditionally* before doing anything else, which
+      throws `"Not a BMP file"` for any input that doesn't start with the
+      `BM` magic bytes. This is the one real, specific blocker left; the
+      rest of the analysis task below (backup/overwrite model, alpha vs.
+      color-key) is still open and still needs its own writeup before
+      touching `DrawCommand`.
+
+- [ ] **Analysis task** (still open — `draw`'s PNG gap above is newly
+      confirmed, not yet fixed): work out what actually has to change —
+      the bit-depth sniffing in `DrawCommand::readBmpBpp`, the custom
+      `writeBmp16BGR565` RGB565 writer used for `.blp`/16-bit BMP output,
+      the always-BLP-is-RGB565 branch in `DrawCommand::run`. Cover what
+      "write PNG output instead of overwriting the source in place" should
+      mean for `draw`'s backup/overwrite model, and whether PNG's real
+      alpha channel should replace the color-key-background approach
+      `gifs`/`pack` use. Write the findings up (in `analysis.md` or a new
+      `docs/png-support.md`) before writing any PNG-handling code for
+      `draw` specifically.
 
 ---
 

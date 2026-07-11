@@ -75,6 +75,16 @@ public:
 
     Color getGifBackgroundColor() const;
 
+    string getPackOutputDirectory() const;
+
+    Color getPackBackgroundColor() const;
+
+    // Whether --background-color was explicitly given (as opposed to
+    // returning its default) - pack's canvas fill defaults to transparent
+    // when any input sprite has an alpha channel, unless the caller opted
+    // into an explicit opaque background instead.
+    bool hasExplicitPackBackgroundColor() const;
+
     std::optional<string> getGroup() const;
 
     int getScale() const;
