@@ -21,46 +21,28 @@
  * THE SOFTWARE.
  */
 
-
-#ifndef DRAWCOMMAND_H
-#define DRAWCOMMAND_H
+#ifndef RESTORECOMMAND_H
+#define RESTORECOMMAND_H
 
 #include <string>
-#include <filesystem>
-#include <opencv2/core.hpp>
-#include <opencv2/imgcodecs.hpp>
-#include <opencv2/imgproc.hpp>
 
 #include "Command.h"
 #include "SpriteUtilsArgs.h"
-#include "SpriteUtilsOptions.h"
 
-class DrawCommand : public Command {
+/**
+ * Restores every "<file>.backup" in the working directory back over its
+ * original file, in one step, instead of doing it by hand.
+ *
+ * @author robertvokac
+ */
+class RestoreCommand : public Command {
 public:
-    static constexpr const char* NAME = "draw";
+    static constexpr const char* NAME = "restore";
 
-    DrawCommand() = default;
-    ~DrawCommand() override = default;
+    RestoreCommand() = default;
+    ~RestoreCommand() override = default;
 
     std::string getName() const override { return NAME; }
     std::string run(const SpriteUtilsArgs& args) override;
-
-private:
-    // --- BMP I/O helpers to preserve bit depth ---
-    static uint16_t readBmpBpp(const std::filesystem::path& file);
-    static void writeBmp16BGR565(const std::filesystem::path& out, const cv::Mat& bgr8);
-    static void writeBmp8Gray(const std::filesystem::path& out, const cv::Mat& bgr8);
-
-    // --- drawing helpers ---
-    static cv::Scalar toScalar(const Color& c); // B,G,R
-    static void  drawDashedRect(cv::Mat& img, cv::Rect rc, const cv::Scalar& color);
-    static void  drawNumber(cv::Mat& img, int number, int endX, int endY, bool doubleSize, const SpriteUtilsOptions& opt);
-    static void  drawDigitBlock(cv::Mat& img, int digit, int startX, int startY, int scale, bool fillBackground, bool backgroundWhite, bool foregroundYellow);
-
-    // 3x5 font mask for digits '0'..'9'
-    static const bool* digitMask(char ch);
-
-    // utility
-    static inline int clampi(int v, int lo, int hi) { return std::max(lo, std::min(hi, v)); }
 };
-#endif // DRAWCOMMAND_H
+#endif // RESTORECOMMAND_H

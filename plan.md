@@ -1,6 +1,8 @@
 # sprite-utils Plan
 
-**Status as of 2026-07-11:** Phase 0 done (analysis). Phase 1 starting.
+**Status as of 2026-07-11:** Phase 0 done (analysis). Phase 1 done and
+verified (build + 71-check unit test suite + a real-data smoke test all
+pass). Phase 2 (auto-generating the complete CSVs) not started yet.
 
 This is the living execution plan for finishing `sprite-utils` and using it to
 produce complete, correctly-annotated sprite-sheet data for both **Speedy
@@ -21,9 +23,10 @@ tile sheets), not just the small hand-measured subset that exists today.
 Then use a finished `sprite-utils` to turn that data into:
 
 - annotated sheets (dashed rectangle + sprite number over every sprite, via
-  `draw` — already implemented),
-- individual per-sprite image files (via `extract` — not yet implemented),
-- animated GIFs per animation group (via `gifs` — not yet implemented).
+  `draw` — implemented),
+- individual per-sprite image files (via `extract` — implemented),
+- animated GIFs per animation group (via `gifs` — not yet implemented,
+  deliberately deferred to Phase 3, see below).
 
 ## Phases
 
@@ -40,31 +43,55 @@ This phase does not depend on Phase 2's data — it can and should be done
 first/in parallel, using the two CSVs already in this repo
 (`spritesheets/*.csv`) as real test input.
 
-- [ ] Implement `extract` — crop `[X, Y, X+Width, Y+Height]` out of the
-      source image for every CSV row and write it to its own file.
-      (`include/SpriteUtilsCommand.h` already has the `EXTRACT` enum value;
-      needs an `ExtractCommand` class mirroring `DrawCommand`'s structure and
-      wiring in `src/SpriteUtils.cpp`.)
-- [ ] Implement `restore` — copy every `<file>.backup` back over `<file>` in
-      the working directory. Mirrors backup logic already in
-      `DrawCommand::run` (`src/DrawCommand.cpp`).
-- [ ] Fix `HelpCommand.cpp` — replace the stale option names (`color`,
-      `files`, `groups`, `positon`, `number-per-group`) with the real
-      `--`-prefixed options in `SpriteUtilsArgs`/`SpriteUtilsOptions`, and
-      document `extract`/`restore` once implemented.
-- [ ] Add a test suite covering the CSV-parsing edge cases already documented
-      in `web/file-formats.html` / `web/tutorials/csv-format.html`: implicit
-      `X` computation, the height-negation encoding for multi-column rows,
-      the `skipskip` sentinel, first-row (`row==1,column==1`) validation,
-      sequential row/column validation, minimum-column validation.
-- [ ] Remove `SpriteSheet`'s global static state (`lastX`, `lastWidth`,
-      `lastHeight` in `include/SpriteSheet.h`/`src/SpriteSheet.cpp`) so the
-      class is reentrant — needed once Phase 2 tooling processes multiple
-      sheets/files in one process or the test suite runs multiple cases.
-- [ ] Wrap `main()` in a top-level try/catch so a `SpriteUtilsException`
-      prints a clean error instead of an unhandled-exception crash.
-- [ ] Build + smoke-test: run `draw`, `extract`, `restore` against the real
-      CSVs in `spritesheets/` and confirm output looks correct.
+- [x] Implement `extract` — crop `[X, Y, X+Width, Y+Height]` out of the
+      source image for every CSV row and write it to its own file, under
+      `<out-dir>/<source-file-stem>/<numberPerFile>__<group>__<numberInGroup>.png`
+      (`--out-dir`, default `<dir>/extracted`). `include/ExtractCommand.h` /
+      `src/ExtractCommand.cpp`, wired into `src/SpriteUtils.cpp`.
+- [x] Implement `restore` — copies every `<file>.backup` back over `<file>`
+      in the working directory (optionally filtered by `--file-name`).
+      `include/RestoreCommand.h` / `src/RestoreCommand.cpp`.
+- [x] Fix `HelpCommand.cpp` — replaced the stale option names with the real
+      `--`-prefixed options per command, and documented `extract`/`restore`.
+- [x] Added a test suite (`tests/`, custom header-only harness in
+      `tests/TestFramework.h`, no external dependency): 28 test cases / 71
+      checks covering `Utils::split` edge cases, `SpriteSheetRow` parsing
+      (minimum columns, optional `X`, the height-negation-for-column>1
+      encoding), `SpriteSheetArgs` CLI parsing, and `SpriteSheet`'s
+      documented CSV semantics (auto-X, height inheritance/delta, `skipskip`,
+      first-row and sequential row/column validation) — plus a regression
+      test that two `SpriteSheet` instances processing same-named files
+      don't leak state into each other. Wired into CTest
+      (`add_test(NAME sprite_utils_tests ...)`).
+- [x] Removed `SpriteSheet`'s dead static state. On inspection,
+      `lastX`/`lastWidth`/`lastHeight` (`static int` class members) were
+      write-only — nothing ever read them — so this was a pure dead-code
+      removal, not a behavior change. There was also a second,
+      **shadowed** `static std::optional<SpriteSheetRow> lastSpriteSheetRow`
+      at file scope in `SpriteSheet.cpp`, fully hidden by the (already
+      correctly instance-scoped) member of the same name declared in
+      `SpriteSheet.h` — also dead, also removed. `SpriteSheet` was already
+      reentrant via that instance member; it's just cleaner now with the
+      dead statics gone. Locked in by the leak-regression test above.
+- [x] Wrapped `main()` in a top-level try/catch — a `SpriteUtilsException`
+      now prints `Error: <message>` and exits 1 instead of crashing with an
+      unhandled-exception message.
+- [x] Build + smoke-test: `cmake --build` succeeds (0 warnings surfaced),
+      `ctest` / the 71-check suite passes, and a real-data smoke test
+      (`draw`, `extract`, `restore` run against `gamefiles/IMAGE08/jauge.blp`
+      + the real `speedy_blupi_II.spritesheet.csv` rows for that file) was
+      visually confirmed: `draw` produced 4 correctly-numbered dashed
+      rectangles, `extract` produced 4 correctly-cropped PNGs, `restore`
+      byte-for-byte restored the original file (`md5sum` match).
+- [x] Bonus (needed to get a clean build, and a genuine improvement either
+      way): `find_package(OpenCV REQUIRED)` now requests
+      `COMPONENTS core imgproc imgcodecs` explicitly — those are the only
+      modules the code actually uses (`Mat`/`Rect`/`Scalar`,
+      `rectangle`/`line`/`cvtColor`, `imread`/`imwrite`) — and
+      `DrawCommand.h`/`ExtractCommand.cpp` now include the specific
+      `opencv2/core.hpp`/`imgproc.hpp`/`imgcodecs.hpp` headers instead of
+      the catch-all `opencv2/opencv.hpp`, which used to pull in every
+      OpenCV module (calib3d, dnn, viz, ...) whether used or not.
 
 `gifs` is deliberately **not** in this phase — it only produces something
 useful once `Group`/`Number in Group` data actually exists for most rows,

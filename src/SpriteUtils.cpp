@@ -27,6 +27,8 @@
 
 SpriteUtils::SpriteUtils() {
     commandImplementations.emplace("draw", std::make_unique<DrawCommand>());
+    commandImplementations.emplace("extract", std::make_unique<ExtractCommand>());
+    commandImplementations.emplace("restore", std::make_unique<RestoreCommand>());
     commandImplementations.emplace("help", std::make_unique<HelpCommand>());
     commandImplementations.emplace("version", std::make_unique<VersionCommand>());
 }

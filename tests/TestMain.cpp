@@ -21,28 +21,9 @@
  * THE SOFTWARE.
  */
 
+#include "TestFramework.h"
 
-#include <exception>
-#include <iostream>
-#include <vector>
-
-#include "SpriteUtils.h"
-
-int main(int argc, char* argv[])
-{
-    std::cout << "Sprite Utils - tool used to work with sprites" << std::endl;
-    std::vector<std::string> args(argv + 1, argv + argc);
-
-    try
-    {
-        SpriteUtils spriteUtils;
-        spriteUtils.run(args);
-    }
-    catch (const std::exception& e)
-    {
-        std::cerr << "Error: " << e.what() << std::endl;
-        return 1;
-    }
-
-    return 0;
+int main() {
+    int failures = sptest::runAll();
+    return failures == 0 ? 0 : 1;
 }

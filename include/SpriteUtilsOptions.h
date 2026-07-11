@@ -65,6 +65,8 @@ public:
 
     string getSpriteSheetPath() const;
 
+    string getExtractOutputDirectory() const;
+
     std::optional<string> getFileName() const;
 
     std::optional<int> getRow() const;

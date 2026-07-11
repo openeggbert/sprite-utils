@@ -21,46 +21,32 @@
  * THE SOFTWARE.
  */
 
-
-#ifndef DRAWCOMMAND_H
-#define DRAWCOMMAND_H
+#ifndef EXTRACTCOMMAND_H
+#define EXTRACTCOMMAND_H
 
 #include <string>
-#include <filesystem>
-#include <opencv2/core.hpp>
-#include <opencv2/imgcodecs.hpp>
-#include <opencv2/imgproc.hpp>
 
 #include "Command.h"
 #include "SpriteUtilsArgs.h"
-#include "SpriteUtilsOptions.h"
 
-class DrawCommand : public Command {
+/**
+ * Cuts every sprite rectangle described by the sprite-sheet CSV out of its
+ * source image into its own file, under
+ * "<out-dir>/<source-file-stem>/<numberPerFile>__<group>__<numberInGroup>.png".
+ *
+ * @author robertvokac
+ */
+class ExtractCommand : public Command {
 public:
-    static constexpr const char* NAME = "draw";
+    static constexpr const char* NAME = "extract";
 
-    DrawCommand() = default;
-    ~DrawCommand() override = default;
+    ExtractCommand() = default;
+    ~ExtractCommand() override = default;
 
     std::string getName() const override { return NAME; }
     std::string run(const SpriteUtilsArgs& args) override;
 
 private:
-    // --- BMP I/O helpers to preserve bit depth ---
-    static uint16_t readBmpBpp(const std::filesystem::path& file);
-    static void writeBmp16BGR565(const std::filesystem::path& out, const cv::Mat& bgr8);
-    static void writeBmp8Gray(const std::filesystem::path& out, const cv::Mat& bgr8);
-
-    // --- drawing helpers ---
-    static cv::Scalar toScalar(const Color& c); // B,G,R
-    static void  drawDashedRect(cv::Mat& img, cv::Rect rc, const cv::Scalar& color);
-    static void  drawNumber(cv::Mat& img, int number, int endX, int endY, bool doubleSize, const SpriteUtilsOptions& opt);
-    static void  drawDigitBlock(cv::Mat& img, int digit, int startX, int startY, int scale, bool fillBackground, bool backgroundWhite, bool foregroundYellow);
-
-    // 3x5 font mask for digits '0'..'9'
-    static const bool* digitMask(char ch);
-
-    // utility
-    static inline int clampi(int v, int lo, int hi) { return std::max(lo, std::min(hi, v)); }
+    static std::string sanitizeForFilename(const std::string& s);
 };
-#endif // DRAWCOMMAND_H
+#endif // EXTRACTCOMMAND_H

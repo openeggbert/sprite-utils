@@ -29,12 +29,6 @@
 #include <sstream>
 #include <fstream>
 
-// static fields
-int SpriteSheet::lastX = -1;
-int SpriteSheet::lastWidth = -1;
-int SpriteSheet::lastHeight = -1;
-static std::optional<SpriteSheetRow> lastSpriteSheetRow;
-
 SpriteSheet::SpriteSheet(const std::filesystem::path& file)
 {
     std::vector<SpriteSheetRow> rows;
@@ -104,9 +98,6 @@ void SpriteSheet::updateSpriteSheetRow(SpriteSheetRow& spriteSheetRow)
     }
 
     lastSpriteSheetRow = spriteSheetRow;    // <- COPY, no pointer!
-    lastX     = spriteSheetRow.x;
-    lastWidth = spriteSheetRow.width;
-    lastHeight= spriteSheetRow.height;
 }
 
 

@@ -28,27 +28,59 @@ std::string HelpCommand::run(const SpriteUtilsArgs& /*args*/)
 {
     std::string str = R"(
 NAME
-    spriteutils - " Sprite Utils"
+    sprite_utils - "Sprite Utils"
 
 SYNOPSIS
-    spriteutils [command] [options]
+    sprite_utils [command] [--option value]...
 
 DESCRIPTION
-    Tools used to work with sprites.
+    Tools used to work with sprite sheets, described by a semicolon-delimited
+    CSV file (see --sprite-sheet-path below).
 
 COMMAND
-    draw        draw rectangles for sprites
+    draw        Draw a dashed rectangle (and, optionally, the sprite's
+                computed sequence number) over every sprite described by the
+                sprite-sheet CSV, for every matching image file in the
+                working directory. A ".backup" copy of each image is made
+                (or restored from, on the next run) before drawing.
                     OPTIONS
-                        color={rgb value of the rectangle border}
+                        --dir={working directory}
+                            Optional. Default=. (current directory)
+                        --sprite-sheet-path={path to the sprite-sheet CSV}
+                            Optional. Default={--dir}/spritesheet.csv
+                        --file-name={single image file name to process}
+                            Optional. Default=(all image files in --dir).
+                        --row={row number to draw, starting at 1}
+                            Optional. Default=(all rows).
+                        --rectangle-color={R,G,B}
                             Optional. Default=255,0,0
-                        files={comma separated list of BMP files in the working directory}
-                            Optional. Default=(all BMP files in the working directory).
-                        groups={comma separated list of sprite groups}
-                            Optional. Default=(all sprite groups).
-                        positon={row starting with 0, height starting with 0}
-                            Optional. Default=(all sprites).
-                        number-per-group={row starting with 0, height starting with 0}
-                            Optional. Default=(all sprites).
+                        --draw-number={true|false}
+                            Optional. Default=true
+                        --draw-number-background={true|false}
+                            Optional. Default=true
+                        --double-sized-number={true|false}
+                            Optional. Default=false
+
+    extract     Cut every sprite rectangle described by the sprite-sheet CSV
+                out of its source image into its own PNG file, under
+                --out-dir/<source-file-stem>/.
+                    OPTIONS
+                        --dir={working directory}
+                            Optional. Default=. (current directory)
+                        --sprite-sheet-path={path to the sprite-sheet CSV}
+                            Optional. Default={--dir}/spritesheet.csv
+                        --file-name={single image file name to process}
+                            Optional. Default=(all image files in --dir).
+                        --out-dir={directory to write extracted sprites to}
+                            Optional. Default={--dir}/extracted
+
+    restore     Restore every "<file>.backup" in the working directory back
+                over its original file, in one step.
+                    OPTIONS
+                        --dir={working directory}
+                            Optional. Default=. (current directory)
+                        --file-name={single file name to restore}
+                            Optional. Default=(all backed-up files in --dir).
 
     help        Display help information
     version     Display version information

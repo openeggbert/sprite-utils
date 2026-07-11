@@ -38,9 +38,6 @@ class SpriteSheet
 private:
     std::map<std::string, std::vector<SpriteSheetRow>> map;
 
-    static int lastX;
-    static int lastWidth;
-    static int lastHeight;
     std::optional<SpriteSheetRow> lastSpriteSheetRow = std::nullopt;
 
     void processLine(const std::string& line, std::vector<SpriteSheetRow>& rows);

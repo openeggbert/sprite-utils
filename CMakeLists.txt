@@ -4,11 +4,19 @@ project(sprite_utils)
 set(CMAKE_CXX_STANDARD 23)
 
 #find_package(OpenSSL REQUIRED)
-find_package(OpenCV REQUIRED)
-add_executable(sprite_utils
+# Only core/imgproc/imgcodecs are actually used (Mat/Rect/Scalar, rectangle/
+# line/cvtColor, imread/imwrite) - request just those components instead of
+# every OpenCV module, so this only depends on (and needs to find) the
+# handful of shared libraries actually linked.
+find_package(OpenCV REQUIRED COMPONENTS core imgproc imgcodecs)
+
+# Sources shared by the CLI executable and the test executable (everything
+# except each target's own main()).
+set(SPRITE_UTILS_LIB_SOURCES
         src/HelpCommand.cpp
         src/DrawCommand.cpp
-        src/Main.cpp
+        src/ExtractCommand.cpp
+        src/RestoreCommand.cpp
         src/SpriteSheet.cpp
         src/SpriteSheetRow.cpp
         src/SpriteUtils.cpp
@@ -18,10 +26,15 @@ add_executable(sprite_utils
         src/VersionCommand.cpp
 )
 
+add_executable(sprite_utils
+        src/Main.cpp
+        ${SPRITE_UTILS_LIB_SOURCES}
+)
+
 target_include_directories(sprite_utils PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}/include
         ${OpenCV_INCLUDE_DIRS}
-        
+
 )
 
 target_link_libraries(sprite_utils PRIVATE
@@ -29,4 +42,27 @@ target_link_libraries(sprite_utils PRIVATE
         #OpenSSL::Crypto
         ${OpenCV_LIBS}
 )
+
+enable_testing()
+
+add_executable(sprite_utils_tests
+        tests/TestMain.cpp
+        tests/UtilsTests.cpp
+        tests/SpriteSheetRowTests.cpp
+        tests/SpriteSheetTests.cpp
+        tests/SpriteUtilsArgsTests.cpp
+        ${SPRITE_UTILS_LIB_SOURCES}
+)
+
+target_include_directories(sprite_utils_tests PUBLIC
+        ${CMAKE_CURRENT_SOURCE_DIR}/include
+        ${CMAKE_CURRENT_SOURCE_DIR}/tests
+        ${OpenCV_INCLUDE_DIRS}
+)
+
+target_link_libraries(sprite_utils_tests PRIVATE
+        ${OpenCV_LIBS}
+)
+
+add_test(NAME sprite_utils_tests COMMAND sprite_utils_tests)
 

@@ -31,7 +31,9 @@
 #include "SpriteUtilsArgs.h"
 #include "Command.h"
 #include "DrawCommand.h"
+#include "ExtractCommand.h"
 #include "HelpCommand.h"
+#include "RestoreCommand.h"
 #include "VersionCommand.h"
 #include "SpriteUtilsException.h"
 

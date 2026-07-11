@@ -86,6 +86,12 @@ string SpriteUtilsOptions::getSpriteSheetPath() const
         getWorkingDirectory() + "/spritesheet.csv");
 }
 
+string SpriteUtilsOptions::getExtractOutputDirectory() const
+{
+    return spriteUtilsArgs.getArgumentOptional("--out-dir").value_or(
+        getWorkingDirectory() + "/extracted");
+}
+
 
 std::optional<string> SpriteUtilsOptions::getFileName() const
 {
