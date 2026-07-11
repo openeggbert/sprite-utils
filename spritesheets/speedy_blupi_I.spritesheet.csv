@@ -344,124 +344,132 @@ explo.blp;?;1;8;4;;740;127;0;;;51
 explo.blp;?;1;8;5;;740;81;1;;;52
 explo.blp;?;1;8;6;;740;81;0;;;53
 explo.blp;?;1;8;7;;740;104;0;;;54
-button00.blp;?;1;1;1;;0;40;40;;;1
-button00.blp;?;1;1;2;;0;40;0;;;2
-button00.blp;?;1;1;3;;0;40;0;;;3
-button00.blp;?;1;1;4;;0;40;0;;;4
-button00.blp;?;1;1;5;;0;40;0;;;5
-button00.blp;?;1;1;6;;0;40;0;;;6
-button00.blp;?;1;2;1;;40;40;40;;;7
-button00.blp;?;1;2;2;;40;40;0;;;8
-button00.blp;?;1;2;3;;40;40;0;;;9
-button00.blp;?;1;2;4;;40;40;0;;;10
-button00.blp;?;1;2;5;;40;40;0;;;11
-button00.blp;?;1;2;6;;40;40;0;;;12
-button00.blp;?;1;3;1;;80;40;40;;;13
-button00.blp;?;1;3;2;;80;40;0;;;14
-button00.blp;?;1;3;3;;80;40;0;;;15
-button00.blp;?;1;3;4;;80;40;0;;;16
-button00.blp;?;1;3;5;;80;40;0;;;17
-button00.blp;?;1;3;6;;80;40;0;;;18
-button00.blp;?;1;4;1;;120;40;40;;;19
-button00.blp;?;1;4;2;;120;40;0;;;20
-button00.blp;?;1;4;3;;120;40;0;;;21
-button00.blp;?;1;4;4;;120;40;0;;;22
-button00.blp;?;1;4;5;;120;40;0;;;23
-button00.blp;?;1;4;6;;120;40;0;;;24
-button00.blp;?;1;5;1;;160;40;40;;;25
-button00.blp;?;1;5;2;;160;40;0;;;26
-button00.blp;?;1;5;3;;160;40;0;;;27
-button00.blp;?;1;5;4;;160;40;0;;;28
-button00.blp;?;1;5;5;;160;40;0;;;29
-button00.blp;?;1;5;6;;160;40;0;;;30
-button00.blp;?;1;6;1;;200;40;40;;;31
-button00.blp;?;1;6;2;;200;40;0;;;32
-button00.blp;?;1;6;3;;200;40;0;;;33
-button00.blp;?;1;6;4;;200;40;0;;;34
-button00.blp;?;1;6;5;;200;40;0;;;35
-button00.blp;?;1;6;6;;200;40;0;;;36
-button00.blp;?;1;7;1;;240;40;40;;;37
-button00.blp;?;1;7;2;;240;40;0;;;38
-button00.blp;?;1;7;3;;240;40;0;;;39
-button00.blp;?;1;7;4;;240;40;0;;;40
-button00.blp;?;1;7;5;;240;40;0;;;41
-button00.blp;?;1;7;6;;240;40;0;;;42
-button00.blp;?;1;8;1;;280;40;40;;;43
-button00.blp;?;1;8;2;;280;40;0;;;44
-button00.blp;?;1;8;3;;280;40;0;;;45
-button00.blp;?;1;8;4;;280;40;0;;;46
-button00.blp;?;1;8;5;;280;40;0;;;47
-button00.blp;?;1;8;6;;280;40;0;;;48
-button00.blp;?;1;9;1;;320;40;40;;;49
-button00.blp;?;1;9;2;;320;40;0;;;50
-button00.blp;?;1;9;3;;320;40;0;;;51
-button00.blp;?;1;9;4;;320;40;0;;;52
-button00.blp;?;1;9;5;;320;40;0;;;53
-button00.blp;?;1;9;6;;320;40;0;;;54
-button00.blp;?;1;10;1;;360;40;40;;;55
-button00.blp;?;1;10;2;;360;40;0;;;56
-button00.blp;?;1;10;3;;360;40;0;;;57
-button00.blp;?;1;10;4;;360;40;0;;;58
-button00.blp;?;1;10;5;;360;40;0;;;59
-button00.blp;?;1;10;6;;360;40;0;;;60
-button00.blp;?;1;11;1;;400;40;40;;;61
-button00.blp;?;1;11;2;;400;40;0;;;62
-button00.blp;?;1;11;3;;400;40;0;;;63
-button00.blp;?;1;11;4;;400;40;0;;;64
-button00.blp;?;1;11;5;;400;40;0;;;65
-button00.blp;?;1;11;6;;400;40;0;;;66
-button00.blp;?;1;12;1;;440;40;40;;;67
-button00.blp;?;1;12;2;;440;40;0;;;68
-button00.blp;?;1;12;3;;440;40;0;;;69
-button00.blp;?;1;12;4;;440;40;0;;;70
-button00.blp;?;1;12;5;;440;40;0;;;71
-button00.blp;?;1;12;6;;440;40;0;;;72
-button00.blp;?;1;13;1;;480;40;40;;;73
-button00.blp;?;1;13;2;;480;40;0;;;74
-button00.blp;?;1;13;3;;480;40;0;;;75
-button00.blp;?;1;13;4;;480;40;0;;;76
-button00.blp;?;1;13;5;;480;40;0;;;77
-button00.blp;?;1;13;6;;480;40;0;;;78
-button00.blp;?;1;14;1;;520;40;40;;;79
-button00.blp;?;1;14;2;;520;40;0;;;80
-button00.blp;?;1;14;3;;520;40;0;;;81
-button00.blp;?;1;14;4;;520;40;0;;;82
-button00.blp;?;1;14;5;;520;40;0;;;83
-button00.blp;?;1;14;6;;520;40;0;;;84
-button00.blp;?;1;15;1;;560;40;40;;;85
-button00.blp;?;1;15;2;;560;40;0;;;86
-button00.blp;?;1;15;3;;560;40;0;;;87
-button00.blp;?;1;15;4;;560;40;0;;;88
-button00.blp;?;1;15;5;;560;40;0;;;89
-button00.blp;?;1;15;6;;560;40;0;;;90
-button00.blp;?;1;16;1;;600;40;40;;;91
-button00.blp;?;1;16;2;;600;40;0;;;92
-button00.blp;?;1;16;3;;600;40;0;;;93
-button00.blp;?;1;16;4;;600;40;0;;;94
-button00.blp;?;1;16;5;;600;40;0;;;95
-button00.blp;?;1;16;6;;600;40;0;;;96
-button00.blp;?;1;17;1;;640;40;40;;;97
-button00.blp;?;1;17;2;;640;40;0;;;98
-button00.blp;?;1;17;3;;640;40;0;;;99
-button00.blp;?;1;17;4;;640;40;0;;;100
-button00.blp;?;1;17;5;;640;40;0;;;101
-button00.blp;?;1;17;6;;640;40;0;;;102
-button00.blp;?;1;18;1;;680;40;40;;;103
-button00.blp;?;1;18;2;;680;40;0;;;104
-button00.blp;?;1;18;3;;680;40;0;;;105
-button00.blp;?;1;18;4;;680;40;0;;;106
-button00.blp;?;1;19;1;;720;40;40;;;107
-button00.blp;?;1;19;2;;720;40;0;;;108
-button00.blp;?;1;19;3;;720;40;0;;;109
-button00.blp;?;1;19;4;;720;40;0;;;110
-button00.blp;?;1;20;1;;760;40;40;;;111
-button00.blp;?;1;20;2;;760;40;0;;;112
-button00.blp;?;1;20;3;;760;40;0;;;113
-button00.blp;?;1;20;4;;760;40;0;;;114
-button00.blp;?;1;21;1;;800;40;40;;;115
-button00.blp;?;1;21;2;;800;40;0;;;116
-button00.blp;?;1;21;3;;800;40;0;;;117
-button00.blp;?;1;21;4;;800;40;0;;;118
+button00.blp;?;1;1;1;0;0;40;40;state 0-5 (normal/hover/pressed/.../locked);auto:CHBUTTON_grid;1
+button00.blp;?;1;2;1;40;0;40;40;state 0-5 (normal/hover/pressed/.../locked);auto:CHBUTTON_grid;2
+button00.blp;?;1;3;1;80;0;40;40;state 0-5 (normal/hover/pressed/.../locked);auto:CHBUTTON_grid;3
+button00.blp;?;1;4;1;120;0;40;40;state 0-5 (normal/hover/pressed/.../locked);auto:CHBUTTON_grid;4
+button00.blp;?;1;5;1;160;0;40;40;state 0-5 (normal/hover/pressed/.../locked);auto:CHBUTTON_grid;5
+button00.blp;?;1;6;1;200;0;40;40;state 0-5 (normal/hover/pressed/.../locked);auto:CHBUTTON_grid;6
+button00.blp;?;1;7;1;0;40;40;40;menu-icon rank 0;auto:CHBUTTON_grid;7
+button00.blp;?;1;8;1;40;40;40;40;menu-icon rank 1;auto:CHBUTTON_grid;8
+button00.blp;?;1;9;1;80;40;40;40;menu-icon rank 2;auto:CHBUTTON_grid;9
+button00.blp;?;1;10;1;120;40;40;40;menu-icon rank 3;auto:CHBUTTON_grid;10
+button00.blp;?;1;11;1;160;40;40;40;menu-icon rank 4;auto:CHBUTTON_grid;11
+button00.blp;?;1;12;1;200;40;40;40;menu-icon rank 5;auto:CHBUTTON_grid;12
+button00.blp;?;1;13;1;0;80;40;40;menu-icon rank 6;auto:CHBUTTON_grid;13
+button00.blp;?;1;14;1;40;80;40;40;menu-icon rank 7;auto:CHBUTTON_grid;14
+button00.blp;?;1;15;1;80;80;40;40;menu-icon rank 8;auto:CHBUTTON_grid;15
+button00.blp;?;1;16;1;120;80;40;40;menu-icon rank 9;auto:CHBUTTON_grid;16
+button00.blp;?;1;17;1;160;80;40;40;menu-icon rank 10;auto:CHBUTTON_grid;17
+button00.blp;?;1;18;1;200;80;40;40;menu-icon rank 11;auto:CHBUTTON_grid;18
+button00.blp;?;1;19;1;0;120;40;40;menu-icon rank 12;auto:CHBUTTON_grid;19
+button00.blp;?;1;20;1;40;120;40;40;menu-icon rank 13;auto:CHBUTTON_grid;20
+button00.blp;?;1;21;1;80;120;40;40;menu-icon rank 14;auto:CHBUTTON_grid;21
+button00.blp;?;1;22;1;120;120;40;40;menu-icon rank 15;auto:CHBUTTON_grid;22
+button00.blp;?;1;23;1;160;120;40;40;menu-icon rank 16;auto:CHBUTTON_grid;23
+button00.blp;?;1;24;1;200;120;40;40;menu-icon rank 17;auto:CHBUTTON_grid;24
+button00.blp;?;1;25;1;0;160;40;40;menu-icon rank 18;auto:CHBUTTON_grid;25
+button00.blp;?;1;26;1;40;160;40;40;menu-icon rank 19;auto:CHBUTTON_grid;26
+button00.blp;?;1;27;1;80;160;40;40;menu-icon rank 20;auto:CHBUTTON_grid;27
+button00.blp;?;1;28;1;120;160;40;40;menu-icon rank 21;auto:CHBUTTON_grid;28
+button00.blp;?;1;29;1;160;160;40;40;menu-icon rank 22;auto:CHBUTTON_grid;29
+button00.blp;?;1;30;1;200;160;40;40;menu-icon rank 23;auto:CHBUTTON_grid;30
+button00.blp;?;1;31;1;0;200;40;40;menu-icon rank 24;auto:CHBUTTON_grid;31
+button00.blp;?;1;32;1;40;200;40;40;menu-icon rank 25;auto:CHBUTTON_grid;32
+button00.blp;?;1;33;1;80;200;40;40;menu-icon rank 26;auto:CHBUTTON_grid;33
+button00.blp;?;1;34;1;120;200;40;40;menu-icon rank 27;auto:CHBUTTON_grid;34
+button00.blp;?;1;35;1;160;200;40;40;menu-icon rank 28;auto:CHBUTTON_grid;35
+button00.blp;?;1;36;1;200;200;40;40;menu-icon rank 29;auto:CHBUTTON_grid;36
+button00.blp;?;1;37;1;0;240;40;40;menu-icon rank 30;auto:CHBUTTON_grid;37
+button00.blp;?;1;38;1;40;240;40;40;menu-icon rank 31;auto:CHBUTTON_grid;38
+button00.blp;?;1;39;1;80;240;40;40;menu-icon rank 32;auto:CHBUTTON_grid;39
+button00.blp;?;1;40;1;120;240;40;40;menu-icon rank 33;auto:CHBUTTON_grid;40
+button00.blp;?;1;41;1;160;240;40;40;menu-icon rank 34;auto:CHBUTTON_grid;41
+button00.blp;?;1;42;1;200;240;40;40;menu-icon rank 35;auto:CHBUTTON_grid;42
+button00.blp;?;1;43;1;0;280;40;40;menu-icon rank 36;auto:CHBUTTON_grid;43
+button00.blp;?;1;44;1;40;280;40;40;menu-icon rank 37;auto:CHBUTTON_grid;44
+button00.blp;?;1;45;1;80;280;40;40;menu-icon rank 38;auto:CHBUTTON_grid;45
+button00.blp;?;1;46;1;120;280;40;40;menu-icon rank 39;auto:CHBUTTON_grid;46
+button00.blp;?;1;47;1;160;280;40;40;menu-icon rank 40;auto:CHBUTTON_grid;47
+button00.blp;?;1;48;1;200;280;40;40;menu-icon rank 41;auto:CHBUTTON_grid;48
+button00.blp;?;1;49;1;0;320;40;40;menu-icon rank 42;auto:CHBUTTON_grid;49
+button00.blp;?;1;50;1;40;320;40;40;menu-icon rank 43;auto:CHBUTTON_grid;50
+button00.blp;?;1;51;1;80;320;40;40;menu-icon rank 44;auto:CHBUTTON_grid;51
+button00.blp;?;1;52;1;120;320;40;40;menu-icon rank 45;auto:CHBUTTON_grid;52
+button00.blp;?;1;53;1;160;320;40;40;menu-icon rank 46;auto:CHBUTTON_grid;53
+button00.blp;?;1;54;1;200;320;40;40;menu-icon rank 47;auto:CHBUTTON_grid;54
+button00.blp;?;1;55;1;0;360;40;40;menu-icon rank 48;auto:CHBUTTON_grid;55
+button00.blp;?;1;56;1;40;360;40;40;menu-icon rank 49;auto:CHBUTTON_grid;56
+button00.blp;?;1;57;1;80;360;40;40;menu-icon rank 50;auto:CHBUTTON_grid;57
+button00.blp;?;1;58;1;120;360;40;40;menu-icon rank 51;auto:CHBUTTON_grid;58
+button00.blp;?;1;59;1;160;360;40;40;menu-icon rank 52;auto:CHBUTTON_grid;59
+button00.blp;?;1;60;1;200;360;40;40;menu-icon rank 53;auto:CHBUTTON_grid;60
+button00.blp;?;1;61;1;0;400;40;40;menu-icon rank 54;auto:CHBUTTON_grid;61
+button00.blp;?;1;62;1;40;400;40;40;menu-icon rank 55;auto:CHBUTTON_grid;62
+button00.blp;?;1;63;1;80;400;40;40;menu-icon rank 56;auto:CHBUTTON_grid;63
+button00.blp;?;1;64;1;120;400;40;40;menu-icon rank 57;auto:CHBUTTON_grid;64
+button00.blp;?;1;65;1;160;400;40;40;menu-icon rank 58;auto:CHBUTTON_grid;65
+button00.blp;?;1;66;1;200;400;40;40;menu-icon rank 59;auto:CHBUTTON_grid;66
+button00.blp;?;1;67;1;0;440;40;40;menu-icon rank 60;auto:CHBUTTON_grid;67
+button00.blp;?;1;68;1;40;440;40;40;menu-icon rank 61;auto:CHBUTTON_grid;68
+button00.blp;?;1;69;1;80;440;40;40;menu-icon rank 62;auto:CHBUTTON_grid;69
+button00.blp;?;1;70;1;120;440;40;40;menu-icon rank 63;auto:CHBUTTON_grid;70
+button00.blp;?;1;71;1;160;440;40;40;menu-icon rank 64;auto:CHBUTTON_grid;71
+button00.blp;?;1;72;1;200;440;40;40;menu-icon rank 65;auto:CHBUTTON_grid;72
+button00.blp;?;1;73;1;0;480;40;40;menu-icon rank 66;auto:CHBUTTON_grid;73
+button00.blp;?;1;74;1;40;480;40;40;menu-icon rank 67;auto:CHBUTTON_grid;74
+button00.blp;?;1;75;1;80;480;40;40;menu-icon rank 68;auto:CHBUTTON_grid;75
+button00.blp;?;1;76;1;120;480;40;40;menu-icon rank 69;auto:CHBUTTON_grid;76
+button00.blp;?;1;77;1;160;480;40;40;menu-icon rank 70;auto:CHBUTTON_grid;77
+button00.blp;?;1;78;1;200;480;40;40;menu-icon rank 71;auto:CHBUTTON_grid;78
+button00.blp;?;1;79;1;0;520;40;40;menu-icon rank 72;auto:CHBUTTON_grid;79
+button00.blp;?;1;80;1;40;520;40;40;menu-icon rank 73;auto:CHBUTTON_grid;80
+button00.blp;?;1;81;1;80;520;40;40;menu-icon rank 74;auto:CHBUTTON_grid;81
+button00.blp;?;1;82;1;120;520;40;40;menu-icon rank 75;auto:CHBUTTON_grid;82
+button00.blp;?;1;83;1;160;520;40;40;menu-icon rank 76;auto:CHBUTTON_grid;83
+button00.blp;?;1;84;1;200;520;40;40;menu-icon rank 77;auto:CHBUTTON_grid;84
+button00.blp;?;1;85;1;0;560;40;40;menu-icon rank 78;auto:CHBUTTON_grid;85
+button00.blp;?;1;86;1;40;560;40;40;menu-icon rank 79;auto:CHBUTTON_grid;86
+button00.blp;?;1;87;1;80;560;40;40;menu-icon rank 80;auto:CHBUTTON_grid;87
+button00.blp;?;1;88;1;120;560;40;40;menu-icon rank 81;auto:CHBUTTON_grid;88
+button00.blp;?;1;89;1;160;560;40;40;menu-icon rank 82;auto:CHBUTTON_grid;89
+button00.blp;?;1;90;1;200;560;40;40;menu-icon rank 83;auto:CHBUTTON_grid;90
+button00.blp;?;1;91;1;0;600;40;40;menu-icon rank 84;auto:CHBUTTON_grid;91
+button00.blp;?;1;92;1;40;600;40;40;menu-icon rank 85;auto:CHBUTTON_grid;92
+button00.blp;?;1;93;1;80;600;40;40;menu-icon rank 86;auto:CHBUTTON_grid;93
+button00.blp;?;1;94;1;120;600;40;40;menu-icon rank 87;auto:CHBUTTON_grid;94
+button00.blp;?;1;95;1;160;600;40;40;menu-icon rank 88;auto:CHBUTTON_grid;95
+button00.blp;?;1;96;1;200;600;40;40;menu-icon rank 89;auto:CHBUTTON_grid;96
+button00.blp;?;1;97;1;0;640;40;40;menu-icon rank 90;auto:CHBUTTON_grid;97
+button00.blp;?;1;98;1;40;640;40;40;menu-icon rank 91;auto:CHBUTTON_grid;98
+button00.blp;?;1;99;1;80;640;40;40;menu-icon rank 92;auto:CHBUTTON_grid;99
+button00.blp;?;1;100;1;120;640;40;40;menu-icon rank 93;auto:CHBUTTON_grid;100
+button00.blp;?;1;101;1;160;640;40;40;menu-icon rank 94;auto:CHBUTTON_grid;101
+button00.blp;?;1;102;1;200;640;40;40;menu-icon rank 95;auto:CHBUTTON_grid;102
+button00.blp;?;1;103;1;0;680;40;40;menu-icon rank 96;auto:CHBUTTON_grid;103
+button00.blp;?;1;104;1;40;680;40;40;menu-icon rank 97;auto:CHBUTTON_grid;104
+button00.blp;?;1;105;1;80;680;40;40;menu-icon rank 98;auto:CHBUTTON_grid;105
+button00.blp;?;1;106;1;120;680;40;40;menu-icon rank 99;auto:CHBUTTON_grid;106
+button00.blp;?;1;107;1;160;680;40;40;menu-icon rank 100;auto:CHBUTTON_grid;107
+button00.blp;?;1;108;1;200;680;40;40;menu-icon rank 101;auto:CHBUTTON_grid;108
+button00.blp;?;1;109;1;0;720;40;40;menu-icon rank 102;auto:CHBUTTON_grid;109
+button00.blp;?;1;110;1;40;720;40;40;menu-icon rank 103;auto:CHBUTTON_grid;110
+button00.blp;?;1;111;1;80;720;40;40;menu-icon rank 104;auto:CHBUTTON_grid;111
+button00.blp;?;1;112;1;120;720;40;40;menu-icon rank 105;auto:CHBUTTON_grid;112
+button00.blp;?;1;113;1;160;720;40;40;menu-icon rank 106;auto:CHBUTTON_grid;113
+button00.blp;?;1;114;1;200;720;40;40;menu-icon rank 107;auto:CHBUTTON_grid;114
+button00.blp;?;1;115;1;0;760;40;40;menu-icon rank 108;auto:CHBUTTON_grid;115
+button00.blp;?;1;116;1;40;760;40;40;menu-icon rank 109;auto:CHBUTTON_grid;116
+button00.blp;?;1;117;1;80;760;40;40;menu-icon rank 110;auto:CHBUTTON_grid;117
+button00.blp;?;1;118;1;120;760;40;40;menu-icon rank 111;auto:CHBUTTON_grid;118
+button00.blp;?;1;119;1;160;760;40;40;menu-icon rank 112;auto:CHBUTTON_grid;119
+button00.blp;?;1;120;1;200;760;40;40;menu-icon rank 113;auto:CHBUTTON_grid;120
+button00.blp;?;1;121;1;0;800;40;40;menu-icon rank 114;auto:CHBUTTON_grid;121
+button00.blp;?;1;122;1;40;800;40;40;menu-icon rank 115;auto:CHBUTTON_grid;122
+button00.blp;?;1;123;1;80;800;40;40;menu-icon rank 116;auto:CHBUTTON_grid;123
+button00.blp;?;1;124;1;120;800;40;40;menu-icon rank 117;auto:CHBUTTON_grid;124
+button00.blp;?;1;125;1;160;800;40;40;menu-icon rank 118;auto:CHBUTTON_grid;125
+button00.blp;?;1;126;1;200;800;40;40;menu-icon rank 119;auto:CHBUTTON_grid;126
 object.blp;?;1;1;1;;0;64;5;ok;;1
 object.blp;?;1;1;2;;0;5;5;ok;;2
 object.blp;?;1;1;3;;0;64;4;ok;;3
@@ -896,262 +904,390 @@ element.blp;?;1;14;8;;531;58;0;;;185
 element.blp;?;1;14;9;;531;55;1;;;186
 element.blp;?;1;14;10;;531;59;0;;;187
 element.blp;?;1;14;11;;531;60;0;;;188
-text.blp;?;1;1;1;;0;16;16;;;1
-text.blp;?;1;1;2;;0;16;0;;;2
-text.blp;?;1;1;3;;0;16;0;;;3
-text.blp;?;1;1;4;;0;16;0;;;4
-text.blp;?;1;1;5;;0;16;0;;;5
-text.blp;?;1;1;6;;0;16;0;;;6
-text.blp;?;1;1;7;;0;16;0;;;7
-text.blp;?;1;1;8;;0;16;0;;;8
-text.blp;?;1;1;9;;0;16;0;;;9
-text.blp;?;1;1;10;;0;16;0;;;10
-text.blp;?;1;1;11;;0;16;0;;;11
-text.blp;?;1;1;12;;0;16;0;;;12
-text.blp;?;1;1;13;;0;16;0;;;13
-text.blp;?;1;1;14;;0;16;0;;;14
-text.blp;?;1;1;15;;0;16;0;;;15
-text.blp;?;1;1;16;;0;16;0;;;16
-text.blp;?;1;2;1;;16;16;16;;;17
-text.blp;?;1;2;2;;16;16;0;;;18
-text.blp;?;1;2;3;;16;16;0;;;19
-text.blp;?;1;2;4;;16;16;0;;;20
-text.blp;?;1;2;5;;16;16;0;;;21
-text.blp;?;1;2;6;;16;16;0;;;22
-text.blp;?;1;2;7;;16;16;0;;;23
-text.blp;?;1;2;8;;16;16;0;;;24
-text.blp;?;1;2;9;;16;16;0;;;25
-text.blp;?;1;2;10;;16;16;0;;;26
-text.blp;?;1;2;11;;16;16;0;;;27
-text.blp;?;1;2;12;;16;16;0;;;28
-text.blp;?;1;2;13;;16;16;0;;;29
-text.blp;?;1;2;14;;16;16;0;;;30
-text.blp;?;1;2;15;;16;16;0;;;31
-text.blp;?;1;2;16;;16;16;0;;;32
-text.blp;?;1;3;1;;32;16;16;;;33
-text.blp;?;1;3;2;;32;16;0;;;34
-text.blp;?;1;3;3;;32;16;0;;;35
-text.blp;?;1;3;4;;32;16;0;;;36
-text.blp;?;1;3;5;;32;16;0;;;37
-text.blp;?;1;3;6;;32;16;0;;;38
-text.blp;?;1;3;7;;32;16;0;;;39
-text.blp;?;1;3;8;;32;16;0;;;40
-text.blp;?;1;3;9;;32;16;0;;;41
-text.blp;?;1;3;10;;32;16;0;;;42
-text.blp;?;1;3;11;;32;16;0;;;43
-text.blp;?;1;3;12;;32;16;0;;;44
-text.blp;?;1;3;13;;32;16;0;;;45
-text.blp;?;1;3;14;;32;16;0;;;46
-text.blp;?;1;3;15;;32;16;0;;;47
-text.blp;?;1;3;16;;32;16;0;;;48
-text.blp;?;1;4;1;;48;16;16;;;49
-text.blp;?;1;4;2;;48;16;0;;;50
-text.blp;?;1;4;3;;48;16;0;;;51
-text.blp;?;1;4;4;;48;16;0;;;52
-text.blp;?;1;4;5;;48;16;0;;;53
-text.blp;?;1;4;6;;48;16;0;;;54
-text.blp;?;1;4;7;;48;16;0;;;55
-text.blp;?;1;4;8;;48;16;0;;;56
-text.blp;?;1;4;9;;48;16;0;;;57
-text.blp;?;1;4;10;;48;16;0;;;58
-text.blp;?;1;4;11;;48;16;0;;;59
-text.blp;?;1;4;12;;48;16;0;;;60
-text.blp;?;1;4;13;;48;16;0;;;61
-text.blp;?;1;4;14;;48;16;0;;;62
-text.blp;?;1;4;15;;48;16;0;;;63
-text.blp;?;1;4;16;;48;16;0;;;64
-text.blp;?;1;5;1;;64;16;16;;;65
-text.blp;?;1;5;2;;64;16;0;;;66
-text.blp;?;1;5;3;;64;16;0;;;67
-text.blp;?;1;5;4;;64;16;0;;;68
-text.blp;?;1;5;5;;64;16;0;;;69
-text.blp;?;1;5;6;;64;16;0;;;70
-text.blp;?;1;5;7;;64;16;0;;;71
-text.blp;?;1;5;8;;64;16;0;;;72
-text.blp;?;1;5;9;;64;16;0;;;73
-text.blp;?;1;5;10;;64;16;0;;;74
-text.blp;?;1;5;11;;64;16;0;;;75
-text.blp;?;1;5;12;;64;16;0;;;76
-text.blp;?;1;5;13;;64;16;0;;;77
-text.blp;?;1;5;14;;64;16;0;;;78
-text.blp;?;1;5;15;;64;16;0;;;79
-text.blp;?;1;5;16;;64;16;0;;;80
-text.blp;?;1;6;1;;80;16;16;;;81
-text.blp;?;1;6;2;;80;16;0;;;82
-text.blp;?;1;6;3;;80;16;0;;;83
-text.blp;?;1;6;4;;80;16;0;;;84
-text.blp;?;1;6;5;;80;16;0;;;85
-text.blp;?;1;6;6;;80;16;0;;;86
-text.blp;?;1;6;7;;80;16;0;;;87
-text.blp;?;1;6;8;;80;16;0;;;88
-text.blp;?;1;6;9;;80;16;0;;;89
-text.blp;?;1;6;10;;80;16;0;;;90
-text.blp;?;1;6;11;;80;16;0;;;91
-text.blp;?;1;6;12;;80;16;0;;;92
-text.blp;?;1;6;13;;80;16;0;;;93
-text.blp;?;1;6;14;;80;16;0;;;94
-text.blp;?;1;6;15;;80;16;0;;;95
-text.blp;?;1;6;16;;80;16;0;;;96
-text.blp;?;1;7;1;;96;16;16;;;97
-text.blp;?;1;7;2;;96;16;0;;;98
-text.blp;?;1;7;3;;96;16;0;;;99
-text.blp;?;1;7;4;;96;16;0;;;100
-text.blp;?;1;7;5;;96;16;0;;;101
-text.blp;?;1;7;6;;96;16;0;;;102
-text.blp;?;1;7;7;;96;16;0;;;103
-text.blp;?;1;7;8;;96;16;0;;;104
-text.blp;?;1;7;9;;96;16;0;;;105
-text.blp;?;1;7;10;;96;16;0;;;106
-text.blp;?;1;7;11;;96;16;0;;;107
-text.blp;?;1;7;12;;96;16;0;;;108
-text.blp;?;1;7;13;;96;16;0;;;109
-text.blp;?;1;7;14;;96;16;0;;;110
-text.blp;?;1;7;15;;96;16;0;;;111
-text.blp;?;1;7;16;;96;16;0;;;112
-text.blp;?;1;8;1;;112;16;16;;;113
-text.blp;?;1;8;2;;112;16;0;;;114
-text.blp;?;1;8;3;;112;16;0;;;115
-text.blp;?;1;8;4;;112;16;0;;;116
-text.blp;?;1;8;5;;112;16;0;;;117
-text.blp;?;1;8;6;;112;16;0;;;118
-text.blp;?;1;8;7;;112;16;0;;;119
-text.blp;?;1;8;8;;112;16;0;;;120
-text.blp;?;1;8;9;;112;16;0;;;121
-text.blp;?;1;8;10;;112;16;0;;;122
-text.blp;?;1;8;11;;112;16;0;;;123
-text.blp;?;1;8;12;;112;16;0;;;124
-text.blp;?;1;8;13;;112;16;0;;;125
-text.blp;?;1;8;14;;112;16;0;;;126
-text.blp;?;1;8;15;;112;16;0;;;127
-text.blp;?;1;8;16;;112;16;0;;;128
-text.blp;?;1;9;1;;128;16;16;;;129
-text.blp;?;1;9;2;;128;16;0;;;130
-text.blp;?;1;9;3;;128;16;0;;;131
-text.blp;?;1;9;4;;128;16;0;;;132
-text.blp;?;1;9;5;;128;16;0;;;133
-text.blp;?;1;9;6;;128;16;0;;;134
-text.blp;?;1;9;7;;128;16;0;;;135
-text.blp;?;1;9;8;;128;16;0;;;136
-text.blp;?;1;9;9;;128;16;0;;;137
-text.blp;?;1;9;10;;128;16;0;;;138
-text.blp;?;1;9;11;;128;16;0;;;139
-text.blp;?;1;9;12;;128;16;0;;;140
-text.blp;?;1;9;13;;128;16;0;;;141
-text.blp;?;1;9;14;;128;16;0;;;142
-text.blp;?;1;9;15;;128;16;0;;;143
-text.blp;?;1;9;16;;128;16;0;;;144
-text.blp;?;1;10;1;;144;16;16;;;145
-text.blp;?;1;10;2;;144;16;0;;;146
-text.blp;?;1;10;3;;144;16;0;;;147
-text.blp;?;1;10;4;;144;16;0;;;148
-text.blp;?;1;10;5;;144;16;0;;;149
-text.blp;?;1;10;6;;144;16;0;;;150
-text.blp;?;1;10;7;;144;16;0;;;151
-text.blp;?;1;10;8;;144;16;0;;;152
-text.blp;?;1;10;9;;144;16;0;;;153
-text.blp;?;1;10;10;;144;16;0;;;154
-text.blp;?;1;10;11;;144;16;0;;;155
-text.blp;?;1;10;12;;144;16;0;;;156
-text.blp;?;1;10;13;;144;16;0;;;157
-text.blp;?;1;10;14;;144;16;0;;;158
-text.blp;?;1;10;15;;144;16;0;;;159
-text.blp;?;1;10;16;;144;16;0;;;160
-text.blp;?;1;11;1;;160;16;16;;;161
-text.blp;?;1;11;2;;160;16;0;;;162
-text.blp;?;1;11;3;;160;16;0;;;163
-text.blp;?;1;11;4;;160;16;0;;;164
-text.blp;?;1;11;5;;160;16;0;;;165
-text.blp;?;1;11;6;;160;16;0;;;166
-text.blp;?;1;11;7;;160;16;0;;;167
-text.blp;?;1;11;8;;160;16;0;;;168
-text.blp;?;1;11;9;;160;16;0;;;169
-text.blp;?;1;11;10;;160;16;0;;;170
-text.blp;?;1;11;11;;160;16;0;;;171
-text.blp;?;1;11;12;;160;16;0;;;172
-text.blp;?;1;11;13;;160;16;0;;;173
-text.blp;?;1;11;14;;160;16;0;;;174
-text.blp;?;1;11;15;;160;16;0;;;175
-text.blp;?;1;11;16;;160;16;0;;;176
-text.blp;?;1;12;1;;176;16;16;;;177
-text.blp;?;1;12;2;;176;16;0;;;178
-text.blp;?;1;12;3;;176;16;0;;;179
-text.blp;?;1;12;4;;176;16;0;;;180
-text.blp;?;1;12;5;;176;16;0;;;181
-text.blp;?;1;12;6;;176;16;0;;;182
-text.blp;?;1;12;7;;176;16;0;;;183
-text.blp;?;1;12;8;;176;16;0;;;184
-text.blp;?;1;12;9;;176;16;0;;;185
-text.blp;?;1;12;10;;176;16;0;;;186
-text.blp;?;1;12;11;;176;16;0;;;187
-text.blp;?;1;12;12;;176;16;0;;;188
-text.blp;?;1;12;13;;176;16;0;;;189
-text.blp;?;1;12;14;;176;16;0;;;190
-text.blp;?;1;12;15;;176;16;0;;;191
-text.blp;?;1;12;16;;176;16;0;;;192
-text.blp;?;1;13;1;;192;16;16;;;193
-text.blp;?;1;13;2;;192;16;0;;;194
-text.blp;?;1;13;3;;192;16;0;;;195
-text.blp;?;1;13;4;;192;16;0;;;196
-text.blp;?;1;13;5;;192;16;0;;;197
-text.blp;?;1;13;6;;192;16;0;;;198
-text.blp;?;1;13;7;;192;16;0;;;199
-text.blp;?;1;13;8;;192;16;0;;;200
-text.blp;?;1;13;9;;192;16;0;;;201
-text.blp;?;1;13;10;;192;16;0;;;202
-text.blp;?;1;13;11;;192;16;0;;;203
-text.blp;?;1;13;12;;192;16;0;;;204
-text.blp;?;1;13;13;;192;16;0;;;205
-text.blp;?;1;13;14;;192;16;0;;;206
-text.blp;?;1;13;15;;192;16;0;;;207
-text.blp;?;1;13;16;;192;16;0;;;208
-text.blp;?;1;14;1;;208;16;16;;;209
-text.blp;?;1;14;2;;208;16;0;;;210
-text.blp;?;1;14;3;;208;16;0;;;211
-text.blp;?;1;14;4;;208;16;0;;;212
-text.blp;?;1;14;5;;208;16;0;;;213
-text.blp;?;1;14;6;;208;16;0;;;214
-text.blp;?;1;14;7;;208;16;0;;;215
-text.blp;?;1;14;8;;208;16;0;;;216
-text.blp;?;1;14;9;;208;16;0;;;217
-text.blp;?;1;14;10;;208;16;0;;;218
-text.blp;?;1;14;11;;208;16;0;;;219
-text.blp;?;1;14;12;;208;16;0;;;220
-text.blp;?;1;14;13;;208;16;0;;;221
-text.blp;?;1;14;14;;208;16;0;;;222
-text.blp;?;1;14;15;;208;16;0;;;223
-text.blp;?;1;14;16;;208;16;0;;;224
-text.blp;?;1;15;1;;224;16;16;;;225
-text.blp;?;1;15;2;;224;16;0;;;226
-text.blp;?;1;15;3;;224;16;0;;;227
-text.blp;?;1;15;4;;224;16;0;;;228
-text.blp;?;1;15;5;;224;16;0;;;229
-text.blp;?;1;15;6;;224;16;0;;;230
-text.blp;?;1;15;7;;224;16;0;;;231
-text.blp;?;1;15;8;;224;16;0;;;232
-text.blp;?;1;15;9;;224;16;0;;;233
-text.blp;?;1;15;10;;224;16;0;;;234
-text.blp;?;1;15;11;;224;16;0;;;235
-text.blp;?;1;15;12;;224;16;0;;;236
-text.blp;?;1;15;13;;224;16;0;;;237
-text.blp;?;1;15;14;;224;16;0;;;238
-text.blp;?;1;15;15;;224;16;0;;;239
-text.blp;?;1;15;16;;224;16;0;;;240
-text.blp;?;1;16;1;;240;16;16;;;241
-text.blp;?;1;16;2;;240;16;0;;;242
-text.blp;?;1;16;3;;240;16;0;;;243
-text.blp;?;1;16;4;;240;16;0;;;244
-text.blp;?;1;16;5;;240;16;0;;;245
-text.blp;?;1;16;6;;240;16;0;;;246
-text.blp;?;1;16;7;;240;16;0;;;247
-text.blp;?;1;16;8;;240;16;0;;;248
-text.blp;?;1;16;9;;240;16;0;;;249
-text.blp;?;1;16;10;;240;16;0;;;250
-text.blp;?;1;16;11;;240;16;0;;;251
-text.blp;?;1;16;12;;240;16;0;;;252
-text.blp;?;1;16;13;;240;16;0;;;253
-text.blp;?;1;16;14;;240;16;0;;;254
-text.blp;?;1;16;15;;240;16;0;;;255
-text.blp;?;1;16;16;;240;16;0;;;256
+text.blp;char_0;1;1;1;0;0;16;16;font=FONTWHITE | glyph for 'byte_0x00' (byte 0);auto:table_char;1
+text.blp;char_1;1;2;1;16;0;16;16;font=FONTWHITE | glyph for 'byte_0x01' (byte 1) | also the primary glyph for: cr(13), byte_0x0f(15), byte_0x10(16), byte_0x11(17), byte_0x12(18), +119 more;auto:table_char;2
+text.blp;char_2;1;3;1;32;0;16;16;font=FONTWHITE | glyph for 'byte_0x02' (byte 2) | also used as an accent overlay by: byte_0xe1(225), byte_0xed(237), byte_0xf3(243), byte_0xfa(250);auto:table_char;3
+text.blp;char_3;1;4;1;48;0;16;16;font=FONTWHITE | glyph for 'byte_0x03' (byte 3);auto:table_char;4
+text.blp;char_4;1;5;1;64;0;16;16;font=FONTWHITE | glyph for 'byte_0x04' (byte 4) | also the primary glyph for: byte_0xbf(191);auto:table_char;5
+text.blp;char_5;1;6;1;80;0;16;16;font=FONTWHITE | glyph for 'byte_0x05' (byte 5) | also the primary glyph for: byte_0xa1(161);auto:table_char;6
+text.blp;char_6;1;7;1;96;0;16;16;font=FONTWHITE | glyph for 'byte_0x06' (byte 6);auto:table_char;7
+text.blp;char_7;1;8;1;112;0;16;16;font=FONTWHITE | glyph for 'byte_0x07' (byte 7);auto:table_char;8
+text.blp;char_8;1;9;1;128;0;16;16;font=FONTWHITE | glyph for 'byte_0x08' (byte 8);auto:table_char;9
+text.blp;char_9;1;10;1;144;0;16;16;font=FONTWHITE | glyph for 'tab' (byte 9);auto:table_char;10
+text.blp;char_10;1;11;1;160;0;16;16;font=FONTWHITE | glyph for 'newline' (byte 10);auto:table_char;11
+text.blp;char_11;1;12;1;176;0;16;16;font=FONTWHITE | glyph for 'byte_0x0b' (byte 11);auto:table_char;12
+text.blp;char_12;1;13;1;192;0;16;16;font=FONTWHITE | glyph for 'byte_0x0c' (byte 12);auto:table_char;13
+text.blp;?;1;14;1;208;0;16;16;font=FONTWHITE;auto:table_char;14
+text.blp;char_14;1;15;1;224;0;16;16;font=FONTWHITE | glyph for 'byte_0x0e' (byte 14);auto:table_char;15
+text.blp;char_252;1;16;1;240;0;16;16;font=FONTWHITE | glyph for 'byte_0xfc' (byte 252);auto:table_char;16
+text.blp;char_224;1;17;1;0;16;16;16;font=FONTWHITE | glyph for 'byte_0xe0' (byte 224);auto:table_char;17
+text.blp;char_226;1;18;1;16;16;16;16;font=FONTWHITE | glyph for 'byte_0xe2' (byte 226);auto:table_char;18
+text.blp;char_233;1;19;1;32;16;16;16;font=FONTWHITE | glyph for 'byte_0xe9' (byte 233);auto:table_char;19
+text.blp;char_232;1;20;1;48;16;16;16;font=FONTWHITE | glyph for 'byte_0xe8' (byte 232);auto:table_char;20
+text.blp;char_235;1;21;1;64;16;16;16;font=FONTWHITE | glyph for 'byte_0xeb' (byte 235);auto:table_char;21
+text.blp;char_234;1;22;1;80;16;16;16;font=FONTWHITE | glyph for 'byte_0xea' (byte 234);auto:table_char;22
+text.blp;char_239;1;23;1;96;16;16;16;font=FONTWHITE | glyph for 'byte_0xef' (byte 239);auto:table_char;23
+text.blp;char_238;1;24;1;112;16;16;16;font=FONTWHITE | glyph for 'byte_0xee' (byte 238);auto:table_char;24
+text.blp;char_244;1;25;1;128;16;16;16;font=FONTWHITE | glyph for 'byte_0xf4' (byte 244);auto:table_char;25
+text.blp;char_249;1;26;1;144;16;16;16;font=FONTWHITE | glyph for 'byte_0xf9' (byte 249);auto:table_char;26
+text.blp;char_251;1;27;1;160;16;16;16;font=FONTWHITE | glyph for 'byte_0xfb' (byte 251);auto:table_char;27
+text.blp;char_228;1;28;1;176;16;16;16;font=FONTWHITE | glyph for 'byte_0xe4' (byte 228);auto:table_char;28
+text.blp;char_246;1;29;1;192;16;16;16;font=FONTWHITE | glyph for 'byte_0xf6' (byte 246);auto:table_char;29
+text.blp;char_231;1;30;1;208;16;16;16;font=FONTWHITE | glyph for 'byte_0xe7' (byte 231);auto:table_char;30
+text.blp;?;1;31;1;224;16;16;16;font=FONTWHITE;auto:table_char;31
+text.blp;?;1;32;1;240;16;16;16;font=FONTWHITE;auto:table_char;32
+text.blp;char_32;1;33;1;0;32;16;16;font=FONTWHITE | glyph for 'space' (byte 32);auto:table_char;33
+text.blp;char_33;1;34;1;16;32;16;16;font=FONTWHITE | glyph for '!' (byte 33);auto:table_char;34
+text.blp;char_34;1;35;1;32;32;16;16;font=FONTWHITE | glyph for '"' (byte 34);auto:table_char;35
+text.blp;char_35;1;36;1;48;32;16;16;font=FONTWHITE | glyph for '#' (byte 35);auto:table_char;36
+text.blp;char_36;1;37;1;64;32;16;16;font=FONTWHITE | glyph for '$' (byte 36);auto:table_char;37
+text.blp;char_37;1;38;1;80;32;16;16;font=FONTWHITE | glyph for '%' (byte 37);auto:table_char;38
+text.blp;char_38;1;39;1;96;32;16;16;font=FONTWHITE | glyph for '&' (byte 38);auto:table_char;39
+text.blp;char_39;1;40;1;112;32;16;16;font=FONTWHITE | glyph for ''' (byte 39);auto:table_char;40
+text.blp;char_40;1;41;1;128;32;16;16;font=FONTWHITE | glyph for '(' (byte 40);auto:table_char;41
+text.blp;char_41;1;42;1;144;32;16;16;font=FONTWHITE | glyph for ')' (byte 41);auto:table_char;42
+text.blp;char_42;1;43;1;160;32;16;16;font=FONTWHITE | glyph for '*' (byte 42);auto:table_char;43
+text.blp;char_43;1;44;1;176;32;16;16;font=FONTWHITE | glyph for '+' (byte 43);auto:table_char;44
+text.blp;char_44;1;45;1;192;32;16;16;font=FONTWHITE | glyph for ',' (byte 44);auto:table_char;45
+text.blp;char_45;1;46;1;208;32;16;16;font=FONTWHITE | glyph for '-' (byte 45);auto:table_char;46
+text.blp;char_46;1;47;1;224;32;16;16;font=FONTWHITE | glyph for '.' (byte 46);auto:table_char;47
+text.blp;char_47;1;48;1;240;32;16;16;font=FONTWHITE | glyph for '/' (byte 47);auto:table_char;48
+text.blp;char_48;1;49;1;0;48;16;16;font=FONTWHITE | glyph for '0' (byte 48);auto:table_char;49
+text.blp;char_49;1;50;1;16;48;16;16;font=FONTWHITE | glyph for '1' (byte 49);auto:table_char;50
+text.blp;char_50;1;51;1;32;48;16;16;font=FONTWHITE | glyph for '2' (byte 50);auto:table_char;51
+text.blp;char_51;1;52;1;48;48;16;16;font=FONTWHITE | glyph for '3' (byte 51);auto:table_char;52
+text.blp;char_52;1;53;1;64;48;16;16;font=FONTWHITE | glyph for '4' (byte 52);auto:table_char;53
+text.blp;char_53;1;54;1;80;48;16;16;font=FONTWHITE | glyph for '5' (byte 53);auto:table_char;54
+text.blp;char_54;1;55;1;96;48;16;16;font=FONTWHITE | glyph for '6' (byte 54);auto:table_char;55
+text.blp;char_55;1;56;1;112;48;16;16;font=FONTWHITE | glyph for '7' (byte 55);auto:table_char;56
+text.blp;char_56;1;57;1;128;48;16;16;font=FONTWHITE | glyph for '8' (byte 56);auto:table_char;57
+text.blp;char_57;1;58;1;144;48;16;16;font=FONTWHITE | glyph for '9' (byte 57);auto:table_char;58
+text.blp;char_58;1;59;1;160;48;16;16;font=FONTWHITE | glyph for ':' (byte 58);auto:table_char;59
+text.blp;char_59;1;60;1;176;48;16;16;font=FONTWHITE | glyph for ',' (byte 59);auto:table_char;60
+text.blp;char_60;1;61;1;192;48;16;16;font=FONTWHITE | glyph for '<' (byte 60);auto:table_char;61
+text.blp;char_61;1;62;1;208;48;16;16;font=FONTWHITE | glyph for '=' (byte 61);auto:table_char;62
+text.blp;char_62;1;63;1;224;48;16;16;font=FONTWHITE | glyph for '>' (byte 62);auto:table_char;63
+text.blp;char_63;1;64;1;240;48;16;16;font=FONTWHITE | glyph for '?' (byte 63);auto:table_char;64
+text.blp;char_64;1;65;1;0;64;16;16;font=FONTWHITE | glyph for '@' (byte 64);auto:table_char;65
+text.blp;char_65;1;66;1;16;64;16;16;font=FONTWHITE | glyph for 'A' (byte 65);auto:table_char;66
+text.blp;char_66;1;67;1;32;64;16;16;font=FONTWHITE | glyph for 'B' (byte 66);auto:table_char;67
+text.blp;char_67;1;68;1;48;64;16;16;font=FONTWHITE | glyph for 'C' (byte 67);auto:table_char;68
+text.blp;char_68;1;69;1;64;64;16;16;font=FONTWHITE | glyph for 'D' (byte 68);auto:table_char;69
+text.blp;char_69;1;70;1;80;64;16;16;font=FONTWHITE | glyph for 'E' (byte 69);auto:table_char;70
+text.blp;char_70;1;71;1;96;64;16;16;font=FONTWHITE | glyph for 'F' (byte 70);auto:table_char;71
+text.blp;char_71;1;72;1;112;64;16;16;font=FONTWHITE | glyph for 'G' (byte 71);auto:table_char;72
+text.blp;char_72;1;73;1;128;64;16;16;font=FONTWHITE | glyph for 'H' (byte 72);auto:table_char;73
+text.blp;char_73;1;74;1;144;64;16;16;font=FONTWHITE | glyph for 'I' (byte 73);auto:table_char;74
+text.blp;char_74;1;75;1;160;64;16;16;font=FONTWHITE | glyph for 'J' (byte 74);auto:table_char;75
+text.blp;char_75;1;76;1;176;64;16;16;font=FONTWHITE | glyph for 'K' (byte 75);auto:table_char;76
+text.blp;char_76;1;77;1;192;64;16;16;font=FONTWHITE | glyph for 'L' (byte 76);auto:table_char;77
+text.blp;char_77;1;78;1;208;64;16;16;font=FONTWHITE | glyph for 'M' (byte 77);auto:table_char;78
+text.blp;char_78;1;79;1;224;64;16;16;font=FONTWHITE | glyph for 'N' (byte 78);auto:table_char;79
+text.blp;char_79;1;80;1;240;64;16;16;font=FONTWHITE | glyph for 'O' (byte 79);auto:table_char;80
+text.blp;char_80;1;81;1;0;80;16;16;font=FONTWHITE | glyph for 'P' (byte 80);auto:table_char;81
+text.blp;char_81;1;82;1;16;80;16;16;font=FONTWHITE | glyph for 'Q' (byte 81);auto:table_char;82
+text.blp;char_82;1;83;1;32;80;16;16;font=FONTWHITE | glyph for 'R' (byte 82);auto:table_char;83
+text.blp;char_83;1;84;1;48;80;16;16;font=FONTWHITE | glyph for 'S' (byte 83);auto:table_char;84
+text.blp;char_84;1;85;1;64;80;16;16;font=FONTWHITE | glyph for 'T' (byte 84);auto:table_char;85
+text.blp;char_85;1;86;1;80;80;16;16;font=FONTWHITE | glyph for 'U' (byte 85);auto:table_char;86
+text.blp;char_86;1;87;1;96;80;16;16;font=FONTWHITE | glyph for 'V' (byte 86);auto:table_char;87
+text.blp;char_87;1;88;1;112;80;16;16;font=FONTWHITE | glyph for 'W' (byte 87);auto:table_char;88
+text.blp;char_88;1;89;1;128;80;16;16;font=FONTWHITE | glyph for 'X' (byte 88);auto:table_char;89
+text.blp;char_89;1;90;1;144;80;16;16;font=FONTWHITE | glyph for 'Y' (byte 89);auto:table_char;90
+text.blp;char_90;1;91;1;160;80;16;16;font=FONTWHITE | glyph for 'Z' (byte 90);auto:table_char;91
+text.blp;char_91;1;92;1;176;80;16;16;font=FONTWHITE | glyph for '[' (byte 91);auto:table_char;92
+text.blp;char_92;1;93;1;192;80;16;16;font=FONTWHITE | glyph for '\' (byte 92);auto:table_char;93
+text.blp;char_93;1;94;1;208;80;16;16;font=FONTWHITE | glyph for ']' (byte 93);auto:table_char;94
+text.blp;char_94;1;95;1;224;80;16;16;font=FONTWHITE | glyph for '^' (byte 94);auto:table_char;95
+text.blp;char_95;1;96;1;240;80;16;16;font=FONTWHITE | glyph for '_' (byte 95);auto:table_char;96
+text.blp;char_96;1;97;1;0;96;16;16;font=FONTWHITE | glyph for '`' (byte 96);auto:table_char;97
+text.blp;char_97;1;98;1;16;96;16;16;font=FONTWHITE | glyph for 'a' (byte 97) | also the primary glyph for: byte_0xe1(225);auto:table_char;98
+text.blp;char_98;1;99;1;32;96;16;16;font=FONTWHITE | glyph for 'b' (byte 98);auto:table_char;99
+text.blp;char_99;1;100;1;48;96;16;16;font=FONTWHITE | glyph for 'c' (byte 99);auto:table_char;100
+text.blp;char_100;1;101;1;64;96;16;16;font=FONTWHITE | glyph for 'd' (byte 100);auto:table_char;101
+text.blp;char_101;1;102;1;80;96;16;16;font=FONTWHITE | glyph for 'e' (byte 101);auto:table_char;102
+text.blp;char_102;1;103;1;96;96;16;16;font=FONTWHITE | glyph for 'f' (byte 102);auto:table_char;103
+text.blp;char_103;1;104;1;112;96;16;16;font=FONTWHITE | glyph for 'g' (byte 103);auto:table_char;104
+text.blp;char_104;1;105;1;128;96;16;16;font=FONTWHITE | glyph for 'h' (byte 104);auto:table_char;105
+text.blp;char_105;1;106;1;144;96;16;16;font=FONTWHITE | glyph for 'i' (byte 105) | also the primary glyph for: byte_0xed(237);auto:table_char;106
+text.blp;char_106;1;107;1;160;96;16;16;font=FONTWHITE | glyph for 'j' (byte 106);auto:table_char;107
+text.blp;char_107;1;108;1;176;96;16;16;font=FONTWHITE | glyph for 'k' (byte 107);auto:table_char;108
+text.blp;char_108;1;109;1;192;96;16;16;font=FONTWHITE | glyph for 'l' (byte 108);auto:table_char;109
+text.blp;char_109;1;110;1;208;96;16;16;font=FONTWHITE | glyph for 'm' (byte 109);auto:table_char;110
+text.blp;char_110;1;111;1;224;96;16;16;font=FONTWHITE | glyph for 'n' (byte 110) | also the primary glyph for: byte_0xf1(241);auto:table_char;111
+text.blp;char_111;1;112;1;240;96;16;16;font=FONTWHITE | glyph for 'o' (byte 111) | also the primary glyph for: byte_0xf3(243);auto:table_char;112
+text.blp;char_112;1;113;1;0;112;16;16;font=FONTWHITE | glyph for 'p' (byte 112);auto:table_char;113
+text.blp;char_113;1;114;1;16;112;16;16;font=FONTWHITE | glyph for 'q' (byte 113);auto:table_char;114
+text.blp;char_114;1;115;1;32;112;16;16;font=FONTWHITE | glyph for 'r' (byte 114);auto:table_char;115
+text.blp;char_115;1;116;1;48;112;16;16;font=FONTWHITE | glyph for 's' (byte 115);auto:table_char;116
+text.blp;char_116;1;117;1;64;112;16;16;font=FONTWHITE | glyph for 't' (byte 116);auto:table_char;117
+text.blp;char_117;1;118;1;80;112;16;16;font=FONTWHITE | glyph for 'u' (byte 117) | also the primary glyph for: byte_0xfa(250);auto:table_char;118
+text.blp;char_118;1;119;1;96;112;16;16;font=FONTWHITE | glyph for 'v' (byte 118);auto:table_char;119
+text.blp;char_119;1;120;1;112;112;16;16;font=FONTWHITE | glyph for 'w' (byte 119);auto:table_char;120
+text.blp;char_120;1;121;1;128;112;16;16;font=FONTWHITE | glyph for 'x' (byte 120);auto:table_char;121
+text.blp;char_121;1;122;1;144;112;16;16;font=FONTWHITE | glyph for 'y' (byte 121);auto:table_char;122
+text.blp;char_122;1;123;1;160;112;16;16;font=FONTWHITE | glyph for 'z' (byte 122);auto:table_char;123
+text.blp;char_123;1;124;1;176;112;16;16;font=FONTWHITE | glyph for '{' (byte 123);auto:table_char;124
+text.blp;char_124;1;125;1;192;112;16;16;font=FONTWHITE | glyph for '|' (byte 124);auto:table_char;125
+text.blp;char_125;1;126;1;208;112;16;16;font=FONTWHITE | glyph for '}' (byte 125);auto:table_char;126
+text.blp;char_126;1;127;1;224;112;16;16;font=FONTWHITE | glyph for '~' (byte 126) | also used as an accent overlay by: byte_0xf1(241);auto:table_char;127
+text.blp;char_127;1;128;1;240;112;16;16;font=FONTWHITE | glyph for 'del' (byte 127);auto:table_char;128
+text.blp;char_0;2;129;1;0;128;16;16;font=FONTGOLD | glyph for 'byte_0x00' (byte 0);auto:table_char;129
+text.blp;char_1;2;130;1;16;128;16;16;font=FONTGOLD | glyph for 'byte_0x01' (byte 1) | also the primary glyph for: cr(13), byte_0x0f(15), byte_0x10(16), byte_0x11(17), byte_0x12(18), +119 more;auto:table_char;130
+text.blp;char_2;2;131;1;32;128;16;16;font=FONTGOLD | glyph for 'byte_0x02' (byte 2) | also used as an accent overlay by: byte_0xe1(225), byte_0xed(237), byte_0xf3(243), byte_0xfa(250);auto:table_char;131
+text.blp;char_3;2;132;1;48;128;16;16;font=FONTGOLD | glyph for 'byte_0x03' (byte 3);auto:table_char;132
+text.blp;char_4;2;133;1;64;128;16;16;font=FONTGOLD | glyph for 'byte_0x04' (byte 4) | also the primary glyph for: byte_0xbf(191);auto:table_char;133
+text.blp;char_5;2;134;1;80;128;16;16;font=FONTGOLD | glyph for 'byte_0x05' (byte 5) | also the primary glyph for: byte_0xa1(161);auto:table_char;134
+text.blp;char_6;2;135;1;96;128;16;16;font=FONTGOLD | glyph for 'byte_0x06' (byte 6);auto:table_char;135
+text.blp;char_7;2;136;1;112;128;16;16;font=FONTGOLD | glyph for 'byte_0x07' (byte 7);auto:table_char;136
+text.blp;char_8;2;137;1;128;128;16;16;font=FONTGOLD | glyph for 'byte_0x08' (byte 8);auto:table_char;137
+text.blp;char_9;2;138;1;144;128;16;16;font=FONTGOLD | glyph for 'tab' (byte 9);auto:table_char;138
+text.blp;char_10;2;139;1;160;128;16;16;font=FONTGOLD | glyph for 'newline' (byte 10);auto:table_char;139
+text.blp;char_11;2;140;1;176;128;16;16;font=FONTGOLD | glyph for 'byte_0x0b' (byte 11);auto:table_char;140
+text.blp;char_12;2;141;1;192;128;16;16;font=FONTGOLD | glyph for 'byte_0x0c' (byte 12);auto:table_char;141
+text.blp;?;2;142;1;208;128;16;16;font=FONTGOLD;auto:table_char;142
+text.blp;char_14;2;143;1;224;128;16;16;font=FONTGOLD | glyph for 'byte_0x0e' (byte 14);auto:table_char;143
+text.blp;char_252;2;144;1;240;128;16;16;font=FONTGOLD | glyph for 'byte_0xfc' (byte 252);auto:table_char;144
+text.blp;char_224;2;145;1;0;144;16;16;font=FONTGOLD | glyph for 'byte_0xe0' (byte 224);auto:table_char;145
+text.blp;char_226;2;146;1;16;144;16;16;font=FONTGOLD | glyph for 'byte_0xe2' (byte 226);auto:table_char;146
+text.blp;char_233;2;147;1;32;144;16;16;font=FONTGOLD | glyph for 'byte_0xe9' (byte 233);auto:table_char;147
+text.blp;char_232;2;148;1;48;144;16;16;font=FONTGOLD | glyph for 'byte_0xe8' (byte 232);auto:table_char;148
+text.blp;char_235;2;149;1;64;144;16;16;font=FONTGOLD | glyph for 'byte_0xeb' (byte 235);auto:table_char;149
+text.blp;char_234;2;150;1;80;144;16;16;font=FONTGOLD | glyph for 'byte_0xea' (byte 234);auto:table_char;150
+text.blp;char_239;2;151;1;96;144;16;16;font=FONTGOLD | glyph for 'byte_0xef' (byte 239);auto:table_char;151
+text.blp;char_238;2;152;1;112;144;16;16;font=FONTGOLD | glyph for 'byte_0xee' (byte 238);auto:table_char;152
+text.blp;char_244;2;153;1;128;144;16;16;font=FONTGOLD | glyph for 'byte_0xf4' (byte 244);auto:table_char;153
+text.blp;char_249;2;154;1;144;144;16;16;font=FONTGOLD | glyph for 'byte_0xf9' (byte 249);auto:table_char;154
+text.blp;char_251;2;155;1;160;144;16;16;font=FONTGOLD | glyph for 'byte_0xfb' (byte 251);auto:table_char;155
+text.blp;char_228;2;156;1;176;144;16;16;font=FONTGOLD | glyph for 'byte_0xe4' (byte 228);auto:table_char;156
+text.blp;char_246;2;157;1;192;144;16;16;font=FONTGOLD | glyph for 'byte_0xf6' (byte 246);auto:table_char;157
+text.blp;char_231;2;158;1;208;144;16;16;font=FONTGOLD | glyph for 'byte_0xe7' (byte 231);auto:table_char;158
+text.blp;?;2;159;1;224;144;16;16;font=FONTGOLD;auto:table_char;159
+text.blp;?;2;160;1;240;144;16;16;font=FONTGOLD;auto:table_char;160
+text.blp;char_32;2;161;1;0;160;16;16;font=FONTGOLD | glyph for 'space' (byte 32);auto:table_char;161
+text.blp;char_33;2;162;1;16;160;16;16;font=FONTGOLD | glyph for '!' (byte 33);auto:table_char;162
+text.blp;char_34;2;163;1;32;160;16;16;font=FONTGOLD | glyph for '"' (byte 34);auto:table_char;163
+text.blp;char_35;2;164;1;48;160;16;16;font=FONTGOLD | glyph for '#' (byte 35);auto:table_char;164
+text.blp;char_36;2;165;1;64;160;16;16;font=FONTGOLD | glyph for '$' (byte 36);auto:table_char;165
+text.blp;char_37;2;166;1;80;160;16;16;font=FONTGOLD | glyph for '%' (byte 37);auto:table_char;166
+text.blp;char_38;2;167;1;96;160;16;16;font=FONTGOLD | glyph for '&' (byte 38);auto:table_char;167
+text.blp;char_39;2;168;1;112;160;16;16;font=FONTGOLD | glyph for ''' (byte 39);auto:table_char;168
+text.blp;char_40;2;169;1;128;160;16;16;font=FONTGOLD | glyph for '(' (byte 40);auto:table_char;169
+text.blp;char_41;2;170;1;144;160;16;16;font=FONTGOLD | glyph for ')' (byte 41);auto:table_char;170
+text.blp;char_42;2;171;1;160;160;16;16;font=FONTGOLD | glyph for '*' (byte 42);auto:table_char;171
+text.blp;char_43;2;172;1;176;160;16;16;font=FONTGOLD | glyph for '+' (byte 43);auto:table_char;172
+text.blp;char_44;2;173;1;192;160;16;16;font=FONTGOLD | glyph for ',' (byte 44);auto:table_char;173
+text.blp;char_45;2;174;1;208;160;16;16;font=FONTGOLD | glyph for '-' (byte 45);auto:table_char;174
+text.blp;char_46;2;175;1;224;160;16;16;font=FONTGOLD | glyph for '.' (byte 46);auto:table_char;175
+text.blp;char_47;2;176;1;240;160;16;16;font=FONTGOLD | glyph for '/' (byte 47);auto:table_char;176
+text.blp;char_48;2;177;1;0;176;16;16;font=FONTGOLD | glyph for '0' (byte 48);auto:table_char;177
+text.blp;char_49;2;178;1;16;176;16;16;font=FONTGOLD | glyph for '1' (byte 49);auto:table_char;178
+text.blp;char_50;2;179;1;32;176;16;16;font=FONTGOLD | glyph for '2' (byte 50);auto:table_char;179
+text.blp;char_51;2;180;1;48;176;16;16;font=FONTGOLD | glyph for '3' (byte 51);auto:table_char;180
+text.blp;char_52;2;181;1;64;176;16;16;font=FONTGOLD | glyph for '4' (byte 52);auto:table_char;181
+text.blp;char_53;2;182;1;80;176;16;16;font=FONTGOLD | glyph for '5' (byte 53);auto:table_char;182
+text.blp;char_54;2;183;1;96;176;16;16;font=FONTGOLD | glyph for '6' (byte 54);auto:table_char;183
+text.blp;char_55;2;184;1;112;176;16;16;font=FONTGOLD | glyph for '7' (byte 55);auto:table_char;184
+text.blp;char_56;2;185;1;128;176;16;16;font=FONTGOLD | glyph for '8' (byte 56);auto:table_char;185
+text.blp;char_57;2;186;1;144;176;16;16;font=FONTGOLD | glyph for '9' (byte 57);auto:table_char;186
+text.blp;char_58;2;187;1;160;176;16;16;font=FONTGOLD | glyph for ':' (byte 58);auto:table_char;187
+text.blp;char_59;2;188;1;176;176;16;16;font=FONTGOLD | glyph for ',' (byte 59);auto:table_char;188
+text.blp;char_60;2;189;1;192;176;16;16;font=FONTGOLD | glyph for '<' (byte 60);auto:table_char;189
+text.blp;char_61;2;190;1;208;176;16;16;font=FONTGOLD | glyph for '=' (byte 61);auto:table_char;190
+text.blp;char_62;2;191;1;224;176;16;16;font=FONTGOLD | glyph for '>' (byte 62);auto:table_char;191
+text.blp;char_63;2;192;1;240;176;16;16;font=FONTGOLD | glyph for '?' (byte 63);auto:table_char;192
+text.blp;char_64;2;193;1;0;192;16;16;font=FONTGOLD | glyph for '@' (byte 64);auto:table_char;193
+text.blp;char_65;2;194;1;16;192;16;16;font=FONTGOLD | glyph for 'A' (byte 65);auto:table_char;194
+text.blp;char_66;2;195;1;32;192;16;16;font=FONTGOLD | glyph for 'B' (byte 66);auto:table_char;195
+text.blp;char_67;2;196;1;48;192;16;16;font=FONTGOLD | glyph for 'C' (byte 67);auto:table_char;196
+text.blp;char_68;2;197;1;64;192;16;16;font=FONTGOLD | glyph for 'D' (byte 68);auto:table_char;197
+text.blp;char_69;2;198;1;80;192;16;16;font=FONTGOLD | glyph for 'E' (byte 69);auto:table_char;198
+text.blp;char_70;2;199;1;96;192;16;16;font=FONTGOLD | glyph for 'F' (byte 70);auto:table_char;199
+text.blp;char_71;2;200;1;112;192;16;16;font=FONTGOLD | glyph for 'G' (byte 71);auto:table_char;200
+text.blp;char_72;2;201;1;128;192;16;16;font=FONTGOLD | glyph for 'H' (byte 72);auto:table_char;201
+text.blp;char_73;2;202;1;144;192;16;16;font=FONTGOLD | glyph for 'I' (byte 73);auto:table_char;202
+text.blp;char_74;2;203;1;160;192;16;16;font=FONTGOLD | glyph for 'J' (byte 74);auto:table_char;203
+text.blp;char_75;2;204;1;176;192;16;16;font=FONTGOLD | glyph for 'K' (byte 75);auto:table_char;204
+text.blp;char_76;2;205;1;192;192;16;16;font=FONTGOLD | glyph for 'L' (byte 76);auto:table_char;205
+text.blp;char_77;2;206;1;208;192;16;16;font=FONTGOLD | glyph for 'M' (byte 77);auto:table_char;206
+text.blp;char_78;2;207;1;224;192;16;16;font=FONTGOLD | glyph for 'N' (byte 78);auto:table_char;207
+text.blp;char_79;2;208;1;240;192;16;16;font=FONTGOLD | glyph for 'O' (byte 79);auto:table_char;208
+text.blp;char_80;2;209;1;0;208;16;16;font=FONTGOLD | glyph for 'P' (byte 80);auto:table_char;209
+text.blp;char_81;2;210;1;16;208;16;16;font=FONTGOLD | glyph for 'Q' (byte 81);auto:table_char;210
+text.blp;char_82;2;211;1;32;208;16;16;font=FONTGOLD | glyph for 'R' (byte 82);auto:table_char;211
+text.blp;char_83;2;212;1;48;208;16;16;font=FONTGOLD | glyph for 'S' (byte 83);auto:table_char;212
+text.blp;char_84;2;213;1;64;208;16;16;font=FONTGOLD | glyph for 'T' (byte 84);auto:table_char;213
+text.blp;char_85;2;214;1;80;208;16;16;font=FONTGOLD | glyph for 'U' (byte 85);auto:table_char;214
+text.blp;char_86;2;215;1;96;208;16;16;font=FONTGOLD | glyph for 'V' (byte 86);auto:table_char;215
+text.blp;char_87;2;216;1;112;208;16;16;font=FONTGOLD | glyph for 'W' (byte 87);auto:table_char;216
+text.blp;char_88;2;217;1;128;208;16;16;font=FONTGOLD | glyph for 'X' (byte 88);auto:table_char;217
+text.blp;char_89;2;218;1;144;208;16;16;font=FONTGOLD | glyph for 'Y' (byte 89);auto:table_char;218
+text.blp;char_90;2;219;1;160;208;16;16;font=FONTGOLD | glyph for 'Z' (byte 90);auto:table_char;219
+text.blp;char_91;2;220;1;176;208;16;16;font=FONTGOLD | glyph for '[' (byte 91);auto:table_char;220
+text.blp;char_92;2;221;1;192;208;16;16;font=FONTGOLD | glyph for '\' (byte 92);auto:table_char;221
+text.blp;char_93;2;222;1;208;208;16;16;font=FONTGOLD | glyph for ']' (byte 93);auto:table_char;222
+text.blp;char_94;2;223;1;224;208;16;16;font=FONTGOLD | glyph for '^' (byte 94);auto:table_char;223
+text.blp;char_95;2;224;1;240;208;16;16;font=FONTGOLD | glyph for '_' (byte 95);auto:table_char;224
+text.blp;char_96;2;225;1;0;224;16;16;font=FONTGOLD | glyph for '`' (byte 96);auto:table_char;225
+text.blp;char_97;2;226;1;16;224;16;16;font=FONTGOLD | glyph for 'a' (byte 97) | also the primary glyph for: byte_0xe1(225);auto:table_char;226
+text.blp;char_98;2;227;1;32;224;16;16;font=FONTGOLD | glyph for 'b' (byte 98);auto:table_char;227
+text.blp;char_99;2;228;1;48;224;16;16;font=FONTGOLD | glyph for 'c' (byte 99);auto:table_char;228
+text.blp;char_100;2;229;1;64;224;16;16;font=FONTGOLD | glyph for 'd' (byte 100);auto:table_char;229
+text.blp;char_101;2;230;1;80;224;16;16;font=FONTGOLD | glyph for 'e' (byte 101);auto:table_char;230
+text.blp;char_102;2;231;1;96;224;16;16;font=FONTGOLD | glyph for 'f' (byte 102);auto:table_char;231
+text.blp;char_103;2;232;1;112;224;16;16;font=FONTGOLD | glyph for 'g' (byte 103);auto:table_char;232
+text.blp;char_104;2;233;1;128;224;16;16;font=FONTGOLD | glyph for 'h' (byte 104);auto:table_char;233
+text.blp;char_105;2;234;1;144;224;16;16;font=FONTGOLD | glyph for 'i' (byte 105) | also the primary glyph for: byte_0xed(237);auto:table_char;234
+text.blp;char_106;2;235;1;160;224;16;16;font=FONTGOLD | glyph for 'j' (byte 106);auto:table_char;235
+text.blp;char_107;2;236;1;176;224;16;16;font=FONTGOLD | glyph for 'k' (byte 107);auto:table_char;236
+text.blp;char_108;2;237;1;192;224;16;16;font=FONTGOLD | glyph for 'l' (byte 108);auto:table_char;237
+text.blp;char_109;2;238;1;208;224;16;16;font=FONTGOLD | glyph for 'm' (byte 109);auto:table_char;238
+text.blp;char_110;2;239;1;224;224;16;16;font=FONTGOLD | glyph for 'n' (byte 110) | also the primary glyph for: byte_0xf1(241);auto:table_char;239
+text.blp;char_111;2;240;1;240;224;16;16;font=FONTGOLD | glyph for 'o' (byte 111) | also the primary glyph for: byte_0xf3(243);auto:table_char;240
+text.blp;char_112;2;241;1;0;240;16;16;font=FONTGOLD | glyph for 'p' (byte 112);auto:table_char;241
+text.blp;char_113;2;242;1;16;240;16;16;font=FONTGOLD | glyph for 'q' (byte 113);auto:table_char;242
+text.blp;char_114;2;243;1;32;240;16;16;font=FONTGOLD | glyph for 'r' (byte 114);auto:table_char;243
+text.blp;char_115;2;244;1;48;240;16;16;font=FONTGOLD | glyph for 's' (byte 115);auto:table_char;244
+text.blp;char_116;2;245;1;64;240;16;16;font=FONTGOLD | glyph for 't' (byte 116);auto:table_char;245
+text.blp;char_117;2;246;1;80;240;16;16;font=FONTGOLD | glyph for 'u' (byte 117) | also the primary glyph for: byte_0xfa(250);auto:table_char;246
+text.blp;char_118;2;247;1;96;240;16;16;font=FONTGOLD | glyph for 'v' (byte 118);auto:table_char;247
+text.blp;char_119;2;248;1;112;240;16;16;font=FONTGOLD | glyph for 'w' (byte 119);auto:table_char;248
+text.blp;char_120;2;249;1;128;240;16;16;font=FONTGOLD | glyph for 'x' (byte 120);auto:table_char;249
+text.blp;char_121;2;250;1;144;240;16;16;font=FONTGOLD | glyph for 'y' (byte 121);auto:table_char;250
+text.blp;char_122;2;251;1;160;240;16;16;font=FONTGOLD | glyph for 'z' (byte 122);auto:table_char;251
+text.blp;char_123;2;252;1;176;240;16;16;font=FONTGOLD | glyph for '{' (byte 123);auto:table_char;252
+text.blp;char_124;2;253;1;192;240;16;16;font=FONTGOLD | glyph for '|' (byte 124);auto:table_char;253
+text.blp;char_125;2;254;1;208;240;16;16;font=FONTGOLD | glyph for '}' (byte 125);auto:table_char;254
+text.blp;char_126;2;255;1;224;240;16;16;font=FONTGOLD | glyph for '~' (byte 126) | also used as an accent overlay by: byte_0xf1(241);auto:table_char;255
+text.blp;char_127;2;256;1;240;240;16;16;font=FONTGOLD | glyph for 'del' (byte 127);auto:table_char;256
+text.blp;char_0;3;257;1;0;256;16;16;font=FONTSELECTED | glyph for 'byte_0x00' (byte 0);auto:table_char;257
+text.blp;char_1;3;258;1;16;256;16;16;font=FONTSELECTED | glyph for 'byte_0x01' (byte 1) | also the primary glyph for: cr(13), byte_0x0f(15), byte_0x10(16), byte_0x11(17), byte_0x12(18), +119 more;auto:table_char;258
+text.blp;char_2;3;259;1;32;256;16;16;font=FONTSELECTED | glyph for 'byte_0x02' (byte 2) | also used as an accent overlay by: byte_0xe1(225), byte_0xed(237), byte_0xf3(243), byte_0xfa(250);auto:table_char;259
+text.blp;char_3;3;260;1;48;256;16;16;font=FONTSELECTED | glyph for 'byte_0x03' (byte 3);auto:table_char;260
+text.blp;char_4;3;261;1;64;256;16;16;font=FONTSELECTED | glyph for 'byte_0x04' (byte 4) | also the primary glyph for: byte_0xbf(191);auto:table_char;261
+text.blp;char_5;3;262;1;80;256;16;16;font=FONTSELECTED | glyph for 'byte_0x05' (byte 5) | also the primary glyph for: byte_0xa1(161);auto:table_char;262
+text.blp;char_6;3;263;1;96;256;16;16;font=FONTSELECTED | glyph for 'byte_0x06' (byte 6);auto:table_char;263
+text.blp;char_7;3;264;1;112;256;16;16;font=FONTSELECTED | glyph for 'byte_0x07' (byte 7);auto:table_char;264
+text.blp;char_8;3;265;1;128;256;16;16;font=FONTSELECTED | glyph for 'byte_0x08' (byte 8);auto:table_char;265
+text.blp;char_9;3;266;1;144;256;16;16;font=FONTSELECTED | glyph for 'tab' (byte 9);auto:table_char;266
+text.blp;char_10;3;267;1;160;256;16;16;font=FONTSELECTED | glyph for 'newline' (byte 10);auto:table_char;267
+text.blp;char_11;3;268;1;176;256;16;16;font=FONTSELECTED | glyph for 'byte_0x0b' (byte 11);auto:table_char;268
+text.blp;char_12;3;269;1;192;256;16;16;font=FONTSELECTED | glyph for 'byte_0x0c' (byte 12);auto:table_char;269
+text.blp;?;3;270;1;208;256;16;16;font=FONTSELECTED;auto:table_char;270
+text.blp;char_14;3;271;1;224;256;16;16;font=FONTSELECTED | glyph for 'byte_0x0e' (byte 14);auto:table_char;271
+text.blp;char_252;3;272;1;240;256;16;16;font=FONTSELECTED | glyph for 'byte_0xfc' (byte 252);auto:table_char;272
+text.blp;char_224;3;273;1;0;272;16;16;font=FONTSELECTED | glyph for 'byte_0xe0' (byte 224);auto:table_char;273
+text.blp;char_226;3;274;1;16;272;16;16;font=FONTSELECTED | glyph for 'byte_0xe2' (byte 226);auto:table_char;274
+text.blp;char_233;3;275;1;32;272;16;16;font=FONTSELECTED | glyph for 'byte_0xe9' (byte 233);auto:table_char;275
+text.blp;char_232;3;276;1;48;272;16;16;font=FONTSELECTED | glyph for 'byte_0xe8' (byte 232);auto:table_char;276
+text.blp;char_235;3;277;1;64;272;16;16;font=FONTSELECTED | glyph for 'byte_0xeb' (byte 235);auto:table_char;277
+text.blp;char_234;3;278;1;80;272;16;16;font=FONTSELECTED | glyph for 'byte_0xea' (byte 234);auto:table_char;278
+text.blp;char_239;3;279;1;96;272;16;16;font=FONTSELECTED | glyph for 'byte_0xef' (byte 239);auto:table_char;279
+text.blp;char_238;3;280;1;112;272;16;16;font=FONTSELECTED | glyph for 'byte_0xee' (byte 238);auto:table_char;280
+text.blp;char_244;3;281;1;128;272;16;16;font=FONTSELECTED | glyph for 'byte_0xf4' (byte 244);auto:table_char;281
+text.blp;char_249;3;282;1;144;272;16;16;font=FONTSELECTED | glyph for 'byte_0xf9' (byte 249);auto:table_char;282
+text.blp;char_251;3;283;1;160;272;16;16;font=FONTSELECTED | glyph for 'byte_0xfb' (byte 251);auto:table_char;283
+text.blp;char_228;3;284;1;176;272;16;16;font=FONTSELECTED | glyph for 'byte_0xe4' (byte 228);auto:table_char;284
+text.blp;char_246;3;285;1;192;272;16;16;font=FONTSELECTED | glyph for 'byte_0xf6' (byte 246);auto:table_char;285
+text.blp;char_231;3;286;1;208;272;16;16;font=FONTSELECTED | glyph for 'byte_0xe7' (byte 231);auto:table_char;286
+text.blp;?;3;287;1;224;272;16;16;font=FONTSELECTED;auto:table_char;287
+text.blp;?;3;288;1;240;272;16;16;font=FONTSELECTED;auto:table_char;288
+text.blp;char_32;3;289;1;0;288;16;16;font=FONTSELECTED | glyph for 'space' (byte 32);auto:table_char;289
+text.blp;char_33;3;290;1;16;288;16;16;font=FONTSELECTED | glyph for '!' (byte 33);auto:table_char;290
+text.blp;char_34;3;291;1;32;288;16;16;font=FONTSELECTED | glyph for '"' (byte 34);auto:table_char;291
+text.blp;char_35;3;292;1;48;288;16;16;font=FONTSELECTED | glyph for '#' (byte 35);auto:table_char;292
+text.blp;char_36;3;293;1;64;288;16;16;font=FONTSELECTED | glyph for '$' (byte 36);auto:table_char;293
+text.blp;char_37;3;294;1;80;288;16;16;font=FONTSELECTED | glyph for '%' (byte 37);auto:table_char;294
+text.blp;char_38;3;295;1;96;288;16;16;font=FONTSELECTED | glyph for '&' (byte 38);auto:table_char;295
+text.blp;char_39;3;296;1;112;288;16;16;font=FONTSELECTED | glyph for ''' (byte 39);auto:table_char;296
+text.blp;char_40;3;297;1;128;288;16;16;font=FONTSELECTED | glyph for '(' (byte 40);auto:table_char;297
+text.blp;char_41;3;298;1;144;288;16;16;font=FONTSELECTED | glyph for ')' (byte 41);auto:table_char;298
+text.blp;char_42;3;299;1;160;288;16;16;font=FONTSELECTED | glyph for '*' (byte 42);auto:table_char;299
+text.blp;char_43;3;300;1;176;288;16;16;font=FONTSELECTED | glyph for '+' (byte 43);auto:table_char;300
+text.blp;char_44;3;301;1;192;288;16;16;font=FONTSELECTED | glyph for ',' (byte 44);auto:table_char;301
+text.blp;char_45;3;302;1;208;288;16;16;font=FONTSELECTED | glyph for '-' (byte 45);auto:table_char;302
+text.blp;char_46;3;303;1;224;288;16;16;font=FONTSELECTED | glyph for '.' (byte 46);auto:table_char;303
+text.blp;char_47;3;304;1;240;288;16;16;font=FONTSELECTED | glyph for '/' (byte 47);auto:table_char;304
+text.blp;char_48;3;305;1;0;304;16;16;font=FONTSELECTED | glyph for '0' (byte 48);auto:table_char;305
+text.blp;char_49;3;306;1;16;304;16;16;font=FONTSELECTED | glyph for '1' (byte 49);auto:table_char;306
+text.blp;char_50;3;307;1;32;304;16;16;font=FONTSELECTED | glyph for '2' (byte 50);auto:table_char;307
+text.blp;char_51;3;308;1;48;304;16;16;font=FONTSELECTED | glyph for '3' (byte 51);auto:table_char;308
+text.blp;char_52;3;309;1;64;304;16;16;font=FONTSELECTED | glyph for '4' (byte 52);auto:table_char;309
+text.blp;char_53;3;310;1;80;304;16;16;font=FONTSELECTED | glyph for '5' (byte 53);auto:table_char;310
+text.blp;char_54;3;311;1;96;304;16;16;font=FONTSELECTED | glyph for '6' (byte 54);auto:table_char;311
+text.blp;char_55;3;312;1;112;304;16;16;font=FONTSELECTED | glyph for '7' (byte 55);auto:table_char;312
+text.blp;char_56;3;313;1;128;304;16;16;font=FONTSELECTED | glyph for '8' (byte 56);auto:table_char;313
+text.blp;char_57;3;314;1;144;304;16;16;font=FONTSELECTED | glyph for '9' (byte 57);auto:table_char;314
+text.blp;char_58;3;315;1;160;304;16;16;font=FONTSELECTED | glyph for ':' (byte 58);auto:table_char;315
+text.blp;char_59;3;316;1;176;304;16;16;font=FONTSELECTED | glyph for ',' (byte 59);auto:table_char;316
+text.blp;char_60;3;317;1;192;304;16;16;font=FONTSELECTED | glyph for '<' (byte 60);auto:table_char;317
+text.blp;char_61;3;318;1;208;304;16;16;font=FONTSELECTED | glyph for '=' (byte 61);auto:table_char;318
+text.blp;char_62;3;319;1;224;304;16;16;font=FONTSELECTED | glyph for '>' (byte 62);auto:table_char;319
+text.blp;char_63;3;320;1;240;304;16;16;font=FONTSELECTED | glyph for '?' (byte 63);auto:table_char;320
+text.blp;char_64;3;321;1;0;320;16;16;font=FONTSELECTED | glyph for '@' (byte 64);auto:table_char;321
+text.blp;char_65;3;322;1;16;320;16;16;font=FONTSELECTED | glyph for 'A' (byte 65);auto:table_char;322
+text.blp;char_66;3;323;1;32;320;16;16;font=FONTSELECTED | glyph for 'B' (byte 66);auto:table_char;323
+text.blp;char_67;3;324;1;48;320;16;16;font=FONTSELECTED | glyph for 'C' (byte 67);auto:table_char;324
+text.blp;char_68;3;325;1;64;320;16;16;font=FONTSELECTED | glyph for 'D' (byte 68);auto:table_char;325
+text.blp;char_69;3;326;1;80;320;16;16;font=FONTSELECTED | glyph for 'E' (byte 69);auto:table_char;326
+text.blp;char_70;3;327;1;96;320;16;16;font=FONTSELECTED | glyph for 'F' (byte 70);auto:table_char;327
+text.blp;char_71;3;328;1;112;320;16;16;font=FONTSELECTED | glyph for 'G' (byte 71);auto:table_char;328
+text.blp;char_72;3;329;1;128;320;16;16;font=FONTSELECTED | glyph for 'H' (byte 72);auto:table_char;329
+text.blp;char_73;3;330;1;144;320;16;16;font=FONTSELECTED | glyph for 'I' (byte 73);auto:table_char;330
+text.blp;char_74;3;331;1;160;320;16;16;font=FONTSELECTED | glyph for 'J' (byte 74);auto:table_char;331
+text.blp;char_75;3;332;1;176;320;16;16;font=FONTSELECTED | glyph for 'K' (byte 75);auto:table_char;332
+text.blp;char_76;3;333;1;192;320;16;16;font=FONTSELECTED | glyph for 'L' (byte 76);auto:table_char;333
+text.blp;char_77;3;334;1;208;320;16;16;font=FONTSELECTED | glyph for 'M' (byte 77);auto:table_char;334
+text.blp;char_78;3;335;1;224;320;16;16;font=FONTSELECTED | glyph for 'N' (byte 78);auto:table_char;335
+text.blp;char_79;3;336;1;240;320;16;16;font=FONTSELECTED | glyph for 'O' (byte 79);auto:table_char;336
+text.blp;char_80;3;337;1;0;336;16;16;font=FONTSELECTED | glyph for 'P' (byte 80);auto:table_char;337
+text.blp;char_81;3;338;1;16;336;16;16;font=FONTSELECTED | glyph for 'Q' (byte 81);auto:table_char;338
+text.blp;char_82;3;339;1;32;336;16;16;font=FONTSELECTED | glyph for 'R' (byte 82);auto:table_char;339
+text.blp;char_83;3;340;1;48;336;16;16;font=FONTSELECTED | glyph for 'S' (byte 83);auto:table_char;340
+text.blp;char_84;3;341;1;64;336;16;16;font=FONTSELECTED | glyph for 'T' (byte 84);auto:table_char;341
+text.blp;char_85;3;342;1;80;336;16;16;font=FONTSELECTED | glyph for 'U' (byte 85);auto:table_char;342
+text.blp;char_86;3;343;1;96;336;16;16;font=FONTSELECTED | glyph for 'V' (byte 86);auto:table_char;343
+text.blp;char_87;3;344;1;112;336;16;16;font=FONTSELECTED | glyph for 'W' (byte 87);auto:table_char;344
+text.blp;char_88;3;345;1;128;336;16;16;font=FONTSELECTED | glyph for 'X' (byte 88);auto:table_char;345
+text.blp;char_89;3;346;1;144;336;16;16;font=FONTSELECTED | glyph for 'Y' (byte 89);auto:table_char;346
+text.blp;char_90;3;347;1;160;336;16;16;font=FONTSELECTED | glyph for 'Z' (byte 90);auto:table_char;347
+text.blp;char_91;3;348;1;176;336;16;16;font=FONTSELECTED | glyph for '[' (byte 91);auto:table_char;348
+text.blp;char_92;3;349;1;192;336;16;16;font=FONTSELECTED | glyph for '\' (byte 92);auto:table_char;349
+text.blp;char_93;3;350;1;208;336;16;16;font=FONTSELECTED | glyph for ']' (byte 93);auto:table_char;350
+text.blp;char_94;3;351;1;224;336;16;16;font=FONTSELECTED | glyph for '^' (byte 94);auto:table_char;351
+text.blp;char_95;3;352;1;240;336;16;16;font=FONTSELECTED | glyph for '_' (byte 95);auto:table_char;352
+text.blp;char_96;3;353;1;0;352;16;16;font=FONTSELECTED | glyph for '`' (byte 96);auto:table_char;353
+text.blp;char_97;3;354;1;16;352;16;16;font=FONTSELECTED | glyph for 'a' (byte 97) | also the primary glyph for: byte_0xe1(225);auto:table_char;354
+text.blp;char_98;3;355;1;32;352;16;16;font=FONTSELECTED | glyph for 'b' (byte 98);auto:table_char;355
+text.blp;char_99;3;356;1;48;352;16;16;font=FONTSELECTED | glyph for 'c' (byte 99);auto:table_char;356
+text.blp;char_100;3;357;1;64;352;16;16;font=FONTSELECTED | glyph for 'd' (byte 100);auto:table_char;357
+text.blp;char_101;3;358;1;80;352;16;16;font=FONTSELECTED | glyph for 'e' (byte 101);auto:table_char;358
+text.blp;char_102;3;359;1;96;352;16;16;font=FONTSELECTED | glyph for 'f' (byte 102);auto:table_char;359
+text.blp;char_103;3;360;1;112;352;16;16;font=FONTSELECTED | glyph for 'g' (byte 103);auto:table_char;360
+text.blp;char_104;3;361;1;128;352;16;16;font=FONTSELECTED | glyph for 'h' (byte 104);auto:table_char;361
+text.blp;char_105;3;362;1;144;352;16;16;font=FONTSELECTED | glyph for 'i' (byte 105) | also the primary glyph for: byte_0xed(237);auto:table_char;362
+text.blp;char_106;3;363;1;160;352;16;16;font=FONTSELECTED | glyph for 'j' (byte 106);auto:table_char;363
+text.blp;char_107;3;364;1;176;352;16;16;font=FONTSELECTED | glyph for 'k' (byte 107);auto:table_char;364
+text.blp;char_108;3;365;1;192;352;16;16;font=FONTSELECTED | glyph for 'l' (byte 108);auto:table_char;365
+text.blp;char_109;3;366;1;208;352;16;16;font=FONTSELECTED | glyph for 'm' (byte 109);auto:table_char;366
+text.blp;char_110;3;367;1;224;352;16;16;font=FONTSELECTED | glyph for 'n' (byte 110) | also the primary glyph for: byte_0xf1(241);auto:table_char;367
+text.blp;char_111;3;368;1;240;352;16;16;font=FONTSELECTED | glyph for 'o' (byte 111) | also the primary glyph for: byte_0xf3(243);auto:table_char;368
+text.blp;char_112;3;369;1;0;368;16;16;font=FONTSELECTED | glyph for 'p' (byte 112);auto:table_char;369
+text.blp;char_113;3;370;1;16;368;16;16;font=FONTSELECTED | glyph for 'q' (byte 113);auto:table_char;370
+text.blp;char_114;3;371;1;32;368;16;16;font=FONTSELECTED | glyph for 'r' (byte 114);auto:table_char;371
+text.blp;char_115;3;372;1;48;368;16;16;font=FONTSELECTED | glyph for 's' (byte 115);auto:table_char;372
+text.blp;char_116;3;373;1;64;368;16;16;font=FONTSELECTED | glyph for 't' (byte 116);auto:table_char;373
+text.blp;char_117;3;374;1;80;368;16;16;font=FONTSELECTED | glyph for 'u' (byte 117) | also the primary glyph for: byte_0xfa(250);auto:table_char;374
+text.blp;char_118;3;375;1;96;368;16;16;font=FONTSELECTED | glyph for 'v' (byte 118);auto:table_char;375
+text.blp;char_119;3;376;1;112;368;16;16;font=FONTSELECTED | glyph for 'w' (byte 119);auto:table_char;376
+text.blp;char_120;3;377;1;128;368;16;16;font=FONTSELECTED | glyph for 'x' (byte 120);auto:table_char;377
+text.blp;char_121;3;378;1;144;368;16;16;font=FONTSELECTED | glyph for 'y' (byte 121);auto:table_char;378
+text.blp;char_122;3;379;1;160;368;16;16;font=FONTSELECTED | glyph for 'z' (byte 122);auto:table_char;379
+text.blp;char_123;3;380;1;176;368;16;16;font=FONTSELECTED | glyph for '{' (byte 123);auto:table_char;380
+text.blp;char_124;3;381;1;192;368;16;16;font=FONTSELECTED | glyph for '|' (byte 124);auto:table_char;381
+text.blp;char_125;3;382;1;208;368;16;16;font=FONTSELECTED | glyph for '}' (byte 125);auto:table_char;382
+text.blp;char_126;3;383;1;224;368;16;16;font=FONTSELECTED | glyph for '~' (byte 126) | also used as an accent overlay by: byte_0xf1(241);auto:table_char;383
+text.blp;char_127;3;384;1;240;368;16;16;font=FONTSELECTED | glyph for 'del' (byte 127);auto:table_char;384
 jauge.blp;?;1;1;1;;0;124;22;;;1
 jauge.blp;?;1;2;1;;0;124;44;;;2
 jauge.blp;?;1;3;1;;0;124;66;;;3

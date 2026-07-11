@@ -6,25 +6,29 @@ verified (build + unit test suite + a real-data smoke test all pass).
 request, to have a visible/fun result before Phase 2's data work — see the
 "gifs, pulled forward" note under Phase 1 below. **Phase 2 well underway for
 both games:**
-- Speedy Blupi II (v2.2): all of `blupi000.blp`, `object.blp`,
-  `element.blp` and `explo.blp` now have `Group`s auto-generated from
-  `free-eggbert`'s own tables — **711/1321 rows (54%)** labeled, up from
-  ~22%.
+- Speedy Blupi II (v2.2): `blupi000.blp`, `object.blp`, `element.blp`,
+  `explo.blp` and `text.blp` now have `Group`s auto-generated from
+  `free-eggbert`'s own tables; `button00.blp` geometry done (`Group="?"`,
+  no source table) — **1086/1710 rows (64%)** labeled, up from ~22%.
 - Speedy Blupi I (v1.0, no decompiled source to read - extracted directly
-  from `BLUPI.EXE`): `blupi000.blp` done the same way, **237/291 icons
-  (81%)** labeled, all 37 pre-existing hand-verified labels preserved
-  exactly. `object.blp`/`element.blp`/`explo.blp` checked and found
-  already well-measured (85-99% match the authoritative geometry) — left
-  alone rather than reordered for no gain; they're just missing `Group`s,
-  which needs the (not yet found, likely hard) v1.0 equivalent of the ~150
-  named tables.
-- **952/2478 rows (38%) across both CSVs combined are now labeled**, up
+  from `BLUPI.EXE`): `blupi000.blp` and `text.blp` done the same way, all
+  37 pre-existing hand-verified `blupi000.blp` labels preserved exactly;
+  `button00.blp` geometry done (`Group="?"`). `object.blp`/`element.blp`/
+  `explo.blp` checked and found already well-measured (85-99% match the
+  authoritative geometry) — left alone rather than reordered for no gain;
+  they're just missing `Group`s, which needs the (not yet found, likely
+  hard) v1.0 equivalent of the ~150 named tables — **616/1293 rows (48%)**
+  labeled.
+- **1702/3003 rows (57%) across both CSVs combined are now labeled**, up
   from 330/2478 (13%) at the start of this session.
+- Decor tiles (`decor0NN.blp`, both games) investigated and closed as
+  **not applicable** — confirmed to be full-screen scrolling background
+  images with no per-tile rectangle structure, not a sprite grid at all;
+  see the finding under Phase 2 below.
 
 See the "Milestone" writeups under Phase 2 for both games. Still open:
-`object`/`element`/`explo.blp` group names for Speedy Blupi I, decor tiles
-(both games), and `button00.blp`/`jauge.blp`/`text.blp` (small UI sheets,
-no known source table for either game).
+`object`/`element`/`explo.blp` group names for Speedy Blupi I, and
+`jauge.blp` (both games, small — 4 rows).
 
 This is the living execution plan for finishing `sprite-utils` and using it to
 produce complete, correctly-annotated sprite-sheet data for both **Speedy
@@ -501,14 +505,79 @@ added yet anyway (see above). Left untouched. Worth re-checking once the
 named-table equivalents are found, in case the small remainder (2-8 rows
 per file) turns out to matter.
 
-**Decor tiles (both games, `decor0NN.blp` — currently 0% covered):**
-- [ ] Locate the grid constants `CPixmap`/`CHDECOR` uses
-      (`free-eggbert/src/pixmap.cpp:1068-1076` and `include/decor.hpp`) —
-      tile width/height, tiles-per-row/region layout.
-- [ ] Generate uniform-grid CSV rows per `decor0NN.blp` file from those
-      constants (no per-tile lookup table needed, unlike the icon sheets).
-- [ ] Confirm whether Speedy Blupi I has an equivalent decor tile set and
-      grid, or whether its world-tile format differs (not yet checked).
+#### Milestone: `text.blp` (both games) done
+
+`text.blp` is **not** addressed through a `pixtables.hpp`-style rectangle
+table at all, unlike every sheet handled so far — it's a plain uniform
+grid. Confirmed directly from `CPixmap::CacheAll`'s `totalDim`/`iconDim`
+for channel `CHTEXT` (`totalDim.x=256, totalDim.y=384, iconDim.x=16,
+iconDim.y=16` — `free-eggbert/src/pixmap.cpp:1093-1096`) and `DrawIcon`'s
+generic grid-fallback formula (`rect.left=(rank%nbx)*iconDim.x,
+rect.top=(rank/nbx)*iconDim.y`) — 16 columns × 24 rows = 384 cells,
+identical for both games (same canvas size, same font table).
+
+The grid-cell → character mapping comes from `table_char[]` in
+`include/texttables.hpp` (256 entries × 6 shorts: `charIcon, offX, offY,
+accentIcon, accentOffX, accentOffY` — see `CDecor::DrawChar` in
+`src/text.cpp`). `rank = charIcon + font*128`, for `font` in
+`{FONTWHITE=0, FONTGOLD=1, FONTSELECTED=2}` — `3*128=384`, exactly the
+grid size. Cross-checked against the printable ASCII range (32-126):
+`charIcon == byte value` exactly for every one of those 95 bytes, a 1:1
+identity mapping that gives high confidence in the formula overall.
+`Group` is `char_<byte>` (or `accent_<charIcon>` for cells only used as
+an accent overlay); `Number in Group` is the font index (1/2/3) — reusing
+the group/animation-frame mechanism to encode "the same character in its
+3 font styles" as a harmless side effect (`tools/generate_text_rows.py`).
+
+Verified with `sprite_utils draw` on both games' `text.blp` before
+replacing — every one of the 384 cells lands on its glyph.
+
+Result: **375/384 cells (98%) now have a real `Group`**, up from 0. The 9
+unlabeled cells are grid positions no character in `table_char` maps to
+(charIcon values with a gap).
+
+#### Milestone: `button00.blp` (both games) done — geometry only
+
+Same grid mechanism as `text.blp`, confirmed the same way: `CHBUTTON`'s
+`totalDim`/`iconDim` in `CPixmap::CacheAll`
+(`free-eggbert/src/pixmap.cpp:1078-1081`) gives `iconDim.x=40,
+iconDim.y=40`, canvas width 240 (6 columns). Canvas *height* differs by
+game — 840 (21 rows) for Speedy Blupi I, 1040 (26 rows) for Speedy Blupi
+II (fewer menu icons in the earlier game) — confirmed both from
+`pixmap.cpp`'s literal `totalDim.y=1040` for the v2.2 build and directly
+measuring each game's actual `button00.blp` file (840 vs 1040), so the
+generator takes canvas height as an argument rather than assuming one
+constant (`tools/generate_button00_rows.py`).
+
+Unlike `text.blp`, there is **no lookup table giving each grid cell a
+confirmed meaning** — `src/button.cpp` shows ranks 0-5 are generic button
+*states* (normal/hover/pressed/.../locked, reused by every button) and
+rank 6+ is `m_iconMenu[i] + 6`, an arbitrary per-caller menu-icon index,
+not a fixed named set. So — deliberately, unlike every other sheet done
+this session — `Group="?"` for every cell here; the geometry is solid
+(same grid mechanism already visually verified for `text.blp`) but a
+per-cell semantic name would be a guess, not a finding. `Notes` records
+which cells are "state 0-5" vs. "menu-icon rank N" so the geometry is at
+least self-documenting.
+
+Verified with `sprite_utils draw` on both games (126 cells for v1.0, 156
+for v2.2) — every rectangle lands on its icon across the full sheet.
+
+**Decor tiles (both games, `decor0NN.blp`) — finding: not a sprite grid,
+nothing to generate.** `CHDECOR` is loaded through `BackgroundCache`
+(like every other channel) but with `iconDim.x=0, iconDim.y=0` and
+`totalDim = LXIMAGE × LYIMAGE` = `640×480` — literally the game's screen
+resolution, not a tile cell size (`free-eggbert/src/pixmap.cpp:1068-1076`,
+`include/def.hpp:40-41`). `CDecor::Build`
+(`free-eggbert/src/decor.cpp:421-450`) confirms why: it's drawn as one
+large scrolling background, blitted through a viewport `rect` that wraps
+around modulo `DIMDECORX`/`DIMDECORY` as the camera moves — there is no
+per-tile rectangle table and no discrete "sprite" to number, because the
+whole file *is* one image. The actual per-cell world data (`Cellule.icon`
+in `CDecor::m_decor[MAXCELX][MAXCELY]`) indexes into `object.blp`
+world-tile icons, not into `decor0NN.blp` — so `object.blp`'s existing
+coverage already accounts for the real per-tile sprite data; `decor0NN.blp`
+itself has no sprite-sheet structure to annotate. Closed, not deferred.
 
 **Merge and finalize:**
 - [x] Merge policy established and applied for every file done so far:
@@ -520,12 +589,18 @@ per file) turns out to matter.
       name is cross-referenced in `Notes` either way, never silently
       dropped.
 - [x] Sanity-check via `sprite_utils draw` before every replacement so
-      far (`blupi000.blp` for both games; `object`/`element`/`explo.blp`
-      for v2.2) — every rectangle generated to date has landed correctly.
-      Keep doing this for each remaining file/table before replacing it.
-- [ ] `button00.blp`/`jauge.blp`/`text.blp` (both games) and decor tiles:
-      still fully open — no known source table for the UI sheets in
-      either game yet.
+      far (`blupi000.blp`, `object`/`element`/`explo.blp` for v2.2,
+      `text.blp`, `button00.blp` for both games) — every rectangle
+      generated to date has landed correctly.
+- [x] `text.blp` (both games): done, 375/384 cells (98%) labeled.
+- [x] `button00.blp` (both games): geometry done (126/156 cells per
+      game), `Group` deliberately left `?` — no source table exists.
+- [x] Decor tiles: investigated and closed — not a sprite grid, nothing
+      to generate (see finding above).
+- [ ] `jauge.blp` (both games, small — 4 rows, a health/progress-bar
+      strip) and `object`/`element`/`explo.blp` group names for Speedy
+      Blupi I: still open, lowest priority remaining (small file / needs
+      the not-yet-found v1.0 named-table equivalent, respectively).
 
 ---
 
